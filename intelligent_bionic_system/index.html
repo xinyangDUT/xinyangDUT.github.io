@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<title>Bio-inspired Intelligence and Robotic Systems</title>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../css/element-ui.css" />
+  <link rel="stylesheet" href="../css/index.css" />
+  <script src="../js/vue.min.js"></script>
+  <script src="../js/element-ui.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <el-page-header @back="goBack" title="Back"> </el-page-header>
+    <div>
+      <h1>Bio-inspired Intelligence and Robotic Systems</h1>
+      <el-divider></el-divider>
+      <p>
+        The research interests of the biologically-inspired intelligence lie at the intersection of computer vision,
+        robotics and biology. Through the abstraction of the design principles of biological systems, we explore the
+        applications of bio-inspired sensors (Event-based Camera), bio-inspired algorithms (Spiking Neural Networks),
+        and bio-inspired hardware in robotic systems. Our main goals are to engineer novel robotic applications which
+        are more adaptive, maneuverable, resilient and energy-efficient through a deeper understanding of adaptivity and
+        autonomy of biology.
+      </p>
+      <el-divider></el-divider>
+      <div v-for="project,index in projects">
+        <p class="project_p">
+          <span v-html="textBold(project.authors)"></span>
+          <b class="project_title">{{project.title}}</b>
+          <span v-for="tag in project.tags" :style="styles[tag[1]]">{{tag[0]}}</span>
+          <span v-for="link in project.links">[<b><a class="project_links"
+                :href="link.link">{{link.name}}</a></b><span>]&nbsp;</span></span>
+        </p>
+        <div v-for="img in project.imgs" class="figure_div">
+          <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+          <div v-if="img.label">
+            <div class="figure_label">{{img.label}}</div>
+            <br>
+          </div>
+        </div>
+        <div v-if="project.io">
+          <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+        </div>
+        <div v-if="project.abstract">
+          <p><b>Abstract.&nbsp;</b>{{project.abstract}}<span></span></p>
+        </div>
+        <el-divider content-position="right">{{index+1}}</el-divider>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../js/index.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        styles,
+        projects: [
+          {
+            authors: 'Jiqing Zhang, Xin Yang, Yingkai Fu, Xiaopeng Wei, Baocai Yin, Bo Dong.',
+            title: 'Object Tracking by Jointly Exploiting Frame and Event Domain.',
+            io: 'Given the first frame image, and it\'s corresponding events and bounding box, our network produces the following bounding boxes.',
+            tags: [
+              ['ICCV 2021', 1],
+              ['. ', 0],
+              ['(CCF A)', 2]
+            ],
+            abstract: 'Inspired by the complementarity between conventional frame-based and bio-inspired event-based cameras, we propose a multi-modal based approach to fuse visual cues from the frame- and event-domain to enhance the single object tracking performance, especially in degraded conditions (e.g., scenes with high dynamic range, low light, and fast motion objects). The proposed approach can effectively and adaptively combine meaningful information from both domains. Our approach’s effectiveness is enforced by a novel designed cross-domain attention schemes, which can effectively enhance features based on self- and cross-domain attention schemes; The adaptiveness is guarded by a specially designed weighting scheme, which can adaptively balance the contribution of the two domains. To exploit event-based visual cues in single-object tracking, we construct a largescale frame-event-based dataset, which we subsequently employ to train a novel frame-event fusion based model. Extensive experiments show that the proposed approach outperforms state-of-the-art frame-based tracking methods by at least 10.4% and 11.9% in terms of representative success rate and precision rate, respectively. Besides, the effectiveness of each key component of our approach is evidenced by our thorough ablation study.',
+            imgs: [
+              { src: 'Object-Tracking-demo.gif' },
+              { src: 'Object-Tracking-1.png' }
+            ],
+            links: [
+              { name: 'media', link: 'https://youtu.be/EeMRO8XVv04' },
+              { name: 'code', link: 'https://github.com/Jee-King/ICCV2021_Event_Frame_Tracking' },
+              { name: 'dataset', link: 'https://zhangjiqing.com/dataset/' }
+            ],
+          },
+          {
+            authors: 'Jiqing Zhang, Kai Zhao, Bo Dong, Yingkai Fu, Xinglin Piao, Xin Yang, Baocai Yin.',
+            title: 'Multi-domain Collaborative Feature Representation for Robust Visual Object Tracking.',
+            io: 'Given the first frame image, and it\'s corresponding events and bounding box, our network produces the following bounding boxes.',
+            tags: [
+              ['The Visual Computer (Proc. CGI 2021)', 1],
+              ['. ', 0]
+            ],
+            abstract: 'Jointly exploiting multiple different yet complementary domain information has been proven to be an effective way to perform robust object tracking. This paper focuses on effectively representing and utilizing complementary features from the frame domain and event domain for boosting object tracking performance in challenge scenarios. Specifically, we propose Common Features Extractor (CFE) to learn potential common representations from the RGB domain and event domain. For learning the unique features of the two domains, we utilize a Unique Extractor for Event (UEE) based on Spiking Neural Networks to extract edge cues in the event domain which may be missed in RGB in some challenging conditions, and a Unique Extractor for RGB (UER) based on Deep Convolutional Neural Networks to extract texture and semantic information in RGB domain. Extensive experiments on standard RGB benchmark and real event tracking dataset demonstrate the effectiveness of the proposed approach. We show our approach outperforms all compared state-of-the-art tracking algorithms and verify event-based data is a powerful cue for tracking in challenging scenes.',
+            imgs: [
+              { src: 'Multi-domain-1.png' },
+              { src: 'Multi-domain-2.png' }
+            ],
+            links: [
+              { name: 'paper', link: 'https://arxiv.org/pdf/2108.04521.pdf' },
+              { name: 'media', link: 'https://www.youtube.com/watch?v=NrsXMJYSDDQ&t=4s' }
+            ]
+          },
+          {
+            authors: 'Lingping Gao, Jianchuan Ding, Wenxi Liu, Haiyin Piao, Yuxin Wang, Xin Yang†, Baocai Yin.',
+            title: 'A Vision-based Irregular Obstacle Avoidance Framework via Deep Reinforcement Learning.',
+            io: 'Given the monocular RGB image, goal and velocity, our framework produces the robot\'s action.',
+            tags: [
+              ['IROS 2021', 1],
+              ['. ', 0]
+            ],
+            abstract: 'Deep reinforcement learning has achieved great success in laser-based collision avoidance work because the laser can sense accurate depth information without too much redundant data, which can maintain the robustness of the algorithm when it is migrated from the simulation environment to the real world. However, high-cost laser devices are not only difficult to apply on a large scale but also have poor robustness to irregular objects, e.g., tables, chairs, shelves, etc. In this paper, we propose a vision-based collision avoidance framework to solve the challenging problem. Our method attempts to estimate the depth and incorporate the semantic information from RGB data to obtain a new form of data, pseudo-laser data, which combines the advantages of visual information and laser information. Compared to traditional laser data that only contains the one-dimensional distance information captured at a certain height, our proposed pseudo-laser data encodes the depth information and semantic information within the image, which makes our method more effective for irregular obstacles. Besides, we adaptively add noise to the laser data during the training stage to increase the robustness of our model in the real world, due to the estimated depth information is not accurate. Experimental results show that our framework achieves state-of-the-art performance in several unseen virtual and real-world scenarios.',
+            imgs: [
+              { src: 'Obstacle-Avoidance-demo.gif' },
+              { src: 'Obstacle-Avoidance-1.png' }
+            ],
+            links: [
+              { name: 'paper', link: 'https://arxiv.org/pdf/2108.06887.pdf' }
+            ]
+          },
+        ]
+      }
+    },
+    methods: {
+      textBold(s) {
+        return textBold(s)
+      },
+      goBack() {
+        goBack()
+      },
+    },
+  })
+</script>
+
+</html>

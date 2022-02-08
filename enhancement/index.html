@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<title>Low-light Image Analysis</title>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../css/element-ui.css" />
+  <link rel="stylesheet" href="../css/index.css" />
+  <script src="../js/vue.min.js"></script>
+  <script src="../js/element-ui.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <el-page-header @back="goBack" title="Back"> </el-page-header>
+    <!-- Low-light Image Analysis -->
+    <div>
+      <h1>
+        Low-light Image Analysis
+      </h1>
+      <el-divider></el-divider>
+      <p>
+        Low-light imaging is often needed for various purposes, such as surveillance, photography and autonomous
+        driving. In particular for autonomous driving, day-time and night-time each roughly contributes to 50% of the
+        time over a year, and it is equally important for computer vision techniques developed for day-time scenes to
+        work at night-time scenes. Unfortunately, low-light images typically contain very dark regions, which may suffer
+        from under-exposure problems (i.e., their values are very close to zero), while night-time images may suffer
+        from both under-exposure as well as over-exposure problems (i.e., their values may be very close to either zero
+        or one). Enhancing these images or processing them with existing computer vision algorithms often do not work.
+      </p>
+      <p>
+        In this project, we are developing techniques to process low-light images. Our research is to address this
+        problem from two directions. The first is to consider how to enhance these images to improve their visibility.
+        The second is to investigate how to improve existing computer vision algorithms for direct analyses of low-light
+        images.
+      </p>
+      <el-divider></el-divider>
+      <div v-for="project,index in projects">
+        <p class="project_p">
+          <span v-html="textBold(project.authors)"></span>
+          <b class="project_title">{{project.title}}</b>
+          <span v-for="tag in project.tags" :style="styles[tag[1]]">{{tag[0]}}</span>
+          <span v-for="link in project.links">[<b><a class="project_links"
+                :href="link.link">{{link.name}}</a></b><span>]&nbsp;</span></span>
+        </p>
+        <div v-for="img in project.imgs" class="figure_div">
+          <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+          <div v-if="img.label">
+            <div class="figure_label">{{img.label}}</div>
+            <br>
+          </div>
+        </div>
+        <div v-if="project.io">
+          <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+        </div>
+        <div v-if="project.abstract">
+          <p><b>Abstract.&nbsp;</b>{{project.abstract}}<span></span></p>
+        </div>
+        <el-divider content-position="right">{{index+1}}</el-divider>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../js/index.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        styles,
+        projects: [
+          {
+            authors: 'Ke Xu, Xin Yang*, Baocai Yin, and Rynson Lau.',
+            title: 'Learning to Restore Low-light Images via Decomposition-and-Enhancement.',
+            tags: [
+              ['CVPR 2020', 1],
+              ['. ', 0],
+              ['(CCF A)', 2]
+            ],
+            io: 'Given an input practical low-light image, which often comes with a significant amount of noise due to the low signal-to-noise ratio, our network enhances its brightness while at the same time suppressing its noise level, to produce an enhanced clear image.',
+            abstract: 'Low-light images typically suffer from two problems. First, they have low visibility (i.e., small pixel values). Second, noise becomes significant and disrupts the image content, due to low signal-to-noise ratio. Most existing lowlight image enhancement methods, however, learn from noise-negligible datasets. They rely on users having good photographic skills in taking images with low noise. Unfortunately, this is not the case for majority of the low-light images. While concurrently enhancing a low-light image and removing its noise is ill-posed, we observe that noise exhibits different levels of contrast in different frequency layers, and it is much easier to detect noise in the low-frequency layer than in the high one. Inspired by this observation, we propose a frequency-based decomposition-and-enhancement model for low-light image enhancement. Based on this model, we present a novel network that first learns to recover image objects in the low-frequency layer and then enhances high-frequency details based on the recovered image objects. In addition, we have prepared a new low-light image dataset with real noise to facilitate learning. Finally, we have conducted extensive experiments to show that the proposed method outperforms state-of-the-art approaches in enhancing practical noisy low-light images.',
+            links: [
+              { name: 'paper', link: 'http://www.cs.cityu.edu.hk/~rynson/papers/cvpr20a.pdf' },
+              { name: 'suppl', link: 'http://www.cs.cityu.edu.hk/~rynson/papers/demos/cvpr20a-supp.pdf' },
+              { name: 'dataset', link: 'https://drive.google.com/drive/folders/10G9hT8ohZADB8Eltal7wB_yOGDJS62Ng' },
+              { name: 'video', link: 'https://www.cs.cityu.edu.hk/~rynson/papers/demos/cvpr20a.mp4' }
+            ],
+            imgs: [
+              { src: '20200621135331(1).gif', label: 'Overview of proposed framework.' },
+              { src: 'cvpr_2020_results.jpg', label: 'While existing methods ((c) to (j)) generally fail to enhance the input noisy low-light image (a), our method produces a sharper and clearer result with objects and details recovered (l).' }
+            ],
+          },
+          {
+            authors: 'Xin Yang, Haoran Wang, Shaozhe Chen, Xinglin Piao, Dongsheng Zhou, Qiang Zhang, Baocai Yin, Xiaopeng Wei.',
+            title: 'Cascaded Network with Deep Intensity Manipulation for Scene Understanding.',
+            tags: [
+              ['Journal of Visualization and Computer Animation', 1],
+              [', 30(3-4), 2019. ', 0],
+            ],
+            io: 'Given an input low-light image, our network produces an enhanced image with lost details recovered.',
+            abstract: 'Scene understanding is essential to robotic navigation and autonomous driving as it provides semantic information to their controlling system. However, it will fail when processing low-light images/videos captured under adverse weather or at night use state-of-the-art scene understanding methods. A naive way to directly infer semantics from low-light images is ill posed because the low-light condition distorts pixel intensities and buries details. In order to address this problem, we propose the Deep Intensity Manipulation Network (DIMNet), which could relight the input images and recover the details, and combine the DIMNet with a scene understanding network to get a cascaded network to learn the semantics from low-light images. Through learning pixel intensity manipulation, our method can generate images not only visually pleasing but also practical for scene understanding. Qualitative and quantitative experiments demonstrate that the proposed method is effective and robust for both synthetic and real-world images.',
+            imgs: [
+              { src: 'Cascaded Network with Deep Intensity Manipulation for Scene Understanding.png', label: 'Limitations of existing enhance algorithms. We choose ICNet to generate segmentation results. The quality of segmentation results is illy influenced by the limited illustration. Existing enhancement algorithms cannot perform optimization and, on the contrary, worsen the segmentation results. (a) Low-light image. (b) Low-light image enhancement via illumination map estimation (LIME). (c) Simultaneous reflectance and illumination estimation (SRIE). (d) Ours.' }
+            ],
+          },
+          {
+            authors: 'Xin Yang, Ke Xu, Yibing Song, Qiang Zhang, Xiaopeng Wei, and Rynson Lau.',
+            title: 'Image Correction via Deep Reciprocating HDR Transformation.',
+            tags: [
+              ['CVPR 2018', 1],
+              ['. ', 0],
+              ['(CCF A)', 2]
+            ],
+            io: 'Given an input low-light image, our network produces an enhanced image with lost details recovered.',
+            abstract: 'Image correction aims to adjust an input image into a visually pleasing one. Existing approaches are proposed mainly from the perspective of image pixel manipulation. They are not effective to recover the details in the under/over exposed regions. In this paper, we revisit the image formation procedure and notice that the missing details in these regions exist in the corresponding high dynamic range (HDR) data. These details are well perceived by the human eyes but diminished in the low dynamic range (LDR) domain because of the tone mapping process. Therefore, we formulate the image correction task as an HDR transformation process and propose a novel approach called Deep Reciprocating HDR Transformation (DRHT). Given an input LDR image, we first reconstruct the missing details in the HDR domain. We then perform tone mapping on the predicted HDR data to generate the output LDR image with the recovered details. To this end, we propose a united framework consisting of two CNNs for HDR reconstruction and tone mapping. They are integrated end-to-end for joint training and prediction. Experiments on the standard benchmarks demonstrate that the proposed method performs favorably against state-of-the-art image correction methods.',
+            links: [
+              { name: 'paper', link: 'http://www.cs.cityu.edu.hk/~rynson/papers/cvpr18a.pdf' },
+              { name: 'suppl', link: 'http://www.cs.cityu.edu.hk/~rynson/papers/demos/cvpr18asupp.pdf' },
+              { name: 'code', link: 'https://drive.google.com/open?id=1PqZPgBxGw14tukPvtgnPl7qn0Zu6KhTU' },
+              { name: 'dataset', link: 'https://drive.google.com/open?id=1lNxf_3LW5b1w5uAvFVLJE5By01OmXRXI' },
+            ],
+            imgs: [
+              { src: '20200621135331(2).gif' },
+              { src: 'cvpr_2018_results.jpg', label: 'Image correction results on an underexposed input. Existing LDR methods have the limitation in recovering the missing details, as shown in (b)-(f). In comparison, we recover the missing LDR details in the HDR domain and preserve them through tone mapping, producing a more favorable result as shown in (g).' }
+            ],
+          },
+          {
+            authors: 'Ke Xu, Xin Yang, Baocai Yin, Rynson Lau.',
+            title: 'Decomposition-Guided Low-light Image Restoration and Enhancement.',
+            tags: [
+              ['International Journal of Computer Vision', 1],
+              ['. ', 0],
+              ['(CCF A)', 2]
+            ],
+            abstract: 'Low-light images typically suffer from two problems. First, they have low visibility (i.e., small pixel values). Second, noise becomes significant and disrupts the image content, due to low signal-to-noise ratio. Most existing low-light image enhancement methods, however, learn from noise-negligible datasets. They rely on users having good photographic skills in taking images with low noise. Unfortunately, this is not the case for majority of the low-light images. On the other hand, attempting to enhance a lowlight image while removing its noise is an ill-posed problem. We observe that noise exhibits different levels of contrast in different frequency layers, and it is much easier to detect noise in the low-frequency layer than in the high one. Inspired by this observation, we propose a frequency-based decomposition-guided model for low-light image restoration and enhancement. Based on this model, we present a novel network that first learns to recover image objects in the low-frequency layer and then enhances high-frequency details guided by the recovered image objects. In addition, we have prepared a new low-light image dataset with real noise to facilitate learning. Finally, we have conducted extensive experiments to show that the proposed method outperforms state-of-the-art approaches in enhancing practical noisy low-light images.',
+            imgs: [
+              { src: 'Decomposition-Guided Low-light Image Restoration and Enhancement.png' }
+            ],
+          }
+        ],
+      }
+    },
+    methods: {
+      textBold(s) {
+        return textBold(s)
+      },
+      goBack() {
+        goBack()
+      },
+    },
+  })
+</script>
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<title>Xin Yang's Homepage</title>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../css/element-ui.css" />
+  <script src="./js/vue.min.js"></script>
+  <script src="./js/element-ui.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="sidebar">
+      <div>
+        <img :src="avaterUrl" alt="xin yang" width="128" height="187" />
+        <div>
+          <h2>Xin&nbsp;&nbsp;Yang</h2>
+        </div>
+        <p>
+          Dalian University of Technology
+        </p>
+        <p>
+          School of Computer Science and Technology
+        </p>
+        <p>
+          Professor, Ph.D. Supervisor
+        </p>
+      </div>
+    </div>
+    <div class="content">
+      <!-- Research Projects -->
+      <div>
+        <h2 id="Research Projects">
+          Research Projects
+        </h2>
+        <el-divider></el-divider>
+        <p>
+          In recent years, we are interested at developing AI techniques to
+          support graphics and vision tasks, especially for robotics and
+          virtual reality applications.
+        </p>
+        <ul v-for="project in projects">
+          <li>
+            <a :href="project.href">{{project.title}}</a>
+          </li>
+        </ul>
+        <el-divider></el-divider>
+        <p>More Information: <a :href="moreUrl">{{moreUrl}}</a></p>
+        <el-divider></el-divider>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        avaterUrl:
+          'http://faculty.dlut.edu.cn/__local/C/CC/5B/60B0CD69056E6E17F8987758DDD_20A6B25C_8429.jpg',
+        moreUrl: 'http://faculty.dlut.edu.cn/yangxin/zh_CN/index.htm',
+        projects: [
+          {
+            title: 'Bio-inspired Intelligence and Robotic Systems',
+            href: 'intelligent_bionic_system/index.html',
+          },
+          {
+            title: 'Uncertain Object Detection/Segmentation',
+            href: 'detection_segmentation/index.html',
+          },
+          {
+            title: 'Low-light Image Analysis',
+            href: 'enhancement/index.html',
+          },
+          {
+            title: 'Image-based 3D Indoor Scene Modeling',
+            href: '3DV/index.html',
+          },
+          {
+            title: 'Image Matting',
+            href: 'matting/index.html',
+          },
+          {
+            title: 'Scene Understanding and Representation Learning',
+            href: 'scene_understanding/index.html',
+          },
+          {
+            title: 'Single Image Super-Resolution (SISR)',
+            href: 'SR/index.html',
+          },
+          {
+            title: 'Real-Virtual Consistent Traffic Flow Interaction',
+            href: 'real_virtual/index.html',
+          },
+          {
+            title: 'Photorealistic Rendering',
+            href: 'photorealistic_rendering/index.html',
+          },
+          {
+            title: 'Other Research',
+            href: 'other_research/index.html',
+          },
+        ],
+      }
+    },
+  })
+</script>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+  }
+
+  p {
+    line-height: 30px;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  i {
+    font-size: 14px;
+    clear: left;
+  }
+
+  .sidebar {
+    position: fixed;
+    width: 400px;
+    padding: 10px;
+    height: 100%;
+    background-color: #272727;
+    color: white;
+    top: 0px;
+    bottom: 0;
+    text-align: center;
+  }
+
+  .content {
+    position: fixed;
+    min-width: 300px;
+    padding: 10px 40px 10px 40px;
+    left: 420px;
+    right: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    top: 0px;
+    bottom: 0;
+  }
+</style>
+
+</html>

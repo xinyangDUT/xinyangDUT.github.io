@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<title>Single Image Super-Resolution</title>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../css/element-ui.css" />
+  <link rel="stylesheet" href="../css/index.css" />
+  <script src="../js/vue.min.js"></script>
+  <script src="../js/element-ui.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <el-page-header @back="goBack" title="Back"> </el-page-header>
+    <!-- Single Image Super-Resolution -->
+    <div>
+      <h1>
+        Single Image Super-Resolution (SISR)
+      </h1>
+      <el-divider></el-divider>
+      <p>
+        Single-image super-resolution (SISR) is a computer vision task
+        that reconstructs a high-resolution (HR) image from a low-resolution (LR) image. It could be
+        used in a variety of applications such as medical imaging, security, and surveillance
+        imaging. The quality of the reconstructed HR image depends on how to extract and use the
+        information from LR image. Since there are multiple HR images that can be downsampled to the
+        same LR image and this is a one-to-many mapping relation to recover HR images from a LR
+        image, SISR is an ill-posed and still challenging problem in the community.
+      </p>
+      <p>
+        In this project, we
+        are developing techniques to reconstruct the
+        HR image from the LR image. Our research is to address this problem from three directions.
+        The first is to consider how to balance the reconstruction quality and time cost. The second
+        is to investigate how to fuse multi-frequency information for HR image reconstruction. The
+        third is to consider how simultaneously distill features in LR and HR space for SISR.
+      </p>
+      <el-divider></el-divider>
+      <div v-for="project,index in projects">
+        <p class="project_p">
+          <span v-html="textBold(project.authors)"></span>
+          <b class="project_title">{{project.title}}</b>
+          <span v-for="tag in project.tags" :style="styles[tag[1]]">{{tag[0]}}</span>
+          <span v-for="link in project.links">[<b><a class="project_links"
+                :href="link.link">{{link.name}}</a></b><span>]&nbsp;</span></span>
+        </p>
+        <div v-for="img in project.imgs" class="figure_div">
+          <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+          <div v-if="img.label">
+            <div class="figure_label">{{img.label}}</div>
+            <br>
+          </div>
+        </div>
+        <div v-if="project.io">
+          <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+        </div>
+        <div v-if="project.abstract">
+          <p><b>Abstract.&nbsp;</b>{{project.abstract}}<span></span></p>
+        </div>
+        <el-divider content-position="right">{{index+1}}</el-divider>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../js/index.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        styles,
+        projects: [
+          {
+            authors: 'Jiqing Zhang, Chengjiang Long, Yuxin Wang, Haiyin Piao, Haiyang Mei, Xin Yang*, Baocai Yin.',
+            title: 'A Two-Stage Attentive Network for Single Image Super-Resolution.',
+            tags: [
+              ['IEEE Transactions on Circuits and Systems for Video Technology 2021', 1],
+              ['. ', 0],
+              ['(CCF-B)', 2]
+            ],
+            abstract: 'Recently, deep convolutional neural networks (CNNs) have been widely explored in single image superresolution (SISR) and contribute remarkable progress. However, most of the existing CNNs-based SISR methods do not adequately explore contextual information in the feature extraction stage and pay little attention to the final high-resolution (HR) image reconstruction step, hence hindering the desired SR performance. To address the above two issues, in this paper, we propose a two-stage attentive network (TSAN) for accurate SISR in a coarse-to-fine manner. Specifically, a novel dilated residual block (DRB) is developed as a fundamental unit to extract contextual features efficiently. Based on DRB, we further design a multicontext attentive block (MCAB) to make the network focus on more informative contextual features. Moreover, we present an essential refined attention block (RAB) which could explore useful cues in HR space for reconstructing fine-detailed HR image. Extensive evaluations on four benchmark datasets demonstrate the efficacy of our proposed TSAN in terms of quantitative metrics and visual effects.',
+            imgs: [
+              { src: 'A Two-Stage1.png' },
+              { src: 'A Two-Stage2.png' }
+            ],
+          },
+          {
+            authors: 'Jiqing Zhang, Chengjiang Long, Yuxin Wang, Xin Yang*, Haiyang Mei, and Baocai Yin.',
+            title: 'Multi-Context And Enhanced Reconstruction Network For Single Image Super Resolution.',
+            tags: [
+              ['ICME 2020', 1],
+              ['. ', 0],
+            ],
+            io: 'Given an input LR image, our network recovers a visually pleasing HR image in a coarse-to-fine fashion.',
+            abstract: 'Most existing single image super-resolution (SISR) methods continually increase the depth or width of networks, without adequately exploring contextual features which are essential for reconstruction. Moreover, such existing methods pay little attention to the final high-resolution(HR) image reconstruction step and therefore hinder the desired SR performance. In this paper, we propose a multi-context and enhanced reconstruction network (MCERN) for SISR. Specifically, a novel model named Multi-Context Block (MCB) which extracts more image contextual features with multibranch dilated convolution. Applying multiple MCBs with residual and dense connections, we can effectively extract contextual and hierarchical features for obtaining the coarse super-resolution result. Then an enhanced reconstruction block (ERB) is followed to extract essential spatial features on the high-resolution image to refine the coarse result to a better result. Extensive benchmark evaluations demonstrate the efficacy of our proposed MCERN in terms of metric accuracy and visual effects.',
+            links: [
+              { name: 'paper', link: './icme_sisr.pdf' }
+            ],
+            imgs: [
+              { src: 'mcern_pipeline.png', label: 'Overview of proposed framework.' },
+              { src: 'mcern_results.png', label: 'Visual comparison of our results with those of the state-of-the-art methods. Please zoom in to see the details.' }
+            ],
+          },
+          {
+            authors: 'Xin Yang, Haiyang Mei, Jiqing Zhang, Ke Xu, Baocai Yin, Qiang Zhang, and Xiaopeng Wei.',
+            title: 'DRFN: Deep Recurrent Fusion Network for Single Image Super-Resolution with Large Factors.',
+            tags: [
+              ['IEEE TRANSACTIONS ON MULTIMEDIA', 1],
+              [', August 2018. ', 0],
+            ],
+            io: 'Given an input LR image, our network reconstructs a HR image with more texture details and better visual performance, especially for large-scale images.',
+            abstract: 'Recently, single-image super-resolution has made great progress owing to the development of deep convolutional neural networks (CNNs). The vast majority of CNN-based models use a pre-defined upsampling operator, such as bicubic interpolation, to upscale input low-resolution images to the desired size and learn non-linear mapping between the interpolated image and ground truth high-resolution (HR) image. However, interpolation processing can lead to visual artifacts as details are over-smoothed, particularly when the super-resolution factor is high. In this paper, we propose a Deep Recurrent Fusion Network (DRFN), which utilizes transposed convolution instead of bicubic interpolation for upsampling and integrates different-level features extracted from recurrent residual blocks to reconstruct the final HR images. We adopt a deep recurrence learning strategy and thus have a larger receptive field, which is conducive to reconstructing an image more accurately. Furthermore, we show that the multi-level fusion structure is suitable for dealing with image super-resolution problems. Extensive benchmark evaluations demonstrate that the proposed DRFN performs better than most current deep learning methods in terms of accuracy and visual effects, especially for large-scale images, while using fewer parameters.',
+            links: [
+              { name: 'paper', link: 'https://arxiv.org/pdf/1908.08837.pdf' },
+              { name: 'code', link: 'https://github.com/Mhaiyang/TMM2018_DRFN' }
+            ],
+            imgs: [
+              { src: 'drfn_pipeline.png', label: 'Overview of proposed framework.' },
+              { src: 'drfn_results.png', label: 'Visual comparison of our results with those of the state-of-the-art methods. Please zoom in to see the details.' }
+            ],
+          },
+          {
+            authors: 'Ke Xu, Xin Wang, Xin Yang*, Shengfeng He, Qiang Zhang, Baocai Yin, Xiaopeng Wei, and Rynson W.H. Lau.',
+            title: 'Efficient Image Super Resolution Integration.',
+            tags: [
+              ['The Visual Computer (Proc. CGI)', 1],
+              [', June 2018. ', 0],
+            ],
+            io: 'Given an input LR image, our framework integrates the patch-based and the deep learning-based SR methods to produce a HR image.',
+            abstract: 'The Super Resolution (SR) problem is challenging due to the diversity of image types with little shared properties as well as the speed required by online applications, e.g., target identification. In this paper, we explore the merits and demerits of recent deep learning based and conventional patch-based SR methods, and show that they can be integrated in a complementary manner, while balancing the reconstruction quality and time cost. Motivated by this, we further propose an integration framework to take the results from FSRCNN and A+ methods as inputs, and directly learn a pixelwise mapping between the inputs and the reconstructed results using the Gaussian Conditional Random Fields (GCRFs). The learned pixel-wise integration mapping is flexible to accommodate different upscaling factors. Experimental results show that the proposed framework can achieve superior SR performance compared with the state-of-the-arts while being efficient.',
+            links: [
+              { name: 'paper', link: 'https://www.cs.cityu.edu.hk/~rynson/papers/cgi18.pdf' }
+            ],
+            imgs: [
+              { src: 'cgi_pipeline.png', label: 'Overview of proposed framework.' },
+              { src: 'cgi_results.png', label: 'Visual comparison of our results with those of the state-of-the-art methods. Please zoom in to see the details.' }
+            ],
+          }
+        ],
+      }
+    },
+    methods: {
+      textBold(s) {
+        return textBold(s)
+      },
+      goBack() {
+        goBack()
+      },
+    },
+  })
+</script>
+
+</html>

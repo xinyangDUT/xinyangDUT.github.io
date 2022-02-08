@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  padding: 10px 40px 10px 40px;
+  font-family: Times New Roman;
+}
+
+p {
+  line-height: 30px;
+}
+
+h1 {
+  text-align: center;
+}
+
+i {
+  font-size: 14px;
+  clear: left;
+}
+
+.figure_img {
+  max-width: 800px;
+}
+.figure_div{
+  text-align: center;
+}
+.figure_label{
+  text-align: left;
+  font-size: 12px;
+  margin:0 auto;
+  max-width: 800px;
+}
+.project_p{
+  font-size: 14px;
+  background-color: rgb(242, 244, 225);
+}
+.project_links{
+  color: #006699; font-size: 14px;
+}
+.project_title{
+  font-size: 18px;
+}

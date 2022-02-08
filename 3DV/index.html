@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<title>Image-based 3D Indoor Scene Modeling</title>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../css/element-ui.css" />
+  <link rel="stylesheet" href="../css/index.css" />
+  <script src="../js/vue.min.js"></script>
+  <script src="../js/element-ui.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <el-page-header @back="goBack" title="Back"> </el-page-header>
+    <!-- Image-based 3D Indoor Scene Modeling -->
+    <div>
+      <h1>
+        Image-based 3D Indoor Scene Modeling
+      </h1>
+      <el-divider></el-divider>
+      <p>
+        Image-based 3D indoor scene reconstruction is widely used in different areas, such as robotic navigation,
+        virtual reality and interior design. The goal of this task is to use as little as possible images as input and
+        output high-quality 3D indoor scene models, expressed as voxel grid, point cloud or triangle mesh. In particular
+        for object reconstruction or local scene completion, it is better to take single image as the whole task’s
+        input, and for whole scene reconstruction task, less number of inputs would save mobile costs for sensors.
+        Unfortunately, the information provided by 2D images is lacking for what is needed for 3D scene modeling tasks
+        because of the huge gap between 2D domain to 3D domain. Thus traditional methods always use multi-view images as
+        input to solve this problem.
+      </p>
+      <p>
+        In this project, we are developing techniques to tackle this problem by dividing it into different related
+        sub-problems. A whole indoor scene can be composed of a series of local scenes, and a local scene can be
+        composed of a series of objects. Based on the above observations, we first address the object reconstruction
+        problem guided by a active view planner, and we then propose a deep reinforcement learning method for local
+        point scene reconstruction from a single depth image. We are currently working on fast and accurate whole scene
+        reconstruction.
+      </p>
+      <el-divider></el-divider>
+      <div v-for="project,index in projects">
+        <p class="project_p">
+          <span v-html="textBold(project.authors)"></span>
+          <b class="project_title">{{project.title}}</b>
+          <span v-for="tag in project.tags" :style="styles[tag[1]]">{{tag[0]}}</span>
+          <span v-for="link in project.links">[<b><a class="project_links"
+                :href="link.link">{{link.name}}</a></b><span>]&nbsp;</span></span>
+        </p>
+        <div v-for="img in project.imgs" class="figure_div">
+          <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+          <div v-if="img.label">
+            <div class="figure_label">{{img.label}}</div>
+            <br>
+          </div>
+        </div>
+        <div v-if="project.io">
+          <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+        </div>
+        <div v-if="project.abstract">
+          <p><b>Abstract.&nbsp;</b>{{project.abstract}}<span></span></p>
+        </div>
+        <el-divider content-position="right">{{index+1}}</el-divider>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../js/index.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        styles,
+        projects: [
+          {
+            authors: 'Xiaoguang Han, Zhaoxuan Zhang, Dong Du, Mingdai Yang, Jingming Yu, Pan Pan, Xin Yang, Ligang Liu, Zixiang Xiong and Shuguang Cui.',
+            title: 'Deep Reinforcement Learning of Volume-guided Progressive View Inpainting for 3D Point Scene Completion from a Single Depth Image.',
+            tags: [
+              ['CVPR 2019', 1],
+              ['. ', 0],
+              ['(Oral, CCF A)', 2]
+            ],
+            io: 'Given an single depth image, our method progressively generate the missing points of the initial point cloud corresponding to the input depth map under the optimal sequence of viewpoints.',
+            abstract: 'We present a deep reinforcement learning method of progressive view inpainting for 3D point scene completion under volume guidance, achieving high-quality scene reconstruction from only a single depth image with severe occlusion. Our approach is end-to-end, consisting of three modules: 3D scene volume reconstruction, 2D depth map inpainting, and multi-view selection for completion. Given a single depth image, our method first goes through the 3D volume branch to obtain a volumetric scene reconstruction as a guide to the next view inpainting step, which attempts to make up the missing information; the third step involves projecting the volume under the same view of the input, concatenating them to complete the current view depth, and integrating all depth into the point cloud. Since the occluded areas are unavailable, we resort to a deep Q-Network to glance around and pick the next best view for large hole completion progressively until a scene is adequately reconstructed while guaranteeing validity. All steps are learned jointly to achieve robust and consistent results. We perform qualitative and quantitative evaluations with extensive experiments on the SUNCG data, obtaining better results than the state of the art.',
+            links: [
+              { name: 'paper', link: 'http://openaccess.thecvf.com/content_CVPR_2019/papers/Han_Deep_Reinforcement_Learning_of_Volume-Guided_Progressive_View_Inpainting_for_3D_CVPR_2019_paper.pdf' },
+            ],
+            imgs: [
+              { src: '20200621135332(2).gif' },
+              { src: 'cvpr19_oral_pipeline.png', label: 'The pipeline of our method.' },
+              { src: 'cvpr19_oral_results.png', label: 'Comparisons against the state-of-the-arts. Given different inputs and the referenced groundtruth, we show the completion results of three methods, with the corresponding point cloud error maps below, and zoom-in areas beside. More blue more accurate.' }
+            ],
+          },
+          {
+            authors: 'Xin Yang, Yuanbo Wang, Yaru Wang, Bacai Yin, Qian Zhang, Xiaopeng Wei and Hongbo Fu.',
+            title: 'Active Object Reconstruction Using a Guided View Planner.',
+            tags: [
+              ['IJCAI 2018', 1],
+              ['. ', 0],
+              ['(CCF A)', 2]
+            ],
+            io: 'Given a random view image of the target object, our network reconstruct the 3D volume of the object and decide the next best view according to the current reconstruction quality.',
+            abstract: 'Inspired by the recent advance of image-based object reconstruction using deep learning, we present an active reconstruction model using a guided view planner. We aim to reconstruct a 3D model using images observed from a planned sequence of informative and discriminative views. But where are such informative and discriminative views around an object? To address this we propose a unified model for view planning and object reconstruction, which is utilized to learn a guided information acquisition model and to aggregate information from a sequence of images for reconstruction. Experiments show that our model (1) increases our reconstruction accuracy with an increasing number of views (2) and generally predicts a more informative sequence of views for object reconstruction compared to other alternative methods.',
+            links: [
+              { name: 'paper', link: 'https://arxiv.org/pdf/1805.03081.pdf' }
+            ],
+            imgs: [
+              { src: '20200621135332(1).gif' },
+              { src: 'ijcai18_pipeline.png', label: 'Illustration of network architecture. Our entire network consists of four components: a Recurrent 2D Encoder, a Recurrent 3D Decoder, Perspective Transformer and a View Planner.' },
+              { src: 'ijcai18_results.png', label: 'Qualitative results of reconstruction samples for example view sequences. 3D-R2N2 generally fails in the categories with much higer variation (eg. the lamp in the bottom right corner) while our model does better in feature extraction and view aggregation, leading to a more accurate reconstruction.' }
+            ],
+          },
+          {
+            authors: 'Zhaoxuan Zhang*, Kun Li*, Xuefeng Yin, Xinglin Piao, Yuxin Wang, Xin Yang, Baocai Yin.',
+            title: 'Point Cloud Semantic Scene Segmentation based on Coordinate Convolution.',
+            tags: [
+              ['Journal of Computer Animation and Virtual Worlds', 1],
+              [',', 0],
+              ['Special Issue of CASA 2020.', 1]
+            ],
+            io: 'Given an indoor scene point cloud, our method predict the semantic segmentation label for each point based on our proposed feature extraction option named "coordinate convolution".',
+            abstract: 'Point cloud semantic segmentation, a crucial research area in the 3D computer vision, lies at the core of many vision and robotics applications. Due to the irregular and disordered of the point cloud, however, the application of convolution on point clouds is challenging. In this paper, we propose the “coordinate convolution”, which can effectively extract local structural information of the point cloud, to solve the inapplicability of conventional convolution neural network (CNN) structures on the 3D point cloud. The “coordinate convolution” is a projection operation of three planes based on the local coordinate system of each point. Specifically, we project the point cloud on three planes in the local coordinate system with a joint 2D convolution operation to extract its features. Additionally, we leverage a self-encoding network based on image semantic segmentation U-Net structure as the overall architecture of the point cloud semantic segmentation algorithm. The results demonstrate that the proposed method exhibited excellent performances for point cloud data sets corresponding to various scenes.',
+            imgs: [
+              { src: 'ijcai18.png' },
+            ],
+          },
+        ],
+      }
+    },
+    methods: {
+      textBold(s) {
+        return textBold(s)
+      },
+      goBack() {
+        goBack()
+      },
+    },
+  })
+</script>
+
+</html>

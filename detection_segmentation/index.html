@@ -64,6 +64,41 @@
         styles,
         projects: [
           {
+            authors: 'Haiyang Mei, Bo Dong, Wen Dong, Jiaxi Yang, Seung-Hwan Baek, Felix Heide, Pieter Peers, Xiaopeng Wei, Xin Yang.',
+            title: 'Glass Segmentation using Intensity and Spectral Polarization Cues.',
+            tags: [
+              ['CVPR 2022', 1],
+              ['. ', 0],
+              ['(CCF A)', 2]
+            ],
+            io: 'Given the input RGB and trichromatic polarization images, our network outputs a binary mask that indicates where transparent glass regions are.',
+            abstract: 'Transparent and semi-transparent materials pose significant challenges for existing scene understanding and segmentation algorithms due to their lack of RGB texture which impedes the extraction of meaningful features. In this work, we exploit that the light-matter interactions on glass materials provide unique intensity-polarization cues for each observed wavelength of light. We present a novel learning-based glass segmentation network that leverages both trichromatic (RGB) intensities as well as trichromatic linear polarization cues from a single photograph captured without making any assumption on the polarization state of the illumination. Our novel network architecture dynamically fuses and weights both the trichromatic color and polarization cues using a novel global-guidance and multiscale self-attention module, and leverages global cross-domain contextual information to achieve robust segmentation. We train and extensively validate our segmentation method on a new large-scale RGB-Polarization dataset (RGBP-Glass), and demonstrate that our method outperforms state-of-the-art segmentation approaches by a significant margin.',
+            imgs: [
+              { src: 'Glass Segmentation using Intensity.gif' }
+            ],
+            links: [
+              { name: 'code', link: 'https://mhaiyang.github.io/CVPR2022_PGSNet/index.html' }
+            ]
+          },
+          {
+            authors: 'Xin Tian, Ke Xu, Xin Yang, Lin Du, Baocai Yin, Rynson W.H. Lau.',
+            title: 'Bi-directional Object-Context Prioritization Learning for Saliency Ranking.',
+            tags: [
+              ['CVPR 2022', 1],
+              ['. ', 0],
+              ['(CCF A)', 2]
+            ],
+            io: 'Given an input RGB image, our network outputs the saliency ranking results.',
+            abstract: 'The saliency ranking task is recently proposed to study the visual behavior that humans would typically shift their attention over different objects of a scene based on their degrees of saliency. Existing approaches focus on learning either object-object or object-scene relations. Such a strategy follows the idea of object-based attention in Psychology, but it tends to favor objects with strong semantics (e.g., humans), resulting in unrealistic saliency ranking. We observe that spatial attention works concurrently with object-based attention in the human visual recognition system. During the recognition process, the human spatial attention mechanism would move, engage, and disengage from region to region (i.e., context to context). This inspires us to model region-level interactions, in addition to object-level reasoning, for saliency ranking. Hence, we propose a novel bidirectional method to unify spatial attention and object-based attention for saliency ranking. Our model has two novel modules: (1) a selective object saliency (SOS) module to model object-based attention via inferring the semantic representation of salient objects, and (2) an object-context-object relation (OCOR) module to allocate saliency ranks to objects by jointly modeling object-context and context-object interactions of salient objects. Extensive experiments show that our approach outperforms existing state-of-the-art methods.',
+            imgs: [
+              { src: 'Bi-directional-1.png' },
+              { src: 'Bi-directional-2.png' }
+            ],
+            links: [
+              { name: 'code', link: 'https://github.com/GrassBro/OCOR' }
+            ]
+          },
+          {
             authors: 'Letian Yu*, Haiyang Mei*, Wen Dong, Ziqi Wei, Li Zhu, Yuxin Wang, and Xin Yang†.',
             title: 'Progressive Glass Segmentation.',
             tags: [

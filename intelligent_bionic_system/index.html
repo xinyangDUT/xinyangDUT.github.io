@@ -61,6 +61,38 @@
         styles,
         projects: [
           {
+            authors: 'Jiqing Zhang, Bo Dong, Haiwei Zhang, Jianchuan Ding, Felix Heide, Baocai Yin, Xin Yang*.',
+            title: 'Spiking Transformers for Event-based Single Object Tracking.',
+            io: 'Given the first event frame image and corresponding bounding box, our network produces the following bounding boxes.',
+            tags: [
+              ['CVPR 2022', 1],
+              ['. ', 0],
+              ['(CCF A)', 2]
+            ],
+            abstract: 'Event-based cameras bring a unique capability to tracking, being able to function in challenging real-world conditions as a direct result of their high temporal resolution and high dynamic range. These imagers capture events asynchronously that encode rich temporal and spatial information. However, effectively extracting this information from events remains an open challenge. In this work, we propose a spiking transformer network, STNet, for single object tracking. STNet dynamically extracts and fuses information from both temporal and spatial domains. In particular, the proposed architecture features a transformer module to provide global spatial information and a spiking neural network (SNN) module for extracting temporal cues. The spiking threshold of the SNN module is dynamically adjusted based on the statistical cues of the spatial information, which we find essential in providing robust SNN features. We fuse both feature branches dynamically with a novel cross-domain attention fusion algorithm. Extensive experiments on three event-based datasets, FE240hz, EED and VisEvent validate that the proposed STNet outperforms existing state-of-the-art methods in both tracking accuracy and speed with a significant margin. The code and pretrained models are at https://github.com/Jee-King/CVPR2022_STNet.',
+            imgs: [
+              { src: 'SpikingTransformer-video_v2.gif' },
+              { src: 'Spiking Transformers.png' }
+            ],
+            links: [
+              { name: 'code', link: 'https://github.com/Jee-King/CVPR2022_STNet' },
+              { name: 'demo', link: 'https://youtu.be/iRkgBy0V1Dk' }
+            ],
+          },
+          {
+            authors: '朱强, 王超毅, 张吉庆, 尹宝才, 魏小鹏, 杨鑫*.',
+            title: '基于事件相机的无人机目标跟踪.',
+            io: '给定成对的灰度图像和事件图像以及第一帧目标的位置，预测后续帧目标的位置.',
+            tags: [
+              ['浙江大学学报', 1],
+              ['. ', 0]
+            ],
+            abstract: '无人机的目标跟踪现如今已成为计算机视觉领域中一个热门的研究课题. 无人机目标跟踪可以应用于消防、军事等重要领域.现阶段无人机目标跟踪算法大多基于传统的 RGB 相机结合深度学习算法, 但这类方法一方面无法避免因无人机自身机体抖动引发的运动模糊问题, 另一方面传统 RGB 相机在低光照或过曝光场景下成像较差, 从而难以追踪目标. 为了解决上述无人机视角下的目标跟踪出现的问题，本文采用无人机搭载 DAVIS 事件相机进行目标跟踪, 并设计了基于事件与灰度图的双模态融合跟踪网络，为了更好地训练该网络，本文采用运动捕捉系统Vicon自行制作无人机视角下的目标跟踪数据集：Event-APS28，保证了复杂光照场景下可以根据图像信息有效的跟踪目标.',
+            imgs: [
+              { src: '基于事件相机的无人机目标跟踪.png' }
+            ]
+          },
+          {
             authors: 'Jiqing Zhang, Xin Yang, Yingkai Fu, Xiaopeng Wei, Baocai Yin, Bo Dong.',
             title: 'Object Tracking by Jointly Exploiting Frame and Event Domain.',
             io: 'Given the first frame image, and it\'s corresponding events and bounding box, our network produces the following bounding boxes.',

@@ -61,6 +61,21 @@
         styles,
         projects: [
           {
+            authors: 'Jianchuan Ding, Lingping Gao, Wenxi Liu, Haiyin Piao, Jia Pan, Zhenjun Du, Xin Yang, Baocai Yin.',
+            title: 'Monocular Camera-based Complex Obstacle Avoidance via Efficient Deep Reinforcement Learning.',
+            io: 'Given the monocular RGB image, goal and velocity, our framework produces the robot\'s action.',
+            tags: [
+              ['IEEE Transactions on Circuits and Systems for Video Technology 2022', 1],
+              ['. ', 0],
+              ['(CCF B)', 2]
+            ],
+            abstract: 'Deep reinforcement learning has achieved great success in laser-based collision avoidance works because the laser can sense accurate depth information without too much redundant data, which can maintain the robustness of the algorithm when it is migrated from the simulation environment to the real world. However, high-cost laser devices are not only difficult to deploy for a large scale of robots but also demonstrate unsatisfactory robustness towards the complex obstacles, including irregular obstacles, e.g., tables, chairs, and shelves, as well as complex ground and special materials. In this paper, we propose a novel monocular camera-based complex obstacle avoidance framework. Particularly, we innovatively transform the captured RGB images to pseudo-laser measurements for efficient deep reinforcement learning. Compared to the traditional laser measurement captured at a certain height that only contains one-dimensional distance information away from the neighboring obstacles, our proposed pseudo-laser measurement fuses the depth and semantic information of the captured RGB image, which makes our method effective for complex obstacles. We also design a feature extraction guidance module to weight the input pseudo-laser measurement, and the agent has more reasonable attention for the current state, which is conducive to improving the accuracy and efficiency of the obstacle avoidance policy.',
+            imgs: [
+              { src: 'Monocular-Camera-based-1.gif' },
+              { src: 'Monocular-Camera-based-2.png' }
+            ]
+          },
+          {
             authors: 'Jiqing Zhang, Bo Dong, Haiwei Zhang, Jianchuan Ding, Felix Heide, Baocai Yin, Xin Yang*.',
             title: 'Spiking Transformers for Event-based Single Object Tracking.',
             io: 'Given the first event frame image and corresponding bounding box, our network produces the following bounding boxes.',

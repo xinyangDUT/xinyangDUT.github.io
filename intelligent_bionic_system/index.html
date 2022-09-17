@@ -34,8 +34,11 @@
           <span v-for="link in project.links">[<b><a class="project_links"
                 :href="link.link">{{link.name}}</a></b><span>]&nbsp;</span></span>
         </p>
+        <div v-if="project.video" class="figure_div">
+          <video width="640" :src="'videos/'+project.video" controls></video>
+        </div>
         <div v-for="img in project.imgs" class="figure_div">
-          <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+          <img :src="'figures/'+img" :alt="img" class="figure_img" />
           <div v-if="img.label">
             <div class="figure_label">{{img.label}}</div>
             <br>
@@ -61,6 +64,24 @@
         styles,
         projects: [
           {
+            authors: 'Jianchuan Ding, Bo Dong, Felix Heide, Yufei Ding, Yunduo Zhou, Baocai Yin, Xin Yang*.',
+            title: 'Biologically Inspired Dynamic Thresholds for Spiking Neural Networks.',
+            io: 'Given the laser data, goal and velocity, our framework produces the robot\'s action.',
+            tags: [
+              ['NeurIPS 2022', 1],
+              ['. ', 0],
+              ['(CCF A)', 2]
+            ],
+            video: 'Biologically-Inspired.mp4',
+            abstract: 'The dynamic membrane potential threshold, as one of the essential properties of a biological neuron, is a spontaneous regulation mechanism that maintains neuronal homeostasis, i.e. the constant overall spiking firing rate of a neuron. As such, the neuron firing rate is regulated by a dynamic spiking threshold, which has been extensively studied in biology. Existing work in the machine learning community does not employ bioplausible spiking threshold schemes. This work aims at bridging this gap by introducing a novel bioinspired dynamic energy-temporal threshold (BDETT) scheme for spiking neural networks (SNNs). The proposed BDETT scheme mirrors two bioplausible observations: a dynamic threshold has 1) a positive correlation with the average membrane potential and 2) a negative correlation with the preceding rate of depolarization. We validate the effectiveness of the proposed BDETT on robot obstacle avoidance and continuous control tasks under both normal conditions and various degraded conditions, including noisy observations, weights, and dynamic environments. We find that the BDETT outperforms existing static and heuristic threshold approaches by significant margins in all tested conditions, and we confirm that the proposed bioinspired dynamic threshold scheme offers bioplausible homeostasis to SNNs in complex real-world tasks.',
+            imgs: [
+              'Biologically-Inspired-2.png'
+            ],
+            links: [
+              { name: 'paper', link: 'https://arxiv.org/pdf/2206.04426.pdf' }
+            ]
+          },
+          {
             authors: 'Jianchuan Ding, Lingping Gao, Wenxi Liu, Haiyin Piao, Jia Pan, Zhenjun Du, Xin Yang*, Baocai Yin.',
             title: 'Monocular Camera-based Complex Obstacle Avoidance via Efficient Deep Reinforcement Learning.',
             io: 'Given the monocular RGB image, goal and velocity, our framework produces the robot\'s action.',
@@ -70,9 +91,9 @@
               ['(CCF B)', 2]
             ],
             abstract: 'Deep reinforcement learning has achieved great success in laser-based collision avoidance works because the laser can sense accurate depth information without too much redundant data, which can maintain the robustness of the algorithm when it is migrated from the simulation environment to the real world. However, high-cost laser devices are not only difficult to deploy for a large scale of robots but also demonstrate unsatisfactory robustness towards the complex obstacles, including irregular obstacles, e.g., tables, chairs, and shelves, as well as complex ground and special materials. In this paper, we propose a novel monocular camera-based complex obstacle avoidance framework. Particularly, we innovatively transform the captured RGB images to pseudo-laser measurements for efficient deep reinforcement learning. Compared to the traditional laser measurement captured at a certain height that only contains one-dimensional distance information away from the neighboring obstacles, our proposed pseudo-laser measurement fuses the depth and semantic information of the captured RGB image, which makes our method effective for complex obstacles. We also design a feature extraction guidance module to weight the input pseudo-laser measurement, and the agent has more reasonable attention for the current state, which is conducive to improving the accuracy and efficiency of the obstacle avoidance policy.',
+            video: 'Monocular.mp4',
             imgs: [
-              { src: 'Monocular-Camera-based-1.gif' },
-              { src: 'Monocular-Camera-based-2.png' }
+              'Monocular-Camera-based-2.png'
             ],
             links: [
               { name: 'paper', link: 'https://arxiv.org/pdf/2209.00296.pdf' }
@@ -89,8 +110,8 @@
             ],
             abstract: 'Event-based cameras bring a unique capability to tracking, being able to function in challenging real-world conditions as a direct result of their high temporal resolution and high dynamic range. These imagers capture events asynchronously that encode rich temporal and spatial information. However, effectively extracting this information from events remains an open challenge. In this work, we propose a spiking transformer network, STNet, for single object tracking. STNet dynamically extracts and fuses information from both temporal and spatial domains. In particular, the proposed architecture features a transformer module to provide global spatial information and a spiking neural network (SNN) module for extracting temporal cues. The spiking threshold of the SNN module is dynamically adjusted based on the statistical cues of the spatial information, which we find essential in providing robust SNN features. We fuse both feature branches dynamically with a novel cross-domain attention fusion algorithm. Extensive experiments on three event-based datasets, FE240hz, EED and VisEvent validate that the proposed STNet outperforms existing state-of-the-art methods in both tracking accuracy and speed with a significant margin. The code and pretrained models are at https://github.com/Jee-King/CVPR2022_STNet.',
             imgs: [
-              { src: 'SpikingTransformer-video_v2.gif' },
-              { src: 'Spiking Transformers.png' }
+              'SpikingTransformer-video_v2.gif',
+              'Spiking Transformers.png'
             ],
             links: [
               { name: 'code', link: 'https://github.com/Jee-King/CVPR2022_STNet' },
@@ -107,7 +128,7 @@
             ],
             abstract: '无人机的目标跟踪现如今已成为计算机视觉领域中一个热门的研究课题. 无人机目标跟踪可以应用于消防、军事等重要领域.现阶段无人机目标跟踪算法大多基于传统的 RGB 相机结合深度学习算法, 但这类方法一方面无法避免因无人机自身机体抖动引发的运动模糊问题, 另一方面传统 RGB 相机在低光照或过曝光场景下成像较差, 从而难以追踪目标. 为了解决上述无人机视角下的目标跟踪出现的问题，本文采用无人机搭载 DAVIS 事件相机进行目标跟踪, 并设计了基于事件与灰度图的双模态融合跟踪网络，为了更好地训练该网络，本文采用运动捕捉系统Vicon自行制作无人机视角下的目标跟踪数据集：Event-APS28，保证了复杂光照场景下可以根据图像信息有效的跟踪目标.',
             imgs: [
-              { src: '基于事件相机的无人机目标跟踪.png' }
+              '基于事件相机的无人机目标跟踪.png'
             ]
           },
           {
@@ -121,8 +142,8 @@
             ],
             abstract: 'Inspired by the complementarity between conventional frame-based and bio-inspired event-based cameras, we propose a multi-modal based approach to fuse visual cues from the frame- and event-domain to enhance the single object tracking performance, especially in degraded conditions (e.g., scenes with high dynamic range, low light, and fast motion objects). The proposed approach can effectively and adaptively combine meaningful information from both domains. Our approach’s effectiveness is enforced by a novel designed cross-domain attention schemes, which can effectively enhance features based on self- and cross-domain attention schemes; The adaptiveness is guarded by a specially designed weighting scheme, which can adaptively balance the contribution of the two domains. To exploit event-based visual cues in single-object tracking, we construct a largescale frame-event-based dataset, which we subsequently employ to train a novel frame-event fusion based model. Extensive experiments show that the proposed approach outperforms state-of-the-art frame-based tracking methods by at least 10.4% and 11.9% in terms of representative success rate and precision rate, respectively. Besides, the effectiveness of each key component of our approach is evidenced by our thorough ablation study.',
             imgs: [
-              { src: 'Object-Tracking-demo.gif' },
-              { src: 'Object-Tracking-1.png' }
+              'Object-Tracking-demo.gif',
+              'Object-Tracking-1.png'
             ],
             links: [
               { name: 'media', link: 'https://youtu.be/EeMRO8XVv04' },
@@ -140,8 +161,8 @@
             ],
             abstract: 'Jointly exploiting multiple different yet complementary domain information has been proven to be an effective way to perform robust object tracking. This paper focuses on effectively representing and utilizing complementary features from the frame domain and event domain for boosting object tracking performance in challenge scenarios. Specifically, we propose Common Features Extractor (CFE) to learn potential common representations from the RGB domain and event domain. For learning the unique features of the two domains, we utilize a Unique Extractor for Event (UEE) based on Spiking Neural Networks to extract edge cues in the event domain which may be missed in RGB in some challenging conditions, and a Unique Extractor for RGB (UER) based on Deep Convolutional Neural Networks to extract texture and semantic information in RGB domain. Extensive experiments on standard RGB benchmark and real event tracking dataset demonstrate the effectiveness of the proposed approach. We show our approach outperforms all compared state-of-the-art tracking algorithms and verify event-based data is a powerful cue for tracking in challenging scenes.',
             imgs: [
-              { src: 'Multi-domain-1.png' },
-              { src: 'Multi-domain-2.png' }
+              'Multi-domain-1.png',
+              'Multi-domain-2.png'
             ],
             links: [
               { name: 'paper', link: 'https://arxiv.org/pdf/2108.04521.pdf' },
@@ -158,8 +179,8 @@
             ],
             abstract: 'Deep reinforcement learning has achieved great success in laser-based collision avoidance work because the laser can sense accurate depth information without too much redundant data, which can maintain the robustness of the algorithm when it is migrated from the simulation environment to the real world. However, high-cost laser devices are not only difficult to apply on a large scale but also have poor robustness to irregular objects, e.g., tables, chairs, shelves, etc. In this paper, we propose a vision-based collision avoidance framework to solve the challenging problem. Our method attempts to estimate the depth and incorporate the semantic information from RGB data to obtain a new form of data, pseudo-laser data, which combines the advantages of visual information and laser information. Compared to traditional laser data that only contains the one-dimensional distance information captured at a certain height, our proposed pseudo-laser data encodes the depth information and semantic information within the image, which makes our method more effective for irregular obstacles. Besides, we adaptively add noise to the laser data during the training stage to increase the robustness of our model in the real world, due to the estimated depth information is not accurate. Experimental results show that our framework achieves state-of-the-art performance in several unseen virtual and real-world scenarios.',
             imgs: [
-              { src: 'Obstacle-Avoidance-demo.gif' },
-              { src: 'Obstacle-Avoidance-1.png' }
+              'Obstacle-Avoidance-demo.gif',
+              'Obstacle-Avoidance-1.png'
             ],
             links: [
               { name: 'paper', link: 'https://arxiv.org/pdf/2108.06887.pdf' }

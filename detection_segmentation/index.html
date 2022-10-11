@@ -37,6 +37,9 @@
           <span v-for="link in project.links">[<b><a class="project_links"
                 :href="link.link">{{link.name}}</a></b><span>]&nbsp;</span></span>
         </p>
+        <div v-if="project.video" class="figure_div">
+          <video width="640" :src="'videos/'+project.video" controls></video>
+        </div>
         <div v-for="img in project.imgs" class="figure_div">
           <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
           <div v-if="img.label">
@@ -73,9 +76,7 @@
             ],
             io: 'Given the input RGB and trichromatic polarization images, our network outputs a binary mask that indicates where transparent glass regions are.',
             abstract: 'Transparent and semi-transparent materials pose significant challenges for existing scene understanding and segmentation algorithms due to their lack of RGB texture which impedes the extraction of meaningful features. In this work, we exploit that the light-matter interactions on glass materials provide unique intensity-polarization cues for each observed wavelength of light. We present a novel learning-based glass segmentation network that leverages both trichromatic (RGB) intensities as well as trichromatic linear polarization cues from a single photograph captured without making any assumption on the polarization state of the illumination. Our novel network architecture dynamically fuses and weights both the trichromatic color and polarization cues using a novel global-guidance and multiscale self-attention module, and leverages global cross-domain contextual information to achieve robust segmentation. We train and extensively validate our segmentation method on a new large-scale RGB-Polarization dataset (RGBP-Glass), and demonstrate that our method outperforms state-of-the-art segmentation approaches by a significant margin.',
-            imgs: [
-              { src: 'Glass Segmentation using Intensity.gif' }
-            ],
+            video: 'Glass-Segmentation.mp4',
             links: [
               { name: 'paper', link: 'https://openaccess.thecvf.com/content/CVPR2022/papers/Mei_Glass_Segmentation_Using_Intensity_and_Spectral_Polarization_Cues_CVPR_2022_paper.pdf' },
               { name: 'code', link: 'https://mhaiyang.github.io/CVPR2022_PGSNet/index.html' }

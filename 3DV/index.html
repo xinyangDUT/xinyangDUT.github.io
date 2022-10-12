@@ -74,6 +74,24 @@
         styles,
         projects: [
           {
+            authors: 'Zhaoxuan Zhang, Xiaoguang Han, Bo Dong, Tong Li, Baocai Yin, Xin Yang.',
+            title: 'Point Cloud Scene Completion with Joint Color and Semantic Estimation from Single RGB-D Image.',
+            tags: [
+              ['TPAMI 2022', 1],
+              ['. ', 0],
+              ['(Under 2nd Review)', 2]
+            ],
+            io: 'Given an single RGB-D image, our method progressively generate the missing points of the initial point cloud corresponding to the input depth map under the optimal sequence of viewpoints, as well as the corresponding color and segmentation information.',
+            abstract: 'We present a deep reinforcement learning method of progressive view inpainting for colored semantic point cloud scene completion under volume guidance, achieving high-quality scene reconstruction from only a single RGB-D image with severe occlusion. Our approach is end-to-end, consisting of three modules: 3D scene volume reconstruction, 2D RGB-D and segmentation image inpainting, and multi-view selection for completion. Given a single RGB-D image, our method first predicts its semantic segmentation map and goes through the 3D volume branch to obtain a volumetric scene reconstruction as a guide to the next view inpainting step, which attempts to make up the missing information; the third step involves projecting the volume under the same view of the input, concatenating them to complete the current view RGB-D and segmentation map, and integrating all RGB-D and segmentation maps into the point cloud. Since the occluded areas are unavailable, we resort to a A3C network to glance around and pick the next best view for large hole completion progressively until a scene is adequately reconstructed while guaranteeing validity. All steps are learned jointly to achieve robust and consistent results. We perform qualitative and quantitative evaluations with extensive experiments on the 3D-FUTURE data, obtaining better results than state-of-the-arts.',
+            links: [
+              { name: 'paper' },
+            ],
+            imgs: [
+              { src: 'rgbdscenecomp.gif', label: 'The pipeline of our method.' },
+              { src: 'pami_sotapc.png', label: 'Comparisons against the state-of-the-arts. Given different inputs and the referenced groundtruth, we show the completion results of three methods, with the corresponding point cloud error maps below. More blue more accurate.' }
+            ],
+          },
+          {
             authors: 'Xiaoguang Han, Zhaoxuan Zhang, Dong Du, Mingdai Yang, Jingming Yu, Pan Pan, Xin Yang, Ligang Liu, Zixiang Xiong and Shuguang Cui.',
             title: 'Deep Reinforcement Learning of Volume-guided Progressive View Inpainting for 3D Point Scene Completion from a Single Depth Image.',
             tags: [

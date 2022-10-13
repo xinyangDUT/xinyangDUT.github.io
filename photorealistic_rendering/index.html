@@ -28,6 +28,9 @@
           <span v-for="link in project.links">[<b><a class="project_links"
                 :href="link.link">{{link.name}}</a></b><span>]&nbsp;</span></span>
         </p>
+        <div v-if="project.video" class="figure_div">
+          <video width="640" :src="'videos/'+project.video" controls></video>
+        </div>
         <div v-for="img in project.imgs" class="figure_div">
           <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
           <div v-if="img.label">

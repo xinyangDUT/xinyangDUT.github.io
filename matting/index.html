@@ -74,6 +74,36 @@
       return {
         styles,
         projects: [
+        {
+            authors: 'Yu Qiao*, Yuhao Liu*, Ziqi Wei, Yuxin Wang, Qiang Cai, Guofeng Zhang, Xin Yang†.',
+            title: 'Hierarchical and Progressive Image Matting.',
+            abstract: 'Most matting researches resort to advanced semantics to achieve high-quality alpha mattes, and direct low-level features combination is usually explored to complement alpha details. However, we argue that appearance-agnostic integration can only provide biased foreground details and alpha mattes require differentlevel feature aggregation for better pixel-wise opacity perception. In this paper, we propose an end-to-end Hierarchical and Progressive Attention Matting Network (HAttMatting++), which can better predict the opacity of the foreground from single RGB images without additional input. Specifically, we utilize channel-wise attention to distill pyramidal features and employ spatial attention at different levels to filter appearance cues. This progressive attention mechanism can estimate alpha mattes from adaptive semantics and semanticsindicated boundaries. We also introduce a hybrid loss function fusing Structural SIMilarity (SSIM), Mean Square Error (MSE), Adversarial loss, and sentry supervision to guide the network to further improve the overall foreground structure. Besides, we construct a large-scale and challenging image matting dataset comprised of 59, 600 training images and 1000 test images (a total of 646 distinct foreground alpha mattes), which can further improve the robustness of our hierarchical and progressive aggregation model. Extensive experiments demonstrate that the proposed HAttMatting++ can capture sophisticated foreground structures and achieve state-of-the-art performance with single RGB images as input.',
+            tags: [
+              ['ACM Transactions on Multimedia Computing, Communications, and Applications(TOMM) 2022', 1],
+              ['. ', 0],
+              ['(CCF B)', 2]
+            ],
+            imgs: [
+              { src: 'Hierarchical-0.png' ,label:'Pipeline of our HAttMatting++. The orange box (Pyramidal Features Distillation) indicates channel-wise attention to distill pyramidal information extracted from ASPP [5]. The blue box (Appearance Cues Filtration) represents spatial attention to filter appearance cues, which are extracted from block1 and block2 in the feature extraction module.' },
+              { src: 'Hierarchical-1.png' },
+            ],
+            links: [
+              { name: 'paper', link: 'https://dl.acm.org/doi/abs/10.1145/3540201' }
+            ],
+          },
+          {
+            authors: 'Yu Qiao*, Ziqi Wei*, Yuhao Liu, Yuxin Wang†, Dongsheng Zhou, Qiang Zhang, Xin Yang.',
+            title: 'Wider and Higher: Intensive Integration and Global Foreground Perception for Image Matting.',
+            abstract: 'This paper reviews recent deep-learning-based matting research and conceives our wider and higher motivation for image matting. Many approaches achieve alpha mattes with complex encoders to extract robust semantics, then resort to the U-net-like decoder to concatenate or fuse encoder features. However, image matting is essentially a pixel-wise regression, and the ideal situation is to perceive the maximum opacity correspondence from the input image. In this paper, we argue that the high-resolution feature representation, perception and communication are more crucial for matting accuracy. Therefore, we propose an Intensive Integration and Global Foreground Perception network (I2GFP) to integrate wider and higher feature streams. Wider means we combine intensive features in each decoder stage, while higher suggests we retain high-resolution intermediate features and perceive large-scale foreground appearance. Our motivation sacrifices model depth for a significant performance promotion. We perform extensive experiments to prove the proposed I2GFP model, and state-of-the-art results can be achieved on different public datasets.',
+            tags: [
+              ['Computer Graphics International(CGI) 2022', 1],
+              ['. ', 0]
+            ],
+            imgs: [
+              { src: 'I2GFP-1.png', label: 'The overall architecture of the proposed Intensive Integration and Global Foreground Perception network (I2GFP). We employ simple backbone to extract necessary semantics and utilize intensive connections to integrate different-level features. The global foreground perception can capture rich appearances to complement details.' },
+              { src: 'I2GFP-0.png' }
+            ]
+          },
           {
             authors: 'Yuhao Liu, Jiake Xie, Xiao Shi, Yu Qiao, Yujie Huang, Yong Tang, Xin Yang†.',
             title: 'Tripartite Information Mining and Integration for Image Matting.',
@@ -100,7 +130,7 @@
             io: 'Given an input RGB and the corresponding trimap, our method can produces a delicate alpha matte with the help of  the dynamic gaussian modulation mechanism (DGM).',
             abstract: 'Image matting is an ill-posed problem that aims to estimate the opacity of foreground pixels in an image. However, most existing deep learning-based methods still suffer from the coarse-grained details. In general, these algorithms are incapable of felicitously distinguishing the degree of exploration between deterministic domains (e.g. certain FG and BG pixels) and undetermined domains (e.g. uncertain in-between pixels), or inevitably lose information in the continuous sampling process, leading to a sub-optimal result. In this paper, we propose a novel network named Prior-Induced Information Alignment Matting Network (PIIAMatting), which can efficiently model the distinction of pixel-wise response maps and the correlation of layer-wise feature maps. It mainly consists of a Dynamic Gaussian Modulation mechanism (DGM) and an Information Alignment strategy (IA). Specifically, the DGM can dynamically acquire a pixel-wise domain response map learned from the prior distribution. The response map can present the relationship between the opacity variation and the convergence process during training. On the other hand, the IA comprises an Information Match Module (IMM) and an Information Aggregation Module (IAM), jointly scheduled to match and aggregate the adjacent layer-wise features adaptively. Besides, we also develop a Multi- Scale Refinement (MSR) module to integrate multi-scale receptive field information at the refinement stage to recover the fluctu- ating appearance details. Extensive quantitative and qualitative evaluations demonstrate that the proposed PIIAMatting performs favourably against state-of-the-art image matting methods on the Alphamatting.com, Composition-1K and Distinctions-646 dataset.',
             tags: [
-              ['IEEE TRANSACTIONS ON MULTIMEDIA(TMM) 2021', 1],
+              ['IEEE Transactions on Multimedia(TMM) 2021', 1],
               ['. ', 0],
               ['(CCF B)', 2]
             ],
@@ -157,8 +187,9 @@
             title:
               'Smart Scribbles for Image Matting.',
             tags: [
-              ['ACM Transactions on Multimedia Computing, Communications, and Applications (TOMM) 2020', 1],
-              ['. ', 0]
+              ['ACM Transactions on Multimedia Computing, Communications, and Applications(TOMM) 2020', 1],
+              ['. ', 0],
+              ['(CCF B)', 2]
             ],
             io: 'Given an input RGB image, our network directly produces an Alpha Matte with only a few scribbles.',
             abstract: 'Image matting is an ill-posed problem that usually requires additional user input, such as trimaps or scribbles. Drawing a fine trimap requires a large amount of user effort, while using scribbles can hardly obtain satisfactory alpha mattes for non-professional users. Some recent deep learning based matting networks rely on large-scale composite datasets for training to improve performance, resulting in the occasional appearance of obvious artifacts when processing natural images. In this paper, we explore the intrinsic relationship between user input and alpha mattes, and strike a balance between user effort and the quality of alpha mattes. In particular, we propose an interactive framework, referred to as smart scribbles, to guide users to draw few scribbles on the input images to produce high-quality alpha mattes. It first infers the most informative regions of an image for drawing scribbles to indicate different categories (foreground, background or unknown), then spreads these scribbles (i.e., the category labels) to the rest of the image via our well-designed two-phase propagation. Both neighboring low-level affinities and high-level semantic features are considered during the propagation process. Our method can be optimized without large-scale matting datasets, and exhibits more universality in real situations. Extensive experiments demonstrate that smart scribbles can produce more accurate alpha mattes with reduced additional input, compared to the state-of-the-art matting methods.',

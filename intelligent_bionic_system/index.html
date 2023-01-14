@@ -82,6 +82,25 @@
             ]
           },
           {
+            authors: 'Hu Lin, Meng Li, Qianchen Xia*, Yifeng Fei, Baocai Yin, and Xin Yang.',
+            title: '6-DoF Pose Relocalization for Event Cameras With Entropy Frame and Attention Networks.',
+            io: ' Given the event stream, our network produces the 6DoF camera pose estimation.',
+            tags: [
+              ['ACM SIGGRAPH VRCAI 2022', 1],
+              ['. ', 0]
+            ],
+            video: 'vrcai.mp4',
+            abstract: 'Camera relocalization is an important task in computer vision, mainly used in applications such as VR, AR, and robotics. Camera relocalization solves the problem of estimating the 6-DoF camera pose of an input image in a known scene. There are large numbers of research on standard cameras. However, standard cameras have problems such as large power consumption, low frame rate, and poor robustness. Event cameras can make up for the disadvantages of standard cameras. Event data is different from RGB data, it is asynchronous streaming data, most of the processing methods for events convert event data into event images, but these methods can not efficiently generate event images with clear edges at any time, we propose a Reversed Window Entropy Image (RWEI) generation framework for events, which can generate event images with clear edges at any time. We also propose an Attention-guided Event Camera Relocalization Network (AECRN) for utilizing event image characteristics to estimate the pose of the event camera more accurately. We demonstrate our proposed framework and network on public dataset sequences, and experiments show that our proposed method surpasses the previous method.',
+            imgs: [
+              'vrcai-1.png',
+              'vrcai-2.png'
+            ],
+            links: [
+              { name: 'paper', link: 'https://doi.org/10.1145/3574131.3574457' },
+              { name: 'code', link: 'https://github.com/linharrrrrt/RWEI_AECRN' }
+            ]
+          },
+          {
             authors: 'Jianchuan Ding, Lingping Gao, Wenxi Liu, Haiyin Piao, Jia Pan, Zhenjun Du, Xin Yang*, Baocai Yin.',
             title: 'Monocular Camera-based Complex Obstacle Avoidance via Efficient Deep Reinforcement Learning.',
             io: 'Given the monocular RGB image, goal and velocity, our framework produces the robot\'s action.',

@@ -71,6 +71,7 @@
               ['IEEE RA-L 2023', 1],
               ['. ', 0]
             ],
+            video: 'RAL.mp4',
             abstract: 'Robotic grasping is a challenging task due to the diversity of object shapes. A sufficiently labeled dataset is essential for the grasp pose detection methods based on deep learning. However, data annotation is a costly procedure. Active learning aims to mitigate the greedy need for massive labeled data. In this work, we propose a Discriminative Active Learning (DAL) framework for robotic grasping algorithms. DAL is an effective strategy that utilizes a shared encoder to derive latent features from both labeled data and unlabeled data. A discriminator is established to estimate the informativeness of each unlabeled data sample and decide whether they should be annotated for the next epoch. Moreover, an annotation interface is also developed to annotate the chosen data. We evaluate DAL with real-world grasp datasets and show superior performance, especially when the amount of labeled data is little. Considering annotation noise, we perform an experiment on a noisy dataset and demonstrate that our proposed framework is stable to noisy annotation. Besides, we train a model with about 60\% data selected by DAL of the whole dataset and it can still handle a real-world grasp detection task in cluttered scene on a real robot.',
             imgs: [
               'RAL-1.png'

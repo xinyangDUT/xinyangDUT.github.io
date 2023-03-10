@@ -63,7 +63,23 @@
       return {
         styles,
         projects: [
-          {
+        {
+            authors: 'Yang Wang, Bo Dong, Ke Xu, Haiyin Piao, Yufei Ding, Baocai Yin, Xin Yang†. ',
+            title: 'A Geometrical Approach to Evaluate the Adversarial Robustness of Deep Neural Networks.',
+            io: ' Give an input image and a adversarial attack method, our network outputs a score that indicates how image robustness is.',
+            tags: [
+              ['ACM Transactions on Multimedia Computing, Communications, and Applications (TOMM) 2023.', 1],
+              ['. ', 0]
+            ],
+            abstract: 'Deep Neural Networks (DNNs) are widely used for computer vision tasks. However, it has been shown that deep models are vulnerable to adversarial attacks, i.e., their performances drop when imperceptible perturbations are made to the original inputs, which may further degrade the following visual tasks or introduce new problems such as data and privacy security. Hence, metrics for evaluating the robustness of deep models against adversarial attacks are desired. However, previous metrics are mainly proposed for evaluating the adversarial robustness of shallow networks on the small-scale datasets. Although the Cross Lipschitz Extreme Value for nEtwork Robustness (CLEVER) metric has been proposed for large-scale datasets (e.g., the ImageNet dataset), it is computationally expensive and its performance relies on a tractable number of samples. In this paper, we propose the Adversarial Converging Time Score (ACTS), an attack-dependent metric that quantifies the adversarial robustness of a DNN on a specific input. Our key observation is that local neighborhoods on a DNN’s output surface would have different shapes given different inputs. Hence, given different inputs, it requires different time for converging to an adversarial sample. Based on this geometry meaning, ACTS measures the converging time as an adversarial robustness metric. We validate the effectiveness and generalization of the proposed ACTS metric against different adversarial attacks on the large-scale ImageNet dataset using state-of-the-art deep networks. Extensive experiments show that our ACTS metric is an efficient and effective adversarial metric over the previous CLEVER metric.',
+            imgs: [
+              'Deep Neural Networks-1.png',
+              'Deep Neural Networks-2.png',
+              'Deep Neural Networks-3.png'
+            ],
+          },
+
+        {
             authors: 'Boyan Wei, Xianfeng Ye, Chengjiang Long, Zhenjun Du, Bangyu Li, Baocai Yin, Xin Yang*.',
             title: 'Discriminative Active Learning for Robotic Grasping in Cluttered Scene.',
             io: 'RGB-D images, our framework produces object 4D grasp pose.',

@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="../css/index.css" />
   <script src="../js/vue.min.js"></script>
   <script src="../js/element-ui.min.js"></script>
+  <meta charset="utf-8">
+  <title>跳转链接</title>
 </head>
 
 <body>
@@ -40,9 +42,9 @@
       </p>
       <el-divider></el-divider>
       <div v-for="project,index in projects">
-        <p class="project_p">
+        <p class="project_p" >
           <span v-html="textBold(project.authors)"></span>
-          <b class="project_title">{{project.title}}</b>
+          <b class="project_title" :id="index">{{project.title}}</b>
           <span v-for="tag in project.tags" :style="styles[tag[1]]">{{tag[0]}}</span>
           <span v-for="link in project.links">[<b><a class="project_links"
                 :href="link.link">{{link.name}}</a></b><span>]&nbsp;</span></span>

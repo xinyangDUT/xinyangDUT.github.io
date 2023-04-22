@@ -10,6 +10,7 @@
   <script src="./js/element-ui.min.js"></script>
   <meta charset="utf-8">
   <title>跳转链接</title>
+  <link rel="stylesheet" href="../css/index.css" />
 </head>
 
 <body>
@@ -56,9 +57,16 @@
             Publications
           </h2>
           <el-divider></el-divider>
+          <p>
+            The following are the work published by the laboratory team in various directions in recent years. The publications are arranged in chronological order.
+          </p>
         <ul v-for="publication in publications">
           <li>
-            <a :href="publication.href">{{publication.title}}</a>
+            <p>
+              <span v-html="textBold(publication.authors)"></span>
+              <b class="project_title">{{publication.title}}</b>
+              <a :href="publication.href">[details]</a>
+            </p>
           </li>
         </ul>
           <el-divider></el-divider>
@@ -67,6 +75,8 @@
     </div>
      </div>
 </body>
+<script src="./js/index.js"></script>
+<script src="./data/data.js"></script>
 <script>
   new Vue({
     el: '#app',
@@ -75,323 +85,23 @@
         avaterUrl:
           'http://faculty.dlut.edu.cn/__local/C/CC/5B/60B0CD69056E6E17F8987758DDD_20A6B25C_8429.jpg',
         moreUrl: 'http://faculty.dlut.edu.cn/yangxin/zh_CN/index.htm',
-        projects: [
-          {
-            title: 'Bio-inspired Intelligence and Robotic Systems',
-            href: 'intelligent_bionic_system/index.html',
-          },
-          {
-            title: 'Uncertain Object Detection/Segmentation',
-            href: 'detection_segmentation/index.html',
-          },
-          {
-            title: 'Low-light Image Analysis',
-            href: 'enhancement/index.html',
-          },
-          {
-            title: 'Image-based 3D Indoor Scene Modeling',
-            href: '3DV/index.html',
-          },
-          {
-            title: 'Image Matting',
-            href: 'matting/index.html',
-          },
-          {
-            title: 'Scene Understanding and Representation Learning',
-            href: 'scene_understanding/index.html',
-          },
-          {
-            title: 'Single Image Super-Resolution (SISR)',
-            href: 'SR/index.html',
-          },
-          {
-            title: 'Real-Virtual Consistent Traffic Flow Interaction',
-            href: 'real_virtual/index.html',
-          },
-          {
-            title: 'Photorealistic Rendering',
-            href: 'photorealistic_rendering/index.html',
-          },
-          {
-            title: 'Other Research',
-            href: 'other_research/index.html',
-          },
-        ],
-        publications: [
-        {
-            title: 'In the Blink of an Eye: Event-based Emotion Recognition.(2023)',
-            href: 'intelligent_bionic_system/index.html',
-          },
-          {
-            title: 'Discriminative Active Learning for Robotic Grasping in Cluttered Scene.(2023)',
-            href: 'intelligent_bionic_system/index.html',
-          },
-          {
-            title: 'A Geometrical Approach to Evaluate the Adversarial Robustness of Deep Neural Networks.(2023)',
-            href: 'intelligent_bionic_system/index.html',
-          },
-        {
-            title: 'Point Cloud Scene Completion with Joint Color and Semantic Estimation from Single RGB-D Image.(2022)',
-            href: '3DV/index.html',
-          },
-          {
-            title: 'CPRAL: Collaborative Panoptic-Regional Active Learning for Semantic Segmentation.(2022)',
-            href: 'scene_understanding/index.html',
-          },
-          {
-            title: 'Mirror Segmentation via Semantic-Aware Contextual Contrasted Feature Learning.(2022)',
-            href: 'detection_segmentation/index.html',
-          },
-          {
-            title: 'Glass Segmentation using Intensity and Spectral Polarization Cues.(2022)',
-            href: 'detection_segmentation/index.html',
-          },
-          {
-            title: 'Bi-directional Object-Context Prioritization Learning for Saliency Ranking.(2022)',
-            href: 'detection_segmentation/index.html',
-          },
-          {
-            title: 'Progressive Glass Segmentation.(2022)',
-            href: 'detection_segmentation/index.html',
-          },
-          {
-            title: 'Large-Field Contextual Feature Learning for Glass Detection.(2022)',
-            href: 'detection_segmentation/index.html',
-          },
-          {
-            title: 'Explore Contextual Information for 3D Scene Graph Generation.(2022)',
-            href: '3DV/index.html',
-          },
-          {
-            title: 'Biologically Inspired Dynamic Thresholds for Spiking Neural Networks.(2022)',
-            href: 'intelligent_bionic_system/index.html',
-          },
-          {
-            title: '6-DoF Pose Relocalization for Event Cameras With Entropy Frame and Attention Networks.(2022)',
-            href: 'intelligent_bionic_system/index.html',
-          },
-          {
-            title: 'Monocular Camera-based Complex Obstacle Avoidance via Efficient Deep Reinforcement Learning.(2022)',
-            href: 'intelligent_bionic_system/index.html',
-          },
-          {
-            title: 'Spiking Transformers for Event-based Single Object Tracking.(2022)',
-            href: 'intelligent_bionic_system/index.html',
-          },
-          {
-            title: 'Spiking Transformers for Event-based Single Object Tracking.(2022)',
-            href: 'intelligent_bionic_system/index.html',
-          },
-          {
-            title: 'Wider and Higher: Intensive Integration and Global Foreground Perception for Image Matting.(2022)',
-            href: 'matting/index.html',
-          },
-          {
-            title: '基于事件相机的无人机目标跟踪.(2022)',
-            href: 'intelligent_bionic_system/index.html',
-          },
-          {
-            title: 'Learning to Detect Instance-level Salient Objects using Complementary Image Labels.(2021)',
-            href: 'detection_segmentation/index.html',
-          },
-          {
-            title: 'Self-supervised Self-ensembling Network for Semi-supervised RGB-D Salient Object Detection.(2021)',
-            href: 'detection_segmentation/index.html',
-          },
-          {
-            title: 'Label Decoupling-based Three-stream Neural Network for Robust Glass Detection.(2021)',
-            href: 'detection_segmentation/index.html',
-          }, 
-          {
-            title: 'Depth-Aware Mirror Segmentation.(2021)',
-            href: 'detection_segmentation/index.html',
-          }, 
-          {
-            title: 'Camouflaged Object Segmentation with Distraction Mining.(2021)',
-            href: 'detection_segmentation/index.html',
-          },
-          {
-            title: 'Object Tracking by Jointly Exploiting Frame and Event Domain.(2021)',
-            href: 'intelligent_bionic_system/index.html',
-          },
-          {
-            title: 'Multi-domain Collaborative Feature Representation for Robust Visual Object Tracking.(2021)',
-            href: 'intelligent_bionic_system/index.html',
-          },
-          {
-            title: 'A Vision-based Irregular Obstacle Avoidance Framework via Deep Reinforcement Learning.(2021)',
-            href: 'intelligent_bionic_system/index.html',
-          },
-         
-          {
-            title: 'Tripartite Information Mining and Integration for Image Matting.(2021)',
-            href: 'matting/index.html',
-          },
-          {
-            title: 'Prior-Induced Information Alignment for Image Matting.(2021)',
-            href: 'matting/index.html',
-          },
-          {
-            title: 'Exploring Dense Context for Salient Object Detection.(2021)',
-            href: 'detection_segmentation/index.html',
-          },
-          {
-            title: 'MBKD: Acceleration Structure Designed for Moving Primitives.(2021)',
-            href: 'photorealistic_rendering/index.html',
-          },
-          {
-            title: 'Easy2Hard: Learning to Solve the Intractables from a Synthetic Dataset for Structure-preserving Image Smoothing.(2021)',
-            href: 'scene_understanding/index.html',
-          },
-          {
-            title: 'Intensity-Aware Single-Image Deraining with Semantic and Color Regularization.(2021)',
-            href: 'scene_understanding/index.html',
-          },
-          {
-            title: 'A Two-Stage Attentive Network for Single Image Super-Resolution.(2021)',
-            href: 'SR/index.html',
-          },
 
-          {
-            title: 'Weakly-supervised Salient Instance Detection.(2020)',
-            href: 'detection_segmentation/index.html',
-          },
-          {
-            title: 'Don\'t Hit Me! Glass Detection in Real-world Scenes.(2020)',
-            href: 'detection_segmentation/index.html',
-          },
-          {
-            title: 'RGB-D Salient Object Detection via Deep Fusion of Semantics and Details.(2020)',
-            href: 'detection_segmentation/index.html',
-          },
-          {
-            title: 'TENet: Triple Excitation Network for Video Salient Object Detection.(2020)',
-            href: 'detection_segmentation/index.html',
-          },
-          {
-            title: 'Journal of Computer Animation and Virtual Worlds(2020)',
-            href: '3DV/index.html',
-          },
-        
-          {
-            title: 'Automatic Comic Generation with Stylistic Multi-page Layouts and Emotion-driven Text Balloon Generation.(2020)',
-            href: 'scene_understanding/index.html',
-          },
-          {
-            title: 'Reweighted Non-convex Non-smooth Rank Minimization based Spectral Clustering on Grassmann Manifold.(2020)',
-            href: 'scene_understanding/index.html',
-          },
-          {
-            title: 'A Human Behavior Recognition Model based on Extended Squeeze-and-Excitation Network.(2020)',
-            href: 'scene_understanding/index.html',
-          },
-          {
-            title: 'Attention Scaling for Crowd Counting.(2020)',
-            href: 'scene_understanding/index.html',
-          },
-          {
-            title: 'Multi-scale Information Assembly for Image Matting.(2020)',
-            href: 'matting/index.html',
-          },
-          {
-            title: 'Attention-Guided Hierarchical Structure Aggregation for Image Matting.(2020)',
-            href: 'matting/index.html',
-          },
-          {
-            title: 'Kernel Clustering on Symmetric Positive Definite Manifolds via Double Approximated Low Rank Representation.(2020)',
-            href: 'scene_understanding/index.html',
-          },
-         
-         
-          {
-            title: 'Multi-Context And Enhanced Reconstruction Network For Single Image Super Resolution.(2020)',
-            href: 'SR/index.html',
-          },
-          {
-            title: 'Smart Scribbles for Image Matting.(2020)',
-            href: 'matting/index.html',
-          },
-          {
-            title: 'Learning to Restore Low-light Images via Decomposition-and-Enhancement.(2020)',
-            href: 'enhancement/index.html',
-          },
-          {
-            title: 'Cascaded Network with Deep Intensity Manipulation for Scene Understanding.(2019)',
-            href: 'enhancement/index.html',
-          },
-          {
-            title: 'Spatial Attentive Single-Image Deraining with a High Quality Real Rain Dataset.(2019)',
-            href: 'scene_understanding/index.html',
-          },
-           {
-            title: 'Deep Reinforcement Learning of Volume-guided Progressive View Inpainting for 3D Point Scene Completion from a Single Depth Image.(2019)',
-            href: '3DV/index.html',
-          },
-          {
-            title: 'DEMC: A Deep Dual-Encoder Network for Denoising Monte Carlo Rendering.(2019)',
-            href: 'photorealistic_rendering/index.html',
-          },
-          {
-            title: 'Real-Virtual Consistent Traffic Flow Interaction.(2019)',
-            href: 'real_virtual/index.html',
-          },
-          {
-            title: 'Where is My Mirror?(2019)',
-            href: 'detection_segmentation/index.html',
-          },
-          {
-            title: 'Image Correction via Deep Reciprocating HDR Transformation.(2018)',
-            href: 'enhancement/index.html',
-          },
-          {
-            title: 'DRFN: Deep Recurrent Fusion Network for Single Image Super-Resolution with Large Factors.(2018)',
-            href: 'SR/index.html',
-          },
-          {
-            title: 'Active Object Reconstruction Using a Guided View Planner.(2018)',
-            href: '3DV/index.html',
-          },
-          {
-            title: 'Efficient Image Super Resolution Integration.(2018)',
-            href: 'SR/index.html',
-          }, 
-          {
-            title: 'Interactive Sketch-Based Normal Map Generation with Deep Neural Networks.(2018)',
-            href: 'photorealistic_rendering/index.html',
-          },
-         
-          {
-            title: 'Interactive Traffic Simulation Model with Learned Local Parameters.(2017)',
-            href: 'real_virtual/index.html',
-          },
-          {
-            title: 'A K-D Tree Construction Designed for Motion Blur.(2017)',
-            href: 'photorealistic_rendering/index.html',
-          },
-          {
-            title: 'DKD: A Fast KD-Tree Update Design for Dynamic Scenes.(2016)',
-            href: 'photorealistic_rendering/index.html',
-          },
-          
-          
-          {
-            title: 'Real Traffic Data-Driven Animation Simulation.(2015)',
-            href: 'real_virtual/index.html',
-          },
-          {
-            title: 'Decomposition-Guided Low-light Image Restoration and Enhancement.',
-            href: 'enhancement/index.html',
-          },
-         
-          
-       
-        
-        ]
       }
+    },
+    methods: {
+      textBold(s) {
+        return textBold(s)
+      },
+      goBack() {
+        goBack()
+      },
     },
   })
 </script>
 <style>
+  a:link {color: #092ed6} 
+  a:visited {color: #092ed6}
+  a.click {color: rgb(118, 7, 39);}
   body {
     margin: 0;
     padding: 0;
@@ -438,6 +148,6 @@
     top: 0px;
     bottom: 0;
   }
+  a{text-decoration:none}
 </style>
-
 </html>

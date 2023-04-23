@@ -22,7 +22,6 @@
         <p class="project_p">
           <span v-html="textBold(project.authors)"></span>
           <b class="project_title" :id="index">{{project.title}}</b>
-          <div id="index"></div>
           <span v-for="tag in project.tags" :style="styles[tag[1]]">{{tag[0]}}</span>
           <span v-for="link in project.links">[<b><a class="project_links"
                 :href="link.link">{{link.name}}</a></b><span>]&nbsp;</span></span>

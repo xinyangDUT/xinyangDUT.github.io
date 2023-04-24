@@ -591,7 +591,7 @@ var publications=[
       authors: 'Xin Yang, Ke Xu, Yibing Song, Qiang Zhang, Xiaopeng Wei, and Rynson Lau.',
       title: 'Image Correction via Deep Reciprocating HDR Transformation.',
       tags: [
-        ['CVPR 2018. (CCF A).', 1],
+        ['CVPR 2018. (CCF A)', 1],
         ['. ', 0]
       ],
       href: 'enhancement/index.html#2',

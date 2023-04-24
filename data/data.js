@@ -46,7 +46,7 @@ var publications=[
   {   authors: 'Haiwei Zhang, Jiqing Zhang, Bo Dong, Pieter Peers, Wenwei Wu, Xiaopeng Wei, Felix Heide, Xin Yang.',
       title: 'In the Blink of an Eye: Event-based Emotion Recognition.',
       tags: [
-        ['SIGGRAPH 2023', 1],
+        ['SIGGRAPH 2023(CCF A)', 1],
         ['. ', 0]
       ],
       href: 'intelligent_bionic_system/index.html#0',
@@ -428,8 +428,8 @@ var publications=[
       authors: 'Hengfeng Zha, Dongsheng Zhou, Xin Yang,Qiang Zhang,Xiaopeng Wei',
       title: ' Reweighted Non-convex Non-smooth Rank Minimization based Spectral Clustering on Grassmann Manifold.',
       tags: [
-        ['The 12th Asian Conference on Machine Learning (ACML) 2020 ', 1],
-        ['. ', 0]
+        ['The 12th Asian Conference on Machine Learning (ACML) 2020', 1],
+        ['.', 0]
       ],
       href: 'scene_understanding/index.html#5',
       
@@ -530,8 +530,8 @@ var publications=[
       authors: 'Xin Yang, Haoran Wang, Shaozhe Chen, Xinglin Piao, Dongsheng Zhou, Qiang Zhang, Baocai Yin, Xiaopeng Wei. ',
       title: ' Cascaded Network with Deep Intensity Manipulation for Scene Understanding.',
       tags: [
-        ['Journal of Visualization and Computer Animation, 30(3-4), 2019.', 1],
-        ['. ', 0]
+        ['Journal of Visualization and Computer Animation, 30(3-4), 2019', 1],
+        ['.', 0]
       ],
       href: 'enhancement/index.html#1',
       
@@ -548,11 +548,11 @@ var publications=[
 
     },
      {
-      authors: ' ',
+      authors: 'Xiaoguang Han, Zhaoxuan Zhang, Dong Du, Mingdai Yang, Jingming Yu, Pan Pan, Xin Yang, Ligang Liu, Zixiang Xiong and Shuguang Cui.',
       title: 'Deep Reinforcement Learning of Volume-guided Progressive View Inpainting for 3D Point Scene Completion from a Single Depth Image.',
       tags: [
-        [' ', 1],
-        [' ', 0]
+        ['CVPR 2019. (Oral, CCF A)', 1],
+        ['.', 0]
       ],
       href: '3DV/index.html#3',
       

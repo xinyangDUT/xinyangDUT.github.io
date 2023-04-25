@@ -75,7 +75,7 @@ var publications=[
   {   authors: 'Zhaoxuan Zhang, Xiaoguang Han, Bo Dong, Tong Li, Baocai Yin, Xin Yang*.',
       title: 'Point Cloud Scene Completion with Joint Color and Semantic Estimation from Single RGB-D Image.',
       tags: [
-        [' ', 1],
+        ['IEEE Transactions on Pattern Analysis and Machine Intelligence 2023. (CCF A)', 1],
         [' ', 0]
       ],
       href: '3DV/index.html#0',

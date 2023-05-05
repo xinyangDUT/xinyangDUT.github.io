@@ -76,8 +76,8 @@ var publications=[
   {   authors: 'Zhaoxuan Zhang, Xiaoguang Han, Bo Dong, Tong Li, Baocai Yin, Xin Yang*.',
       title: 'Point Cloud Scene Completion with Joint Color and Semantic Estimation from Single RGB-D Image.',
       tags: [
-        ['IEEE Transactions on Pattern Analysis and Machine Intelligence 2023.', 1],
-        [' ', 0],
+        ['IEEE Transactions on Pattern Analysis and Machine Intelligence 2023', 1],
+        ['. ', 0],
         ['(CCF A)', 2]
       ],
       href: '3DV/index.html#0',
@@ -87,7 +87,7 @@ var publications=[
       authors: 'Yu Qiao*, Jincheng Zhu*, Chengjiang Long, Zeyao Zhang, Yuxin Wang, Zhenjun Du, Xin Yang†.',
       title: 'CPRAL: Collaborative Panoptic-Regional Active Learning for Semantic Segmentation.',
       tags: [
-        ['AAAI 2022.', 1],
+        ['AAAI 2022', 1],
         ['. ', 0],
         ['(CCF A)', 2]
       ],
@@ -225,7 +225,7 @@ var publications=[
       authors: 'Xin Tian, Ke Xu, Xin Yang†, Baocai Yin, Rynson Lau. ',
       title: 'Learning to Detect Instance-level Salient Objects using Complementary Image Labels. International Journal of Computer Vision 2021.',
       tags: [
-        ['(CCF A)', 1],
+        ['(CCF A)', 2],
         ['. ', 0]
       ],
       href: 'detection_segmentation/index.html#5',

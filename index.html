@@ -64,9 +64,9 @@
           <li>
             <p>
               <span v-html="textBold(publication.authors)"></span>
-              <b>{{publication.title}}</b>
-              <span v-for="tag in publication.tags" style="color: #0878b9">{{tag[0]}}</span>
-              <a :href="publication.href">[details]</a>
+              <b style="font-size: 28px;">{{publication.title}}</b1>
+              <span v-for="tag in publication.tags" :style="style1[tag[1]]" style="font-size: 24px;">{{tag[0]}}</span>
+              <a :href="publication.href" style="font-size: 24px;">[details]</a>
             </p>
           </li>
         </ul>
@@ -110,7 +110,7 @@
   }
 
   p {
-    line-height: 30px;
+    line-height: 33px;
     text-align: justify
   }
 
@@ -126,6 +126,7 @@
     font-size: 14px;
     clear: left;
   }
+
 
   .sidebar {
     position: fixed;

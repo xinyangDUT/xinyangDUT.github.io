@@ -13,6 +13,21 @@ const styles = [
     fontWeight: 'bold',
   },
 ]
+const style1 = [
+  {
+  },
+  {
+    fontSize: '24px',
+    color: '#006699',
+    fontWeight: 'bold',
+  },
+  {
+    color: 'rgb(192,0,0)',
+    fontStyle: 'oblique',
+    fontWeight: 'bold',
+  },
+]
+  
 function goBack() {
   window.location.href = '../index.html#Research Projects'
 }

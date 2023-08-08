@@ -43,16 +43,61 @@ const projects = [
 
 
 var publications=[
-  {   authors: 'Haiwei Zhang, Jiqing Zhang, Bo Dong, Pieter Peers, Wenwei Wu, Xiaopeng Wei, Felix Heide, Xin Yang.',
+
+  {
+    authors: 'Zhaoxuan Zhang, Bo Dong, Tong Li, Felix Heide, Pieter Peers, Baocai Yin, Xin Yang*.',
+    title: 'Single Depth-image 3D Reflection Symmetry and Shape Prediction.',
+    tags: [
+      ['ICCV2023', 1],
+      ['. ', 0],
+      ['(CCF A)', 2],
+    ],
+    href: '3DV/index.html#0',
+  },
+     {  authors: 'Yang Wang, Bo Dong, Yuji Zhang, Yunduo Zhou, Haiyang Mei, Ziqi Wei, Xin Yang. ',
+     title: 'Event-Enhanced Multi-Modal Spiking Neural Network for Dynamic Obstacle Avoidance.',
+     io: ' Given the event data, laser data, goal and velocity, our framework produces the action of robot.',
+     tags: [
+       ['ACM MM2023', 1],
+       ['. ', 0],
+       ['(CCF A)', 2]
+     ],
+      href: 'intelligent_bionic_system/index.html#0',
+      
+    },
+  
+  
+   {    authors: 'Haiyang Mei, Ke Xu, Yunduo Zhou, Yang Wang, Haiyin Piao, Xiaopeng Wei, Xin Yang.',
+   title: 'Camouflaged Object Segmentation with Omni Perception.',
+   tags: [
+     ['International Journal of Computer Vision (IJCV) 2023', 1],
+     ['. ', 0],
+     ['(CCF A)', 2]],
+      href: 'detection_segmentation/index.html#0',
+      
+    },
+    {   authors: '梅海洋, 杨鑫, 周运铎, 季葛鹏, 魏小鹏, 范登平.',
+    title: '分心感知的伪装目标分割.',
+    tags: [
+      ['中国科学: 信息科学', 1],
+      ['. ', 0],
+      ['(CCF A类中文期刊)', 2]
+    ],
+      href: 'detection_segmentation/index.html#1',
+      
+    },
+    {   authors: 'Haiwei Zhang, Jiqing Zhang, Bo Dong, Pieter Peers, Wenwei Wu, Xiaopeng Wei, Felix Heide, Xin Yang.',
       title: 'In the Blink of an Eye: Event-based Emotion Recognition.',
       tags: [
         ['SIGGRAPH 2023', 1],
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'intelligent_bionic_system/index.html#0',
+      href: 'intelligent_bionic_system/index.html#1',
       
     },
+  
+    
     {
       authors: 'Boyan Wei, Xianfeng Ye, Chengjiang Long, Zhenjun Du, Bangyu Li, Baocai Yin, Xin Yang*.',
       title: 'Discriminative Active Learning for Robotic Grasping in Cluttered Scene.',
@@ -60,7 +105,7 @@ var publications=[
         ['IEEE Robotics and Automation Letters (RA-L) 2023', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#2',
+      href: 'intelligent_bionic_system/index.html#3',
       
     },
     {
@@ -70,7 +115,7 @@ var publications=[
         ['ACM Transactions on Multimedia Computing, Communications, and Applications (TOMM) 2023', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#1',
+      href: 'intelligent_bionic_system/index.html#2',
       
     },
   {   authors: 'Zhaoxuan Zhang, Xiaoguang Han, Bo Dong, Tong Li, Baocai Yin, Xin Yang*.',
@@ -80,7 +125,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: '3DV/index.html#0',
+      href: '3DV/index.html#1',
       
     },
     {
@@ -101,7 +146,7 @@ var publications=[
         ['Communications and Applications (TOMM) 2022', 1],
         ['. ', 0]
       ],
-      href: 'detection_segmentation/index.html#0',
+      href: 'detection_segmentation/index.html#2',
       
     },
     {
@@ -112,7 +157,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'detection_segmentation/index.html#1',
+      href: 'detection_segmentation/index.html#3',
       
     },
     {
@@ -133,7 +178,7 @@ var publications=[
         ['CVPR 2022', 1],
         ['. ', 0]
       ],
-      href: 'detection_segmentation/index.html#2',
+      href: 'detection_segmentation/index.html#4',
       
     },
     {
@@ -144,7 +189,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'detection_segmentation/index.html#3',
+      href: 'detection_segmentation/index.html#5',
       
     },
     {
@@ -155,7 +200,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'detection_segmentation/index.html#4',
+      href: 'detection_segmentation/index.html#6',
       
     },
     {
@@ -166,7 +211,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: '3DV/index.html#2',
+      href: '3DV/index.html#3',
       
     },
     {
@@ -177,7 +222,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'intelligent_bionic_system/index.html#3',
+      href: 'intelligent_bionic_system/index.html#4',
       
     },
     {
@@ -187,7 +232,7 @@ var publications=[
         [' ACM SIGGRAPH VRCAI 2022', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#4',
+      href: 'intelligent_bionic_system/index.html#5',
       
     },
     {
@@ -198,7 +243,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'intelligent_bionic_system/index.html#5',
+      href: 'intelligent_bionic_system/index.html#6',
       
     },
     
@@ -218,7 +263,7 @@ var publications=[
         ['浙江大学学报（理学版. 2022, 49(01)', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#6',
+      href: 'intelligent_bionic_system/index.html#7',
       
     },
     {
@@ -228,7 +273,7 @@ var publications=[
         ['(CCF A)', 2],
         ['. ', 0]
       ],
-      href: 'detection_segmentation/index.html#5',
+      href: 'detection_segmentation/index.html#7',
       
     },
     {
@@ -239,7 +284,7 @@ var publications=[
         ['. ', 0],
         ['(CCF B)', 2]
       ],
-      href: 'detection_segmentation/index.html#6',
+      href: 'detection_segmentation/index.html#8',
       
     },
     {
@@ -250,7 +295,7 @@ var publications=[
         ['. ', 0],
         ['(CCF B)', 2]
       ],
-      href: 'detection_segmentation/index.html#7',
+      href: 'detection_segmentation/index.html#9',
       
     }, 
     {
@@ -261,7 +306,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A, Oral)', 2]
       ],
-      href: 'detection_segmentation/index.html#8',
+      href: 'detection_segmentation/index.html#10',
       
     }, 
     {
@@ -272,7 +317,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'detection_segmentation/index.html#9',
+      href: 'detection_segmentation/index.html#11',
       
     },
     {
@@ -283,7 +328,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'intelligent_bionic_system/index.html#7',
+      href: 'intelligent_bionic_system/index.html#8',
     },
     {
       authors: 'Jiqing Zhang, Kai Zhao, Bo Dong, Yingkai Fu, Xinglin Piao, Xin Yang, Baocai Yin. ',
@@ -292,7 +337,7 @@ var publications=[
         ['The Visual Computer (Proc. CGI 2021)', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#8',
+      href: 'intelligent_bionic_system/index.html#9',
       
     },
     {
@@ -303,7 +348,7 @@ var publications=[
         ['IROS 2021', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#9',
+      href: 'intelligent_bionic_system/index.html#10',
       
     },
    
@@ -336,7 +381,7 @@ var publications=[
         ['. ', 0],
         ['(CCF B)', 2]
       ],
-      href: 'detection_segmentation/index.html#11',
+      href: 'detection_segmentation/index.html#13',
       
     },
     {
@@ -390,7 +435,7 @@ var publications=[
         ['BMVC 2020. (Oral, 5%, Best Student Paper)', 1],
         ['. ', 0]
       ],
-      href: 'detection_segmentation/index.html#12',
+      href: 'detection_segmentation/index.html#14',
       
     },
     {
@@ -401,7 +446,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'detection_segmentation/index.html#10',
+      href: 'detection_segmentation/index.html#12',
       
     },
     {
@@ -411,7 +456,7 @@ var publications=[
         ['Journal of Computer Animation and Virtual Worlds, Bournemouth, UK. (Special Issue of CASA 2020)', 1],
         ['. ', 0]
       ],
-      href: 'detection_segmentation/index.html#13',
+      href: 'detection_segmentation/index.html#15',
       
     },
     {
@@ -421,7 +466,7 @@ var publications=[
         ['ECCV 2020, Glasgow, UK. (Spotlight)', 1],
         ['. ', 0]
       ],
-      href: 'detection_segmentation/index.html#14',
+      href: 'detection_segmentation/index.html#16',
       
     },
     {
@@ -431,7 +476,7 @@ var publications=[
         ['Journal of Computer Animation and Virtual Worlds,Special Issue of CASA 2020', 1],
         ['. ', 0]
       ],
-      href: '3DV/index.html#5',
+      href: '3DV/index.html#6',
       
     },
   
@@ -584,7 +629,7 @@ var publications=[
         ['.', 0],
         ['(Oral, CCF A)', 2]
       ],
-      href: '3DV/index.html#3',
+      href: '3DV/index.html#4',
       
     },
     {
@@ -617,7 +662,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'detection_segmentation/index.html#15',
+      href: 'detection_segmentation/index.html#17',
       
     },
     {
@@ -670,7 +715,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: '3DV/index.html#4',
+      href: '3DV/index.html#5',
       
     },
     {

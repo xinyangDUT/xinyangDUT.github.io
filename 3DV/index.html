@@ -88,7 +88,7 @@
             ],
             io: ' Given a single depth image of an object, our ISCNet progressively generate the missing points of the initial point cloud under the optimal sequence of viewpoints decided by an RL agent.',
             abstract: 'In this paper we present ISCNet, a single depth-image completion method that exploits reflective symmetry cues to obtain more detailed shape completions. The efficacy of single image depth completion methods is often sensitive to the accuracy of the symmetry plane. ISCNet therefore jointly estimates the symmetry plane and shape completion iteratively; more complete shapes contribute to more robust symmetry plane estimates and vice versa. Furthermore, our shape completion method operates in the image domain, enabling more efficient high-resolution detailed geometry reconstruction. We perform the shape completion from pairs of viewpoints, reflected across the symmetry plane, predicted by a reinforcement learning agent to improve robustness and to simultaneously explicitly leverage symmetry. We demonstrate the efficacy of ISCNet on a variety of object categories on both synthetic and real-scanned datasets.',
-           
+            
             imgs: [
               { src: 'fig1.png', label: 'ISCNet more efficiently leverages symmetry cues for robust shape completion from a single depth image compared to prior methods.' },
               { src: 'fig2.png', label: ' The pipeline of ISCNet.' },
@@ -135,6 +135,7 @@
             ],
             io: 'Given an indoor scene point cloud with its class-agnostic instance labels, our methods predict the 3D scene graph with fine-grained objects and multiple relationships.',
             abstract: '3D scene graph generation (SGG) has been of high interest in computer vision. Although the accuracy of 3D SGG on coarse classification and single relation label has been gradually improved, the performance of existing works is still far from being perfect for fine-grained and multi-label situations. In this paper, we propose a framework fully exploring contextual information for the 3D SGG task, which attempts to satisfy the requirements of fine-grained entity class, multiple relation labels, and high accuracy simultaneously. Our proposed approach is composed of a Graph Feature Extraction module and a Graph Contextual Reasoning module, achieving appropriate information-redundancy feature extraction, structured organization, and hierarchical inferring. Our approach achieves superior or competitive performance over previous methods on the 3DSSG dataset, especially on the relationship prediction sub-task.',
+          
             links: [
               { name: 'paper', link: 'https://arxiv.org/pdf/2210.06240.pdf' },
             ],
@@ -193,6 +194,7 @@
             ],
             io: 'Given an indoor scene point cloud, our method predict the semantic segmentation label for each point based on our proposed feature extraction option named "coordinate convolution".',
             abstract: 'Point cloud semantic segmentation, a crucial research area in the 3D computer vision, lies at the core of many vision and robotics applications. Due to the irregular and disordered of the point cloud, however, the application of convolution on point clouds is challenging. In this paper, we propose the “coordinate convolution”, which can effectively extract local structural information of the point cloud, to solve the inapplicability of conventional convolution neural network (CNN) structures on the 3D point cloud. The “coordinate convolution” is a projection operation of three planes based on the local coordinate system of each point. Specifically, we project the point cloud on three planes in the local coordinate system with a joint 2D convolution operation to extract its features. Additionally, we leverage a self-encoding network based on image semantic segmentation U-Net structure as the overall architecture of the point cloud semantic segmentation algorithm. The results demonstrate that the proposed method exhibited excellent performances for point cloud data sets corresponding to various scenes.',
+            
             imgs: [
               { src: 'ijcai18.png' },
             ],

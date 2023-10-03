@@ -45,6 +45,18 @@ const projects = [
 var publications=[
 
   {
+    authors: 'Jiqing Zhang, Yuanchen Wang , Wenxi Liu, Meng Li, Jinpeng Bai, Baocai Yin, Xin Yang. ',
+    title: 'Frame-Event Alignment and Fusion Network for High Frame Rate Tracking.',
+    tags: [
+      ['CVPR 2023', 1],
+      ['. ', 0],
+      ['(CCF A)', 2]
+
+    ],
+    href: 'intelligent_bionic_system/index.html#0',
+  },
+
+  {
     authors: 'Zhaoxuan Zhang, Bo Dong, Tong Li, Felix Heide, Pieter Peers, Baocai Yin, Xin Yang*.',
     title: 'Single Depth-image 3D Reflection Symmetry and Shape Prediction.',
     tags: [
@@ -61,7 +73,7 @@ var publications=[
        ['. ', 0],
        ['(CCF A)', 2]
      ],
-      href: 'intelligent_bionic_system/index.html#0',
+      href: 'intelligent_bionic_system/index.html#1',
       
     },
   
@@ -92,7 +104,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'intelligent_bionic_system/index.html#1',
+      href: 'intelligent_bionic_system/index.html#2',
       
     },
   
@@ -104,7 +116,7 @@ var publications=[
         ['IEEE Robotics and Automation Letters (RA-L) 2023', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#3',
+      href: 'intelligent_bionic_system/index.html#4',
       
     },
     {
@@ -114,7 +126,7 @@ var publications=[
         ['ACM Transactions on Multimedia Computing, Communications, and Applications (TOMM) 2023', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#2',
+      href: 'intelligent_bionic_system/index.html#3',
       
     },
   {   authors: 'Zhaoxuan Zhang, Xiaoguang Han, Bo Dong, Tong Li, Baocai Yin, Xin Yang*.',
@@ -221,7 +233,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'intelligent_bionic_system/index.html#4',
+      href: 'intelligent_bionic_system/index.html#5',
       
     },
     {
@@ -231,7 +243,7 @@ var publications=[
         ['ACM SIGGRAPH VRCAI 2022', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#5',
+      href: 'intelligent_bionic_system/index.html#6',
       
     },
     {
@@ -242,7 +254,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'intelligent_bionic_system/index.html#6',
+      href: 'intelligent_bionic_system/index.html#7',
       
     },
     
@@ -262,7 +274,7 @@ var publications=[
         ['浙江大学学报（理学版. 2022, 49(01)', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#7',
+      href: 'intelligent_bionic_system/index.html#8',
       
     },
     {
@@ -327,7 +339,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'intelligent_bionic_system/index.html#8',
+      href: 'intelligent_bionic_system/index.html#9',
     },
     {
       authors: 'Jiqing Zhang, Kai Zhao, Bo Dong, Yingkai Fu, Xinglin Piao, Xin Yang, Baocai Yin.',
@@ -336,7 +348,7 @@ var publications=[
         ['The Visual Computer (Proc. CGI 2021)', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#9',
+      href: 'intelligent_bionic_system/index.html#10',
       
     },
     {
@@ -347,7 +359,7 @@ var publications=[
         ['IROS 2021', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#10',
+      href: 'intelligent_bionic_system/index.html#11',
       
     },
    

@@ -63,6 +63,19 @@
       return {
         styles,
         projects: [
+        {
+            authors: 'Jiqing Zhang, Yuanchen Wang , Wenxi Liu, Meng Li, Jinpeng Bai, Baocai Yin, Xin Yang. ',
+            title: 'Frame-Event Alignment and Fusion Network for High Frame Rate Tracking.',
+            io: ' Given the first event frame image and corresponding bounding box, our network produces the following bounding boxes.',
+            tags: [
+              ['CVPR 2023', 1],
+              ['. ', 0],
+              ['(CCF A)', 2]
+
+            ],
+            video: '11152-video.mp4',
+            abstract: 'Most existing RGB-based trackers target low frame rate benchmarks of around 30 frames per second. This setting restricts the tracker’s functionality in the real world, especially for fast motion. Event-based cameras as bioinspired sensors provide considerable potential for high frame rate tracking due to their high temporal resolution. However, event-based cameras cannot offer fine-grained texture information like conventional cameras. This unique complementarity motivates us to combine conventional frames and events for high frame rate object tracking under various challenging conditions. In this paper, we propose an end-toend network consisting of multi-modality alignment and fusion modules to effectively combine meaningful information from both modalities at different measurement rates. The alignment module is responsible for cross-style and crossframe-rate alignment between frame and event modalities under the guidance of the moving cues furnished by events. While the fusion module is accountable for emphasizing valuable features and suppressing noise information by the mutual complement between the two modalities. Extensive experiments show that the proposed approach outperforms state-of-the-art trackers by a significant margin in high frame rate tracking. With the FE240hz dataset, our approach achieves high frame rate tracking up to 240Hz. ',
+          },
    
         {
             authors: 'Yang Wang, Bo Dong, Yuji Zhang, Yunduo Zhou, Haiyang Mei, Ziqi Wei, Xin Yang. ',
@@ -93,7 +106,7 @@
             video: 'Event-based Emotion Recognition.mp4',
             abstract: 'In this paper, we introduce a wearable single-eye emotion recognition setup and a real-time approach for recognizing emotions from partial observations of the emotion event that is robust to changes in lighting conditions. Key to our method is a bio-inspired event-based camera setup and a newly designed lightweight Spiking Eye Emotion Network (SEEN). Compared to conventional cameras, event-based cameras offer a higher dynamic range (up to 140 dB vs. 80 dB) and a higher temporal resolution (in the order of ms vs. 10s of ms). Thus, the captured events can encode rich temporal cues under challenging lighting conditions. However, these events lack texture information, posing problems in effectively decoding the temporal information. SEEN effectively tackles the issue from two different perspectives. First, we adopt convolutional spiking layers to take advantage of the ability of the spiking neuron networks ability to decode pertinent temporal information. Second, SEEN learns to extract essential spatial cues from corresponding intensity frames and leverages a novel-designed weight-copy scheme to effectively convey spatial attention to the convolutional spiking layers during training and inference. We extensively validate and demonstrate the effectiveness of our approach on a specially collected Single-eye Event-based Emotion (SEE) dataset.To the best of our knowledge,our method is the first eye-based emotion recognition method that leverages event-based cameras and spiking neural networks.',
             links: [
-              { name: 'introduct', link: 'http://www.dluticcd.com' }, 
+              { name: 'more details', link: 'http://www.dluticcd.com' }, 
             ],
             imgs: [
               'In the blink of an eye-1.png',

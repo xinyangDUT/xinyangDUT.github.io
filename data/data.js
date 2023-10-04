@@ -28,7 +28,7 @@ const projects = [
     href: 'SR/index.html',
   },
   {
-    title: 'Real-Virtual Consistent Traffic Flow Interaction',
+    title: 'Real-Virtual Consistent Traffic Flow Interaction ',
     href: 'real_virtual/index.html',
   },
   {

@@ -60,7 +60,7 @@ var publications=[
     authors: 'Zhaoxuan Zhang, Bo Dong, Tong Li, Felix Heide, Pieter Peers, Baocai Yin, Xin Yang*.',
     title: 'Single Depth-image 3D Reflection Symmetry and Shape Prediction.',
     tags: [
-      ['ICCV2023', 1],
+      ['ICCV 2023', 1],
       ['. ', 0],
       ['(CCF A)', 2],
     ],
@@ -69,7 +69,7 @@ var publications=[
      {  authors: 'Yang Wang, Bo Dong, Yuji Zhang, Yunduo Zhou, Haiyang Mei, Ziqi Wei, Xin Yang.',
      title: 'Event-Enhanced Multi-Modal Spiking Neural Network for Dynamic Obstacle Avoidance.',
      tags: [
-       ['ACM MM2023', 1],
+       ['ACM International Conference on Multimedia (ACM MM) 2023', 1],
        ['. ', 0],
        ['(CCF A)', 2]
      ],

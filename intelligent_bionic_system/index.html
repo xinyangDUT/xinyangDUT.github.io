@@ -75,6 +75,9 @@
             ],
             video: '11152-video.mp4',
             abstract: 'Most existing RGB-based trackers target low frame rate benchmarks of around 30 frames per second. This setting restricts the tracker’s functionality in the real world, especially for fast motion. Event-based cameras as bioinspired sensors provide considerable potential for high frame rate tracking due to their high temporal resolution. However, event-based cameras cannot offer fine-grained texture information like conventional cameras. This unique complementarity motivates us to combine conventional frames and events for high frame rate object tracking under various challenging conditions. In this paper, we propose an end-toend network consisting of multi-modality alignment and fusion modules to effectively combine meaningful information from both modalities at different measurement rates. The alignment module is responsible for cross-style and crossframe-rate alignment between frame and event modalities under the guidance of the moving cues furnished by events. While the fusion module is accountable for emphasizing valuable features and suppressing noise information by the mutual complement between the two modalities. Extensive experiments show that the proposed approach outperforms state-of-the-art trackers by a significant margin in high frame rate tracking. With the FE240hz dataset, our approach achieves high frame rate tracking up to 240Hz. ',
+            links: [
+              { name: 'paper', link: 'https://arxiv.org/pdf/2305.15688.pdf' }
+            ]
           },
    
         {
@@ -82,7 +85,7 @@
             title: 'Event-Enhanced Multi-Modal Spiking Neural Network for Dynamic Obstacle Avoidance.',
             io: ' Given the event data, laser data, goal and velocity, our framework produces the action of robot.',
             tags: [
-              ['ACM MM2023', 1],
+              ['ACM International Conference on Multimedia (ACM MM) 2023', 1],
               ['. ', 0],
               ['(CCF A)', 2]
 
@@ -92,6 +95,9 @@
             imgs: [
               'Event-Enhanced Multi-Modal Spiking Neural Network for Dynamic Obstacle Avoidance.png',
             ],
+            links: [
+              { name: 'paper', link: 'https://arxiv.org/abs/2310.02361' }
+            ]
           },
         {
             authors: 'Haiwei Zhang, Jiqing Zhang, Bo Dong, Pieter Peers, Wenwei Wu, Xiaopeng Wei, Felix Heide, Xin Yang. ',
@@ -118,7 +124,7 @@
             title: 'A Geometrical Approach to Evaluate the Adversarial Robustness of Deep Neural Networks.',
             io: ' Give an input image and a adversarial attack method, our network outputs a score that indicates how image robustness is.',
             tags: [
-              ['ACM Transactions on Multimedia Computing, Communications, and Applications (TOMM) 2023.', 1],
+              ['ACM Transactions on Multimedia Computing, Communications, and Applications (TOMM) 2023', 1],
               ['. ', 0]
             ],
             abstract: 'Deep Neural Networks (DNNs) are widely used for computer vision tasks. However, it has been shown that deep models are vulnerable to adversarial attacks, i.e., their performances drop when imperceptible perturbations are made to the original inputs, which may further degrade the following visual tasks or introduce new problems such as data and privacy security. Hence, metrics for evaluating the robustness of deep models against adversarial attacks are desired. However, previous metrics are mainly proposed for evaluating the adversarial robustness of shallow networks on the small-scale datasets. Although the Cross Lipschitz Extreme Value for nEtwork Robustness (CLEVER) metric has been proposed for large-scale datasets (e.g., the ImageNet dataset), it is computationally expensive and its performance relies on a tractable number of samples. In this paper, we propose the Adversarial Converging Time Score (ACTS), an attack-dependent metric that quantifies the adversarial robustness of a DNN on a specific input. Our key observation is that local neighborhoods on a DNN’s output surface would have different shapes given different inputs. Hence, given different inputs, it requires different time for converging to an adversarial sample. Based on this geometry meaning, ACTS measures the converging time as an adversarial robustness metric. We validate the effectiveness and generalization of the proposed ACTS metric against different adversarial attacks on the large-scale ImageNet dataset using state-of-the-art deep networks. Extensive experiments show that our ACTS metric is an efficient and effective adversarial metric over the previous CLEVER metric.',
@@ -226,7 +232,7 @@
             title: '基于事件相机的无人机目标跟踪.',
             io: '给定成对的灰度图像和事件图像以及第一帧目标的位置，预测后续帧目标的位置.',
             tags: [
-              ['浙江大学学报（理学版）', 1],
+              ['浙江大学学报（理学版', 1],
               ['. 2022, 49(01).', 0]
             ],
             abstract: '无人机的目标跟踪现如今已成为计算机视觉领域中一个热门的研究课题. 无人机目标跟踪可以应用于消防、军事等重要领域.现阶段无人机目标跟踪算法大多基于传统的 RGB 相机结合深度学习算法, 但这类方法一方面无法避免因无人机自身机体抖动引发的运动模糊问题, 另一方面传统 RGB 相机在低光照或过曝光场景下成像较差, 从而难以追踪目标. 为了解决上述无人机视角下的目标跟踪出现的问题，本文采用无人机搭载 DAVIS 事件相机进行目标跟踪, 并设计了基于事件与灰度图的双模态融合跟踪网络，为了更好地训练该网络，本文采用运动捕捉系统Vicon自行制作无人机视角下的目标跟踪数据集：Event-APS28，保证了复杂光照场景下可以根据图像信息有效的跟踪目标.',

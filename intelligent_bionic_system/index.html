@@ -17,7 +17,7 @@
     <div>
       <h1>Bio-inspired Intelligence and Robotic Systems</h1>
       <el-divider></el-divider>
-      <p>
+      <p style="text-align: justify;">
         The research interests of the biologically-inspired intelligence lie at the intersection of computer vision,
         robotics and biology. Through the abstraction of the design principles of biological systems, we explore the
         applications of bio-inspired sensors (Event-based Camera), bio-inspired algorithms (Spiking Neural Networks),
@@ -48,7 +48,7 @@
           <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
         </div>
         <div v-if="project.abstract">
-          <p><b>Abstract.&nbsp;</b>{{project.abstract}}<span></span></p>
+          <p style="text-align: justify;"><b>Abstract:&nbsp;</b>{{project.abstract}}<span></span></p>
         </div>
         <el-divider content-position="right">{{index+1}}</el-divider>
       </div>
@@ -112,7 +112,9 @@
             video: 'Event-based Emotion Recognition.mp4',
             abstract: 'In this paper, we introduce a wearable single-eye emotion recognition setup and a real-time approach for recognizing emotions from partial observations of the emotion event that is robust to changes in lighting conditions. Key to our method is a bio-inspired event-based camera setup and a newly designed lightweight Spiking Eye Emotion Network (SEEN). Compared to conventional cameras, event-based cameras offer a higher dynamic range (up to 140 dB vs. 80 dB) and a higher temporal resolution (in the order of ms vs. 10s of ms). Thus, the captured events can encode rich temporal cues under challenging lighting conditions. However, these events lack texture information, posing problems in effectively decoding the temporal information. SEEN effectively tackles the issue from two different perspectives. First, we adopt convolutional spiking layers to take advantage of the ability of the spiking neuron networks ability to decode pertinent temporal information. Second, SEEN learns to extract essential spatial cues from corresponding intensity frames and leverages a novel-designed weight-copy scheme to effectively convey spatial attention to the convolutional spiking layers during training and inference. We extensively validate and demonstrate the effectiveness of our approach on a specially collected Single-eye Event-based Emotion (SEE) dataset.To the best of our knowledge,our method is the first eye-based emotion recognition method that leverages event-based cameras and spiking neural networks.',
             links: [
-              { name: 'more details', link: 'http://www.dluticcd.com' }, 
+            { name: 'paper', link: 'https://arxiv.org/abs/2310.04043' },
+              { name: 'more details', link: 'http://www.dluticcd.com' } 
+              
             ],
             imgs: [
               'In the blink of an eye-1.png',
@@ -156,7 +158,7 @@
           {
             authors: 'Jianchuan Ding, Bo Dong, Felix Heide, Yufei Ding, Yunduo Zhou, Baocai Yin, Xin Yang*.',
             title: 'Biologically Inspired Dynamic Thresholds for Spiking Neural Networks.',
-            io: 'Given the laser data, goal and velocity, our framework produces the robot\'s action.',
+            io: 'Given inputs with noise in different tasks, our neuronal model produces outputs with homeostasis.',
             tags: [
               ['NeurIPS 2022', 1],
               ['. ', 0],
@@ -168,7 +170,8 @@
               'Biologically-Inspired-2.png'
             ],
             links: [
-              { name: 'paper', link: 'https://arxiv.org/pdf/2206.04426.pdf' }
+              { name: 'paper', link: 'https://arxiv.org/pdf/2206.04426.pdf' },
+              { name: 'code', link: 'https://github.com/ding15963/dynamic-threshold' }
             ]
           },
           {
@@ -232,13 +235,16 @@
             title: '基于事件相机的无人机目标跟踪.',
             io: '给定成对的灰度图像和事件图像以及第一帧目标的位置，预测后续帧目标的位置.',
             tags: [
-              ['浙江大学学报（理学版', 1],
+              ['浙江大学学报（理学版)', 1],
               ['. 2022, 49(01).', 0]
             ],
             abstract: '无人机的目标跟踪现如今已成为计算机视觉领域中一个热门的研究课题. 无人机目标跟踪可以应用于消防、军事等重要领域.现阶段无人机目标跟踪算法大多基于传统的 RGB 相机结合深度学习算法, 但这类方法一方面无法避免因无人机自身机体抖动引发的运动模糊问题, 另一方面传统 RGB 相机在低光照或过曝光场景下成像较差, 从而难以追踪目标. 为了解决上述无人机视角下的目标跟踪出现的问题，本文采用无人机搭载 DAVIS 事件相机进行目标跟踪, 并设计了基于事件与灰度图的双模态融合跟踪网络，为了更好地训练该网络，本文采用运动捕捉系统Vicon自行制作无人机视角下的目标跟踪数据集：Event-APS28，保证了复杂光照场景下可以根据图像信息有效的跟踪目标.',
             imgs: [
               '基于事件相机的无人机目标跟踪.png'
-            ]
+            ],
+            links: [
+              { name: 'paper', link: 'http://lib.cqvip.com/Qikan/Article/ReadIndex?id=7106434043&info=t9MpCA804vI8meoo9gR%2bDWBpx8%2bqvV61AbZyGS%2fLBsRlD2a9CzlyAg%3d%3d' },
+            ],
           },
           {
             authors: 'Jiqing Zhang, Xin Yang, Yingkai Fu, Xiaopeng Wei, Baocai Yin, Bo Dong.',
@@ -308,5 +314,15 @@
     },
   })
 </script>
+
+<style>
+  
+  p1 {
+    line-height: 33px;
+    text-align: justify
+  }
+
+ 
+</style>
 
 </html>

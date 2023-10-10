@@ -247,6 +247,16 @@ var publications=[
       
     },
     {
+      authors: 'Jianchuan Ding, Lingping Gao, Wenxi Liu, Haiyin Piao, Jia Pan, Zhenjun Du, Xin Yang*, Baocai Yin.',
+      title: 'Monocular Camera-based Complex Obstacle Avoidance via Efficient Deep Reinforcement Learning.',
+      tags: [
+        ['IEEE Transactions on Circuits and Systems for Video Technology 2022', 1],
+        ['. ', 0],
+        ['(CCF B)', 2]
+      ],
+      href: 'intelligent_bionic_system/index.html#7',
+    },
+    {
       authors: 'Jiqing Zhang, Bo Dong, Haiwei Zhang, Jianchuan Ding, Felix Heide, Baocai Yin, Xin Yang*.',
       title: 'Spiking Transformers for Event-based Single Object Tracking.',
       tags: [
@@ -254,9 +264,10 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'intelligent_bionic_system/index.html#7',
+      href: 'intelligent_bionic_system/index.html#8',
       
     },
+
     
     {  authors: 'Yu Qiao*, Ziqi Wei*, Yuhao Liu, Yuxin Wang†, Dongsheng Zhou, Qiang Zhang, Xin Yang.',
       title: 'Wider and Higher: Intensive Integration and Global Foreground Perception for Image Matting.',
@@ -274,7 +285,7 @@ var publications=[
         ['浙江大学学报（理学版. 2022, 49(01)', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#8',
+      href: 'intelligent_bionic_system/index.html#9',
       
     },
     {
@@ -339,7 +350,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'intelligent_bionic_system/index.html#9',
+      href: 'intelligent_bionic_system/index.html#10',
     },
     {
       authors: 'Jiqing Zhang, Kai Zhao, Bo Dong, Yingkai Fu, Xinglin Piao, Xin Yang, Baocai Yin.',
@@ -348,7 +359,7 @@ var publications=[
         ['The Visual Computer (Proc. CGI 2021)', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#10',
+      href: 'intelligent_bionic_system/index.html#11',
       
     },
     {
@@ -359,7 +370,7 @@ var publications=[
         ['IROS 2021', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#11',
+      href: 'intelligent_bionic_system/index.html#12',
       
     },
    

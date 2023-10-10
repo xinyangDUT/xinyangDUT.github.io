@@ -20,7 +20,7 @@
         Single Image Super-Resolution (SISR)
       </h1>
       <el-divider></el-divider>
-      <p>
+      <p style="text-align: justify;">
         Single-image super-resolution (SISR) is a computer vision task
         that reconstructs a high-resolution (HR) image from a low-resolution (LR) image. It could be
         used in a variety of applications such as medical imaging, security, and surveillance
@@ -29,7 +29,7 @@
         same LR image and this is a one-to-many mapping relation to recover HR images from a LR
         image, SISR is an ill-posed and still challenging problem in the community.
       </p>
-      <p>
+      <p style="text-align: justify;">
         In this project, we
         are developing techniques to reconstruct the
         HR image from the LR image. Our research is to address this problem from three directions.
@@ -57,7 +57,7 @@
           <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
         </div>
         <div v-if="project.abstract">
-          <p><b>Abstract.&nbsp;</b>{{project.abstract}}<span></span></p>
+          <p style="text-align: justify;"><b>Abstract:&nbsp;</b>{{project.abstract}}<span></span></p>
         </div>
         <el-divider content-position="right">{{index+1}}</el-divider>
       </div>

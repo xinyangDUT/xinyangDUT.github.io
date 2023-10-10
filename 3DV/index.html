@@ -22,7 +22,7 @@
         Image-based 3D Indoor Scene Modeling
       </h1>
       <el-divider></el-divider>
-      <p>
+      <p style="text-align: justify;">
         Image-based 3D indoor scene reconstruction is widely used in different areas, such as robotic navigation,
         virtual reality and interior design. The goal of this task is to use as little as possible images as input and
         output high-quality 3D indoor scene models, expressed as voxel grid, point cloud or triangle mesh. In particular
@@ -32,7 +32,7 @@
         because of the huge gap between 2D domain to 3D domain. Thus traditional methods always use multi-view images as
         input to solve this problem.
       </p>
-      <p>
+      <p style="text-align: justify;">
         In this project, we are developing techniques to tackle this problem by dividing it into different related
         sub-problems. A whole indoor scene can be composed of a series of local scenes, and a local scene can be
         composed of a series of objects. Based on the above observations, we first address the object reconstruction
@@ -63,7 +63,7 @@
           <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
         </div>
         <div v-if="project.abstract">
-          <p><b>Abstract.&nbsp;</b>{{project.abstract}}<span></span></p>
+          <p style="text-align: justify;"><b>Abstract:&nbsp;</b>{{project.abstract}}<span></span></p>
         </div>
         <el-divider content-position="right">{{index+1}}</el-divider>
       </div>

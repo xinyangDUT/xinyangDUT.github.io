@@ -20,7 +20,7 @@
         Low-light Image Analysis
       </h1>
       <el-divider></el-divider>
-      <p>
+      <p style="text-align: justify;">
         Low-light imaging is often needed for various purposes, such as surveillance, photography and autonomous
         driving. In particular for autonomous driving, day-time and night-time each roughly contributes to 50% of the
         time over a year, and it is equally important for computer vision techniques developed for day-time scenes to
@@ -29,7 +29,7 @@
         from both under-exposure as well as over-exposure problems (i.e., their values may be very close to either zero
         or one). Enhancing these images or processing them with existing computer vision algorithms often do not work.
       </p>
-      <p>
+      <p style="text-align: justify;">
         In this project, we are developing techniques to process low-light images. Our research is to address this
         problem from two directions. The first is to consider how to enhance these images to improve their visibility.
         The second is to investigate how to improve existing computer vision algorithms for direct analyses of low-light
@@ -58,7 +58,7 @@
           <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
         </div>
         <div v-if="project.abstract">
-          <p><b>Abstract.&nbsp;</b>{{project.abstract}}<span></span></p>
+          <p style="text-align: justify;"><b>Abstract:&nbsp;</b>{{project.abstract}}<span></span></p>
         </div>
         <el-divider content-position="right">{{index+1}}</el-divider>
       </div>

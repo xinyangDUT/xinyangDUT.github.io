@@ -89,7 +89,10 @@
             video: 'single.mp4',
             io: ' Given a single depth image of an object, our ISCNet progressively generate the missing points of the initial point cloud under the optimal sequence of viewpoints decided by an RL agent.',
             abstract: 'In this paper we present ISCNet, a single depth-image completion method that exploits reflective symmetry cues to obtain more detailed shape completions. The efficacy of single image depth completion methods is often sensitive to the accuracy of the symmetry plane. ISCNet therefore jointly estimates the symmetry plane and shape completion iteratively; more complete shapes contribute to more robust symmetry plane estimates and vice versa. Furthermore, our shape completion method operates in the image domain, enabling more efficient high-resolution detailed geometry reconstruction. We perform the shape completion from pairs of viewpoints, reflected across the symmetry plane, predicted by a reinforcement learning agent to improve robustness and to simultaneously explicitly leverage symmetry. We demonstrate the efficacy of ISCNet on a variety of object categories on both synthetic and real-scanned datasets.',
-            
+            links: [
+              { name: 'paper', link: 'https://openaccess.thecvf.com/content/ICCV2023/papers/Zhang_Single_Depth-image_3D_Reflection_Symmetry_and_Shape_Prediction_ICCV_2023_paper.pdf' },
+              { name: 'supp', link: 'https://openaccess.thecvf.com/content/ICCV2023/supplemental/Zhang_Single_Depth-image_3D_ICCV_2023_supplemental.pdf' }
+            ],
             imgs: [
               { src: 'fig1.png', label: 'ISCNet more efficiently leverages symmetry cues for robust shape completion from a single depth image compared to prior methods.' },
               { src: 'fig2.png', label: ' The pipeline of ISCNet.' },
@@ -195,7 +198,9 @@
             ],
             io: 'Given an indoor scene point cloud, our method predict the semantic segmentation label for each point based on our proposed feature extraction option named "coordinate convolution".',
             abstract: 'Point cloud semantic segmentation, a crucial research area in the 3D computer vision, lies at the core of many vision and robotics applications. Due to the irregular and disordered of the point cloud, however, the application of convolution on point clouds is challenging. In this paper, we propose the “coordinate convolution”, which can effectively extract local structural information of the point cloud, to solve the inapplicability of conventional convolution neural network (CNN) structures on the 3D point cloud. The “coordinate convolution” is a projection operation of three planes based on the local coordinate system of each point. Specifically, we project the point cloud on three planes in the local coordinate system with a joint 2D convolution operation to extract its features. Additionally, we leverage a self-encoding network based on image semantic segmentation U-Net structure as the overall architecture of the point cloud semantic segmentation algorithm. The results demonstrate that the proposed method exhibited excellent performances for point cloud data sets corresponding to various scenes.',
-            
+            links: [
+              { name: 'paper', link: 'https://onlinelibrary.wiley.com/doi/epdf/10.1002/cav.1948 ' },
+            ],
             imgs: [
               { src: 'ijcai18.png' },
             ],

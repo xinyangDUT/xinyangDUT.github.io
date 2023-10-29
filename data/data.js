@@ -44,7 +44,21 @@ const projects = [
 
 var publications=[
   {
-    authors: 'Yu Qiao, Bo Dong, Ao Jin, Yu Fu, Seung-Hwan Baek, Felix Heide, Pieter Peers, Xiaopeng Wei, Xin Yang.',
+    authors: 'Yingkai Fu, Meng Li, Wenxi Liu, Yuanchen Wang, Jiqing Zhang, Baocai Yin, Xiaopeng Wei, Xin Yang†.',
+    title: 'Distractor-aware Event-based Tracking.',
+    tags: [
+      ['IEEE Transactions on Image Processing', 1],
+      ['. ', 0],
+      ['(CCF A)', 2]
+
+    ],
+    href: 'intelligent_bionic_system/index.html#0',
+   
+  },
+
+
+  {
+    authors: 'Yu Qiao, Bo Dong, Ao Jin, Yu Fu, Seung-Hwan Baek, Felix Heide, Pieter Peers, Xiaopeng Wei, Xin Yang*.',
     title: 'Multi-view Spectral Polarization Propagation for Video Glass Segmentation.',
     tags: [
       ['ICCV 2023', 1],
@@ -58,7 +72,7 @@ var publications=[
 
 
   {
-    authors: 'Jiqing Zhang, Yuanchen Wang , Wenxi Liu, Meng Li, Jinpeng Bai, Baocai Yin, Xin Yang. ',
+    authors: 'Jiqing Zhang, Yuanchen Wang , Wenxi Liu, Meng Li, Jinpeng Bai, Baocai Yin, Xin Yang*. ',
     title: 'Frame-Event Alignment and Fusion Network for High Frame Rate Tracking.',
     tags: [
       ['CVPR 2023', 1],
@@ -66,7 +80,7 @@ var publications=[
       ['(CCF A)', 2]
 
     ],
-    href: 'intelligent_bionic_system/index.html#0',
+    href: 'intelligent_bionic_system/index.html#1',
   },
 
   {
@@ -79,19 +93,19 @@ var publications=[
     ],
     href: '3DV/index.html#0',
   },
-     {  authors: 'Yang Wang, Bo Dong, Yuji Zhang, Yunduo Zhou, Haiyang Mei, Ziqi Wei, Xin Yang.',
+     {  authors: 'Yang Wang, Bo Dong, Yuji Zhang, Yunduo Zhou, Haiyang Mei, Ziqi Wei, Xin Yang*.',
      title: 'Event-Enhanced Multi-Modal Spiking Neural Network for Dynamic Obstacle Avoidance.',
      tags: [
        ['ACM International Conference on Multimedia (ACM MM) 2023', 1],
        ['. ', 0],
        ['(CCF A)', 2]
      ],
-      href: 'intelligent_bionic_system/index.html#1',
+      href: 'intelligent_bionic_system/index.html#2',
       
     },
   
   
-   {    authors: 'Haiyang Mei, Ke Xu, Yunduo Zhou, Yang Wang, Haiyin Piao, Xiaopeng Wei, Xin Yang.',
+   {    authors: 'Haiyang Mei, Ke Xu, Yunduo Zhou, Yang Wang, Haiyin Piao, Xiaopeng Wei, Xin Yang*.',
    title: 'Camouflaged Object Segmentation with Omni Perception.',
    tags: [
      ['International Journal of Computer Vision (IJCV) 2023', 1],
@@ -100,7 +114,7 @@ var publications=[
       href: 'detection_segmentation/index.html#1',
       
     },
-    {   authors: '梅海洋, 杨鑫, 周运铎, 季葛鹏, 魏小鹏, 范登平.',
+    {   authors: '梅海洋, 杨鑫*, 周运铎, 季葛鹏, 魏小鹏, 范登平.',
     title: '分心感知的伪装目标分割.',
     tags: [
       ['中国科学: 信息科学', 1],
@@ -110,14 +124,14 @@ var publications=[
       href: 'detection_segmentation/index.html#2',
       
     },
-    {   authors: 'Haiwei Zhang, Jiqing Zhang, Bo Dong, Pieter Peers, Wenwei Wu, Xiaopeng Wei, Felix Heide, Xin Yang.',
+    {   authors: 'Haiwei Zhang, Jiqing Zhang, Bo Dong, Pieter Peers, Wenwei Wu, Xiaopeng Wei, Felix Heide, Xin Yang*.',
       title: 'In the Blink of an Eye: Event-based Emotion Recognition.',
       tags: [
         ['SIGGRAPH 2023', 1],
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'intelligent_bionic_system/index.html#2',
+      href: 'intelligent_bionic_system/index.html#3',
       
     },
   
@@ -129,7 +143,7 @@ var publications=[
         ['IEEE Robotics and Automation Letters (RA-L) 2023', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#4',
+      href: 'intelligent_bionic_system/index.html#5',
       
     },
     {
@@ -139,7 +153,7 @@ var publications=[
         ['ACM Transactions on Multimedia Computing, Communications, and Applications (TOMM) 2023', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#3',
+      href: 'intelligent_bionic_system/index.html#4',
       
     },
   {   authors: 'Zhaoxuan Zhang, Xiaoguang Han, Bo Dong, Tong Li, Baocai Yin, Xin Yang*.',
@@ -174,7 +188,7 @@ var publications=[
       
     },
     {
-      authors: 'Haiyang Mei, Bo Dong, Wen Dong, Jiaxi Yang, Seung-Hwan Baek, Felix Heide, Pieter Peers, Xiaopeng Wei, Xin Yang.',
+      authors: 'Haiyang Mei, Bo Dong, Wen Dong, Jiaxi Yang, Seung-Hwan Baek, Felix Heide, Pieter Peers, Xiaopeng Wei, Xin Yang*.',
       title: 'Glass Segmentation using Intensity and Spectral Polarization Cues.',
       tags: [
         ['CVPR 2022', 1],
@@ -196,7 +210,7 @@ var publications=[
       
     },
     {
-      authors: 'Xin Tian, Ke Xu, Xin Yang, Lin Du, Baocai Yin, Rynson W.H. Lau.',
+      authors: 'Xin Tian, Ke Xu, Xin Yang*, Lin Du, Baocai Yin, Rynson W.H. Lau.',
       title: 'Bi-directional Object-Context Prioritization Learning for Saliency Ranking.',
       tags: [
         ['CVPR 2022', 1],
@@ -246,17 +260,17 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'intelligent_bionic_system/index.html#5',
+      href: 'intelligent_bionic_system/index.html#6',
       
     },
     {
-      authors: 'Hu Lin, Meng Li, Qianchen Xia, Yifeng Fei, Baocai Yin, Xin Yang.',
+      authors: 'Hu Lin, Meng Li, Qianchen Xia, Yifeng Fei, Baocai Yin, Xin Yang*.',
       title: '6-DoF Pose Relocalization for Event Cameras With Entropy Frame and Attention Networks.',
       tags: [
         ['ACM SIGGRAPH VRCAI 2022', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#6',
+      href: 'intelligent_bionic_system/index.html#7',
       
     },
     {
@@ -267,7 +281,7 @@ var publications=[
         ['. ', 0],
         ['(CCF B)', 2]
       ],
-      href: 'intelligent_bionic_system/index.html#7',
+      href: 'intelligent_bionic_system/index.html#8',
     },
     {
       authors: 'Jiqing Zhang, Bo Dong, Haiwei Zhang, Jianchuan Ding, Felix Heide, Baocai Yin, Xin Yang*.',
@@ -277,12 +291,12 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'intelligent_bionic_system/index.html#8',
+      href: 'intelligent_bionic_system/index.html#9',
       
     },
 
     
-    {  authors: 'Yu Qiao*, Ziqi Wei*, Yuhao Liu, Yuxin Wang†, Dongsheng Zhou, Qiang Zhang, Xin Yang.',
+    {  authors: 'Yu Qiao*, Ziqi Wei*, Yuhao Liu, Yuxin Wang†, Dongsheng Zhou, Qiang Zhang, Xin Yang*.',
       title: 'Wider and Higher: Intensive Integration and Global Foreground Perception for Image Matting.',
       tags: [
         ['Computer Graphics International(CGI) 2022', 1],
@@ -298,7 +312,7 @@ var publications=[
         ['浙江大学学报（理学版. 2022, 49(01)', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#9',
+      href: 'intelligent_bionic_system/index.html#10',
       
     },
     {
@@ -312,7 +326,7 @@ var publications=[
       
     },
     {
-      authors: 'Lei Zhu, Xiaoqing Wang, Ping Li, Xin Yang, Qing Zhang, Weiming Wang, Schönlieb, Carola-Bibiane, Chen, C.L. Philip.',
+      authors: 'Lei Zhu, Xiaoqing Wang, Ping Li, Xin Yang*, Qing Zhang, Weiming Wang, Schönlieb, Carola-Bibiane, Chen, C.L. Philip.',
       title: 'Self-supervised Self-ensembling Network for Semi-supervised RGB-D Salient Object Detection.',
       tags: [
         ['IEEE Transactions on Multimedia 2021', 1],
@@ -323,7 +337,7 @@ var publications=[
       
     },
     {
-      authors: 'Chengyu Zheng, Shi Ding, Mingqiang Wei, Xin Yang, Yanwen Guo, Haoran Xie, Xuefeng Yan.',
+      authors: 'Chengyu Zheng, Shi Ding, Mingqiang Wei, Xin Yang*, Yanwen Guo, Haoran Xie, Xuefeng Yan.',
       title: 'Label Decoupling-based Three-stream Neural Network for Robust Glass Detection.',
       tags: [
         ['Computer Graphics Forum (CGF) (Special Issue of Pacific Graphics 2021, Wellington, New Zealand)', 1],
@@ -356,23 +370,23 @@ var publications=[
       
     },
     {
-      authors: 'Jiqing Zhang, Xin Yang, Yingkai Fu, Xiaopeng Wei, Baocai Yin, Bo Dong.',
+      authors: 'Jiqing Zhang, Xin Yang*, Yingkai Fu, Xiaopeng Wei, Baocai Yin, Bo Dong.',
       title: 'Object Tracking by Jointly Exploiting Frame and Event Domain.',
       tags: [
         ['ICCV 2021', 1],
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'intelligent_bionic_system/index.html#10',
+      href: 'intelligent_bionic_system/index.html#11',
     },
     {
-      authors: 'Jiqing Zhang, Kai Zhao, Bo Dong, Yingkai Fu, Xinglin Piao, Xin Yang, Baocai Yin.',
+      authors: 'Jiqing Zhang, Kai Zhao, Bo Dong, Yingkai Fu, Xinglin Piao, Xin Yang*, Baocai Yin.',
       title: 'Multi-domain Collaborative Feature Representation for Robust Visual Object Tracking.',
       tags: [
         ['The Visual Computer (Proc. CGI 2021)', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#11',
+      href: 'intelligent_bionic_system/index.html#12',
       
     },
     {
@@ -383,7 +397,7 @@ var publications=[
         ['IROS 2021', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#12',
+      href: 'intelligent_bionic_system/index.html#13',
       
     },
    
@@ -441,7 +455,7 @@ var publications=[
       
     },
     {
-      authors: 'Ke Xu, Xin Tian, Xin Yang, Baocai Yin, Rynson Lau.',
+      authors: 'Ke Xu, Xin Tian, Xin Yang*, Baocai Yin, Rynson Lau.',
       title: 'Intensity-Aware Single-Image Deraining with Semantic and Color Regularization.',
       tags: [
         ['IEEE Transactions on Image Processing 2021', 1],
@@ -464,7 +478,7 @@ var publications=[
     },
 
     {
-      authors: 'Xin Tian, Ke Xu, Xin Yang, Baocai Yin, Rynson Lau.',
+      authors: 'Xin Tian, Ke Xu, Xin Yang*, Baocai Yin, Rynson Lau.',
       title: 'Weakly-supervised Salient Instance Detection.',
       tags: [
         ['BMVC 2020. (Oral, 5%, Best Student Paper)', 1],
@@ -485,7 +499,7 @@ var publications=[
       
     },
     {
-      authors: 'Shimin Zhao, Miaomiao Chen, Pengjie Wang, Ying Cao, Pingping Zhang and Xin Yang.',
+      authors: 'Shimin Zhao, Miaomiao Chen, Pengjie Wang, Ying Cao, Pingping Zhang and Xin Yang*.',
       title: 'RGB-D Salient Object Detection via Deep Fusion of Semantics and Details.',
       tags: [
         ['Journal of Computer Animation and Virtual Worlds, Bournemouth, UK. (Special Issue of CASA 2020)', 1],
@@ -495,7 +509,7 @@ var publications=[
       
     },
     {
-      authors: 'Sucheng Ren, Chu Han, Xin Yang, Guoqiang Han, Shengfeng He.',
+      authors: 'Sucheng Ren, Chu Han, Xin Yang*, Guoqiang Han, Shengfeng He.',
       title: 'TENet: Triple Excitation Network for Video Salient Object Detection.',
       tags: [
         ['ECCV 2020, Glasgow, UK. (Spotlight)', 1],
@@ -527,7 +541,7 @@ var publications=[
       
     },
     {
-      authors: 'Hengfeng Zha, Dongsheng Zhou, Xin Yang,Qiang Zhang,Xiaopeng Wei.',
+      authors: 'Hengfeng Zha, Dongsheng Zhou, Xin Yang*,Qiang Zhang,Xiaopeng Wei.',
       title: 'Reweighted Non-convex Non-smooth Rank Minimization based Spectral Clustering on Grassmann Manifold.',
       tags: [
         ['The 12th Asian Conference on Machine Learning (ACML) 2020', 1],
@@ -537,7 +551,7 @@ var publications=[
       
     },
     {
-      authors: 'Xinglin Piao, Yongli Hu, Junbin Gao, Yanfeng Sun, Xin Yang, Baocai Yin.',
+      authors: 'Xinglin Piao, Yongli Hu, Junbin Gao, Yanfeng Sun, Xin Yang*, Baocai Yin.',
       title: 'Reweighted Non-convex Non-smooth Rank Minimization based Spectral Clustering on Grassmann Manifold.',
       tags: [
         ['The 15th Asian Conference on Computer Vision (ACCV) 2020, Kyoto, Japan', 1],
@@ -547,7 +561,7 @@ var publications=[
       
     },
     {
-      authors: 'Lei Chen, Rui Liu, Dongsheng Zhou, Yang Xin, Qiang Zhang and Xiaopeng Wei.',
+      authors: 'Lei Chen, Rui Liu, Dongsheng Zhou, Yang Xin*, Qiang Zhang and Xiaopeng Wei.',
       title: 'A Human Behavior Recognition Model based on Extended Squeeze-and-Excitation Network.',
       tags: [
         ['CASA 2020, Bournemouth, UK', 1],
@@ -557,7 +571,7 @@ var publications=[
       
     },
     {
-      authors: 'Xiaoheng Jiang, Li Zhang, Mingliang Xu, Tianzhu Zhang, Pei Lv, Bing Zhou, Xin Yang, Yanwei Pang.',
+      authors: 'Xiaoheng Jiang, Li Zhang, Mingliang Xu, Tianzhu Zhang, Pei Lv, Bing Zhou, Xin Yang*, Yanwei Pang.',
       title: 'Attention Scaling for Crowd Counting.',
       tags: [
         ['CVPR 2020, Seattle, USA', 1],

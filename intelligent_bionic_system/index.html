@@ -63,8 +63,23 @@
       return {
         styles,
         projects: [
+    
+          {
+            authors: 'Yingkai Fu, Meng Li, Wenxi Liu, Yuanchen Wang, Jiqing Zhang, Baocai Yin, Xiaopeng Wei, Xin Yang†.',
+            title: 'Distractor-aware Event-based Tracking.',
+            tags: [
+              ['IEEE Transactions on Image Processing', 1],
+              ['. ', 0],
+              ['(CCF A)', 2]
+            ],
+            io: 'With the event camera, given the video and the starting target position of the first frame, our network produces the subsequent position of target in the video.',
+            abstract: 'Event cameras, or dynamic vision sensors, have recently achieved success from fundamental vision tasks to high-level vision researches. Due to its ability to asynchronously capture light intensity changes, event camera has an inherent advantage to capture moving objects in challenging scenarios including objects under low light, high dynamic range, or fast moving objects. Thus event camera are natural for visual object tracking. However, the current event-based trackers derived from RGB trackers simply treat events as another form of visual cues, which may not be robust dealing with moving cameras or cluttered foreground. In this paper, we propose a distractor-aware event-based tracker that introduces transformer modules into Siamese network architecture. Specifically, our model is composed of a motion-aware network and a target-aware network, which simultaneously exploits both motion cues and object contours from event data, so as to discover motion objects and identify the target object by removing dynamic distractors. Our proposed tracker can be trained in an end-to-end manner without any post-processing and can run at over 80 FPS on a single V100. We conduct comprehensive experiments on two large event tracking datasets to validate the proposed model. We demonstrate that the proposed method has superior performance against the state-of-the-art trackers in terms of both accuracy and efficiency.',
+            video: 'demo-fyk.mp4',
+          },
+
+
         {
-            authors: 'Jiqing Zhang, Yuanchen Wang , Wenxi Liu, Meng Li, Jinpeng Bai, Baocai Yin, Xin Yang. ',
+            authors: 'Jiqing Zhang, Yuanchen Wang , Wenxi Liu, Meng Li, Jinpeng Bai, Baocai Yin, Xin Yang*. ',
             title: 'Frame-Event Alignment and Fusion Network for High Frame Rate Tracking.',
             io: ' Given the first event frame image and corresponding bounding box, our network produces the following bounding boxes.',
             tags: [
@@ -81,7 +96,7 @@
           },
    
         {
-            authors: 'Yang Wang, Bo Dong, Yuji Zhang, Yunduo Zhou, Haiyang Mei, Ziqi Wei, Xin Yang. ',
+            authors: 'Yang Wang, Bo Dong, Yuji Zhang, Yunduo Zhou, Haiyang Mei, Ziqi Wei, Xin Yang*. ',
             title: 'Event-Enhanced Multi-Modal Spiking Neural Network for Dynamic Obstacle Avoidance.',
             io: ' Given the event data, laser data, goal and velocity, our framework produces the action of robot.',
             tags: [
@@ -103,7 +118,7 @@
 
           },
         {
-            authors: 'Haiwei Zhang, Jiqing Zhang, Bo Dong, Pieter Peers, Wenwei Wu, Xiaopeng Wei, Felix Heide, Xin Yang. ',
+            authors: 'Haiwei Zhang, Jiqing Zhang, Bo Dong, Pieter Peers, Wenwei Wu, Xiaopeng Wei, Felix Heide, Xin Yang*. ',
             title: 'In the Blink of an Eye: Event-based Emotion Recognition.',
             io: ' Give an single-eye-based emotion squence, including intensity and corresponding events, our framework produces the emotion recognition classification results.',
             tags: [

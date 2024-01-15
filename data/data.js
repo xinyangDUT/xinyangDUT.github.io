@@ -44,6 +44,19 @@ const projects = [
 
 var publications=[
   {
+    authors: 'Wen Dong, Haiyang Mei, Ziqi Wei, Ao Jin, Sen Qiu, Qiang Zhang, Xin Yang*.',
+    title: 'Exploiting Polarized Material Cues for Robust Car Detection.',
+    tags: [
+      ['AAAI 2024', 1],
+      ['. ', 0],
+      ['(CCF A)', 2]
+    ],
+    href: 'detection_segmentation/index.html#0',
+  },
+  
+  
+  
+  {
     authors: 'Jiqing Zhang, Bo Dong, Yingkai Fu, Yuanchen Wang, Xiaopeng Wei, BaocaiYin, Xin Yang*.',
     title: 'A Universal Event-based Plug-in Module for Visual Object Tracking in Degraded Conditions.',
     tags: [
@@ -76,7 +89,7 @@ var publications=[
       ['. ', 0],
       ['(CCF A)', 2]
     ],
-    href: 'detection_segmentation/index.html#0',
+    href: 'detection_segmentation/index.html#1',
   },
 
 
@@ -122,7 +135,7 @@ var publications=[
      ['International Journal of Computer Vision (IJCV) 2023', 1],
      ['. ', 0],
      ['(CCF A)', 2]],
-      href: 'detection_segmentation/index.html#1',
+      href: 'detection_segmentation/index.html#2',
       
     },
     {   authors: '梅海洋, 杨鑫*, 周运铎, 季葛鹏, 魏小鹏, 范登平.',
@@ -132,7 +145,7 @@ var publications=[
       ['. ', 0],
       ['(CCF A类中文期刊)', 2]
     ],
-      href: 'detection_segmentation/index.html#2',
+      href: 'detection_segmentation/index.html#3',
       
     },
     {   authors: 'Haiwei Zhang, Jiqing Zhang, Bo Dong, Pieter Peers, Wenwei Wu, Xiaopeng Wei, Felix Heide, Xin Yang*.',
@@ -195,7 +208,7 @@ var publications=[
         ['Communications and Applications (TOMM) 2022', 1],
         ['. ', 0]
       ],
-      href: 'detection_segmentation/index.html#3',
+      href: 'detection_segmentation/index.html#4',
       
     },
     {
@@ -206,7 +219,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'detection_segmentation/index.html#4',
+      href: 'detection_segmentation/index.html#5',
       
     },
     {
@@ -227,7 +240,7 @@ var publications=[
         ['CVPR 2022', 1],
         ['. ', 0]
       ],
-      href: 'detection_segmentation/index.html#5',
+      href: 'detection_segmentation/index.html#6',
       
     },
     {
@@ -238,7 +251,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'detection_segmentation/index.html#6',
+      href: 'detection_segmentation/index.html#7',
       
     },
     {
@@ -249,7 +262,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'detection_segmentation/index.html#7',
+      href: 'detection_segmentation/index.html#8',
       
     },
     {
@@ -333,7 +346,7 @@ var publications=[
         ['(CCF A)', 2],
         ['. ', 0]
       ],
-      href: 'detection_segmentation/index.html#8',
+      href: 'detection_segmentation/index.html#9',
       
     },
     {
@@ -344,7 +357,7 @@ var publications=[
         ['. ', 0],
         ['(CCF B)', 2]
       ],
-      href: 'detection_segmentation/index.html#9',
+      href: 'detection_segmentation/index.html#10',
       
     },
     {
@@ -355,7 +368,7 @@ var publications=[
         ['. ', 0],
         ['(CCF B)', 2]
       ],
-      href: 'detection_segmentation/index.html#10',
+      href: 'detection_segmentation/index.html#11',
       
     }, 
     {
@@ -366,7 +379,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A, Oral)', 2]
       ],
-      href: 'detection_segmentation/index.html#11',
+      href: 'detection_segmentation/index.html#12',
       
     }, 
     {
@@ -377,7 +390,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'detection_segmentation/index.html#12',
+      href: 'detection_segmentation/index.html#13',
       
     },
     {
@@ -441,7 +454,7 @@ var publications=[
         ['. ', 0],
         ['(CCF B)', 2]
       ],
-      href: 'detection_segmentation/index.html#14',
+      href: 'detection_segmentation/index.html#15',
       
     },
     {
@@ -495,7 +508,7 @@ var publications=[
         ['BMVC 2020. (Oral, 5%, Best Student Paper)', 1],
         ['. ', 0]
       ],
-      href: 'detection_segmentation/index.html#15',
+      href: 'detection_segmentation/index.html#16',
       
     },
     {
@@ -506,7 +519,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'detection_segmentation/index.html#13',
+      href: 'detection_segmentation/index.html#14',
       
     },
     {
@@ -516,7 +529,7 @@ var publications=[
         ['Journal of Computer Animation and Virtual Worlds, Bournemouth, UK. (Special Issue of CASA 2020)', 1],
         ['. ', 0]
       ],
-      href: 'detection_segmentation/index.html#16',
+      href: 'detection_segmentation/index.html#17',
       
     },
     {
@@ -526,7 +539,7 @@ var publications=[
         ['ECCV 2020, Glasgow, UK. (Spotlight)', 1],
         ['. ', 0]
       ],
-      href: 'detection_segmentation/index.html#17',
+      href: 'detection_segmentation/index.html#18',
       
     },
     {
@@ -722,7 +735,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'detection_segmentation/index.html#18',
+      href: 'detection_segmentation/index.html#19',
       
     },
     {

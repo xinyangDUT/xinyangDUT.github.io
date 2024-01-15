@@ -67,6 +67,23 @@
         styles,
         projects: [
         {
+            authors: 'Wen Dong, Haiyang Mei, Ziqi Wei, Ao Jin, Sen Qiu, Qiang Zhang, Xin Yang*.',
+            title: 'Exploiting Polarized Material Cues for Robust Car Detection.',
+            tags: [
+              ['AAAI 2024', 1],
+              ['. ', 0],
+              ['(CCF A)', 2]
+            ],
+            io: 'Given the RGB image along with the corresponding Angle of Linear Polarization (AoLP) and Degree of Linear Polarization (DoLP) images, our PCDNet generates the bounding boxes for each car instance.',
+            abstract: 'Car detection is an important task that serves as a crucial prerequisite for many automated driving functions. The large variations in lighting/weather conditions and vehicle densities of the scenes pose significant challenges to existing car detection algorithms to meet the highly accurate perception demand for safety, due to the unstable/limited color information, which impedes the extraction of meaningful/discriminative features of cars. In this work, we present a novel learning-based car detection method that leverages trichromatic linear polarization as an additional cue to disambiguate such challenging cases. A key observation is that polarization, characteristic of the light wave, can robustly describe intrinsic physical properties of the scene objects in various imaging conditions and is strongly linked to the nature of materials for cars (e.g., metal and glass) and their surrounding environment (e.g., soil and trees), thereby providing reliable and discriminative features for robust car detection in challenging scenes. To exploit polarization cues, we first construct a pixel-aligned RGB-Polarization car detection dataset, which we subsequently employ to train a novel multimodal fusion network. Our car detection network dynamically integrates RGB and polarization features in a request-and-complement manner and can explore the intrinsic material properties of cars across all learning samples. We extensively validate our method and demonstrate that it outperforms state-of-the-art detection methods. Experimental results show that polarization is a powerful cue for car detection.',
+            imgs: [
+              { src: 'AAAI24-Comparison.png' },
+              { src: 'AAAI24-Pipeline.png' }
+            ],
+          },
+
+
+        {
             authors: 'Yu Qiao, Bo Dong, Ao Jin, Yu Fu, Seung-Hwan Baek, Felix Heide, Pieter Peers, Xiaopeng Wei, Xin Yang*.',
             title: 'Multi-view Spectral Polarization Propagation for Video Glass Segmentation.',
             tags: [

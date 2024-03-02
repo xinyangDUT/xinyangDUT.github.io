@@ -44,6 +44,18 @@ const projects = [
 
 var publications=[
   {
+    authors: 'Jingcheng Jiang, Haiyin Piao, Yu Fu, Yihang Hao, Chuanlu Jiang, Ziqi Wei∗, Xin Yang∗.',
+    title: 'Phasic Diversity Optimization for Population-Based Reinforcement Learning.',
+    tags: [
+      ['IEEE International Conference on Robotics and Automation (ICRA)', 1],
+      ['. ', 0],
+      ['(CCF B)', 2]
+    ],
+    href: 'intelligent_bionic_system/index.html#0',
+  
+  },
+
+  {
     authors: 'Wen Dong, Haiyang Mei, Ziqi Wei, Ao Jin, Sen Qiu, Qiang Zhang, Xin Yang*.',
     title: 'Exploiting Polarized Material Cues for Robust Car Detection.',
     tags: [
@@ -64,7 +76,7 @@ var publications=[
       ['. ', 0],
       ['(CCF A)', 2]
     ],
-    href: 'intelligent_bionic_system/index.html#0',
+    href: 'intelligent_bionic_system/index.html#1',
   },
 
   {
@@ -76,7 +88,7 @@ var publications=[
       ['(CCF A)', 2]
 
     ],
-    href: 'intelligent_bionic_system/index.html#1',
+    href: 'intelligent_bionic_system/index.html#2',
    
   },
 
@@ -104,7 +116,7 @@ var publications=[
       ['(CCF A)', 2]
 
     ],
-    href: 'intelligent_bionic_system/index.html#2',
+    href: 'intelligent_bionic_system/index.html#3',
   },
 
   {
@@ -124,7 +136,7 @@ var publications=[
        ['. ', 0],
        ['(CCF A)', 2]
      ],
-      href: 'intelligent_bionic_system/index.html#3',
+      href: 'intelligent_bionic_system/index.html#4',
       
     },
   
@@ -155,7 +167,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'intelligent_bionic_system/index.html#4',
+      href: 'intelligent_bionic_system/index.html#5',
       
     },
   
@@ -167,7 +179,7 @@ var publications=[
         ['IEEE Robotics and Automation Letters (RA-L) 2023', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#6',
+      href: 'intelligent_bionic_system/index.html#7',
       
     },
     {
@@ -177,7 +189,7 @@ var publications=[
         ['ACM Transactions on Multimedia Computing, Communications, and Applications (TOMM) 2023', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#5',
+      href: 'intelligent_bionic_system/index.html#6',
       
     },
   {   authors: 'Zhaoxuan Zhang, Xiaoguang Han, Bo Dong, Tong Li, Baocai Yin, Xin Yang*.',
@@ -284,7 +296,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'intelligent_bionic_system/index.html#7',
+      href: 'intelligent_bionic_system/index.html#8',
       
     },
     {
@@ -294,7 +306,7 @@ var publications=[
         ['ACM SIGGRAPH VRCAI 2022', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#8',
+      href: 'intelligent_bionic_system/index.html#9',
       
     },
     {
@@ -305,7 +317,7 @@ var publications=[
         ['. ', 0],
         ['(CCF B)', 2]
       ],
-      href: 'intelligent_bionic_system/index.html#9',
+      href: 'intelligent_bionic_system/index.html#10',
     },
     {
       authors: 'Jiqing Zhang, Bo Dong, Haiwei Zhang, Jianchuan Ding, Felix Heide, Baocai Yin, Xin Yang*.',
@@ -315,7 +327,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'intelligent_bionic_system/index.html#10',
+      href: 'intelligent_bionic_system/index.html#11',
       
     },
 
@@ -336,7 +348,7 @@ var publications=[
         ['浙江大学学报（理学版. 2022, 49(01)', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#11',
+      href: 'intelligent_bionic_system/index.html#12',
       
     },
     {
@@ -401,7 +413,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: 'intelligent_bionic_system/index.html#12',
+      href: 'intelligent_bionic_system/index.html#13',
     },
     {
       authors: 'Jiqing Zhang, Kai Zhao, Bo Dong, Yingkai Fu, Xinglin Piao, Xin Yang*, Baocai Yin.',
@@ -410,7 +422,7 @@ var publications=[
         ['The Visual Computer (Proc. CGI 2021)', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#13',
+      href: 'intelligent_bionic_system/index.html#14',
       
     },
     {
@@ -421,7 +433,7 @@ var publications=[
         ['IROS 2021', 1],
         ['. ', 0]
       ],
-      href: 'intelligent_bionic_system/index.html#14',
+      href: 'intelligent_bionic_system/index.html#15',
       
     },
    

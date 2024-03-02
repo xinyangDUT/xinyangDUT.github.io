@@ -64,6 +64,23 @@
         styles,
         projects: [
         {
+            authors: 'Jingcheng Jiang, Haiyin Piao, Yu Fu, Yihang Hao, Chuanlu Jiang, Ziqi Wei∗, Xin Yang∗.',
+            title: 'Phasic Diversity Optimization for Population-Based Reinforcement Learning.',
+            tags: [
+              ['IEEE International Conference on Robotics and Automation (ICRA)', 1],
+              ['. ', 0],
+              ['(CCF B)', 2]
+            ],
+            abstract: 'Reviewing the previous work of diversity Rein-forcement Learning, diversity is often obtained via an augmented loss function, which requires a balance between reward and diversity. Generally, diversity optimization algorithms use Multi-armed Bandits algorithms to select the coefficient in the pre-defined space. However, the dynamic distribution of reward signals for MABs or the conflict between quality and diversity limits the performance of these methods. We introduce the Phasic Diversity Optimization (PDO) algorithm, a Population-Based Training framework that separates reward and diversity training into distinct phases instead of optimizing a multi-objective function. In the auxiliary phase, agents with poor performance diversified via determinants will not replace the better agents in the archive. The decoupling of reward and diversity allows us to use an aggressive diversity optimization in the auxiliary phase without performance degradation. Furthermore, we construct a dogfight scenario for aerial agents to demonstrate the practicality of the PDO algorithm. We introduce two implementations of PDO archive and conduct tests in the newly proposed adversarial dogfight and MuJoCo simulations. The results show that our proposed algorithm achieves better performance than baselines.',
+            io: ' Given a specific scenario, obtain the maximum fitness, coverage, and quality diversity scores obtained using the PDO algorithm, and verify the advantages of the PDO algorithm.',
+            imgs: [
+              'jiang1.png',
+              'jiang2.png',
+            ],
+          
+          },
+
+        {
             authors: 'Jiqing Zhang, Bo Dong, Yingkai Fu, Yuanchen Wang, Xiaopeng Wei, BaocaiYin, Xin Yang*.',
             title: 'A Universal Event-based Plug-in Module for Visual Object Tracking in Degraded Conditions.',
             tags: [
@@ -71,7 +88,7 @@
               ['. ', 0],
               ['(CCF A)', 2]
             ],
-            abstract: 'Most existing trackers based on RGB/grayscale frames may collapse due to the unreliability of conventional sensors in some challenging scenarios (e.g., motion blur and high dynamic range). Event-based cameras as bioinspired sensors encode brightness changes with high temporal resolution and high dynamic range, thereby providing considerable potential for tracking under degraded conditions. Nevertheless, events lack the fine-grained texture cues provided by RGB/grayscale frames. This complementarity encourages us to fuse visual cues from the frame and event domains for robust object tracking under various challenging conditions. In this paper, we propose a novel event feature extractor to capture spatiotemporal features with motion cues from event-based data by boosting interactions and distinguishing alterations between states at different moments. Further.',
+            abstract: 'Most existing trackers based on RGB/grayscale frames may collapse due to the unreliability of conventional sensors in some challenging scenarios (e.g., motion blur and high dynamic range). Event-based cameras as bioinspired sensors encode brightness changes with high temporal resolution and high dynamic range, thereby providing considerable potential for tracking under degraded conditions. Nevertheless, events lack the fine-grained texture cues provided by RGB/grayscale frames. This complementarity encourages us to fuse visual cues from the frame and event domains for robust object tracking under various challenging conditions. In this paper, we propose a novel event feature extractor to capture spatiotemporal features with motion cues from event-based data by boosting interactions and distinguishing alterations between states at different moments.',
             io: ' Given the first frame image, and it is corresponding events and bounding box, our network produces the following bounding boxes.',
             imgs: [
               'qing1.png',

@@ -44,6 +44,15 @@ const projects = [
 
 var publications=[
   {
+    authors: 'Tong Li、Zhaoxuan Zhang、Yuxin Wang、Yan Cui、Yuqi Li、Dongsheng Zhou、Baocai Yin、Xin Yang*.',
+    title: 'Self-supervised indoor scene point cloud completion from a single panorama.',
+    tags: [
+      ['The Visual Computer 2024', 1],
+      ['. ', 0],
+    ],
+    href: '3DV/index.html#0',
+  },
+  {
     authors: 'Yang Wang, Haiyang Mei, Qirui Bao, Ziqi Wei, Mike Zheng Shou, Haizhou Li, Bo Dong, Xin Yang*.',
     title: 'Apprenticeship-Inspired Elegance: Synergistic Knowledge Distillation Empowers Spiking Neural Networks for Efficient Single-Eye Emotion Recognition.',
     tags: [
@@ -139,7 +148,7 @@ var publications=[
       ['. ', 0],
       ['(CCF A)', 2],
     ],
-    href: '3DV/index.html#0',
+    href: '3DV/index.html#1',
   },
      {  authors: 'Yang Wang, Bo Dong, Yuji Zhang, Yunduo Zhou, Haiyang Mei, Ziqi Wei, Xin Yang*.',
      title: 'Event-Enhanced Multi-Modal Spiking Neural Network for Dynamic Obstacle Avoidance.',
@@ -211,7 +220,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: '3DV/index.html#1',
+      href: '3DV/index.html#2',
       
     },
     {
@@ -573,7 +582,7 @@ var publications=[
         ['Journal of Computer Animation and Virtual Worlds,Special Issue of CASA 2020', 1],
         ['. ', 0]
       ],
-      href: '3DV/index.html#6',
+      href: '3DV/index.html#4',
       
     },
   
@@ -726,7 +735,7 @@ var publications=[
         ['.', 0],
         ['(Oral, CCF A)', 2]
       ],
-      href: '3DV/index.html#4',
+      href: '3DV/index.html#5',
       
     },
     {
@@ -812,7 +821,7 @@ var publications=[
         ['. ', 0],
         ['(CCF A)', 2]
       ],
-      href: '3DV/index.html#5',
+      href: '3DV/index.html#6',
       
     },
     {

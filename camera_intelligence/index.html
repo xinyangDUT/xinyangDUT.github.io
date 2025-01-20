@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<title>Camera Intelligence</title>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../css/element-ui.css" />
+  <link rel="stylesheet" href="../css/index.css" />
+  <script src="../js/vue.min.js"></script>
+  <script src="../js/element-ui.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <el-button style="position:fixed;" @click="goBack" round><i class="el-icon-back"></i>Back</el-button>
+    <!-- Rendering and Simulation -->
+    <div class="content">
+      <h1 style="font-size: 50px;">
+        Camera Intelligence
+      </h1>
+      <el-divider></el-divider>
+
+      <p style="text-align: justify;font-size: 18px;">
+
+        Camera intelligence can enhance the capabilities of cameras, introduce features that were previously impossible
+        with film-based photography, reduce the cost or size of camera components, and provide broader visual
+        information support beyond traditional RGB sensors in computer vision applications. Our team focuses on "Camera
+        Intelligence" and has developed a series of efficient vision algorithms that can be deployed on or near the
+        camera chip. These algorithms are designed for three key areas: single-photon imaging, stereo vision, and
+        event-based vision.
+
+      </p>
+      <p style="text-align: justify;font-size: 18px;">
+        <b>&bull; Single-photon</b> imaging drives the development of algorithms capable of leveraging the rich
+        spatio-temporal scene
+        information captured by novel single-photon-sensitive sensors.
+
+
+      </p>
+      <p style="text-align: justify;font-size: 18px;">
+        <b>&bull; Stereo vision</b> utilizes multiple cameras to capture a scene from slightly different viewpoints,
+        enabling more
+        accurate depth information extraction.
+
+
+      </P>
+      <p style="text-align: justify;font-size: 18px;">
+        <b>&bull; Event-based vision</b> exploits the low latency, wide dynamic range, and asynchronous nature of event
+        cameras to
+        design efficient and lightweight algorithms for improved visual performance.
+
+
+      </p>
+      <p style="text-align: justify;font-size: 18px;">
+        These research efforts aim to further expand the dimensionality and performance of computational photography,
+        striving to "manipulate sensors to simulate realistic human vision."
+      </p>
+      <el-divider></el-divider>
+
+
+      <el-collapse v-model="activeNames1" @change="handleChange" style="margin-top: 0px;">
+        <el-collapse-item v-for="direction in directions1">
+          <template slot="title">
+            <span style="font-size: 28px;font-weight: bolder;color:dodgerblue;">
+              {{direction.title}}
+            </span>
+          </template>
+
+          <el-collapse v-if="direction.domains" v-model="activeNames2" @change="handleChange">
+            <el-collapse-item v-for="domain in direction.domains" :index="num_index">
+              <template slot="title">
+                <span style="font-size: 25px;margin-left: 20px;font-weight:bold;font-weight: bolder;color:dodgerblue;">
+                  {{domain.title}}
+                </span>
+              </template>
+              <div v-for="project,index in domain.projects">
+                <p class="project_p" style="font-size: 20px">
+                  <span v-html="textBold(project.authors)"></span>
+                  <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                    style="font-size: 20px">{{project.title}}</b>
+                  <span v-for="tag in project.tags" :style="styles[tag[1]]" style="font-size: 20px">{{tag[0]}}</span>
+                  <span v-for="link in project.links" style="font-size: 20px">[<b><a class="project_links"
+                        :href="link.link" style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+                </p>
+                <div v-if="project.video" class="figure_div">
+                  <video width="640" :src="'videos/'+project.video" controls></video>
+                </div>
+                <div v-for="img in project.imgs" class="figure_div">
+                  <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                  <div v-if="img.label">
+                    <div class="figure_label">{{img.label}}</div>
+                    <br>
+                  </div>
+                </div>
+                <div v-if="project.io">
+                  <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+                </div>
+                <div v-if="project.abstract">
+                  <p style="text-align: justify;font-size: 18px;">
+                    <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                  </p>
+                </div>
+                <el-divider content-position="right">{{project.id}}</el-divider>
+              </div>
+            </el-collapse-item>
+          </el-collapse>
+
+          <el-collapse v-if="direction.domains1" v-model="activeNames2" @change="handleChange">
+            <el-collapse-item v-for="domain_1 in direction.domains1" :index="num_index">
+              <template slot="title">
+                <span style="font-size: 25px;margin-left: 20px;font-weight:bold;">
+                  {{domain_1.title}}
+                </span>
+              </template>
+              <el-collapse v-model="activeNames3" @change="handleChange">
+                <el-collapse-item v-for="domain_2 in domain_1.domains" :index="num_index">
+                  <template slot="title">
+                    <span style="font-size: 23px;margin-left: 40px;">
+                      {{domain_2.title}}
+                    </span>
+                  </template>
+                  <div v-for="project,index in domain_2.projects">
+                    <p class="project_p" style="font-size: 20px">
+                      <span v-html="textBold(project.authors)"></span>
+                      <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                        style="font-size: 20px">{{project.title}}</b>
+                      <span v-for="tag in project.tags" :style="styles[tag[1]]"
+                        style="font-size: 20px">{{tag[0]}}</span>
+                      <span v-for="link in project.links" style="font-size: 20px">[<b><a class="project_links"
+                            :href="link.link" style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+                    </p>
+                    <div v-if="project.video" class="figure_div">
+                      <video width="640" :src="'videos/'+project.video" controls></video>
+                    </div>
+                    <div v-for="img in project.imgs" class="figure_div">
+                      <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                      <div v-if="img.label">
+                        <div class="figure_label">{{img.label}}</div>
+                        <br>
+                      </div>
+                    </div>
+                    <div v-if="project.io">
+                      <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+                    </div>
+                    <div v-if="project.abstract">
+                      <p style="text-align: justify;font-size: 18px;">
+                        <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                      </p>
+                    </div>
+                    <el-divider content-position="right">{{project.id}}</el-divider>
+                  </div>
+                </el-collapse-item>
+            </el-collapse-item>
+          </el-collapse>
+
+          <el-collapse v-if="direction.domains2" v-model="activeNames2" @change="handleChange">
+            <el-collapse-item v-for="domain in direction.domains2" :index="num_index">
+              <template slot="title">
+                <span style="font-size: 25px;margin-left: 20px;font-weight:bold;">
+                  {{domain.title}}
+                </span>
+              </template>
+              <div v-for="project,index in domain.projects">
+                <p class="project_p" style="font-size: 20px">
+                  <span v-html="textBold(project.authors)"></span>
+                  <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                    style="font-size: 20px">{{project.title}}</b>
+                  <span v-for="tag in project.tags" :style="styles[tag[1]]" style="font-size: 20px">{{tag[0]}}</span>
+                  <span v-for="link in project.links" style="font-size: 20px">[<b><a class="project_links"
+                        :href="link.link" style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+                </p>
+                <div v-if="project.video" class="figure_div">
+                  <video width="640" :src="'videos/'+project.video" controls></video>
+                </div>
+                <div v-for="img in project.imgs" class="figure_div">
+                  <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                  <div v-if="img.label">
+                    <div class="figure_label">{{img.label}}</div>
+                    <br>
+                  </div>
+                </div>
+                <div v-if="project.io">
+                  <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+                </div>
+                <div v-if="project.abstract">
+                  <p style="text-align: justify;font-size: 18px;">
+                    <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                  </p>
+                </div>
+                <el-divider content-position="right">{{project.id}}</el-divider>
+              </div>
+            </el-collapse-item>
+          </el-collapse>
+
+          <div v-if="direction.projects">
+            <div v-for="project,index in direction.projects">
+              <p class="project_p" style="font-size: 20px">
+                <span v-html="textBold(project.authors)"></span>
+                <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                  style="font-size: 20px">{{project.title}}</b>
+                <span v-for="tag in project.tags" :style="styles[tag[1]]" style="font-size: 20px">{{tag[0]}}</span>
+                <span v-for="link in project.links" style="font-size: 20px">[<b><a class="project_links"
+                      :href="link.link" style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+              </p>
+              <div v-if="project.video" class="figure_div">
+                <video width="640" :src="'videos/'+project.video" controls></video>
+              </div>
+              <div v-for="img in project.imgs" class="figure_div">
+                <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                <div v-if="img.label">
+                  <div class="figure_label">{{img.label}}</div>
+                  <br>
+                </div>
+              </div>
+              <div v-if="project.io" style="font-size: 18px;">
+                <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+              </div>
+              <div v-if="project.abstract">
+                <p style="text-align: justify;font-size: 18px;">
+                  <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                </p>
+              </div>
+              <el-divider content-position="right">{{project.id}}</el-divider>
+            </div>
+
+          </div>
+        </el-collapse-item>
+
+      </el-collapse>
+
+
+    </div>
+  </div>
+</body>
+<script src="../js/index.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        num_index: 1,
+        styles,
+        activeNames1: ['1'],
+        activeNames2: ['2'],
+        activeNames3: ['2'],
+        styles,
+        directions1: [
+          {
+            title: "a. Single Photon Imaging Technology",
+            projects: [
+              {
+                authors: 'Letian Yu, Jiaxi Yang, Bo Dong, Qirui Bao, Yuanbo Wang, Felix Heide, Xiaopeng Wei, Xin Yang*',
+                title: 'Separating the Wheat from the Chaff: Spatio-Temporal Transformer with View-interweaved Attention for Photon-Efficient Depth Sensing',
+                tags: [
+                  ['AAAI 2025', 1],
+                  ['.', 0],
+                  ['(CCF A)', 2]
+                ],
+                abstract: "Time-resolved imaging is an emerging sensing modality that has been shown to enable adavanced applications, including remote sensing, fluorescence lifetime imaging, and even non-line-of-sight sensing. Single-photon avalanche diodes (SPADs) outperform among relevant time-resolved imaging technologies thanks to their excellent photon sensitivity and superior temporal resolution on the order of tens of picoseconds. The capability of exceeding the sensing limits of conventional cameras for SPADs also draws attention in photon-efficient imaging area. However, photon-efficient imaging under degraded conditions with low photon counts and low singal-to-background ratio (SBR) still remains an inevitable challenge. \n In this paper, we propose a spatio-temporal transformer network for photon-efficient imaging under low-flux scenarios. In particular, we introduce a view-interweaved attention mechanism (VIAM) to both extract spatial-view and temporal-view self-attention in each transformer block. We also design an adaptive-weighting scheme to dynamically adjust the weights between different views of self-attention in VIAM for different signal-to-background levels. We both extensively validate and demonstrate the effectiveness of our approach on the simulated Middlebury dataset and on a specially self-collected dataset with real-world captured SPAD measurements and well-annotated ground truth depth maps.",
+                imgs: [
+                  { src: 'image.png' },
+                ],
+                links: [
+                { name: 'code', link: 'https://pan.baidu.com/s/14Dnk6ZVdKfIfhVj3g9NSxQ?pwd=j4y4' },
+                ],
+                video: '',
+              },
+              {
+                authors:
+                  '杨佳熙，于乐天，葛慧林，包骐瑞，毕胜，麻晓斗，魏小鹏，杨鑫.',
+                title: '面向高光子通量环境的目标深度估计方法.',
+                tags: [
+                  ['CAD/CG 2024', 1],
+                ],
+                imgs: [
+                  { src: 'GGZ.png' }
+                ],
+                abstract: "单光子雪崩二极管(Single-Photon Avalanche Diode, SPAD)的高时间分辨率特性、高精度特性为其开辟了广泛的应用空间，尤其是在对算法性能要求日益增长的计算机视觉、计算成像等领域。基于SPAD 能对各种常见目标进行精确度较高的深度估计，但是，SPAD每次探测到光子后会进入一段无法探测的猝灭期。这导致环境中光子数量较多时，同个脉冲周期内更早到达SPAD的光子有更大概率被采集，使得最终形成的光子数量统计曲线明显向时间轴短的方向偏移，且偏移程度随着光子通量(即单位时间内探测光子数量)的增加而扩大。该现象被称为堆积效应(Pileup Effect)，其降低了深度估计算法的准确性。对于这一问题，首先搭建了用于采集SPAD光子数据的单光子探测系统，并在几种不同光子通量下采集了一个针对SPAD深度估计任务中堆积效应进行研究的目标深度数据集。在此基础上, 设计了一个将光子通量作为全局特征进行学习的深度估计网络，该网络融合了SPAD探测结果中的局部空间特征和全局光子通量特征，在几种存在堆积效应的光子通量下均取得了较高的深度估计性能。"
+              },
+
+            ]
+          },
+          {
+            title: "b. Stereoscopic Vision",
+            domains: [
+              {
+                title: "i. stereo depth estimation",
+                projects: [
+                  {
+                    authors: 'Yuanbo Wang, Shanglai Qu, Tianyu Meng, Yan Cui, Haiyin Piao, XiaoPeng Wei∗, Xin Yang∗',
+                    title: 'Event-intensity Stereo with Cross-modal Fusion and Contrast.',
+                    tags: [
+                      ['International Conference on Intelligent Robots and Systems 2024', 1],
+                    ],
+                    abstract: "For binocular stereo, traditional cameras excel in capturing fine details and texture information but are limited in terms of dynamic range and their ability to handle rapid motion. On the contrary, event cameras provide pixel-level intensity changes with low latency and a wide dynamic range, albeit at the cost of less detail in their output. It is natural to leverage the strengths of both modalities. We solve this problem by introducing a cross-modal fusion module that learns a visual representation from both sensor inputs. Additionally, we extract and compare dense event-intensity stereo pair features by contrasting “pairs of event-intensity pairs from different views and different modalities and different timestamps”. This provides the flexibility in masking hard negatives and enables networks to effectively combine event-intensity signals within a contrastive learning framework, leading to an improved matching accuracy and facilitating more accurate estimation of disparity. Experimental results validate the effectiveness of our model and the improvement of disparity estimation accuracy",
+                    imgs: [
+                      { src: 'IROS_2024.png', label: " From left to right: the architecture overview of our proposed models, event-intensity voxel fusion (EIVF) module,and event-intensity spatial pyramid fusion (EI-SPF) module." },
+                      { src: 'IROS_2024_1.png' },
+                    ],
+                    links: [
+
+                    ],
+                    video: '',
+                  },
+                ]
+
+              },
+
+            ],
+          },
+          {
+            title: "c. Event-based Vision",
+            domains: [
+              {
+                title: "i. Event-based Pose Estimation",
+                projects: [
+                  {
+                    authors: 'Nannan Yu, Tao Ma, Jiqing Zhang, Yuji Zhang, Qirui Bao, Xiaopeng Wei, Xin Yang*',
+                    title: 'Adaptive Vision Transformer for Event-Based Human Pose Estimation.',
+                    tags: [
+                      ['ACM International Conference on Multimedia 2024', 1],
+                      ['.', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    abstract: "Event-based human pose estimation has gained popularity due to the benefits of high temporal resolution and high dynamic range offered by event cameras. The inherent spatial sparsity of event data makes discarding less significant regions a straightforward and effective way to decrease the computation. However, implementing this operation in CNNs poses a challenge, as it disrupts the regularity of dense convolutional workload. In this paper, we propose an adaptive vision transformer, a novel efficient backbone for human pose estimation with event cameras. Specifically, we present two adaptive patch and token sampling approaches based on the characteristics of events, thereby reducing the computational load while still achieving comparable performance. Firstly, we design an adaptive patch sampling scheme to eliminate inactivity patches by assessing the entropy of the events before they are inputted into the transformer. Secondly, we further propose an adaptive token reduction strategy to selectively remove less informative tokens in transformer layers through a dynamic token pruning algorithm. To exploit event-based visual cues in human pose estimation tasks, we construct a large-scale frame-event-based dataset, dubbed Event Multi Movement HPE (EventMM HPE). The dataset provides annotation frequencies up to 240 Hz. Extensive experiments",
+                    imgs: [
+                      { src: 'ACMMM_camera_pic1.png' },
+                      { src: 'ACMMM_camera_pic2.png' },
+                    ],
+                    links: [
+                      { name: 'paper', link: 'https://openreview.net/forum?id=p4MdxsQVXu' },
+                    ],
+                    video: '',
+                  },
+                  {
+                    authors: '王超毅, 于男男，乔羽，任健康，周东生，魏小鹏，张强，杨鑫*',
+                    title: '基于事件相机的图像语义分割.',
+                    tags: [
+                      ['计算机辅助设计与图形学学报 2023', 1],
+                      ['.', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    abstract: "语义分割技术对自动驾驶等实际场景的图像处理十分重要. 然而基于传统相机的语义分割仍面临动态光照下信息缺失以及高速运动目标的运动模糊等问题. 为此，本文引入高动态范围和高响应速度的事件相机, 能够在恶劣光照和高速运动条件下有效成像, 并提出了一种基于事件相机的图像语义分割方法(Event-based Image Semantic Segmentation, EVISS). 在数据集部分, 针对基于事件相机的语义分割数据集较少且标注质量不高的问题, 通过仿真环境制作了一个大规模和高精度标注的数据集Carla-Semantic; 在网络设计部分, 针对分布不均的事件数据特征难提取的问题, EVISS方法通过改进的图拉普拉斯公式和注意力机制, 增强图像的全局联系性和上下文依赖, 有效提取高层级事件特征. 在所制作的Carla-Semantic数据集上与现有技术Ev-SegNet进行实验的结果表明, EVISS方法在MPA和mIoU评价指标上分别达到87.89%和81.93%, 超越了对比方法的表现, 有效地实现基于事件相机的图像语义分割.",
+                    imgs: [
+                      { src: 'ZW_pic1.png' },
+                      { src: 'ZW_pic2.png' },
+                    ],
+                    links: [
+                      { name: 'paper', link: 'https://www.jcad.cn/cn/article/pdf/preview/10.3724/SP.J.1089.2023-00698.pdf' },
+                    ],
+                    video: '',
+                  },
+                ]
+              },
+              {
+                title: "ii. Event-based Polarization Vision",
+                projects: [
+                  {
+                    authors: 'Haiyang Mei, Zuowen Wang, Xin Yang*, Xiaopeng Wei, Tobi Delbruck:',
+                    title: 'Deep Polarization Reconstruction With PDAVIS Events.',
+                    tags: [
+                      ['CVPR 2024', 1],
+                      ['.', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    abstract: "The polarization event camera PDAVIS is a novel bio-inspired neuromorphic vision sensor that reports both conventional polarization frames and asynchronous, continuously per-pixel polarization brightness changes (polarization events) with fast temporal resolution and large dynamic range. A deep neural network method (Polarization FireNet) was previously developed to reconstruct the polarization angle and degree from polarization events for bridging the gap between the polarization event camera and mainstream computer vision. However, Polarization FireNet applies a network pre-trained for normal event-based frame reconstruction independently on each of four channels of polarization events from four linear polarization angles, which ignores the correlations between channels and inevitably introduces content inconsistency between the four reconstructed frames, resulting in unsatisfactory polarization reconstruction performance. In this work, we strive to train an effective, yet efficient, DNN model that directly outputs polarization from the input raw polarization events. To this end, we constructed the first large-scale event-to-polarization dataset, which we subsequently employed to train our events-to-polarization network E2P. E2P extracts rich polarization patterns from input polarization events and enhances features through cross-modality context integration. We demonstrate that E2P outperforms Polarization FireNet by a significant margin with no additional computing cost. Experimental results also show that E2P produces more accurate measurement of polarization than the PDAVIS frames in challenging fast and high dynamic range scenes.",
+                    imgs: [
+                      { src: 'CVPR_2023_M_pic1.png' },
+                      { src: 'CVPR_2023_M_pic2.png' },
+                    ],
+                    links: [
+                      { name: 'paper', link: 'https://openaccess.thecvf.com/content/CVPR2023/papers/Mei_Deep_Polarization_Reconstruction_With_PDAVIS_Events_CVPR_2023_paper.pdf' },
+                      { name: 'code', link: 'https://github.com/SensorsINI/e2p' }
+                    ],
+                    video: '',
+                  },
+                  {
+                    authors: 'Wen Dong, Haiyang Mei, Ziqi Wei, Ao Jin, Sen Qiu, Qiang Zhang, Xin Yang*.',
+                    title: 'Exploiting Polarized Material Cues for Robust Car Detection.',
+                    tags: [
+                      ['AAAI 2024', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    io: 'Given the RGB image along with the corresponding Angle of Linear Polarization (AoLP) and Degree of Linear Polarization (DoLP) images, our PCDNet generates the bounding boxes for each car instance.',
+                    abstract: 'Car detection is an important task that serves as a crucial prerequisite for many automated driving functions. The large variations in lighting/weather conditions and vehicle densities of the scenes pose significant challenges to existing car detection algorithms to meet the highly accurate perception demand for safety, due to the unstable/limited color information, which impedes the extraction of meaningful/discriminative features of cars. In this work, we present a novel learning-based car detection method that leverages trichromatic linear polarization as an additional cue to disambiguate such challenging cases. A key observation is that polarization, characteristic of the light wave, can robustly describe intrinsic physical properties of the scene objects in various imaging conditions and is strongly linked to the nature of materials for cars (e.g., metal and glass) and their surrounding environment (e.g., soil and trees), thereby providing reliable and discriminative features for robust car detection in challenging scenes. To exploit polarization cues, we first construct a pixel-aligned RGB-Polarization car detection dataset, which we subsequently employ to train a novel multimodal fusion network. Our car detection network dynamically integrates RGB and polarization features in a request-and-complement manner and can explore the intrinsic material properties of cars across all learning samples. We extensively validate our method and demonstrate that it outperforms state-of-the-art detection methods. Experimental results show that polarization is a powerful cue for car detection.',
+                    imgs: [
+                      { src: 'AAAI24-Comparison.png' },
+                      { src: 'AAAI24-Pipeline.png' }
+                    ],
+                    links: [
+                      { name: 'paper', link: 'https://ojs.aaai.org/index.php/AAAI/article/view/27922' },
+                      { name: 'dataset', link: 'http://rgbp.dluticcd.com/' }
+                    ],
+                    video: 'dong.mp4',
+                  },
+                ]
+              }
+            ]
+          }
+        ],
+        }
+    },
+    methods: {
+      textBold(s) {
+        return textBold(s)
+      },
+      goBack() {
+        goBack()
+      },
+      handleChange(val) {
+        console.log(val)
+      },
+      replaceSpacesWithUnderscore(title) {
+        return title.replace(/\s+/g, '_');
+      }
+
+    },
+    created() {
+      var id = 1;
+      for (var i = 0; i < 1000; i++) {
+        this.activeNames1.push(i);
+        this.activeNames2.push(i);
+        this.activeNames3.push(i);
+      }
+      let idCounter = 1;
+
+      this.directions1.forEach(direction => {
+        direction.domains.forEach(domain => {
+          domain.projects.forEach(project => {
+            project.id = idCounter++;
+          });
+        });
+      });
+      this.directions1[1].domains1.forEach(domain11 => {
+        domain11.domains.forEach(domain => {
+          domain.projects.forEach(project => {
+            project.id = idCounter++;
+          });
+        });
+      });
+      this.directions1[1].domains2.forEach(domain => {
+        domain.projects.forEach(project => {
+          project.id = idCounter++;
+        });
+      });
+    },
+  })
+</script>
+
+</html>

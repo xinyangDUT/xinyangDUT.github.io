@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html>
+<title>Visual Perception and Understanding in Complex Scenes</title>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../css/element-ui.css" />
+  <link rel="stylesheet" href="../css/index.css" />
+  <script src="../js/vue.min.js"></script>
+  <script src="../js/element-ui.min.js"></script>
+</head>
+
+<style>
+  .el-collapse-item__header {
+
+    line-height: 30px;
+    height: auto;
+    padding: 10px 20px;
+  }
+</style>
+
+<body>
+  <div id="app">
+    <el-button style="position:fixed;" @click="goBack" round><i class="el-icon-back"></i>Back</el-button>
+    <!-- Photorealistic Rendering -->
+    <div class="content">
+      <h1 style="font-size: 50px;">
+        Visual Perception and Understanding in Complex Scenes
+      </h1>
+      <el-divider></el-divider>
+      <p style="text-align: justify;font-size: 18px;">
+
+        We focus on visual perception and understanding in complex scenes, aiming to enhance the ability of intelligent
+        agents to "see clearly" and "understand accurately" in the real world. With the development of artificial
+        intelligence and automation technologies, machines need to accurately capture and interpret visual information
+        in complex environments such as autonomous driving, intelligent surveillance, and human-computer interaction.
+        However, challenges such as lighting variations, weather interference, and object occlusion make it difficult
+        for traditional vision algorithms to cope. Therefore, our research initially focuses on visual perception.
+        Through techniques such as super-resolution, de-raining, and low-light enhancement, we improve image quality in
+        complex scenes, ensuring that machines obtain accurate and complete visual data. Building on this, we delve into
+        visual understanding, addressing issues like salient object detection and confusing target segmentation,
+        enabling models to accurately identify and segment objects in complex backgrounds, with a special focus on
+        handling reflective, transparent, and concealed objects. Through systematic research from visual perception to
+        visual understanding, we provide a comprehensive and effective solution to the challenges of visual tasks in
+        complex scenes. This not only advances computer vision applications and innovations in challenging environments
+        but also provides robust technical support for fields like autonomous driving, intelligent surveillance, and
+        human-computer interaction.
+      </p>
+      <el-divider></el-divider>
+
+      <el-collapse v-model="activeNames1" @change="handleChange" style="margin-top: 0px;">
+        <el-collapse-item v-for="direction in directions1">
+          <template slot="title">
+            <span style="font-size: 28px;font-weight: bolder;color:dodgerblue;">
+              {{direction.title}}
+            </span>
+          </template>
+
+          <el-collapse v-if="direction.domains" v-model="activeNames2" @change="handleChange">
+            <el-collapse-item v-for="domain in direction.domains" :index="num_index">
+              <template slot="title">
+                <span style="font-size: 25px;margin-left: 20px;font-weight:bold;color: dodgerblue;">
+                  {{domain.title}}
+                </span>
+              </template>
+              <div v-for="project,index in domain.projects">
+                <p class="project_p" style="font-size: 20px">
+                  <span v-html="textBold(project.authors)"></span>
+                  <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                    style="font-size: 20px">{{project.title}}</b>
+                  <span v-for="tag in project.tags" :style="styles[tag[1]]" style="font-size: 20px">{{tag[0]}}</span>
+                  <span v-for="link in project.links" style="font-size: 20px">[<b><a class="project_links"
+                        :href="link.link" style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+                </p>
+                <div v-if="project.video" class="figure_div">
+                  <video width="640" :src="'videos/'+project.video" controls></video>
+                </div>
+                <div v-for="img in project.imgs" class="figure_div">
+                  <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                  <div v-if="img.label">
+                    <div class="figure_label">{{img.label}}</div>
+                    <br>
+                  </div>
+                </div>
+                <div v-if="project.io" style="font-size: 18px;">
+                  <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+                </div>
+                <div v-if="project.abstract">
+                  <p style="text-align: justify;font-size: 18px;">
+                    <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                  </p>
+                </div>
+                <el-divider content-position="right">{{project.id}}</el-divider>
+              </div>
+            </el-collapse-item>
+          </el-collapse>
+
+          <el-collapse v-if="direction.domains1" v-model="activeNames2" @change="handleChange">
+            <el-collapse-item v-for="domain_1 in direction.domains1" :index="num_index">
+              <template slot="title">
+                <span style="font-size: 25px;margin-left: 20px;font-weight:bold; color:dodgerblue;">
+                  {{domain_1.title}}
+                </span>
+              </template>
+              <el-collapse v-model="activeNames3" @change="handleChange">
+                <el-collapse-item v-for="domain_2 in domain_1.domains" :index="num_index">
+                  <template slot="title">
+                    <span style="font-size: 23px;margin-left: 40px; color:dodgerblue;">
+                      {{domain_2.title}}
+                    </span>
+                  </template>
+                  <div v-for="project,index in domain_2.projects">
+                    <p class="project_p" style="font-size: 20px">
+                      <span v-html="textBold(project.authors)"></span>
+                      <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                        style="font-size: 20px;  ">{{project.title}}</b>
+                      <span v-for="tag in project.tags" :style="styles[tag[1]]"
+                        style="font-size: 20px">{{tag[0]}}</span>
+                      <span v-for="link in project.links" style="font-size: 20px">[<b><a class="project_links"
+                            :href="link.link" style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+                    </p>
+                    <div v-if="project.video" class="figure_div">
+                      <video width="640" :src="'videos/'+project.video" controls></video>
+                    </div>
+                    <div v-for="img in project.imgs" class="figure_div">
+                      <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                      <div v-if="img.label">
+                        <div class="figure_label">{{img.label}}</div>
+                        <br>
+                      </div>
+                    </div>
+                    <div v-if="project.io" style="font-size: 18px;">
+                      <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+                    </div>
+                    <div v-if="project.abstract">
+                      <p style="text-align: justify;font-size: 18px;">
+                        <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                      </p>
+                    </div>
+                    <el-divider content-position="right">{{project.id}}</el-divider>
+                  </div>
+                </el-collapse-item>
+            </el-collapse-item>
+          </el-collapse>
+
+          <el-collapse v-if="direction.domains2" v-model="activeNames2" @change="handleChange">
+            <el-collapse-item v-for="domain in direction.domains2" :index="num_index">
+              <template slot="title">
+                <span style="font-size: 25px;margin-left: 20px;font-weight:bold; color:dodgerblue;">
+                  {{domain.title}}
+                </span>
+              </template>
+              <div v-for="project,index in domain.projects">
+                <p class="project_p" style="font-size: 20px">
+                  <span v-html="textBold(project.authors)"></span>
+                  <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                    style="font-size: 20px">{{project.title}}</b>
+                  <span v-for="tag in project.tags" :style="styles[tag[1]]" style="font-size: 20px">{{tag[0]}}</span>
+                  <span v-for="link in project.links" style="font-size: 20px">[<b><a class="project_links"
+                        :href="link.link" style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+                </p>
+                <div v-if="project.video" class="figure_div">
+                  <video width="640" :src="'videos/'+project.video" controls></video>
+                </div>
+                <div v-for="img in project.imgs" class="figure_div">
+                  <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                  <div v-if="img.label">
+                    <div class="figure_label">{{img.label}}</div>
+                    <br>
+                  </div>
+                </div>
+                <div v-if="project.io" style="font-size: 18px;">
+                  <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+                </div>
+                <div v-if="project.abstract">
+                  <p style="text-align: justify;font-size: 18px;">
+                    <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                  </p>
+                </div>
+                <el-divider content-position="right">{{project.id}}</el-divider>
+              </div>
+            </el-collapse-item>
+          </el-collapse>
+        </el-collapse-item>
+      </el-collapse>
+
+
+
+
+    </div>
+  </div>
+  </div>
+</body>
+<script src="../js/index.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        num_index: 1,
+        styles,
+        activeNames1: ['1'],
+        activeNames2: ['2'],
+        activeNames3: ['2'],
+        directions1: [
+          {
+            title: "a. Complex Material Object Perception",
+            domains: [
+              {
+                title: "i.  Reflective Object Segmentation",
+                projects: [
+                  {
+                    authors: 'Haiyang Mei, Letian Yu, Ke Xu, Yang Wang, Xin Yang†, Xiaopeng Wei, Rynson W.H. Lau.',
+                    title: 'Mirror Segmentation via Semantic-Aware Contextual Contrasted Feature Learning.',
+                    tags: [
+                      ['ACM Transactions on Multimedia Computing, Communications and Applications (TOMM) 2022', 1],
+                      ['. ', 0],
+                    ],
+                    io: 'Given an input RGB image, our network outputs a binary mask that indicates where mirrors are.',
+                    abstract: 'Mirrors are everywhere in our daily lives. Existing computer vision systems do not consider mirrors, and hence may get confused by the reflected content inside a mirror, resulting in a severe performance degradation. However, separating the real content outside a mirror from the reflected content inside it is non-trivial. The key challenge is that mirrors typically reflect contents similar to their surroundings, making it very difficult to differentiate the two. In this article, we present a novel method to segment mirrors from a single RGB image. To the best of our knowledge, this is the first work to address the mirror segmentation problem with a computational approach. We make the following contributions: First, we propose a novel network, called MirrorNet+, for mirror segmentation, by modeling both contextual contrasts and semantic associations. Second, we construct the first large-scale mirror segmentation dataset, which consists of 4,018 pairs of images containing mirrors and their corresponding manually annotated mirror masks, covering a variety of daily-life scenes. Third, we conduct extensive experiments to evaluate the proposed method and show that it outperforms the related state-of-the-art detection and segmentation methods. Fourth, we further validate the effectiveness and generalization capability of the proposed semantic awareness contextual contrasted feature learning by applying MirrorNet+ to other vision tasks, i.e., salient object detection and shadow detection. Finally, we provide some applications of mirror segmentation and analyze possible future research directions.',
+                    imgs: [
+                      { src: 'MirrorNet+1.png' },
+                      { src: 'MirrorNet+2.png' }
+                    ],
+                    links: [
+                      { name: 'paper', link: 'https://dl.acm.org/doi/pdf/10.1145/3566127' },
+                      { name: 'code', link: 'https://mhaiyang.github.io/TOMM2022-MirrorNet+/index.html' }
+                    ]
+                  },
+                  {
+                    authors: 'Haiyang Mei, Bo Dong, Wen Dong, Pieter Peers, Qiang Zhang, Xin Yang*, Xiaopeng Wei.',
+                    title: 'Depth-Aware Mirror Segmentation.',
+                    tags: [
+                      ['CVPR 2021', 1],
+                      ['. ', 0],
+                      ['(CCF A, Oral)', 2]
+                    ],
+                    io: 'Given an input RGB-D image, our network outputs a binary mask that indicates where mirrors are.',
+                    abstract: 'We present a novel mirror segmentation method that leverages depth estimates from ToF-based cameras as an additional cue to disambiguate challenging cases where the contrast or relation in RGB colors between the mirror reflection and the surrounding scene is subtle. A key observation is that ToF depth estimates do not report the true depth of the mirror surface, but instead return the total length of the reflected light paths, thereby creating obvious depth discontinuities at the mirror boundaries. To exploit depth information in mirror segmentation, we first construct a large-scale RGB-D mirror segmentation dataset, which we subsequently employ to train a novel depth-aware mirror segmentation framework. Our mirror segmentation framework first locates the mirrors based on color and depth discontinuities and correlations. Next, our model further refines the mirror boundaries through contextual contrast taking into account both color and depth information. We extensively validate our depth-aware mirror segmentation method and demonstrate that our model outperforms state-of-the-art RGB and RGB-D based methods for mirror segmentation. Experimental results also show that depth is a powerful cue for mirror segmentation.',
+                    imgs: [
+                      { src: 'Depth-Aware.gif' }
+                    ],
+                    links: [
+                      { name: 'paper', link: 'https://openaccess.thecvf.com/content/CVPR2021/papers/Mei_Depth-Aware_Mirror_Segmentation_CVPR_2021_paper.pdf' },
+                      { name: 'link', link: 'https://mhaiyang.github.io/CVPR2021_PDNet/index.html' }
+                    ]
+                  },
+                  {
+                    authors: 'Xin Yang*, Haiyang Mei*, Ke Xu, Xiaopeng Wei, Baocai Yin, and Rynson Lau (* joint first authors).',
+                    title: 'Where is My Mirror?',
+                    tags: [
+                      ['ICCV 2019', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    io: 'Given an input RGB image, our network outputs a binary mask that indicates where mirrors are.',
+                    abstract: 'Mirrors are everywhere in our daily lives. Existing computer vision systems do not consider mirrors, and hence may get confused by the reflected content inside a mirror, resulting in a severe performance degradation. However, separating the real content outside a mirror from the reflected content inside it is non-trivial. The key challenge is that mirrors typically reflect contents similar to their surroundings, making it very difficult to differentiate the two. In this paper, we present a novel method to segment mirrors from an input image. To the best of our knowledge, this is the first work to address the mirror segmentation problem with a computational approach. We make the following contributions. First, we construct a large-scale mirror dataset that contains mirror images with corresponding manually annotated masks. This dataset covers a variety of daily life scenes, and will be made publicly available for future research. Second, we propose a novel network, called MirrorNet, for mirror segmentation, by modeling both semantical and low-level color/texture discontinuities between the contents inside and outside of the mirrors. Third, we conduct extensive experiments to evaluate the proposed method, and show that it outperforms the carefully chosen baselines from the state-of-the-art detection and segmentation methods.',
+                    links: [
+                      { name: 'paper', link: 'http://www.cs.cityu.edu.hk/~rynson/papers/iccv19a.pdf' },
+                      { name: 'suppl', link: 'http://www.cs.cityu.edu.hk/~rynson/papers/demos/iccv19a-supp.pdf' },
+                      { name: 'code and updated results', link: 'https://github.com/Mhaiyang/ICCV2019_MirrorNet' },
+                      { name: 'dataset', link: 'msd.dluticcd.com' },
+                      { name: 'media', link: 'https://www.qbitai.com/2019/09/7314.html' }
+                    ],
+                    imgs: [
+                      { src: '20200621135331(3).gif' },
+                      { src: 'iccv_2019_results.jpg', label: 'Problems with mirrors in existing vision tasks. In depth prediction, NYU-v2 dataset [32] uses a Kinect to capture depth as ground truth. It wrongly predicts the depths of the reflected contents, instead of the mirror depths (b). In instance semantic segmentation, Mask RCNN [12] wrongly detects objects inside the mirrors (c). With MirrorNet, we first detect and mask out the mirrors (d). We then obtain the correct depths (e), by interpolating the depths from surrounding pixels of the mirrors, and segmentation maps (f).' }
+                    ],
+                  },
+                ]
+              },
+              {
+                title: "ii.  Transparent Object Segmentation",
+                projects: [
+                  {
+                    authors: 'Yu Qiao, Bo Dong, Ao Jin, Yu Fu, Seung-Hwan Baek, Felix Heide, Pieter Peers, Xiaopeng Wei, Xin Yang*.',
+                    title: 'Multi-view Spectral Polarization Propagation for Video Glass Segmentation.',
+                    tags: [
+                      ['ICCV 2023', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    io: 'Given the glass video sequences and corresponding Angle of Linear Polorization (AoLP) and Degree of Linear Polorization (DoLP) sequences, our PGVS_Net produces the segmentation mask for each glass area.',
+                    abstract: 'We present the first polarization-guided video glass segmentation propagation solution (PGVS-Net) that can robustly and coherently propagate glass segmen tation in RGB-P video sequences. By leveraging spatio temporal polarization and color information, our method combines multi-view polarization cues and thus can alle viate the view dependence of single-input intensity vari ations on glass objects. We demonstrate that our model can outperform glass segmentation on RGB-only video se quences as well as produce more robust segmentation than per-frame RGB-P single-image segmentation methods. To train and validate PGVS-Net, we introduce a novel RGB-P Glass Video dataset (PGV-117) containing 117 video se quences of scenes captured with different types of camera paths, lighting conditions, dynamics, and glass types. ',
+                    imgs: [
+                      { src: 'qiao1.png' },
+                      { src: 'qiao2.png' }
+                    ],
+                    links: [
+                      { name: 'paper', link: 'http://pgv117.dluticcd.com/static/upload/file/20231029/1698569140153178.pdf' },
+                      { name: 'dataset', link: 'http://pgv117.dluticcd.com' }
+                    ],
+                    video: 'qiao.mp4',
+                  },
+                  {
+                    authors: 'Haiyang Mei, Bo Dong, Wen Dong, Jiaxi Yang, Seung-Hwan Baek, Felix Heide, Pieter Peers, Xiaopeng Wei, Xin Yang*.',
+                    title: 'Glass Segmentation using Intensity and Spectral Polarization Cues.',
+                    tags: [
+                      ['CVPR 2022', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    io: 'Given the input RGB and trichromatic polarization images, our network outputs a binary mask that indicates where transparent glass regions are.',
+                    abstract: 'Transparent and semi-transparent materials pose significant challenges for existing scene understanding and segmentation algorithms due to their lack of RGB texture which impedes the extraction of meaningful features. In this work, we exploit that the light-matter interactions on glass materials provide unique intensity-polarization cues for each observed wavelength of light. We present a novel learning-based glass segmentation network that leverages both trichromatic (RGB) intensities as well as trichromatic linear polarization cues from a single photograph captured without making any assumption on the polarization state of the illumination. Our novel network architecture dynamically fuses and weights both the trichromatic color and polarization cues using a novel global-guidance and multiscale self-attention module, and leverages global cross-domain contextual information to achieve robust segmentation. We train and extensively validate our segmentation method on a new large-scale RGB-Polarization dataset (RGBP-Glass), and demonstrate that our method outperforms state-of-the-art segmentation approaches by a significant margin.',
+                    video: 'Glass-Segmentation.mp4',
+                    links: [
+                      { name: 'paper', link: 'https://openaccess.thecvf.com/content/CVPR2022/papers/Mei_Glass_Segmentation_Using_Intensity_and_Spectral_Polarization_Cues_CVPR_2022_paper.pdf' },
+                      { name: 'code', link: 'https://mhaiyang.github.io/CVPR2022_PGSNet/index.html' }
+                    ]
+                  },
+                  {
+                    authors: 'Letian Yu*, Haiyang Mei*, Wen Dong, Ziqi Wei, Li Zhu, Yuxin Wang, and Xin Yang†.',
+                    title: 'Progressive Glass Segmentation.',
+                    tags: [
+                      ['IEEE Transactions on Image Processing 2022', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    io: 'Given an input RGB image, our network outputs a binary mask that indicates where transparent glass regions are.',
+                    abstract: 'Glass is very common in the real world. Influenced by the uncertainty about the glass region and the varying complex scenes behind the glass, the existence of glass poses severe challenges to many computer vision tasks, making glass segmentation as an important computer vision task. Glass does not have its own visual appearances but only transmit/reflect the appearances of its surroundings, making it fundamentally different from other common objects. To address such a challenging task, existing methods typically explore and combine useful cues from different levels of features in the deep network. As there exists a characteristic gap between level-different features, i.e., deep layer features embed more high-level semantics and are better at locating the target objects while shallow layer features have larger spatial sizes and keep richer and more detailed low-level information, fusing these features naively thus would lead to a sub-optimal solution. In this paper, we approach the effective features fusion towards accurate glass segmentation in two steps. First, we attempt to bridge the characteristic gap between different levels of features by developing a Discriminability Enhancement (DE) module which enables level-specific features to be a more discriminative representation, alleviating the features incompatibility for fusion. Second, we design a Focus-and-Exploration Based Fusion (FEBF) module to richly excavate useful information in the fusion process by highlighting the common and exploring the difference between level-different features. Combining these two steps, we construct a Progressive Glass Segmentation Network (PGSNet) which uses multiple DE and FEBF modules to progressively aggregate features from high-level to low-level, implementing a coarse-to-fine glass segmentation. In addition, we build the first home-scene-oriented glass segmentation dataset for advancing household robot applications and in-depth research on this topic. Extensive experiments demonstrate that our method outperforms 26 cutting-edge models on three challenging datasets under four standard metrics. The code and dataset will be made publicly available.',
+                    imgs: [
+                      { src: 'Progressive Glass Segmentation_1.png' },
+                      { src: 'Progressive Glass Segmentation_2.png' }
+                    ],
+                    links: [
+                      { name: 'paper', link: 'https://ieeexplore.ieee.org/document/9748016' },
+                      { name: 'dataset, fetch code: hsod', link: 'https://pan.baidu.com/s/1qxXiFXYGHGPAxpLZ7h57jw' }
+                    ]
+                  },
+                  {
+                    authors: 'Haiyang Mei, Xin Yang*, Letian Yu, Qiang Zhang, Xiaopeng Wei, and Rynson W.H. Lau.',
+                    title: 'Large-Field Contextual Feature Learning for Glass Detection.',
+                    tags: [
+                      ['IEEE Transactions on Pattern Analysis and Machine Intelligence 2022', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    io: ' Given an input RGB image, our network outputs a binary mask that indicates where transparent glass regions are.',
+                    abstract: 'Glass is very common in our daily life. Existing computer vision systems neglect it and thus may have severe consequences, e.g., a robot may crash into a glass wall. However, sensing the presence of glass is not straightforward. The key challenge is that arbitrary objects/scenes can appear behind the glass. In this paper, we propose an important problem of detecting glass surfaces from a single RGB image. To address this problem, we construct the first large-scale glass detection dataset (GDD) and propose a novel glass detection network, called GDNet-B, which explores abundant contextual cues in a large field-of-view via a novel large-field contextual feature integration (LCFI) module and integrates both high-level and low-level boundary features with a boundary feature enhancement (BFE) module. Extensive experiments demonstrate that our GDNet-B achieves satisfying glass detection results on the images within and beyond the GDD testing set. We further validate the effectiveness and generalization capability of our proposed GDNet-B by applying it to other vision tasks, including mirror segmentation and salient object detection. Finally, we show the potential applications of glass detection and discuss possible future research directions.',
+                    imgs: [
+                      { src: 'Large-Field Contextual Feature Learning for Glass Detection_1.png' },
+                      { src: 'Large-Field Contextual Feature Learning for Glass Detection_2.png' }
+                    ],
+                    links: [
+                      { name: 'paper', link: 'https://arxiv.org/pdf/2209.04639' },
+                      { name: 'code', link: 'https://mhaiyang.github.io/TPAMI2022-GDNet-B/index.html' }
+                    ]
+                  },
+                  {
+                    authors: 'Chengyu Zheng, Shi Ding, Mingqiang Wei, Xin Yang, Yanwen Guo, Haoran Xie, Xuefeng Yan.',
+                    title: 'Label Decoupling-based Three-stream Neural Network for Robust Glass Detection.',
+                    tags: [
+                      ['Computer Graphics Forum (CGF)', 1],
+                      [' (Special Issue of Pacific Graphics 2021, Wellington, New Zealand). ', 0],
+                      ['(CCF B)', 2]
+                    ],
+                    io: 'Given an input RGB image, our network outputs a binary mask that indicates where transparent glass regions are.',
+                    abstract: 'Most of existing object detection methods generate poor glass detection results, due to the fact that the transparent glass shares the same appearance with the background. Different from traditional wisdoms that simply use object boundary as auxiliary supervision, we exploit label decoupling to decompose the original labeled GT map into interior-diffusion map and boundary-diffusion map. The GT map in collaboration with the two generated maps breaks the imbalance distribution of object boundary. We have three key contributions to solve the transparent glass detection problem: (1) We propose a three-stream neural network to fully absorb helpful features in the three maps. (2) We design a multi-scale interactive dilation module to explore a wider range of contextual information. (3) We develop an attention-based boundary-aware feature Mosaic module to integrate multimodal information. Extensive experiments on the benchmark dataset exhibit clear improvements of our method over SOTAs in terms of overall glass detection accuracy and boundary clearness.',
+                    links: [
+                      { name: 'paper', link: 'https://arxiv.org/pdf/2108.11117.pdf' }
+                    ],
+                    imgs: [
+                      { src: 'Label-Decoupling-based-1.png' },
+                      { src: 'Label-Decoupling-based-2.png' },
+                      { src: 'Label-Decoupling-based-3.png' }
+                    ]
+                  },
+                  {
+                    authors: 'Haiyang Mei, Xin Yang*, Yang Wang, Yuanyuan Liu, Shengfeng He, Qiang Zhang, Xiaopeng Wei, and Rynson Lau.',
+                    title: 'Don\'t Hit Me! Glass Detection in Real-world Scenes.',
+                    tags: [
+                      ['CVPR 2020', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    io: 'Given an input RGB image, our network outputs a binary mask that indicates where transparent glass regions are.',
+                    abstract: 'Transparent glass is very common in our daily life. Existing computer vision systems neglect it and thus may have severe consequences, e.g., a robot may crash into a glass wall. However, sensing the presence of glass is not straightforward. The key challenge is that arbitrary objects/scenes can appear behind the glass, and the content within the glass region is typically similar to those behind it. In this paper, we propose an important problem of detecting glass from a single RGB image. To address this problem, we construct a large-scale glass detection dataset (GDD) and design a glass detection network, called GDNet, which explores abundant contextual cues for robust glass detection with a novel large-field contextual feature integration (LCFI) module. Extensive experiments demonstrate that the proposed method achieves more superior glass detection results on our GDD test set than state-of-the-art methods fine-tuned for glass detection.',
+                    links: [
+                      { name: 'paper', link: 'http://www.cs.cityu.edu.hk/~rynson/papers/cvpr20d.pdf' },
+                      { name: 'suppl', link: 'http://www.cs.cityu.edu.hk/~rynson/papers/demos/cvpr20d-supp.pdf' },
+                      { name: 'dataset', link: '../data_application/DataApplication.html' },
+                      { name: 'media', link: 'https://www.sohu.com/a/408629893_610300?_trans_=000014_bdss_bddk' }
+                    ],
+                    imgs: [
+                      { src: '20200621135331.gif', label: 'Overview of proposed framework.' },
+                      { src: 'cvpr_2020_results.jpg', label: 'Problems with glass in existing vision tasks. In depth prediction, existing method [16] wrongly predicts the depth of the scene behind the glass, instead of the depth to the glass (1st row of (b)). For instance segmentation, Mask RCNN [9] only segments the instances behind the glass, not aware that they are actually behind the glass (2nd row of (b)). Besides, if we directly apply an existing singe-image reflection removal (SIRR) method [36] to an image that is only partially covered by glass, the non-glass region can be corrupted (3rd row of (b)). GDNet can detect the glass (c) and then correct these failure cases (d).' }
+                    ],
+                  },
+
+                ]
+              },
+            ],
+          },
+          {
+            title: "b. Confusing Texture Object Perception",
+            domains: [
+              {
+                title: "i. Concealed Object Detection",
+                projects: [
+                  {
+                    authors: 'Haiyang Mei, Ke Xu, Yunduo Zhou, Yang Wang, Haiyin Piao, Xiaopeng Wei, Xin Yang*.',
+                    title: 'Camouflaged Object Segmentation with Omni Perception.',
+                    tags: [
+                      ['International Journal of Computer Vision (IJCV) 2023', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    io: 'Given an input RGB image, our network outputs a binary mask that indicates where camouflaged objects are.',
+                    abstract: 'Camouflaged object segmentation (COS) is a very challenging task due to the deceitful appearances of the candidate objects to the noisy backgrounds. Most existing state-of-the-art methods mimic the first-positioning-then-focus mechanism of predators, but still fail in positioning camouflaged objects in cluttered scenes or delineating their boundaries. The key reason is that their methods do not have a comprehensive understanding of the scene when they spot and focus on the objects, so that they are easily attracted by local surroundings. An ideal COS model should be able to process local and global information at the same time, i.e., to have omni perception of the scene through the whole process of camouflaged object segmentation. To this end, we propose to learn the omni perception for the first-positioning-then-focus COS scheme. Specifically, we propose an omni perception network (OPNet) with two novel modules, i.e., the pyramid positioning module (PPM) and dual focus module (DFM). They are proposed to integrate local features and global representations for accurate positioning of the camouflaged objects and focus on their boundaries, respectively. Extensive experiments demonstrate that our method, which runs at 54 fps, significantly outperforms 15 cutting-edge models on 4 challenging datasets under 4 standard metrics.',
+                    imgs: [
+                      { src: 'Camouflaged-2023-0.png' },
+                      { src: 'Camouflaged-2023-1.png' }
+                    ],
+                    links: [
+                      { name: 'more details', link: 'https://mhaiyang.github.io/IJCV2023-OPNet/index.html' }
+                    ]
+                  },
+                  {
+                    authors: '梅海洋, 杨鑫*, 周运铎, 季葛鹏, 魏小鹏, 范登平.',
+                    title: '分心感知的伪装目标分割.',
+                    tags: [
+                      ['中国科学: 信息科学', 1],
+                      ['. ', 0],
+                      ['(CCF A类中文期刊)', 2]
+                    ],
+                    io: '给定单张RGB输入图像，输出指示伪装目标位置和形状的二值掩码图像。',
+                    abstract: '本文致力于设计一个有效且高效的伪装物体分割（Camouflaged Object Segmentation, COS）模型. 为此，本文开发了一个生物启发的框架，称为金字塔定位和聚焦网络（Pyramid Positioning and Focus Network, PFNet+），其模仿了自然界中的捕食过程. 具体地，本文的PFNet+包含三个关键模块，即：上下文增强模块（Context Enrichment, CEn）、金字塔定位模块（Pyramid Positioning Module, PPM）和聚焦模块（Focus Module, FM）. CEn通过整合上下文信息来增强骨干特征的表征能力，从而提供更有辨别性的骨干特征. PPM被设计用来模仿捕食中的检测过程，以金字塔的方式从全局的角度定位潜在的目标物体. 然后FM被用来执行捕食中的识别过程，通过在歧义区域的聚焦来逐步细化初始的预测结果. 值得注意的是，在FM中，本文开发了一个新颖的分心挖掘策略以用于分心区域的发现和去除，以提高预测的性能. 大量的实验证明本文的PFNet+能够实时运行（56fps），在四个标准度量指标下，PFNet+在三个具有挑战性的数据集上都显著优于现有的20个最新模型，在其他视觉任务（如息肉分割）上的实验进一步证明了PFNet+的泛化能力。',
+                    imgs: [
+                      { src: '分心感知-0.png' },
+                      { src: '分心感知-1.png' }
+                    ],
+                    links: [
+                      { name: 'more details', link: 'https://mhaiyang.github.io/SSI2023-PFNet-Plus/index.html' }
+                    ]
+                  },
+                  {
+                    authors: 'Haiyang Mei, Gepeng Ji, Ziqi Wei, Xin Yang*, Xiaopeng Wei, Dengping Fan.',
+                    title: 'Camouflaged Object Segmentation with Distraction Mining.',
+                    tags: [
+                      ['CVPR 2021', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    io: 'Given an input RGB image, our network outputs a binary mask that indicates where camouflaged objects are.',
+                    abstract: 'Camouflaged object segmentation (COS) aims to identify objects that are \'\'perfectly\'\' assimilate into their surroundings, which has a wide range of valuable applications. The key challenge of COS is that there exist high intrinsic similarities between the candidate objects and noise background. In this paper, we strive to embrace challenges towards effective and efficient COS. To this end, we develop a bio-inspired framework, termed Positioning and Focus Network (PFNet), which mimics the process of predation in nature. Specifically, our PFNet contains two key modules, i.e., the positioning module (PM) and the focus module (FM). The PM is designed to mimic the detection process in predation for positioning the potential target objects from a global perspective and the FM is then used to perform the identification process in predation for progressively refining the coarse prediction via focusing on the ambiguous regions. Notably, in the FM, we develop a novel distraction mining strategy for the distraction region discovery and removal, to benefit the performance of estimation. Extensive experiments demonstrate that our PFNet runs in real-time (72 FPS) and significantly outperforms 18 cutting-edge models on three challenging benchmark datasets under four standard metrics. The code will be made publicly available.',
+                    imgs: [
+                      { src: 'Camouflaged Object.gif' }
+                    ],
+                    links: [
+                      { name: 'paper', link: 'https://openaccess.thecvf.com/content/CVPR2021/papers/Mei_Camouflaged_Object_Segmentation_With_Distraction_Mining_CVPR_2021_paper.pdf' },
+                      { name: '中译版', link: './CVPR2021_PFNet_CN.pdf' },
+                      { name: 'link', link: 'https://mhaiyang.github.io/CVPR2021_PFNet/index.html' },
+                    ]
+                  },
+                  {
+                    authors: 'Lei Chen, Rui Liu, Dongsheng Zhou, Yang Xin, Qiang Zhang and Xiaopeng Wei.',
+                    title: 'A Human Behavior Recognition Model based on Extended Squeeze-and-Excitation Network.',
+                    tags: [
+                      ['CASA 2020', 1],
+                      [', Bournemouth, UK. ', 0]
+                    ],
+                    imgs: [
+                      { src: 'A Human Behavior Recognition Model based on Extended Squeeze-and-Excitation Network.png' }
+                    ],
+                    abstract: 'Human behavior recognition in video sequences is an important research problem in computer vision, and has attracted a lot of researchers’ attention in recent years. Because of its powerful ability in feature channels recalibration, the Squeeze-and-Excitation network (SE network) has been widely used in video behavior recognition models. However, most of these methods use the SE network directly to recalibrate different feature channels of a single frame image, but ignore the temporal dimension of videos. To address this problem, a new behavior recognition model based on extended Squeeze-and-Excitation network (named as ESENet) is proposed in this study. In order to improve the attention capability, the integration strategy of the 3DSE is also discussed in this study. Experiment results show that the proposed method in this paper achieves competitive performance on the challenging HMDB51, UCF101, and Something-Something v1 datasets.'
+                  },
+                  {
+                    authors:
+                      'Xiaoheng Jiang, Li Zhang, Mingliang Xu, Tianzhu Zhang, Pei Lv, Bing Zhou, Xin Yang, Yanwei Pang.',
+                    title: 'Attention Scaling for Crowd Counting.',
+                    tags: [
+                      ['CVPR 2020', 1],
+                      [', Seattle, USA. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    links: [
+                      { name: 'paper', link: 'http://openaccess.thecvf.com/content_CVPR_2020/papers/Jiang_Attention_Scaling_for_Crowd_Counting_CVPR_2020_paper.pdf', },
+                      { name: 'code', link: 'https://github.com/laridzhang/ASNet' },
+                    ],
+                    imgs: [
+                      { src: 'Attention Scaling for Crowd Counting.png' }
+                    ],
+                    abstract: 'Convolutional Neural Network (CNN) based methods generally take crowd counting as a regression task by outputting crowd densities. They learn the mapping between image contents and crowd density distributions. Though having achieved promising results, these data-driven counting networks are prone to overestimate or underestimate people counts of regions with different density patterns, which degrades the whole count accuracy. To overcome this problem, we propose an approach to alleviate the counting performance differences in different regions. Specifically, our approach consists of two networks named Density Attention Network (DANet) and Attention Scaling Network (ASNet). DANet provides ASNet with attention masks related to regions of different density levels. ASNet first generates density maps and scaling factors and then multiplies them by attention masks to output separate attention-based density maps. These density maps are summed to give the final density map. The attention scaling factors help attenuate the estimation errors in different regions. Furthermore, we present a novel Adaptive Pyramid Loss (APLoss) to hierarchically calculate the estimation losses of sub-regions, which alleviates the training bias. Extensive experiments on four challenging datasets (ShanghaiTech Part A, UCF_CC_50, UCF-QNRF, and WorldExpo\'10) demonstrate the superiority of the proposed approach.'
+                  },]
+              },
+
+              {
+                title: "ii. Salient Object Detection",
+                projects: [
+                  {
+                    authors: 'Zhiling Cui, Haiyang Mei, Wen Dong, Ziqi Wei, Zheng Lv, Dongsheng Zhou, Xin Yang*',
+                    title: 'Steel Sheet Counting from an Image with a Two-Stream Network',
+                    tags: [
+                      ['IEEE TIM 2024', 1],
+                      ['.', 0],
+                      ['(ELECTRICAL & ELECTRONIC领域Top期刊)', 2]
+                    ],
+                    abstract: "Steel sheets play a pivotal role in a wide range of industrial processes, including the production of ships and vehicles, as well as the construction of buildings and bridges. Meanwhile, counting steel sheets accurately is essential for effective production management in factories. However, manual counting large numbers of stacked steel sheets can lead to visual vertigo, resulting in inaccurate counts. Moreover, physical methods like weighing are also labor-intensive and inconvenient. Fortunately, advancements in computer vision technology have opened up new possibilities for efficient steel sheets counting. Nevertheless, implementing an automatic counting method encounters challenges due to the limited texture features present in steel sheets. In this paper, we present a novel approach to count steel sheets from a captured image. To the best of our knowledge, this is the pioneering work that address this problem using a computational approach. We make the following contributions. First, we construct a comprehensive steel sheets dataset that contains steel sheets images with corresponding manually annotated dots. Second, we propose a novel network, called TSNet, which effectively extracts features from both the RGB image and its gradient map for precise steel sheet counting. Third, we conduct extensive experiments to evaluate the effectiveness of our proposed method and demonstrate its superiority over carefully chosen baselines from state-of-the-art counting methods..",
+                    imgs: [
+                      { src: '1-Dataset_category.png' },
+                      { src: '2-TSNet.png' },
+                      { src: '3-Visual comparison.png' },
+                      { src: '4-Box.png' },
+                    ],
+                    links: [
+
+                    ],
+                    video: '',
+                  },
+                  {
+                    authors: 'Xin Tian, Ke Xu, Xin Yang*, Lin Du, Baocai Yin, Rynson W.H. Lau.',
+                    title: 'Bi-directional Object-Context Prioritization Learning for Saliency Ranking.',
+                    tags: [
+                      ['CVPR 2022', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    io: 'Given an input RGB image, our network outputs the saliency ranking results.',
+                    abstract: 'The saliency ranking task is recently proposed to study the visual behavior that humans would typically shift their attention over different objects of a scene based on their degrees of saliency. Existing approaches focus on learning either object-object or object-scene relations. Such a strategy follows the idea of object-based attention in Psychology, but it tends to favor objects with strong semantics (e.g., humans), resulting in unrealistic saliency ranking. We observe that spatial attention works concurrently with object-based attention in the human visual recognition system. During the recognition process, the human spatial attention mechanism would move, engage, and disengage from region to region (i.e., context to context). This inspires us to model region-level interactions, in addition to object-level reasoning, for saliency ranking. Hence, we propose a novel bidirectional method to unify spatial attention and object-based attention for saliency ranking. Our model has two novel modules: (1) a selective object saliency (SOS) module to model object-based attention via inferring the semantic representation of salient objects, and (2) an object-context-object relation (OCOR) module to allocate saliency ranks to objects by jointly modeling object-context and context-object interactions of salient objects. Extensive experiments show that our approach outperforms existing state-of-the-art methods.',
+                    imgs: [
+                      { src: 'Bi-directional-1.png' },
+                      { src: 'Bi-directional-2.png' }
+                    ],
+                    links: [
+                      { name: 'paper', link: 'https://openaccess.thecvf.com/content/CVPR2022/papers/Tian_Bi-Directional_Object-Context_Prioritization_Learning_for_Saliency_Ranking_CVPR_2022_paper.pdf' },
+                      { name: 'code', link: 'https://github.com/GrassBro/OCOR' }
+                    ]
+                  },
+                  {
+                    authors: 'Xin Tian, Ke Xu, Xin Yang†, Baocai Yin, Rynson Lau.',
+                    title: 'Learning to Detect Instance-level Salient Objects using Complementary Image Labels.',
+                    tags: [
+                      ['International Journal of Computer Vision 2021', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    io: 'Given an input image, our network outputs an instance saliency map that indicates the individual salient instances. It requires only class labels and subitizing information as supervision in training.',
+                    abstract: 'Existing salient instance detection (SID) methods typically learn from pixel-level annotated datasets. In this paper, we present the first weakly-supervised approach to the SID problem. Although weak supervision has been considered in general saliency detection, it is mainly based on using class labels for object localization. However, it is non-trivial to use only class labels to learn instance-aware saliency information, as salient instances with high semantic affinities may not be easily separated by the labels. As the subitizing information provides an instant judgement on the number of salient items, it is naturally related to detecting salient instances and may help separate instances of the same class while grouping different parts of the same instance. Inspired by this observation, we propose to use class and subitizing labels as weak supervision for the SID problem. We propose a novel weakly-supervised network with three branches: a Saliency Detection Branch leveraging class consistency information to locate candidate objects; a Boundary Detection Branch exploiting class discrepancy information to delineate object boundaries; and a Centroid Detection Branch using subitizing information to detect salient instance centroids. This complementary information is then fused to produce a salient instance map. To facilitate the learning process, we further propose a progressive training scheme to reduce label noise and the corresponding noise learned by the model, via reciprocating the model with progressive salient instance prediction and model refreshing. Our extensive evaluations show that the proposed method plays favorably against carefully designed baseline methods adapted from related tasks.',
+                    imgs: [
+                      { src: 'ijcv_2021.jpg', label: 'The key idea of this work is to leverage complementary image-level labels (class and subitizing) to train a salient instance detection model in a weakly-supervised manner, via synergically learning to predict salient objects, detecting object boundaries and locating instance centroids.' }
+                    ],
+                    links: [
+                      { name: 'paper', link: 'https://arxiv.org/pdf/2111.10137' }
+                    ]
+                  },
+                  {
+                    authors: 'Lei Zhu, Xiaoqing Wang, Ping Li, Xin Yang, Qing Zhang, Weiming Wang, Schönlieb, Carola-Bibiane, Chen, C.L. Philip.',
+                    title: ' Self-supervised Self-ensembling Network for Semi-supervised RGB-D Salient Object Detection.',
+                    tags: [
+                      ['IEEE Transactions on Multimedia 2021', 1],
+                      ['. ', 0],
+                      ['(CCF B)', 2]
+                    ],
+                    io: 'SG-CNN takes a pair of RGB and depth images as the input and predicts a saliency map and an image rotation angle.',
+                    abstract: 'RGB-D salient object detection aims to detect visually distinctive objects or regions from a pair of the RGB image and the depth image. State-of-the-art RGB-D saliency detectors are mainly based on convolutional neural networks but almost suffer from an intrinsic limitation relying on the labeled data, thus degrading detection accuracy in complex cases. In this work, we present a self-supervised self-ensembling network (S3Net) for semi-supervised RGB-D salient object detection by leveraging the unlabeled data and exploring a self-supervised learning mechanism. To be specific, we first build a self-guided convolutional neural network (SG-CNN) as a baseline model by developing a series of three-layer cross-model feature fusion (TCF) modules to leverage complementary information among depth and RGB modalities and formulating an auxiliary task that predicts a self-supervised image rotation angle. After that, to further explore the knowledge from unlabeled data, we assign SGCNN to a student network and a teacher network, and encourage the saliency predictions and self-supervised rotation predictions from these two networks to be consistent on the unlabeled data. Experimental results on seven widely-used benchmark datasets demonstrate that our network quantitatively and qualitatively outperforms the state-of-the-art methods.',
+                    imgs: [
+                      { src: 'Multimedia_2021_1.png' },
+                      { src: 'Multimedia_2021_2.png' },
+                      { src: 'Multimedia_2021_3.png' }
+                    ]
+                  },
+                  {
+                    authors: "Haiyang Mei, Yuanyuan Liu, Dongsheng Zhou, Xiaopeng Wei, Qiang Zhang, Xin Yang*.",
+                    title: "Exploring Dense Context for Salient Object Detection.",
+                    tags: [
+                      ["IEEE Transactions on Circuits and Systems for Video Technology 2021", 1],
+                      [". ", 0],
+                      ["(CCF B)", 2],
+                    ],
+                    io: 'Given an input RGB image, our network outputs a binary mask that indicates where salient objects are.',
+                    abstract:
+                      "Contexts play an important role in salient object detection (SOD). High-level contexts describe the relations between different parts/objects and thus are helpful for discovering the specific locations of salient objects while low-level contexts could provide the fine detail information for delineating the boundary of the salient objects. However, the way of perceiving/leveraging rich contexts has not been fully investigated by existing SOD works. The common context extraction strategies (e.g., leveraging convolutions with large kernels or atrous convolutions with large dilation rates) do not consider the effectiveness and efficiency simultaneously and may cause sub-optimal solutions. In this paper, we devote to exploring an effective and efficient way to learn rich contexts for accurate SOD. Specifically, we first build a dense context exploration (DCE) module to capture dense multi-scale contexts and further leverage the learned contexts to enhance the features discriminability. Then, we embed multiple DCE modules in an encoder-decoder architecture to harvest dense contexts of different levels. Furthermore, we propose an attentive skip-connection to transmit useful features from the encoder part to the decoder part for better dense context exploration. Finally, extensive experiments demonstrate that the proposed method achieves more superior detection results on the six benchmark datasets than 18 state-of-the-art SOD methods.",
+                    imgs: [
+                      { src: "Exploring Dense1.png" }, { src: "Exploring Dense2.png" }
+                    ],
+                    links: [
+                      { name: 'paper', link: 'https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9389751' },
+                      { name: 'link', link: 'https://mhaiyang.github.io/TCSVT2021-DCENet/index.html' },
+                    ]
+                  },
+                  {
+                    authors: "Xin Tian, Ke Xu, Xin Yang, Baocai Yin, Rynson Lau.",
+                    title: "Weakly-supervised Salient Instance Detection.",
+                    tags: [
+                      ["BMVC 2020", 1],
+                      [". ", 0],
+                      ["(Oral, 5%, Best Student Paper)", 2],
+                    ],
+                    io: 'Given an input RGB image, our network identifies each salient instance in the scene.',
+                    abstract:
+                      "Existing salient instance detection (SID) methods typically learn from pixel-level annotated datasets. In this paper, we present the first weakly-supervised approach to the SID problem. Although weak supervision has been considered in general saliency detection, it is mainly based on using class labels for object localization. However, it is non-trivial to use only class labels to learn instance-aware saliency information, as salient instances with high semantic affinities may not be easily separated by the labels. We note that subitizing information provides an instant judgement on the number of salient items, which naturally relates to detecting salient instances and may help separate instances of the same class while grouping different parts of the same instance. Inspired by this insight, we propose to use class and subitizing labels as weak supervision for the SID problem. We propose a novel weakly-supervised network with three branches: a Saliency Detection Branch leveraging class consistency information to locate candidate objects; a Boundary Detection Branch exploiting class discrepancy information to delineate object boundaries; and a Centroid Detection Branch using subitizing information to detect salient instance centroids. This complementary information is further fused to produce salient instance maps. We conduct extensive experiments to demonstrate that the proposed method plays favorably against carefully designed baseline methods adapted from related tasks.",
+                    imgs: [
+                      { src: "Weakly-supervised Salient Instance Detection.png" },
+                    ],
+                    links: [
+                      { name: 'paper', link: 'https://arxiv.org/pdf/2009.13898' }
+                    ]
+                  },
+                  {
+                    authors:
+                      "Shimin Zhao, Miaomiao Chen, Pengjie Wang, Ying Cao, Pingping Zhang and Xin Yang.",
+                    title:
+                      "RGB-D Salient Object Detection via Deep Fusion of Semantics and Details.",
+                    tags: [
+                      ["Journal of Computer Animation and Virtual Worlds", 1],
+                      [", Bournemouth, UK. ", 0],
+                      ["(Special Issue of CASA 2020)", 2],
+                    ],
+                    imgs: [
+                      {
+                        src:
+                          "RGB-D Salient Object Detection via Deep Fusion of Semantics and Details.png",
+                      },
+                    ],
+                    io: 'Given an input RGB-D image, our network outputs a binary mask that indicates where salient objects are.',
+                    abstract:
+                      "In this paper, we address RGB‐D salient object detection task by jointly leveraging semantics and contour details of salient objects. We propose a novel semantics‐and‐details complementary fusion network to adaptively integrate cross‐model and multilevel features. Specifically, we employ two kinds of fusion modules in our model, which are designed for fusing high‐level semantic features and integrating contour detail features of the scene components, respectively. The semantics fusion module aggregates high‐level interdependent semantic relationships by a nonlinear weighted summation of small and medium receptive fields. Meanwhile, the details module integrates multi‐level contour detail features to leverage expressive details of salient objects. We achieve new state‐of‐the‐art salient object detection results on seven RGB‐D datasets, that is, STERE, NJU2000, LFSD, NLPR, SSD, DES, and SIP2019 dataset. Experimental results demonstrate that our method outperforms eleven state‐of‐the‐art salient object detection methods. In this paper, we propose a novel semantics‐and‐details complementary fusion network to adaptively integrate cross‐model and multi‐level features. Specifically, we employ two kinds of fusion modules in our model, which are designed for fusing high‐level semantic features and integrating contour detail features of the scene components respectively. The semantics fusion module aggregates high‐level interdependent semantic relationships by a nonlinear weighted summation of small and medium receptive fields. Meanwhile, the details module integrates multi‐level contour detail features to leverage expressive details of salient objects.",
+                  },
+                  {
+                    authors:
+                      "Sucheng Ren, Chu Han, Xin Yang, Guoqiang Han, Shengfeng He.",
+                    title:
+                      "TENet: Triple Excitation Network for Video Salient Object Detection.",
+                    tags: [
+                      ["ECCV 2020", 1],
+                      [", Glasgow, UK. ", 0],
+                      ["(Spotlight)", 2],
+                    ],
+                    imgs: [
+                      {
+                        src:
+                          "Triple Excitation Network for Video Salient Object Detection.png",
+                      },
+                    ],
+                    io: 'Given a series of frames {Tn|n = 1, 2, ..., N}, our network predicts the salient object in frame Tn.',
+                    abstract: 'In this paper, we propose a simple yet effective approach, named Triple Excitation Network, to reinforce the training of video salient object detection (VSOD) from three aspects, spatial, temporal, and online excitations. These excitation mechanisms are designed following the spirit of curriculum learning and aim to reduce learning ambiguities at the beginning of training by selectively exciting feature activations using ground truth. Then we gradually reduce the weight of ground truth excitations by a curriculum rate and replace it by a curriculum complementary map for better and faster convergence. In particular, the spatial excitation strengthens feature activations for clear object boundaries, while the temporal excitation imposes motions to emphasize spatio-temporal salient regions. Spatial and temporal excitations can combat the saliency shifting problem and conflict between spatial and temporal features of VSOD. Furthermore, our semi-curriculum learning design enables the first online refinement strategy for VSOD, which allows exciting and boosting saliency responses during testing without re-training. The proposed triple excitations can easily plug in different VSOD methods. Extensive experiments show the effectiveness of all three excitation methods and the proposed method outperforms state-of-the-art image and video salient object detection methods.',
+                    links: [
+                      { name: 'paper', link: 'https://arxiv.org/pdf/2007.09943.pdf' }
+                    ]
+                  },
+                ]
+              },
+              {
+                title: "iii. Fine-Grained Segmentation",
+                projects: [
+                  {
+                    authors: 'Xin Yang, Haoran Wang, Shaozhe Chen, Xinglin Piao, Dongsheng Zhou, Qiang Zhang, Baocai Yin, Xiaopeng Wei.',
+                    title: 'Cascaded Network with Deep Intensity Manipulation for Scene Understanding.',
+                    tags: [
+                      ['Journal of Visualization and Computer Animation', 1],
+                      [', 30(3-4), 2019. ', 0],
+                    ],
+                    io: 'Given an input low-light image, our network produces an enhanced image with lost details recovered.',
+                    abstract: 'Scene understanding is essential to robotic navigation and autonomous driving as it provides semantic information to their controlling system. However, it will fail when processing low-light images/videos captured under adverse weather or at night use state-of-the-art scene understanding methods. A naive way to directly infer semantics from low-light images is ill posed because the low-light condition distorts pixel intensities and buries details. In order to address this problem, we propose the Deep Intensity Manipulation Network (DIMNet), which could relight the input images and recover the details, and combine the DIMNet with a scene understanding network to get a cascaded network to learn the semantics from low-light images. Through learning pixel intensity manipulation, our method can generate images not only visually pleasing but also practical for scene understanding. Qualitative and quantitative experiments demonstrate that the proposed method is effective and robust for both synthetic and real-world images.',
+
+                    imgs: [
+                      { src: 'Cascaded Network with Deep Intensity Manipulation for Scene Understanding.png', label: 'Limitations of existing enhance algorithms. We choose ICNet to generate segmentation results. The quality of segmentation results is illy influenced by the limited illustration. Existing enhancement algorithms cannot perform optimization and, on the contrary, worsen the segmentation results. (a) Low-light image. (b) Low-light image enhancement via illumination map estimation (LIME). (c) Simultaneous reflectance and illumination estimation (SRIE). (d) Ours.' }
+                    ],
+                  },
+                  {
+                    authors: 'Yu Qiao*, Yuhao Liu*, Ziqi Wei, Yuxin Wang, Qiang Cai, Guofeng Zhang, Xin Yang†.',
+                    title: 'Hierarchical and Progressive Image Matting.',
+                    abstract: 'Most matting researches resort to advanced semantics to achieve high-quality alpha mattes, and direct low-level features combination is usually explored to complement alpha details. However, we argue that appearance-agnostic integration can only provide biased foreground details and alpha mattes require differentlevel feature aggregation for better pixel-wise opacity perception. In this paper, we propose an end-to-end Hierarchical and Progressive Attention Matting Network (HAttMatting++), which can better predict the opacity of the foreground from single RGB images without additional input. Specifically, we utilize channel-wise attention to distill pyramidal features and employ spatial attention at different levels to filter appearance cues. This progressive attention mechanism can estimate alpha mattes from adaptive semantics and semanticsindicated boundaries. We also introduce a hybrid loss function fusing Structural SIMilarity (SSIM), Mean Square Error (MSE), Adversarial loss, and sentry supervision to guide the network to further improve the overall foreground structure. Besides, we construct a large-scale and challenging image matting dataset comprised of 59, 600 training images and 1000 test images (a total of 646 distinct foreground alpha mattes), which can further improve the robustness of our hierarchical and progressive aggregation model. Extensive experiments demonstrate that the proposed HAttMatting++ can capture sophisticated foreground structures and achieve state-of-the-art performance with single RGB images as input.',
+                    tags: [
+                      ['ACM Transactions on Multimedia Computing, Communications, and Applications(TOMM) 2022', 1],
+                      ['. ', 0],
+                      ['(CCF B)', 2]
+                    ],
+                    imgs: [
+                      { src: 'Hierarchical-0.png', label: 'Pipeline of our HAttMatting++. The orange box (Pyramidal Features Distillation) indicates channel-wise attention to distill pyramidal information extracted from ASPP [5]. The blue box (Appearance Cues Filtration) represents spatial attention to filter appearance cues, which are extracted from block1 and block2 in the feature extraction module.' },
+                      { src: 'Hierarchical-1.png' },
+                    ],
+                    links: [
+                      { name: 'paper', link: 'https://dl.acm.org/doi/abs/10.1145/3540201' }
+                    ],
+                  },
+                  {
+                    authors: 'Yu Qiao*, Ziqi Wei*, Yuhao Liu, Yuxin Wang†, Dongsheng Zhou, Qiang Zhang, Xin Yang.',
+                    title: 'Wider and Higher: Intensive Integration and Global Foreground Perception for Image Matting.',
+                    abstract: 'This paper reviews recent deep-learning-based matting research and conceives our wider and higher motivation for image matting. Many approaches achieve alpha mattes with complex encoders to extract robust semantics, then resort to the U-net-like decoder to concatenate or fuse encoder features. However, image matting is essentially a pixel-wise regression, and the ideal situation is to perceive the maximum opacity correspondence from the input image. In this paper, we argue that the high-resolution feature representation, perception and communication are more crucial for matting accuracy. Therefore, we propose an Intensive Integration and Global Foreground Perception network (I2GFP) to integrate wider and higher feature streams. Wider means we combine intensive features in each decoder stage, while higher suggests we retain high-resolution intermediate features and perceive large-scale foreground appearance. Our motivation sacrifices model depth for a significant performance promotion. We perform extensive experiments to prove the proposed I2GFP model, and state-of-the-art results can be achieved on different public datasets.',
+                    tags: [
+                      ['Computer Graphics International(CGI) 2022', 1],
+                      ['. ', 0]
+                    ],
+                    imgs: [
+                      { src: 'I2GFP-1.png', label: 'The overall architecture of the proposed Intensive Integration and Global Foreground Perception network (I2GFP). We employ simple backbone to extract necessary semantics and utilize intensive connections to integrate different-level features. The global foreground perception can capture rich appearances to complement details.' },
+                      { src: 'I2GFP-0.png' }
+                    ],
+                    links: [
+                      { name: 'paper', link: 'https://arxiv.org/pdf/2210.06919.pdf' }
+                    ]
+                  },
+                  {
+                    authors: 'Yuhao Liu, Jiake Xie, Xiao Shi, Yu Qiao, Yujie Huang, Yong Tang, Xin Yang†.',
+                    title: 'Tripartite Information Mining and Integration for Image Matting.',
+                    io: 'Given an input RGB and the corresponding trimap, our method can produce a delicate alpha matte with the help of the integration of global and local information.',
+                    abstract: 'With the development of deep convolutional neural networks, image matting has ushered in a new phase. Regarding the nature of image matting, most researches have focused on solutions for transition regions. However, we argue that many existing approaches are excessively focused on transition-dominant local fields and ignored the inherent coordination between global information and transition optimisation. In this paper, we propose the Tripartite Information Mining and Integration Network (TIMI-Net) to harmonize the coordination between global and local attributes formally. Specifically, we resort to a novel 3-branch encoder to accomplish comprehensive mining of the input information, which can supplement the neglected coordination between global and local fields. In order to achieve effective and complete interaction between such multi-branches information, we develop the Tripartite Information Integration (TI^2) Module to transform and integrate the interconnections between the different branches. In addition, we built a large-scale human matting dataset (Human-2K) to advance human image matting, which consists of 2100 high-precision human images (2000 images for training and 100 images for test). Finally, we conduct extensive experiments to prove the performance of our proposed TIMI-Net, which demonstrates that our method performs favourably against the SOTA approaches on the alphamatting.com (Rank First), Composition-1K (MSE-0.006, Grad-11.5), Distinctions-646 and our Human-2K. Also, we have developed an online evaluation website to perform natural image matting.',
+                    tags: [
+                      ['ICCV 2021', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    imgs: [
+                      { src: 'TIMI-Net.gif' },
+                      { src: 'Tripartite-1.jpg', label: 'Visual comparisons of our method and Contex-Aware Matting [18] on the Real-World images. Both results are produced from the model trained on Adobe Composition-1K [55] dataset. Please zoom in to see the ﬁne details.' },
+                      { src: 'Tripartite-2.jpg', label: 'Almost all of the previous methods pay close attention to the local areas around the transition regions and may ignore the coordination between global and local information (texture and colour similarity, positional correlation, etc.). As shown in the above figure, the convolution kernel slides from left to right when performing a convolution operation. Types 1, 2 and 3 focus only on locally uncrossed ﬁelds (unknown or known regions). Only 4 and 5 perform enlightened transfers, with information ﬂowing from Bg and Fg to the transition region, respectively.' },
+                      { src: 'Tripartite-3.jpg', label: 'Based on the aforementioned observation, in this paper, we propose to supplement the superimposed branch with two auxiliary Units, named RGB-Unit and Trimap-Unit, for mining global appearance details and location cues, separately. In addition, we developed a Tripartite Information Integration module to integrate complementary information sufficiently.' }
+                    ],
+                    links: [
+                      { name: 'evaluation', link: 'http://47.111.168.199/TIMI-Net.html' }
+                    ],
+                  },
+                  {
+                    authors: 'Yuhao Liu∗, Jiake Xie∗, Yu Qiao, and Yong Tang, Xin Yang†.',
+                    title: 'Prior-Induced Information Alignment for Image Matting.',
+                    io: 'Given an input RGB and the corresponding trimap, our method can produces a delicate alpha matte with the help of  the dynamic gaussian modulation mechanism (DGM).',
+                    abstract: 'Image matting is an ill-posed problem that aims to estimate the opacity of foreground pixels in an image. However, most existing deep learning-based methods still suffer from the coarse-grained details. In general, these algorithms are incapable of felicitously distinguishing the degree of exploration between deterministic domains (e.g. certain FG and BG pixels) and undetermined domains (e.g. uncertain in-between pixels), or inevitably lose information in the continuous sampling process, leading to a sub-optimal result. In this paper, we propose a novel network named Prior-Induced Information Alignment Matting Network (PIIAMatting), which can efficiently model the distinction of pixel-wise response maps and the correlation of layer-wise feature maps. It mainly consists of a Dynamic Gaussian Modulation mechanism (DGM) and an Information Alignment strategy (IA). Specifically, the DGM can dynamically acquire a pixel-wise domain response map learned from the prior distribution. The response map can present the relationship between the opacity variation and the convergence process during training. On the other hand, the IA comprises an Information Match Module (IMM) and an Information Aggregation Module (IAM), jointly scheduled to match and aggregate the adjacent layer-wise features adaptively. Besides, we also develop a Multi- Scale Refinement (MSR) module to integrate multi-scale receptive field information at the refinement stage to recover the fluctu- ating appearance details. Extensive quantitative and qualitative evaluations demonstrate that the proposed PIIAMatting performs favourably against state-of-the-art image matting methods on the Alphamatting.com, Composition-1K and Distinctions-646 dataset.',
+                    tags: [
+                      ['IEEE Transactions on Multimedia(TMM) 2021', 1],
+                      ['. ', 0],
+                      ['(CCF B)', 2]
+                    ],
+                    imgs: [
+                      { src: 'Prior-Induced-1.png' },
+                      { src: 'Prior-Induced-2.png' },
+                      { src: 'Prior-Induced-3.png' },
+                      { src: 'Prior-Induced-4.png' }
+                    ]
+                  },
+                  {
+                    authors: 'Yu Qiao, Yuhao Liu, Qiang Zhu, Xin Yang*, Yuxin Wang, Qiang Zhang，Xiaopeng Wei.',
+                    title: 'Multi-scale Information Assembly for Image Matting.',
+                    io: 'Given an input RGB image, our network directly produces an Alpha Matte without any auxilary information.',
+                    abstract: 'Image matting is a long-standing problem in computer graphics and vision, which mostly identified as the accurate estimation of the foreground in input images. We argue that the foreground objects can be represented by different-levels information, the main body, large-grained boundaries, refined details, etc. Based on this observation, in this paper, we propose a multi-scale information assembly framework (MSIA-matte) to pull out high-quality alpha mattes from single RGB images. Technically speaking, given an input image, we extract advanced semantics as our subject content, and retain initial CNNs features to encode different-levels foreground expressions, then combine them by our well-designed information assembly strategy. Extensive experiments have proven the effectiveness of the proposed MSIA-matte, and we can achieve state-of-the-art performance compared to existing matting networks.',
+                    tags: [
+                      ['Computer Graphics Forum (CGF)', 1],
+                      [' (Special Issue of Pacific Graphics 2020, Wellington, New Zealand). ', 0],
+                      ['(CCF B)', 2]],
+                    imgs: [
+                      { src: 'PG2020_Matting.gif' },
+                    ],
+                    links: [
+                      { name: 'paper', link: 'https://arxiv.org/pdf/2101.02391' },
+                    ],
+                  },
+                  {
+                    authors: 'Yu Qiao* , Yuhao Liu*, Xin Yang†, Dongsheng Zhou, Mingliang Xu, Qiang Zhang, Xiaopeng Wei.',
+                    title:
+                      'Attention-Guided Hierarchical Structure Aggregation for Image Matting.',
+                    tags: [
+                      ['CVPR 2020', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2]],
+                    io: 'Given an input RGB image, our network directly produces an Alpha Matte without any auxilary information.',
+                    abstract:
+                      'Existing deep learning based matting algorithms primarily resort to high-level semantic features to improve the overall structure of alpha mattes. However, we argue that advanced semantics extracted from CNNs contribute unequally for alpha perception and we are supposed to reconcile advanced semantic information with low-level appearance cues to refine the foreground details. In this paper, we propose an end-to-end Hierarchical Attention Matting Network (HAttMatting), which can predict the better structure of alpha mattes from single RGB images without additional input. Specifically, we employ spatial and channel-wise attention to integrate appearance cues and pyramidal features in a novel fashion. This blended attention mechanism can perceive alpha mattes from refined boundaries and adaptive semantics. We also introduce a hybrid loss function fusing Structural SIMilarity (SSIM), Mean Square Error (MSE) and Adversarial loss to guide the network to further improve the overall foreground structure. Besides, we construct a large-scale image matting dataset comprised of 59,600 training images and $1000$ test images (total $646$ distinct foreground alpha mattes), which can further improve the robustness of our hierarchical structure aggregation model. Extensive experiments demonstrate that the proposed HAttMatting can capture sophisticated foreground structure and achieve state-of-the-art performance with single RGB images as input.',
+                    links: [
+                      { name: 'paper', link: 'http://openaccess.thecvf.com/content_CVPR_2020/papers/Qiao_Attention-Guided_Hierarchical_Structure_Aggregation_for_Image_Matting_CVPR_2020_paper.pdf' },
+                      { name: 'suppl', link: 'http://openaccess.thecvf.com/content_CVPR_2020/supplemental/Qiao_Attention-Guided_Hierarchical_Structure_CVPR_2020_supplemental.pdf' },
+                      { name: 'code', link: 'https://github.com/wukaoliu/CVPR2020-HAttMatting' },
+                      { name: 'dataset', link: '../data_application/DataApplication.html' },
+                      { name: 'media', link: 'https://www.sohu.com/a/403768845_651893?_f=index_pagefocus_7' }
+                    ],
+                    imgs: [
+                      { src: '20200621135332.gif' },
+                      { src: 'hattmatting_pipeline.png', label: 'Overview of proposed framework.' },
+                      { src: 'hattmatting_results.png', label: 'Visual comparison of our results with those of the state-of-the-art methods. Please zoom in to see the details.' },
+                    ],
+                  },
+                  {
+                    authors:
+                      'Xin Yang*, Yu Qiao*, Shaozhe Chen, Shengfeng He, Baocai Yin, Qiang Zhang, Xiaopeng Wei, Rynson W.H. Lau.',
+                    title:
+                      'Smart Scribbles for Image Matting.',
+                    tags: [
+                      ['ACM Transactions on Multimedia Computing, Communications, and Applications(TOMM) 2020', 1],
+                      ['. ', 0],
+                      ['(CCF B)', 2]
+                    ],
+                    io: 'Given an input RGB image, our network directly produces an Alpha Matte with only a few scribbles.',
+                    abstract: 'Image matting is an ill-posed problem that usually requires additional user input, such as trimaps or scribbles. Drawing a fine trimap requires a large amount of user effort, while using scribbles can hardly obtain satisfactory alpha mattes for non-professional users. Some recent deep learning based matting networks rely on large-scale composite datasets for training to improve performance, resulting in the occasional appearance of obvious artifacts when processing natural images. In this paper, we explore the intrinsic relationship between user input and alpha mattes, and strike a balance between user effort and the quality of alpha mattes. In particular, we propose an interactive framework, referred to as smart scribbles, to guide users to draw few scribbles on the input images to produce high-quality alpha mattes. It first infers the most informative regions of an image for drawing scribbles to indicate different categories (foreground, background or unknown), then spreads these scribbles (i.e., the category labels) to the rest of the image via our well-designed two-phase propagation. Both neighboring low-level affinities and high-level semantic features are considered during the propagation process. Our method can be optimized without large-scale matting datasets, and exhibits more universality in real situations. Extensive experiments demonstrate that smart scribbles can produce more accurate alpha mattes with reduced additional input, compared to the state-of-the-art matting methods.',
+                    imgs: [
+                      { src: 'TOMM_pipeline.png', label: 'Overview of proposed framework.' },
+                      { src: 'TOMM_results.png', label: 'Visual comparison of our results with those of the state-of-the-art methods. Please zoom in to see the details.' },
+                    ],
+                    links: [
+                      { name: 'paper', link: 'https://arxiv.org/pdf/2103.17062' },
+                    ],
+                  },
+                  {
+                    authors:
+                      'Xin Yang, Ke Xu, Shaozhe Chen, Shengfeng He, Baocai Yin, Rynson W.H. Lau.',
+                    title:
+                      'Active Matting.',
+                    tags: [
+                      ['NeurIPS 2018', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    io: 'Given an input RGB image, our network directly produces an Alpha Matte with only a few points.',
+                    abstract: 'Image matting is an ill-posed problem. It requires a user input trimap or some strokes to obtain an alpha matte of the foreground object. A fine user input is essential to obtain a good result, which is either time consuming or suitable for experienced users who know where to place the strokes. In this paper, we explore the intrinsic relationship between the user input and the matting algorithm to address the problem of where and when the user should provide the input. Our aim is to discover the most informative sequence of regions for user input in order to produce a good alpha matte with minimum labeling efforts. To this end, we propose an active matting method with recurrent reinforcement learning. The proposed framework involves human in the loop by sequentially detecting informative regions for trivial human judgement. Comparing to traditional matting algorithms, the proposed framework requires much less efforts, and can produce satisfactory results with just 10 regions. Through extensive experiments, we show that the proposed model reduces user efforts significantly and achieves comparable performance to dense trimaps in a user-friendly manner. We further show that the learned informative knowledge can be generalized across different matting algorithms.',
+                    links: [
+                      { name: 'paper', link: 'http://papers.neurips.cc/paper/7710-active-matting.pdf' },
+                      { name: 'suppl', link: 'https://papers.nips.cc/paper/7710-active-matting-supplemental.zip' },
+                      { name: 'poster', link: 'http://www.cs.cityu.edu.hk/~rynson/papers/demos/nips18poster.pdf' },
+                      { name: 'dataset', link: 'http://www.cs.cityu.edu.hk/~rynson/papers/demos/rendered-100.zip' },
+                      { name: 'video', link: 'https://youtu.be/QcCBvS79fNE' }
+                    ],
+                    imgs: [
+                      { src: 'NIPS_pipeline.png', label: 'Overview of proposed framework.' },
+                      { src: 'NIPS_results.png', label: 'Visual comparison of our results with those of the state-of-the-art methods. Please zoom in to see the details.' },
+                    ],
+                  },
+                  {
+                    authors: 'Yu Qiao*, Jincheng Zhu*, Chengjiang Long, Zeyao Zhang, Yuxin Wang, Zhenjun Du, Xin Yang†.',
+                    title: 'CPRAL: Collaborative Panoptic-Regional Active Learning for Semantic Segmentation.',
+                    tags: [
+                      ['AAAI 2022', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    video: 'CPRAL.mp4',
+                    io: 'Given an input semantic segmentation dataset, our network outputs a small subset that can represent the entire dataset. Then the model trained on the subset can match the performance trained on the full-annotated dataset.',
+                    abstract: 'Acquiring the most representative examples via active learning (AL) can benefit many data-dependent computer vision tasks by minimizing efforts of image-level or pixel-wise annotations. In this paper, we propose a novel Collaborative Panoptic-Regional Active Learning framework (CPRAL) to address the semantic segmentation task. For a small batch of images initially sampled with pixel-wise annotations, we employ panoptic information to initially select unlabeled samples. Considering the class imbalance in the segmentation dataset, we import a Regional Gaussian Attention module (RGA) to achieve semantics-biased selection. The subset is highlighted by vote entropy and then attended by Gaussian kernels to maximize the biased regions. We also propose a Contextual Labels Extension (CLE) to boost regional annotations with contextual attention guidance. With the collaboration of semantics-agnostic panoptic matching and regionbiased selection and extension, our CPRAL can strike a balance between labeling efforts and performance and compromise the semantics distribution. We perform extensive experiments on Cityscapes and BDD10K and show that CPRAL outperforms the cutting-edge methods with impressive results and less labeling proportion.',
+                    imgs: [
+                      { src: 'aaai_2022.png', label: 'The pipeline of the proposed active learning framework. The purple, green and gray stages correspond to the panoptic selection, regional selection and annotation phase. There are four phases in an iteration to finish the samples selection and annotation process. (1): Take unlabeled examples as input and extract multi-scale features to regress a matching rating. (2) Regional Gaussian Attention (RGA): Perform vote entropy, kernel filter, and non-maximum suppression (NMS) on panoptic samples to decide semantics-biased regions. (3) Oracle or our designed label tool can annotate the selected subset with high accuracy and then move them to the labeled pool. (4) Contextual Labels Extension (CLE): Take images, regional labels and masks as input, extract patches to boost annotations with contextual attention as guidance.' }
+                    ],
+                    links: [
+                      { name: 'paper', link: 'https://arxiv.org/abs/2112.05975v1' }
+                    ]
+                  },
+                  {
+                    authors: 'Hengfeng Zha, Dongsheng Zhou, Xin Yang,Qiang Zhang,Xiaopeng Wei.',
+                    title: 'Efficient Attention Calibration Network for Real-Time Semantic Segmentation.',
+                    tags: [
+                      ['The 12th Asian Conference on Machine Learning (ACML) 2020.', 1],
+                    ],
+
+                    abstract: " In recent years, the attention mechanism has been widely used in computer vision. Se mantic segmentation, as one of the fundamental tasks of computer vision, has been sub ject to tremendous development as a result. But because of its huge computing overhead, attention-based approaches are di cult to use for real-time applications such as self-driving. In this paper, we propose a self-calibration method baesd on self-attentiion that successfully applies the attention mechanism to real-time semantic segmentation. Speci cally, a spatial attention module to adjust the edges of the coarse segmentation results which gained from the real-time semantic segmentation backbone network, and obtain more granular segmen tation results. We refer to this method as the E cient Attentional Calibration Network (EACNet). Experiments on the Cityscapes dataset validate the e ciency and performance of the method. With the high-resolution input and without any post-processing, EACNet achieved 72.4% mIoU of accuracy while running at 116.9 FPS. Compared to other state-of the-art methods for real-time semantic segmentation, our network gained a better balance between performance and speed.",
+                    imgs: [
+                      { src: 'ENCA.png', label: 'Pipeline Comparison of EACNet and High-Accuracy Attention Methods.' }
+                    ],
+                    links: [
+                      { name: 'paper', link: 'https://proceedings.mlr.press/v129/zha20a/zha20a.pdf' }
+                    ]
+                  },
+
+                ]
+              },
+            ]
+          },
+          {
+            title: "c. Degraded Environment Perception",
+            domains: [
+              {
+                title: "i. De-Raining",
+                projects: [
+                  {
+                    authors: 'Yu Qiao, Bo Dong, Ao Jin, Yu Fu, Seung-Hwan Baek, Felix Heide, Pieter Peers, Xiaopeng Wei, Xin Yang*.',
+                    title: 'Intensity-Aware Single-Image Deraining With Semantic and Color Regularization.',
+                    tags: [
+                      ['IEEE Transactions on Image Processing 2021', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    abstract: 'Rain degrades image visual quality and disrupts object structures, obscuring their details and erasing their colors. Existing deraining methods are primarily based on modeling either visual appearances of rain or its physical characteristics ( e.g. , rain direction and density), and thus suffer from two common problems. First, due to the stochastic nature of rain, they tend to fail in recognizing rain streaks correctly, and wrongly remove image structures and details. Second, they fail to recover the image colors erased by heavy rain. In this paper, we address these two problems with the following three contributions. First, we propose a novel PHP block to aggregate comprehensive spatial and hierarchical information for removing rain streaks of different sizes. Second, we propose a novel network to first remove rain streaks, then recover objects structures/colors, and finally enhance details. Third, to train the network, we prepare a new dataset, and propose a novel loss function to introduce semantic and color regularization for deraining. Extensive experiments demonstrate the superiority of the proposed method over state-of-the-art deraining methods on both synthesized and real-world data, in terms of visual quality, quantitative accuracy, and running speed.',
+                    imgs: [
+                      { src: 'xu1-3116794-small.gif', label: "Fig. 1.While state-of-the-art deraining methods (b to e) fail to correctly separate rain from image structures/details and recover image colors, the proposed method (f) produces a better rain-free image via learning intensity-aware deraining features with semantic and color regularization." },
+
+                    ],
+                    links: [
+                      { name: 'paper', link: 'https://ieeexplore.ieee.org/document/9565368' },
+
+                    ],
+
+                  },
+                  {
+                    authors:
+                      'Tianyu Wang*, Xin Yang*, Ke Xu, Shaozhe Chen, Qiang Zhang, and Rynson Lau.',
+                    title:
+                      'Spatial Attentive Single-Image Deraining with a High Quality Real Rain Dataset.',
+                    tags: [
+                      ['CVPR 2019', 1],
+                      [', Long Beach, USA. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    links: [
+                      {
+                        name: 'paper',
+                        link: 'https://arxiv.org/abs/1904.01538',
+                      },
+                      {
+                        name: 'suppl',
+                        link:
+                          'http://www.cs.cityu.edu.hk/~rynson/papers/demos/cvpr19c-supp.pdf',
+                      },
+                      {
+                        name: 'code',
+                        link: 'https://github.com/stevewongv/SPANet',
+                      },
+                      {
+                        name: 'training-set (key:4fwo)',
+                        link: 'https://pan.baidu.com/s/1lPn3MWckHxh1uBYYucoWVQ',
+                      },
+                      {
+                        name: 'test-set',
+                        link:
+                          'http://www.cs.cityu.edu.hk/~rynson/papers/demos/derain_testset_1000.rar',
+                      },
+                    ],
+                    imgs: [
+                      { src: 'Spatial Attentive Single-Image Deraining with a High Quality Real Rain Dataset.png' },
+                      { src: 'Spatial Attentive Single-Image Deraining with a High Quality Real Rain Dataset.gif' },
+                      { src: 'Spatial Attentive Single-Image Deraining with a High Quality Real Rain Dataset (2).gif' }
+                    ],
+                    abstract: 'Removing rain streaks from a single image has been drawing considerable attention as rain streaks can severely degrade the image quality and affect the performance of existing outdoor vision tasks. While recent CNN-based derainers have reported promising performances, deraining remains an open problem for two reasons. First, existing synthesized rain datasets have only limited realism, in terms of modeling real rain characteristics such as rain shape, direction and intensity. Second, there are no public benchmarks for quantitative comparisons on real rain images, which makes the current evaluation less objective. The core challenge is that real world rain/clean image pairs cannot be captured at the same time. In this paper, we address the single image rain removal problem in two ways. First, we propose a semi-automatic method that incorporates temporal priors and human supervision to generate a high-quality clean image from each input sequence of real rain images. Using this method, we construct a large-scale dataset of ∼29.5K rain/rain-free image pairs that covers a wide range of natural rain scenes. Second, to better cover the stochastic distribution of real rain streaks, we propose a novel SPatial Attentive Network (SPANet) to remove rain streaks in a local-to-global manner. Extensive experiments demonstrate that our network performs favorably against the state-of-the-art deraining methods.'
+                  },
+                ]
+              },
+              {
+                title: "ii. Image Super-Resolution",
+                projects: [
+                  {
+                    authors: 'Jiqing Zhang, Chengjiang Long, Yuxin Wang, Haiyin Piao, Haiyang Mei, Xin Yang*, Baocai Yin.',
+                    title: 'A Two-Stage Attentive Network for Single Image Super-Resolution.',
+                    tags: [
+                      ['IEEE Transactions on Circuits and Systems for Video Technology 2021', 1],
+                      ['. ', 0],
+                      ['(CCF-B)', 2]
+                    ],
+                    abstract: 'Recently, deep convolutional neural networks (CNNs) have been widely explored in single image superresolution (SISR) and contribute remarkable progress. However, most of the existing CNNs-based SISR methods do not adequately explore contextual information in the feature extraction stage and pay little attention to the final high-resolution (HR) image reconstruction step, hence hindering the desired SR performance. To address the above two issues, in this paper, we propose a two-stage attentive network (TSAN) for accurate SISR in a coarse-to-fine manner. Specifically, a novel dilated residual block (DRB) is developed as a fundamental unit to extract contextual features efficiently. Based on DRB, we further design a multicontext attentive block (MCAB) to make the network focus on more informative contextual features. Moreover, we present an essential refined attention block (RAB) which could explore useful cues in HR space for reconstructing fine-detailed HR image. Extensive evaluations on four benchmark datasets demonstrate the efficacy of our proposed TSAN in terms of quantitative metrics and visual effects.',
+                    imgs: [
+                      { src: 'A Two-Stage1.png' },
+                      { src: 'A Two-Stage2.png' }
+                    ],
+                  },
+                  {
+                    authors: 'Jiqing Zhang, Chengjiang Long, Yuxin Wang, Xin Yang*, Haiyang Mei, and Baocai Yin.',
+                    title: 'Multi-Context And Enhanced Reconstruction Network For Single Image Super Resolution.',
+                    tags: [
+                      ['ICME 2020', 1],
+                      ['. ', 0],
+                    ],
+                    io: 'Given an input LR image, our network recovers a visually pleasing HR image in a coarse-to-fine fashion.',
+                    abstract: 'Most existing single image super-resolution (SISR) methods continually increase the depth or width of networks, without adequately exploring contextual features which are essential for reconstruction. Moreover, such existing methods pay little attention to the final high-resolution(HR) image reconstruction step and therefore hinder the desired SR performance. In this paper, we propose a multi-context and enhanced reconstruction network (MCERN) for SISR. Specifically, a novel model named Multi-Context Block (MCB) which extracts more image contextual features with multibranch dilated convolution. Applying multiple MCBs with residual and dense connections, we can effectively extract contextual and hierarchical features for obtaining the coarse super-resolution result. Then an enhanced reconstruction block (ERB) is followed to extract essential spatial features on the high-resolution image to refine the coarse result to a better result. Extensive benchmark evaluations demonstrate the efficacy of our proposed MCERN in terms of metric accuracy and visual effects.',
+                    links: [
+                      { name: 'paper', link: './icme_sisr.pdf' }
+                    ],
+                    imgs: [
+                      { src: 'mcern_pipeline.png', label: 'Overview of proposed framework.' },
+                      { src: 'mcern_results.png', label: 'Visual comparison of our results with those of the state-of-the-art methods. Please zoom in to see the details.' }
+                    ],
+                  },
+                  {
+                    authors: 'Xin Yang, Haiyang Mei, Jiqing Zhang, Ke Xu, Baocai Yin, Qiang Zhang, and Xiaopeng Wei.',
+                    title: 'DRFN: Deep Recurrent Fusion Network for Single Image Super-Resolution with Large Factors.',
+                    tags: [
+                      ['IEEE TRANSACTIONS ON MULTIMEDIA', 1],
+                      [', August 2018. ', 0],
+                    ],
+                    io: 'Given an input LR image, our network reconstructs a HR image with more texture details and better visual performance, especially for large-scale images.',
+                    abstract: 'Recently, single-image super-resolution has made great progress owing to the development of deep convolutional neural networks (CNNs). The vast majority of CNN-based models use a pre-defined upsampling operator, such as bicubic interpolation, to upscale input low-resolution images to the desired size and learn non-linear mapping between the interpolated image and ground truth high-resolution (HR) image. However, interpolation processing can lead to visual artifacts as details are over-smoothed, particularly when the super-resolution factor is high. In this paper, we propose a Deep Recurrent Fusion Network (DRFN), which utilizes transposed convolution instead of bicubic interpolation for upsampling and integrates different-level features extracted from recurrent residual blocks to reconstruct the final HR images. We adopt a deep recurrence learning strategy and thus have a larger receptive field, which is conducive to reconstructing an image more accurately. Furthermore, we show that the multi-level fusion structure is suitable for dealing with image super-resolution problems. Extensive benchmark evaluations demonstrate that the proposed DRFN performs better than most current deep learning methods in terms of accuracy and visual effects, especially for large-scale images, while using fewer parameters.',
+                    links: [
+                      { name: 'paper', link: 'https://arxiv.org/pdf/1908.08837.pdf' },
+                      { name: 'code', link: 'https://github.com/Mhaiyang/TMM2018_DRFN' }
+                    ],
+                    imgs: [
+                      { src: 'drfn_pipeline.png', label: 'Overview of proposed framework.' },
+                      { src: 'drfn_results.png', label: 'Visual comparison of our results with those of the state-of-the-art methods. Please zoom in to see the details.' }
+                    ],
+                  },
+                  {
+                    authors: 'Ke Xu, Xin Wang, Xin Yang*, Shengfeng He, Qiang Zhang, Baocai Yin, Xiaopeng Wei, and Rynson W.H. Lau.',
+                    title: 'Efficient Image Super Resolution Integration.',
+                    tags: [
+                      ['The Visual Computer (Proc. CGI)', 1],
+                      [', June 2018. ', 0],
+                    ],
+                    io: 'Given an input LR image, our framework integrates the patch-based and the deep learning-based SR methods to produce a HR image.',
+                    abstract: 'The Super Resolution (SR) problem is challenging due to the diversity of image types with little shared properties as well as the speed required by online applications, e.g., target identification. In this paper, we explore the merits and demerits of recent deep learning based and conventional patch-based SR methods, and show that they can be integrated in a complementary manner, while balancing the reconstruction quality and time cost. Motivated by this, we further propose an integration framework to take the results from FSRCNN and A+ methods as inputs, and directly learn a pixelwise mapping between the inputs and the reconstructed results using the Gaussian Conditional Random Fields (GCRFs). The learned pixel-wise integration mapping is flexible to accommodate different upscaling factors. Experimental results show that the proposed framework can achieve superior SR performance compared with the state-of-the-arts while being efficient.',
+                    links: [
+                      { name: 'paper', link: 'https://www.cs.cityu.edu.hk/~rynson/papers/cgi18.pdf' }
+                    ],
+                    imgs: [
+                      { src: 'cgi_pipeline.png', label: 'Overview of proposed framework.' },
+                      { src: 'cgi_results.png', label: 'Visual comparison of our results with those of the state-of-the-art methods. Please zoom in to see the details.' }
+                    ],
+                  }
+
+
+                ]
+              },
+              {
+                title: "iii. Image Enhancement",
+                projects: [
+                  {
+                    authors: 'Ke Xu, Xin Yang*, Baocai Yin, and Rynson Lau.',
+                    title: 'Learning to Restore Low-light Images via Decomposition-and-Enhancement.',
+                    tags: [
+                      ['CVPR 2020', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    io: 'Given an input practical low-light image, which often comes with a significant amount of noise due to the low signal-to-noise ratio, our network enhances its brightness while at the same time suppressing its noise level, to produce an enhanced clear image.',
+                    abstract: 'Low-light images typically suffer from two problems. First, they have low visibility (i.e., small pixel values). Second, noise becomes significant and disrupts the image content, due to low signal-to-noise ratio. Most existing lowlight image enhancement methods, however, learn from noise-negligible datasets. They rely on users having good photographic skills in taking images with low noise. Unfortunately, this is not the case for majority of the low-light images. While concurrently enhancing a low-light image and removing its noise is ill-posed, we observe that noise exhibits different levels of contrast in different frequency layers, and it is much easier to detect noise in the low-frequency layer than in the high one. Inspired by this observation, we propose a frequency-based decomposition-and-enhancement model for low-light image enhancement. Based on this model, we present a novel network that first learns to recover image objects in the low-frequency layer and then enhances high-frequency details based on the recovered image objects. In addition, we have prepared a new low-light image dataset with real noise to facilitate learning. Finally, we have conducted extensive experiments to show that the proposed method outperforms state-of-the-art approaches in enhancing practical noisy low-light images.',
+                    links: [
+                      { name: 'paper', link: 'http://www.cs.cityu.edu.hk/~rynson/papers/cvpr20a.pdf' },
+                      { name: 'suppl', link: 'http://www.cs.cityu.edu.hk/~rynson/papers/demos/cvpr20a-supp.pdf' },
+                      { name: 'dataset', link: 'https://drive.google.com/drive/folders/10G9hT8ohZADB8Eltal7wB_yOGDJS62Ng' },
+                      { name: 'video', link: 'https://www.cs.cityu.edu.hk/~rynson/papers/demos/cvpr20a.mp4' }
+                    ],
+                    imgs: [
+                      { src: '20200621135331(1).gif', label: 'Overview of proposed framework.' },
+                      { src: 'cvpr_2020_results.jpg', label: 'While existing methods ((c) to (j)) generally fail to enhance the input noisy low-light image (a), our method produces a sharper and clearer result with objects and details recovered (l).' }
+                    ],
+                  },
+                  {
+                    authors: 'Xin Yang, Haoran Wang, Shaozhe Chen, Xinglin Piao, Dongsheng Zhou, Qiang Zhang, Baocai Yin, Xiaopeng Wei.',
+                    title: 'Cascaded Network with Deep Intensity Manipulation for Scene Understanding.',
+                    tags: [
+                      ['Journal of Visualization and Computer Animation', 1],
+                      [', 30(3-4), 2019. ', 0],
+                    ],
+                    io: 'Given an input low-light image, our network produces an enhanced image with lost details recovered.',
+                    abstract: 'Scene understanding is essential to robotic navigation and autonomous driving as it provides semantic information to their controlling system. However, it will fail when processing low-light images/videos captured under adverse weather or at night use state-of-the-art scene understanding methods. A naive way to directly infer semantics from low-light images is ill posed because the low-light condition distorts pixel intensities and buries details. In order to address this problem, we propose the Deep Intensity Manipulation Network (DIMNet), which could relight the input images and recover the details, and combine the DIMNet with a scene understanding network to get a cascaded network to learn the semantics from low-light images. Through learning pixel intensity manipulation, our method can generate images not only visually pleasing but also practical for scene understanding. Qualitative and quantitative experiments demonstrate that the proposed method is effective and robust for both synthetic and real-world images.',
+
+                    imgs: [
+                      { src: 'Cascaded Network with Deep Intensity Manipulation for Scene Understanding.png', label: 'Limitations of existing enhance algorithms. We choose ICNet to generate segmentation results. The quality of segmentation results is illy influenced by the limited illustration. Existing enhancement algorithms cannot perform optimization and, on the contrary, worsen the segmentation results. (a) Low-light image. (b) Low-light image enhancement via illumination map estimation (LIME). (c) Simultaneous reflectance and illumination estimation (SRIE). (d) Ours.' }
+                    ],
+                  },
+                  {
+                    authors: 'Xin Yang, Ke Xu, Yibing Song, Qiang Zhang, Xiaopeng Wei, and Rynson Lau.',
+                    title: 'Image Correction via Deep Reciprocating HDR Transformation.',
+                    tags: [
+                      ['CVPR 2018', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    io: 'Given an input low-light image, our network produces an enhanced image with lost details recovered.',
+                    abstract: 'Image correction aims to adjust an input image into a visually pleasing one. Existing approaches are proposed mainly from the perspective of image pixel manipulation. They are not effective to recover the details in the under/over exposed regions. In this paper, we revisit the image formation procedure and notice that the missing details in these regions exist in the corresponding high dynamic range (HDR) data. These details are well perceived by the human eyes but diminished in the low dynamic range (LDR) domain because of the tone mapping process. Therefore, we formulate the image correction task as an HDR transformation process and propose a novel approach called Deep Reciprocating HDR Transformation (DRHT). Given an input LDR image, we first reconstruct the missing details in the HDR domain. We then perform tone mapping on the predicted HDR data to generate the output LDR image with the recovered details. To this end, we propose a united framework consisting of two CNNs for HDR reconstruction and tone mapping. They are integrated end-to-end for joint training and prediction. Experiments on the standard benchmarks demonstrate that the proposed method performs favorably against state-of-the-art image correction methods.',
+                    links: [
+                      { name: 'paper', link: 'http://www.cs.cityu.edu.hk/~rynson/papers/cvpr18a.pdf' },
+                      { name: 'suppl', link: 'http://www.cs.cityu.edu.hk/~rynson/papers/demos/cvpr18asupp.pdf' },
+                      { name: 'code', link: 'https://drive.google.com/open?id=1PqZPgBxGw14tukPvtgnPl7qn0Zu6KhTU' },
+                      { name: 'dataset', link: 'https://drive.google.com/open?id=1lNxf_3LW5b1w5uAvFVLJE5By01OmXRXI' },
+                    ],
+                    imgs: [
+                      { src: '20200621135331(2).gif' },
+                      { src: 'cvpr_2018_results.jpg', label: 'Image correction results on an underexposed input. Existing LDR methods have the limitation in recovering the missing details, as shown in (b)-(f). In comparison, we recover the missing LDR details in the HDR domain and preserve them through tone mapping, producing a more favorable result as shown in (g).' }
+                    ],
+                  },
+                  {
+                    authors: 'Ke Xu, Xin Yang, Baocai Yin, Rynson Lau.',
+                    title: 'Decomposition-Guided Low-light Image Restoration and Enhancement.',
+                    tags: [
+                      ['International Journal of Computer Vision', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    abstract: 'Low-light images typically suffer from two problems. First, they have low visibility (i.e., small pixel values). Second, noise becomes significant and disrupts the image content, due to low signal-to-noise ratio. Most existing low-light image enhancement methods, however, learn from noise-negligible datasets. They rely on users having good photographic skills in taking images with low noise. Unfortunately, this is not the case for majority of the low-light images. On the other hand, attempting to enhance a lowlight image while removing its noise is an ill-posed problem. We observe that noise exhibits different levels of contrast in different frequency layers, and it is much easier to detect noise in the low-frequency layer than in the high one. Inspired by this observation, we propose a frequency-based decomposition-guided model for low-light image restoration and enhancement. Based on this model, we present a novel network that first learns to recover image objects in the low-frequency layer and then enhances high-frequency details guided by the recovered image objects. In addition, we have prepared a new low-light image dataset with real noise to facilitate learning. Finally, we have conducted extensive experiments to show that the proposed method outperforms state-of-the-art approaches in enhancing practical noisy low-light images.',
+
+                    imgs: [
+                      { src: 'Decomposition-Guided Low-light Image Restoration and Enhancement.png' }
+                    ],
+                  },
+
+                ]
+              }
+
+            ]
+          }
+
+
+        ],
+
+
+      }
+    },
+    methods: {
+      textBold(s) {
+        return textBold(s)
+      },
+      goBack() {
+        goBack()
+      },
+      handleChange(val) {
+        console.log(val)
+      },
+      replaceSpacesWithUnderscore(title) {
+        return title.replace(/\s+/g, '_');
+      }
+
+    },
+    created() {
+      var id = 1;
+      for (var i = 0; i < 1000; i++) {
+        this.activeNames1.push(i);
+        this.activeNames2.push(i);
+        this.activeNames3.push(i);
+      }
+      let idCounter = 1;
+
+      this.directions1.forEach(direction => {
+        direction.domains.forEach(domain => {
+          domain.projects.forEach(project => {
+            project.id = idCounter++;
+          });
+        });
+      });
+      this.directions1[1].domains1.forEach(domain11 => {
+        domain11.domains.forEach(domain => {
+
+          domain.projects.forEach(project => {
+            project.id = idCounter++;
+          });
+        });
+      });
+      this.directions1[1].domains2.forEach(domain => {
+        domain.projects.forEach(project => {
+          project.id = idCounter++;
+        });
+      });
+
+
+
+    }
+
+  })
+</script>
+
+</html>

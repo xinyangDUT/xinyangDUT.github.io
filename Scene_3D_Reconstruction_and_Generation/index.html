@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+<title>Scene 3D Reconstruction and Generation</title>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../css/element-ui.css" />
+  <link rel="stylesheet" href="../css/index.css" />
+  <script src="../js/vue.min.js"></script>
+  <script src="../js/element-ui.min.js"></script>
+</head>
+
+<style>
+  .el-collapse-item__header {
+    line-height: 30px;
+    height: auto;
+    padding: 10px 20px;
+  }
+</style>
+
+
+<body>
+  <div id="app">
+    <el-button style="position:fixed;" @click="goBack" round><i class="el-icon-back"></i>Back</el-button>
+    <!-- Photorealistic Rendering -->
+    <div class="content">
+      <h1 style="font-size: 50px;">
+        Scene 3D Reconstruction and Generation
+      </h1>
+      <el-divider></el-divider>
+      <p style="text-align: justify;font-size: 18px;">
+
+        In the field of computer vision and artificial intelligence, how to achieve the reconstruction and generation of
+        scenes is a key technology, widely applied in various domains such as robotic navigation, digital twins, and
+        interior design. We first study
+        embodied scene reconstruction, achieving efficient and accurate reconstruction of object-local-global scenes
+        with the aid of geometric cues such as depth and normals, using methods like active viewpoint selection,
+        proactive occlusion information mining, and adaptive target point planning. Next, we research scene
+        relationship understanding, analyzing spatial and functional associations between objects within the scene to
+        form 3D semantic labels and entity relationship maps, enhancing the system's deep understanding of the scene.
+        Additionally, to meet the demand for 3D generation in fields like the metaverse, virtual reality, and game
+        design, we also explore scene content generation, employing methods such as diffusion models and NeRF to
+        generate new 3D scene objects, including digital humans . In general, we are committed to
+        structure a comprehensive workflow of scene analysis, construction, understanding, and generation, providing
+        systematic support for practical applications across different industries.
+      </p>
+      <el-divider></el-divider>
+
+      <el-collapse v-model="activeNames1" @change="handleChange" style="margin-top: 0px;">
+        <el-collapse-item v-for="direction in directions1">
+          <template slot="title">
+            <span style="font-size: 28px;font-weight: bolder;color: dodgerblue;">
+              {{direction.title}}
+            </span>
+          </template>
+
+          <el-collapse v-if="direction.domains" v-model="activeNames2" @change="handleChange">
+            <el-collapse-item v-for="domain in direction.domains" :index="num_index">
+              <template slot="title">
+                <span style="font-size: 25px;margin-left: 20px;font-weight:bold;color: dodgerblue;">
+                  {{domain.title}}
+                </span>
+              </template>
+              <div v-for="project,index in domain.projects">
+                <p class="project_p" style="font-size: 20px">
+                  <span v-html="textBold(project.authors)"></span>
+                  <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                    style="font-size: 20px">{{project.title}}</b>
+                  <span v-for="tag in project.tags" :style="styles[tag[1]]" style="font-size: 20px">{{tag[0]}}</span>
+                  <span v-for="link in project.links" style="font-size: 20px">[<b><a class="project_links"
+                        :href="link.link" style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+                </p>
+                <div v-if="project.video" class="figure_div">
+                  <video width="640" :src="'videos/'+project.video" controls></video>
+                </div>
+                <div v-for="img in project.imgs" class="figure_div">
+                  <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                  <div v-if="img.label">
+                    <div class="figure_label">{{img.label}}</div>
+                    <br>
+                  </div>
+                </div>
+                <div v-if="project.io">
+                  <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+                </div>
+                <div v-if="project.abstract">
+                  <p style="text-align: justify;font-size: 18px;">
+                    <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                  </p>
+                </div>
+                <el-divider content-position="right">{{project.id}}</el-divider>
+              </div>
+            </el-collapse-item>
+          </el-collapse>
+
+          <el-collapse v-if="direction.domains1" v-model="activeNames2" @change="handleChange">
+            <el-collapse-item v-for="domain_1 in direction.domains1" :index="num_index">
+              <template slot="title">
+                <span style="font-size: 25px;margin-left: 20px;font-weight:bold;">
+                  {{domain_1.title}}
+                </span>
+              </template>
+              <el-collapse v-model="activeNames3" @change="handleChange">
+                <el-collapse-item v-for="domain_2 in domain_1.domains" :index="num_index">
+                  <template slot="title">
+                    <span style="font-size: 23px;margin-left: 40px;">
+                      {{domain_2.title}}
+                    </span>
+                  </template>
+                  <div v-for="project,index in domain_2.projects">
+                    <p class="project_p" style="font-size: 20px">
+                      <span v-html="textBold(project.authors)"></span>
+                      <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                        style="font-size: 20px">{{project.title}}</b>
+                      <span v-for="tag in project.tags" :style="styles[tag[1]]"
+                        style="font-size: 20px">{{tag[0]}}</span>
+                      <span v-for="link in project.links" style="font-size: 20px">[<b><a class="project_links"
+                            :href="link.link" style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+                    </p>
+                    <div v-if="project.video" class="figure_div">
+                      <video width="640" :src="'videos/'+project.video" controls></video>
+                    </div>
+                    <div v-for="img in project.imgs" class="figure_div">
+                      <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                      <div v-if="img.label">
+                        <div class="figure_label">{{img.label}}</div>
+                        <br>
+                      </div>
+                    </div>
+                    <div v-if="project.io">
+                      <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+                    </div>
+                    <div v-if="project.abstract">
+                      <p style="text-align: justify;font-size: 18px;">
+                        <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                      </p>
+                    </div>
+                    <el-divider content-position="right">{{project.id}}</el-divider>
+                  </div>
+                </el-collapse-item>
+            </el-collapse-item>
+          </el-collapse>
+
+          <el-collapse v-if="direction.domains2" v-model="activeNames2" @change="handleChange">
+            <el-collapse-item v-for="domain in direction.domains2" :index="num_index">
+              <template slot="title">
+                <span style="font-size: 25px;margin-left: 20px;font-weight:bold;">
+                  {{domain.title}}
+                </span>
+              </template>
+              <div v-for="project,index in domain.projects">
+                <p class="project_p" style="font-size: 20px">
+                  <span v-html="textBold(project.authors)"></span>
+                  <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                    style="font-size: 20px">{{project.title}}</b>
+                  <span v-for="tag in project.tags" :style="styles[tag[1]]" style="font-size: 20px">{{tag[0]}}</span>
+                  <span v-for="link in project.links" style="font-size: 20px">[<b><a class="project_links"
+                        :href="link.link" style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+                </p>
+                <div v-if="project.video" class="figure_div">
+                  <video width="640" :src="'videos/'+project.video" controls></video>
+                </div>
+                <div v-for="img in project.imgs" class="figure_div">
+                  <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                  <div v-if="img.label">
+                    <div class="figure_label">{{img.label}}</div>
+                    <br>
+                  </div>
+                </div>
+                <div v-if="project.io">
+                  <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+                </div>
+                <div v-if="project.abstract">
+                  <p style="text-align: justify;font-size: 18px;">
+                    <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                  </p>
+                </div>
+                <el-divider content-position="right">{{project.id}}</el-divider>
+              </div>
+
+
+            </el-collapse-item>
+          </el-collapse>
+          <div v-if="direction.projects">
+            <div v-for="project,index in direction.projects">
+              <p class="project_p" style="font-size: 20px">
+                <span v-html="textBold(project.authors)"></span>
+                <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                  style="font-size: 20px">{{project.title}}</b>
+                <span v-for="tag in project.tags" :style="styles[tag[1]]" style="font-size: 20px">{{tag[0]}}</span>
+                <span v-for="link in project.links" style="font-size: 20px">[<b><a class="project_links"
+                      :href="link.link" style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+              </p>
+              <div v-if="project.video" class="figure_div">
+                <video width="640" :src="'videos/'+project.video" controls></video>
+              </div>
+              <div v-for="img in project.imgs" class="figure_div">
+                <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                <div v-if="img.label">
+                  <div class="figure_label">{{img.label}}</div>
+                  <br>
+                </div>
+              </div>
+              <div v-if="project.io" style="font-size: 18px;">
+                <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+              </div>
+              <div v-if="project.abstract">
+                <p style="text-align: justify;font-size: 18px;">
+                  <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                </p>
+              </div>
+              <el-divider content-position="right">{{project.id}}</el-divider>
+            </div>
+
+          </div>
+        </el-collapse-item>
+      </el-collapse>
+
+
+
+
+    </div>
+  </div>
+  </div>
+</body>
+<script src="../js/index.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        num_index: 1,
+        styles,
+        activeNames1: ['1'],
+        activeNames2: ['2'],
+        activeNames3: ['2'],
+        directions1: [
+          {
+            title: "a.  Embodied Scene Reconstruction",
+            domains: [
+              {
+                title: "i.  Object Modeling",
+                projects: [
+                  {
+                    authors: 'Zhaoxuan Zhang, Bo Dong, Tong Li, Felix Heide, Pieter Peers, Baocai Yin, Xin Yang*.',
+                    title: 'Single Depth-image 3D Reflection Symmetry and Shape Prediction.',
+                    tags: [
+                      ['ICCV2023', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2],
+                    ],
+                    video: 'single.mp4',
+                    io: ' Given a single depth image of an object, our ISCNet progressively generate the missing points of the initial point cloud under the optimal sequence of viewpoints decided by an RL agent.',
+                    abstract: 'In this paper we present ISCNet, a single depth-image completion method that exploits reflective symmetry cues to obtain more detailed shape completions. The efficacy of single image depth completion methods is often sensitive to the accuracy of the symmetry plane. ISCNet therefore jointly estimates the symmetry plane and shape completion iteratively; more complete shapes contribute to more robust symmetry plane estimates and vice versa. Furthermore, our shape completion method operates in the image domain, enabling more efficient high-resolution detailed geometry reconstruction. We perform the shape completion from pairs of viewpoints, reflected across the symmetry plane, predicted by a reinforcement learning agent to improve robustness and to simultaneously explicitly leverage symmetry. We demonstrate the efficacy of ISCNet on a variety of object categories on both synthetic and real-scanned datasets.',
+                    links: [
+                      { name: 'paper', link: 'https://openaccess.thecvf.com/content/ICCV2023/papers/Zhang_Single_Depth-image_3D_Reflection_Symmetry_and_Shape_Prediction_ICCV_2023_paper.pdf' },
+                      { name: 'supp', link: 'https://openaccess.thecvf.com/content/ICCV2023/supplemental/Zhang_Single_Depth-image_3D_ICCV_2023_supplemental.pdf' }
+                    ],
+                    imgs: [
+                      { src: 'fig1.png', label: 'ISCNet more efficiently leverages symmetry cues for robust shape completion from a single depth image compared to prior methods.' },
+                      { src: 'fig2.png', label: ' The pipeline of ISCNet.' },
+                      { src: 'fig3.png', label: 'Visual comparison of shape completion quality of ISCNet versus prior work on real-scaned ScanNet dataset. Note that the sofa and table are non-symmetric objects.' },
+                    ],
+                  },
+                  {
+                    authors: 'Xin Yang, Yuanbo Wang, Yaru Wang, Bacai Yin, Qian Zhang, Xiaopeng Wei and Hongbo Fu.',
+                    title: 'Active Object Reconstruction Using a Guided View Planner.',
+                    tags: [
+                      ['IJCAI 2018', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    io: 'Given a random view image of the target object, our network reconstruct the 3D volume of the object and decide the next best view according to the current reconstruction quality.',
+                    abstract: 'Inspired by the recent advance of image-based object reconstruction using deep learning, we present an active reconstruction model using a guided view planner. We aim to reconstruct a 3D model using images observed from a planned sequence of informative and discriminative views. But where are such informative and discriminative views around an object? To address this we propose a unified model for view planning and object reconstruction, which is utilized to learn a guided information acquisition model and to aggregate information from a sequence of images for reconstruction. Experiments show that our model (1) increases our reconstruction accuracy with an increasing number of views (2) and generally predicts a more informative sequence of views for object reconstruction compared to other alternative methods.',
+                    links: [
+                      { name: 'paper', link: 'https://arxiv.org/pdf/1805.03081.pdf' }
+                    ],
+                    imgs: [
+                      { src: '20200621135332(1).gif' },
+                      { src: 'ijcai18_pipeline.png', label: 'Illustration of network architecture. Our entire network consists of four components: a Recurrent 2D Encoder, a Recurrent 3D Decoder, Perspective Transformer and a View Planner.' },
+                      { src: 'ijcai18_results.png', label: 'Qualitative results of reconstruction samples for example view sequences. 3D-R2N2 generally fails in the categories with much higer variation (eg. the lamp in the bottom right corner) while our model does better in feature extraction and view aggregation, leading to a more accurate reconstruction.' }
+                    ],
+                  },
+
+                ]
+              },
+              {
+                title: "ii.  Local Scenario Modeling",
+                projects: [
+                  {
+                    authors: 'Zhaoxuan Zhang, Xiaoguang Han, Bo Dong, Tong Li, Baocai Yin, Xin Yang*.',
+                    title: 'Point Cloud Scene Completion with Joint Color and Semantic Estimation from Single RGB-D Image.',
+                    tags: [
+                      ['IEEE Transactions on Pattern Analysis and Machine Intelligence 2023', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2],
+                    ],
+                    io: 'Given an single RGB-D image, our method progressively generate the missing points of the initial point cloud corresponding to the input depth map under the optimal sequence of viewpoints, as well as the corresponding color and segmentation information.',
+                    abstract: 'We present a deep reinforcement learning method of progressive view inpainting for colored semantic point cloud scene completion under volume guidance, achieving high-quality scene reconstruction from only a single RGB-D image with severe occlusion. Our approach is end-to-end, consisting of three modules: 3D scene volume reconstruction, 2D RGB-D and segmentation image inpainting, and multi-view selection for completion. Given a single RGB-D image, our method first predicts its semantic segmentation map and goes through the 3D volume branch to obtain a volumetric scene reconstruction as a guide to the next view inpainting step, which attempts to make up the missing information; the third step involves projecting the volume under the same view of the input, concatenating them to complete the current view RGB-D and segmentation map, and integrating all RGB-D and segmentation maps into the point cloud. Since the occluded areas are unavailable, we resort to a A3C network to glance around and pick the next best view for large hole completion progressively until a scene is adequately reconstructed while guaranteeing validity. All steps are learned jointly to achieve robust and consistent results. We perform qualitative and quantitative evaluations with extensive experiments on the 3D-FUTURE data, obtaining better results than state-of-the-arts.',
+                    links: [
+                      { name: 'paper', link: 'https://arxiv.org/pdf/2210.05891' },
+                    ],
+                    imgs: [
+                      { src: 'rgbdscenecomp.gif', label: 'The pipeline of our method.' },
+                      { src: 'pami_sotapc.png', label: 'Comparisons against the state-of-the-arts. Given different inputs and the referenced groundtruth, we show the completion results of four methods, with the corresponding point cloud error maps below. More blue more accurate.' }
+                    ],
+                  },
+                  {
+                    authors: 'Xiaoguang Han, Zhaoxuan Zhang, Dong Du, Mingdai Yang, Jingming Yu, Pan Pan, Xin Yang, Ligang Liu, Zixiang Xiong and Shuguang Cui.',
+                    title: 'Deep Reinforcement Learning of Volume-guided Progressive View Inpainting for 3D Point Scene Completion from a Single Depth Image.',
+                    tags: [
+                      ['CVPR 2019', 1],
+                      ['. ', 0],
+                      ['(Oral, CCF A)', 2]
+                    ],
+                    io: 'Given an single depth image, our method progressively generate the missing points of the initial point cloud corresponding to the input depth map under the optimal sequence of viewpoints.',
+                    abstract: 'We present a deep reinforcement learning method of progressive view inpainting for 3D point scene completion under volume guidance, achieving high-quality scene reconstruction from only a single depth image with severe occlusion. Our approach is end-to-end, consisting of three modules: 3D scene volume reconstruction, 2D depth map inpainting, and multi-view selection for completion. Given a single depth image, our method first goes through the 3D volume branch to obtain a volumetric scene reconstruction as a guide to the next view inpainting step, which attempts to make up the missing information; the third step involves projecting the volume under the same view of the input, concatenating them to complete the current view depth, and integrating all depth into the point cloud. Since the occluded areas are unavailable, we resort to a deep Q-Network to glance around and pick the next best view for large hole completion progressively until a scene is adequately reconstructed while guaranteeing validity. All steps are learned jointly to achieve robust and consistent results. We perform qualitative and quantitative evaluations with extensive experiments on the SUNCG data, obtaining better results than the state of the art.',
+                    links: [
+                      { name: 'paper', link: 'http://openaccess.thecvf.com/content_CVPR_2019/papers/Han_Deep_Reinforcement_Learning_of_Volume-Guided_Progressive_View_Inpainting_for_3D_CVPR_2019_paper.pdf' },
+                    ],
+                    imgs: [
+                      { src: '20200621135332(2).gif' },
+                      { src: 'cvpr19_oral_pipeline.png', label: 'The pipeline of our method.' },
+                      { src: 'cvpr19_oral_results.png', label: 'Comparisons against the state-of-the-arts. Given different inputs and the referenced groundtruth, we show the completion results of three methods, with the corresponding point cloud error maps below, and zoom-in areas beside. More blue more accurate.' }
+                    ],
+                  },
+                ]
+              },
+              {
+                title: "iii.  Global Scenario Exploration and Reconstruction",
+                projects: [
+                  {
+                    authors: 'Xuefeng Yin, Chenyang Zhu, Shanglai Qu, Yuqi Li, Kai Xu, Baocai Yin, Xin Yang', title: 'CSO: Constraint-guided Space Optimization for Active Scene Mapping',
+                    tags: [
+                      ['ACM Multimedia 2024', 1],
+                      ['October 2024. Melbourne, Australia', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    io: '',
+                    abstract: 'Simultaneously mapping and exploring a complex unknown scene is an NP-hard problem, which is still challenging with the rapid development of deep learning techniques. We present CSO, a deep reinforcement learning-based framework for efficient active scene mapping. Constraint-guided space optimization is adopted for both state and critic space to reduce the difficulty of finding the global optimal explore path and avoid long-distance round trips while exploring. We first take the frontiers-based entropy as the input constraint with the raw observation into the network, which guides the training start from imitating the local greedy searching. However, the entropy-based optimization can easily get stuck with few local optimal or cause inefficient round trips since the entropy space and the real world do not share the same metric. Inspired by constrained reinforcement learning, we then introduce an action mask-based optimization constraint to align the metric of these two spaces. Exploration optimization in aligned spaces can avoid long-distance round trips more effectively. We evaluate our method with a ground robot in 29 complex indoor scenes with different scales. Our method can perform 19.16\% more exploration efficiency and 3.12\% more exploration completeness on average compared to the state-of-the-art alternatives. We also implement our method in real-world scenes that can efficiently explore an area of 649 $m^2$. The experiment video can be found in the supplementary material.',//文章摘要。建议200个英文单词左右。
+                    imgs: [
+                      { src: 'teaser_v8.png' },
+                      { src: 'pipeline_tcvg_v7_acmmm2024.png' },
+                    ],
+                    links: [
+                      { name: 'paper', link: 'https://openreview.net/pdf/b923e07153b40465858258bfb32abc6f33405131.pdf' },
+                    ],
+                    video: '',
+                  },
+                  {
+                    authors: 'Tong Li、Zhaoxuan Zhang、Yuxin Wang、Yan Cui、Yuqi Li、Dongsheng Zhou、Baocai Yin、Xin Yang*.',
+                    title: 'Self-supervised indoor scene point cloud completion from a single panorama.',
+                    tags: [
+                      ['The Visual Computer 2024', 1],
+                      ['. ', 0],
+                    ],
+                    io: 'Given an single RGB-D panorama, we propose a self-supervised based method for indoor scene point cloud completion.',
+                    abstract: 'In this paper, we propose a self-supervised learning method of point cloud completion for indoor scenes. Considering the limited view of single-view image and the time-consuming and labor-intensive acquisition of multi-view images, we take panoramas as input, which makes the acquisition easier and the scope of the scene wider. As it is difficult to obtain complete scene point cloud, we design an auxiliary task to simulate scene missing area by shifting viewpoint of panorama and extract the supervision information of the scene itself. Given the difficulty to complete large-scale scene point cloud, we design a neighborhood integration and feature spreading module for feature extraction and reservation before substantial point cloud downsampling, enabling the completion network to handle large-scale point cloud. Then we propose a transformer-based scene point cloud completion network and show competitive completion results compared to relevant supervised learning methods.',
+                    imgs: [
+                      { src: 'tvs.png', label: 'The pipeline of our method.' },
+                      { src: 'tvc.png', label: '  ' },
+                    ],
+                  },
+
+                ]
+              },
+            ],
+
+
+          },
+          {
+            title: "b.  Scene Relationship Understanding",
+            domains: [
+              {
+                title: "i.  Scene Graph ",
+                projects: [
+                  {
+                    authors: 'Yuanbo Wang, Shanglai Qu, Tianyu Meng, Yan Cui, Haiyin Piao, XiaoPeng Wei∗, Xin Yang∗',
+                    title: 'Event-intensity Stereo with Cross-modal Fusion and Contrast.',
+                    tags: [
+                      ['International Conference on Intelligent Robots and Systems 2024', 1],
+                    ],
+                    abstract: "For binocular stereo, traditional cameras excel in capturing fine details and texture information but are limited in terms of dynamic range and their ability to handle rapid motion. On the contrary, event cameras provide pixel-level intensity changes with low latency and a wide dynamic range, albeit at the cost of less detail in their output. It is natural to leverage the strengths of both modalities. We solve this problem by introducing a cross-modal fusion module that learns a visual representation from both sensor inputs. Additionally, we extract and compare dense event-intensity stereo pair features by contrasting “pairs of event-intensity pairs from different views and different modalities and different timestamps”. This provides the flexibility in masking hard negatives and enables networks to effectively combine event-intensity signals within a contrastive learning framework, leading to an improved matching accuracy and facilitating more accurate estimation of disparity. Experimental results validate the effectiveness of our model and the improvement of disparity estimation accuracy",
+                    imgs: [
+                      { src: 'IROS_2024.png', label: " From left to right: the architecture overview of our proposed models, event-intensity voxel fusion (EIVF) module,and event-intensity spatial pyramid fusion (EI-SPF) module." },
+                      { src: 'IROS_2024_1.png' },
+                    ],
+                    links: [
+
+                    ],
+                    video: '',
+                  },
+
+                  {
+                    authors: 'Zhaoxuan Zhang*, Kun Li*, Xuefeng Yin, Xinglin Piao, Yuxin Wang, Xin Yang, Baocai Yin.',
+                    title: 'Point Cloud Semantic Scene Segmentation based on Coordinate Convolution.',
+                    tags: [
+                      ['Journal of Computer Animation and Virtual Worlds', 1],
+                      [',', 0],
+                      ['Special Issue of CASA 2020.', 1]
+                    ],
+                    io: 'Given an indoor scene point cloud, our method predict the semantic segmentation label for each point based on our proposed feature extraction option named "coordinate convolution".',
+                    abstract: 'Point cloud semantic segmentation, a crucial research area in the 3D computer vision, lies at the core of many vision and robotics applications. Due to the irregular and disordered of the point cloud, however, the application of convolution on point clouds is challenging. In this paper, we propose the “coordinate convolution”, which can effectively extract local structural information of the point cloud, to solve the inapplicability of conventional convolution neural network (CNN) structures on the 3D point cloud. The “coordinate convolution” is a projection operation of three planes based on the local coordinate system of each point. Specifically, we project the point cloud on three planes in the local coordinate system with a joint 2D convolution operation to extract its features. Additionally, we leverage a self-encoding network based on image semantic segmentation U-Net structure as the overall architecture of the point cloud semantic segmentation algorithm. The results demonstrate that the proposed method exhibited excellent performances for point cloud data sets corresponding to various scenes.',
+                    links: [
+                      { name: 'paper', link: 'https://onlinelibrary.wiley.com/doi/epdf/10.1002/cav.1948 ' },
+                    ],
+                    imgs: [
+                      { src: 'ijcai18.png' },
+                    ],
+                  },
+
+                ]
+              },
+              {
+                title: "ii.  Point Cloud Semantic Segmentation",
+                projects: [
+
+                  {
+
+                    authors:
+                      'Yuanyuan Liu, Chengjiang Long, Zhaoxuan Zhang, Bokai Liu, Qiang Zhang, Baocai Yin, and Xin Yang*.',
+                    title: ' Explore Contextual Information for 3D Scene Graph Generation.',
+                    tags: [
+                      ['IEEE Transactions on Visualization and Computer Graphics 2022', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    io: 'Given an indoor scene point cloud with its class-agnostic instance labels, our methods predict the 3D scene graph with fine-grained objects and multiple relationships.',
+                    abstract: '3D scene graph generation (SGG) has been of high interest in computer vision. Although the accuracy of 3D SGG on coarse classification and single relation label has been gradually improved, the performance of existing works is still far from being perfect for fine-grained and multi-label situations. In this paper, we propose a framework fully exploring contextual information for the 3D SGG task, which attempts to satisfy the requirements of fine-grained entity class, multiple relation labels, and high accuracy simultaneously. Our proposed approach is composed of a Graph Feature Extraction module and a Graph Contextual Reasoning module, achieving appropriate information-redundancy feature extraction, structured organization, and hierarchical inferring. Our approach achieves superior or competitive performance over previous methods on the 3DSSG dataset, especially on the relationship prediction sub-task.',
+
+                    links: [
+                      { name: 'paper', link: 'https://arxiv.org/pdf/2210.06240.pdf' },
+                    ],
+                    imgs: [
+                      { src: 'Explore-Contextual-3.gif' },
+                      { src: 'Explore-Contextual-0.png', label: 'Fig.1 Our Graph Contextual Reasoning module introduces a Graph Skeleton Learning (GSL) block and a Hierarchy Object Learning (HOL) block on top of the Message Passing block. We differentiate each block with colors and list the evolution of the scene graph as thumbnails below each block.' },
+                      { src: 'Explore-Contextual-1.png', label: 'Fig.2 The GSL block is supervised by unlabeled graph skeleton information. Coarse and fine-grained entity labels supervise the HOL block. We show part of the labels in the form of a tree structure, where the word with orange color indicates the fine-grained class categories, and the word with yellow color indicates the coarse-grained NYU40 object categories.' },
+                      { src: 'Explore-Contextual-2.png', label: 'Fig.3 We use gray boxes to indicate the entities and underlines to indicate the relations. The different colors of entity names and relation labels are the same as the colors of the class-agnostic instance labels, except that red indicates an incorrect prediction result.' },
+                    ],
+                  },
+
+
+                ]
+              },
+
+            ],
+
+            // domains: [
+            //   {
+            //     title: "i. Object Modeling",
+            //     projects: [
+            //       {
+            //         authors: 'Zhaoxuan Zhang, Bo Dong, Tong Li, Felix Heide, Pieter Peers, Baocai Yin, Xin Yang*.',
+            //         title: 'Single Depth-image 3D Reflection Symmetry and Shape Prediction.',
+            //         tags: [
+            //           ['ICCV2023', 1],
+            //           ['. ', 0],
+            //           ['(CCF A)', 2],
+            //         ],
+            //         video: 'single.mp4',
+            //         io: ' Given a single depth image of an object, our ISCNet progressively generate the missing points of the initial point cloud under the optimal sequence of viewpoints decided by an RL agent.',
+            //         abstract: 'In this paper we present ISCNet, a single depth-image completion method that exploits reflective symmetry cues to obtain more detailed shape completions. The efficacy of single image depth completion methods is often sensitive to the accuracy of the symmetry plane. ISCNet therefore jointly estimates the symmetry plane and shape completion iteratively; more complete shapes contribute to more robust symmetry plane estimates and vice versa. Furthermore, our shape completion method operates in the image domain, enabling more efficient high-resolution detailed geometry reconstruction. We perform the shape completion from pairs of viewpoints, reflected across the symmetry plane, predicted by a reinforcement learning agent to improve robustness and to simultaneously explicitly leverage symmetry. We demonstrate the efficacy of ISCNet on a variety of object categories on both synthetic and real-scanned datasets.',
+            //         links: [
+            //           { name: 'paper', link: 'https://openaccess.thecvf.com/content/ICCV2023/papers/Zhang_Single_Depth-image_3D_Reflection_Symmetry_and_Shape_Prediction_ICCV_2023_paper.pdf' },
+            //           { name: 'supp', link: 'https://openaccess.thecvf.com/content/ICCV2023/supplemental/Zhang_Single_Depth-image_3D_ICCV_2023_supplemental.pdf' }
+            //         ],
+            //         imgs: [
+            //           { src: 'fig1.png', label: 'ISCNet more efficiently leverages symmetry cues for robust shape completion from a single depth image compared to prior methods.' },
+            //           { src: 'fig2.png', label: ' The pipeline of ISCNet.' },
+            //           { src: 'fig3.png', label: 'Visual comparison of shape completion quality of ISCNet versus prior work on real-scaned ScanNet dataset. Note that the sofa and table are non-symmetric objects.' },
+            //         ],
+            //       },
+
+            //       {
+            //         authors: 'Xin Yang, Yuanbo Wang, Yaru Wang, Bacai Yin, Qian Zhang, Xiaopeng Wei and Hongbo Fu.',
+            //         title: 'Active Object Reconstruction Using a Guided View Planner.',
+            //         tags: [
+            //           ['IJCAI 2018', 1],
+            //           ['. ', 0],
+            //           ['(CCF A)', 2]
+            //         ],
+            //         io: 'Given a random view image of the target object, our network reconstruct the 3D volume of the object and decide the next best view according to the current reconstruction quality.',
+            //         abstract: 'Inspired by the recent advance of image-based object reconstruction using deep learning, we present an active reconstruction model using a guided view planner. We aim to reconstruct a 3D model using images observed from a planned sequence of informative and discriminative views. But where are such informative and discriminative views around an object? To address this we propose a unified model for view planning and object reconstruction, which is utilized to learn a guided information acquisition model and to aggregate information from a sequence of images for reconstruction. Experiments show that our model (1) increases our reconstruction accuracy with an increasing number of views (2) and generally predicts a more informative sequence of views for object reconstruction compared to other alternative methods.',
+            //         links: [
+            //           { name: 'paper', link: 'https://arxiv.org/pdf/1805.03081.pdf' }
+            //         ],
+            //         imgs: [
+            //           { src: '20200621135332(1).gif' },
+            //           { src: 'ijcai18_pipeline.png', label: 'Illustration of network architecture. Our entire network consists of four components: a Recurrent 2D Encoder, a Recurrent 3D Decoder, Perspective Transformer and a View Planner.' },
+            //           { src: 'ijcai18_results.png', label: 'Qualitative results of reconstruction samples for example view sequences. 3D-R2N2 generally fails in the categories with much higer variation (eg. the lamp in the bottom right corner) while our model does better in feature extraction and view aggregation, leading to a more accurate reconstruction.' }
+            //         ],
+            //       },
+            //     ]
+
+            //   },
+            //   {
+            //     title: "ii. Local Scene Modeling",
+            //     projects: [
+            //       {
+            //         authors: 'Zhaoxuan Zhang, Xiaoguang Han, Bo Dong, Tong Li, Baocai Yin, Xin Yang*.',
+            //         title: 'Point Cloud Scene Completion with Joint Color and Semantic Estimation from Single RGB-D Image.',
+            //         tags: [
+            //           ['IEEE Transactions on Pattern Analysis and Machine Intelligence 2023', 1],
+            //           ['. ', 0],
+            //           ['(CCF A)', 2],
+            //         ],
+            //         io: 'Given an single RGB-D image, our method progressively generate the missing points of the initial point cloud corresponding to the input depth map under the optimal sequence of viewpoints, as well as the corresponding color and segmentation information.',
+            //         abstract: 'We present a deep reinforcement learning method of progressive view inpainting for colored semantic point cloud scene completion under volume guidance, achieving high-quality scene reconstruction from only a single RGB-D image with severe occlusion. Our approach is end-to-end, consisting of three modules: 3D scene volume reconstruction, 2D RGB-D and segmentation image inpainting, and multi-view selection for completion. Given a single RGB-D image, our method first predicts its semantic segmentation map and goes through the 3D volume branch to obtain a volumetric scene reconstruction as a guide to the next view inpainting step, which attempts to make up the missing information; the third step involves projecting the volume under the same view of the input, concatenating them to complete the current view RGB-D and segmentation map, and integrating all RGB-D and segmentation maps into the point cloud. Since the occluded areas are unavailable, we resort to a A3C network to glance around and pick the next best view for large hole completion progressively until a scene is adequately reconstructed while guaranteeing validity. All steps are learned jointly to achieve robust and consistent results. We perform qualitative and quantitative evaluations with extensive experiments on the 3D-FUTURE data, obtaining better results than state-of-the-arts.',
+            //         links: [
+            //           { name: 'paper', link: 'https://arxiv.org/pdf/2210.05891' },
+            //         ],
+            //         imgs: [
+            //           { src: 'rgbdscenecomp.gif', label: 'The pipeline of our method.' },
+            //           { src: 'pami_sotapc.png', label: 'Comparisons against the state-of-the-arts. Given different inputs and the referenced groundtruth, we show the completion results of four methods, with the corresponding point cloud error maps below. More blue more accurate.' }
+            //         ],
+            //       },
+            //       {
+            //         authors: 'Xiaoguang Han, Zhaoxuan Zhang, Dong Du, Mingdai Yang, Jingming Yu, Pan Pan, Xin Yang, Ligang Liu, Zixiang Xiong and Shuguang Cui.',
+            //         title: 'Deep Reinforcement Learning of Volume-guided Progressive View Inpainting for 3D Point Scene Completion from a Single Depth Image.',
+            //         tags: [
+            //           ['CVPR 2019', 1],
+            //           ['. ', 0],
+            //           ['(Oral, CCF A)', 2]
+            //         ],
+            //         io: 'Given an single depth image, our method progressively generate the missing points of the initial point cloud corresponding to the input depth map under the optimal sequence of viewpoints.',
+            //         abstract: 'We present a deep reinforcement learning method of progressive view inpainting for 3D point scene completion under volume guidance, achieving high-quality scene reconstruction from only a single depth image with severe occlusion. Our approach is end-to-end, consisting of three modules: 3D scene volume reconstruction, 2D depth map inpainting, and multi-view selection for completion. Given a single depth image, our method first goes through the 3D volume branch to obtain a volumetric scene reconstruction as a guide to the next view inpainting step, which attempts to make up the missing information; the third step involves projecting the volume under the same view of the input, concatenating them to complete the current view depth, and integrating all depth into the point cloud. Since the occluded areas are unavailable, we resort to a deep Q-Network to glance around and pick the next best view for large hole completion progressively until a scene is adequately reconstructed while guaranteeing validity. All steps are learned jointly to achieve robust and consistent results. We perform qualitative and quantitative evaluations with extensive experiments on the SUNCG data, obtaining better results than the state of the art.',
+            //         links: [
+            //           { name: 'paper', link: 'http://openaccess.thecvf.com/content_CVPR_2019/papers/Han_Deep_Reinforcement_Learning_of_Volume-Guided_Progressive_View_Inpainting_for_3D_CVPR_2019_paper.pdf' },
+            //         ],
+            //         imgs: [
+            //           { src: '20200621135332(2).gif' },
+            //           { src: 'cvpr19_oral_pipeline.png', label: 'The pipeline of our method.' },
+            //           { src: 'cvpr19_oral_results.png', label: 'Comparisons against the state-of-the-arts. Given different inputs and the referenced groundtruth, we show the completion results of three methods, with the corresponding point cloud error maps below, and zoom-in areas beside. More blue more accurate.' }
+            //         ],
+            //       },
+            //     ]
+            //   },
+            //   {
+            //     title: "iii. Global Scene Exploration and Reconstruction",
+            //     projects: [
+            //       {
+            //         authors: 'Tong Li、Zhaoxuan Zhang、Yuxin Wang、Yan Cui、Yuqi Li、Dongsheng Zhou、Baocai Yin、Xin Yang*.',
+            //         title: 'Self-supervised indoor scene point cloud completion from a single panorama.',
+            //         tags: [
+            //           ['The Visual Computer 2024', 1],
+            //           ['. ', 0],
+            //         ],
+            //         video: 'single.mp4',
+            //         io: 'Given an single RGB-D panorama, we propose a self-supervised based method for indoor scene point cloud completion.',
+            //         abstract: 'In this paper, we propose a self-supervised learning method of point cloud completion for indoor scenes. Considering the limited view of single-view image and the time-consuming and labor-intensive acquisition of multi-view images, we take panoramas as input, which makes the acquisition easier and the scope of the scene wider. As it is difficult to obtain complete scene point cloud, we design an auxiliary task to simulate scene missing area by shifting viewpoint of panorama and extract the supervision information of the scene itself. Given the difficulty to complete large-scale scene point cloud, we design a neighborhood integration and feature spreading module for feature extraction and reservation before substantial point cloud downsampling, enabling the completion network to handle large-scale point cloud. Then we propose a transformer-based scene point cloud completion network and show competitive completion results compared to relevant supervised learning methods.',
+            //         imgs: [
+            //           { src: 'tvs.png', label: 'The pipeline of our method.' },
+            //           { src: 'tvc.png', label: '  ' },
+            //         ],
+            //       },
+            //     ]
+            //   }
+            // ]
+
+          },
+          // {
+          //   title: "c. Scene Content Generation",
+          //   domains: [
+          //   {
+          //       title:"i.	Object generation(underway)"
+          //     },
+          //     {
+          //       title:"ii.	Meta Human(underway)"
+          //     }
+          //   ],
+
+
+          // },
+          // {
+          //   title: "d.  Scene Content Generation",
+          //   domains: [
+          //     {
+          //       title: "i. 对象生成(进行中)",
+
+
+
+          //     },
+          //     {
+          //       title: "ii. 场景渲染(进行中)",
+          //     }
+          //   ]
+          // }
+        ]
+      }
+    },
+    methods: {
+      textBold(s) {
+        return textBold(s)
+      },
+      goBack() {
+        goBack()
+      },
+      handleChange(val) {
+        console.log(val)
+      },
+      replaceSpacesWithUnderscore(title) {
+
+        return title.replace(/\s+/g, '_');
+      }
+
+    },
+    created() {
+      var id = 1;
+      for (var i = 0; i < 1000; i++) {
+        this.activeNames1.push(i);
+        this.activeNames2.push(i);
+        this.activeNames3.push(i);
+      }
+      let idCounter = 1;
+
+      this.directions1.forEach(direction => {
+        direction.projects.forEach(project => {
+          project.id = idCounter++;
+        });
+      });
+
+      this.directions1.forEach(direction => {
+        direction.domains.forEach(domain => {
+          domain.projects.forEach(project => {
+            project.id = idCounter++;
+          });
+        });
+      });
+      this.directions1[1].domains1.forEach(domain11 => {
+        domain11.domains.forEach(domain => {
+
+          domain.projects.forEach(project => {
+            project.id = idCounter++;
+          });
+        });
+      });
+      this.directions1[1].domains2.forEach(domain => {
+        domain.projects.forEach(project => {
+          project.id = idCounter++;
+        });
+      });
+
+
+
+    }
+
+  })
+</script>
+
+</html>

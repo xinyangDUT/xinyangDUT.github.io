@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<title>Intelligent Human-Computer Interaction Systems</title>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../css/element-ui.css" />
+  <link rel="stylesheet" href="../css/index.css" />
+  <script src="../js/vue.min.js"></script>
+  <script src="../js/element-ui.min.js"></script>
+</head>
+
+<style>
+  .el-collapse-item__header {
+
+    line-height: 30px;
+    height: auto;
+    padding: 10px 20px;
+  }
+</style>
+
+<body>
+  <div id="app">
+    <el-button style="position:fixed;" @click="goBack" round><i class="el-icon-back"></i>Back</el-button>
+    <div></div>
+    <!-- Photorealistic Rendering -->
+    <div class="content">
+      <h1 style="font-size: 50px;">
+        Intelligent Human-Computer Interaction Systems
+      </h1>
+      <el-divider></el-divider>
+      <p style="text-align: justify;font-size: 18px;">
+
+        The intelligent human-computer interaction system aims to leverage advanced artificial intelligence technologies
+        to create a more natural, intuitive, and personalized interactive experience for users. This project primarily
+        focuses on comprehensive perception of both users and devices, as well as intelligent feedback mechanisms, in
+        order to provide a more intelligent, personalized, and efficient interaction experience.
+        In terms of user state perception, the project employs techniques such as emotion recognition and posture
+        monitoring to understand users' needs and emotional changes, thereby enhancing the emotional interaction
+        capabilities of human-computer interfaces. This emotional-driven interaction paradigm offers innovative
+        solutions for fields such as intelligent customer service, telemedicine, and online education.
+        Regarding device state comprehension, the project utilizes technologies such as sensors and camera
+        re-localization to ensure precise positioning and stable operation of devices within the spatial environment.
+        This enhances the accuracy and safety of interactions, providing reliable technical support for advanced
+        applications such as augmented reality, virtual reality, autonomous driving, and robotic navigation.
+
+
+      </p>
+      <el-divider></el-divider>
+
+      <el-collapse v-model="activeNames1" @change="handleChange" style="margin-top: 0px;">
+        <el-collapse-item v-for="direction in directions1">
+          <template slot="title">
+            <span style="font-size: 28px;font-weight: bolder;color:dodgerblue;">
+              {{direction.title}}
+            </span>
+          </template>
+
+          <el-collapse v-if="direction.domains" v-model="activeNames2" @change="handleChange">
+            <el-collapse-item v-for="domain in direction.domains" :index="num_index">
+              <template slot="title">
+                <span style="font-size: 25px;margin-left: 20px;font-weight:bold;">
+                  {{domain.title}}
+                </span>
+              </template>
+              <div v-for="project,index in domain.projects">
+                <p class="project_p" style="font-size: 20px">
+                  <span v-html="textBold(project.authors)"></span>
+                  <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                    style="font-size: 20px">{{project.title}}</b>
+                  <span v-for="tag in project.tags" :style="styles[tag[1]]" style="font-size: 20px">{{tag[0]}}</span>
+                  <span v-for="link in project.links" style="font-size: 20px">[<b><a class="project_links"
+                        :href="link.link" style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+                </p>
+                <div v-if="project.video" class="figure_div">
+                  <video width="640" :src="'videos/'+project.video" controls></video>
+                </div>
+                <div v-for="img in project.imgs" class="figure_div">
+                  <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                  <div v-if="img.label">
+                    <div class="figure_label">{{img.label}}</div>
+                    <br>
+                  </div>
+                </div>
+                <div v-if="project.io">
+                  <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+                </div>
+                <div v-if="project.abstract">
+                  <p style="text-align: justify;font-size: 18px;">
+                    <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                  </p>
+                </div>
+                <el-divider content-position="right">{{project.id}}</el-divider>
+              </div>
+            </el-collapse-item>
+          </el-collapse>
+
+          <el-collapse v-if="direction.domains1" v-model="activeNames2" @change="handleChange">
+            <el-collapse-item v-for="domain_1 in direction.domains1" :index="num_index">
+              <template slot="title">
+                <span style="font-size: 25px;margin-left: 20px;font-weight:bold;">
+                  {{domain_1.title}}
+                </span>
+              </template>
+              <el-collapse v-model="activeNames3" @change="handleChange">
+                <el-collapse-item v-for="domain_2 in domain_1.domains" :index="num_index">
+                  <template slot="title">
+                    <span style="font-size: 23px;margin-left: 40px;">
+                      {{domain_2.title}}
+                    </span>
+                  </template>
+                  <div v-for="project,index in domain_2.projects">
+                    <p class="project_p" style="font-size: 20px">
+                      <span v-html="textBold(project.authors)"></span>
+                      <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                        style="font-size: 20px">{{project.title}}</b>
+                      <span v-for="tag in project.tags" :style="styles[tag[1]]"
+                        style="font-size: 20px">{{tag[0]}}</span>
+                      <span v-for="link in project.links" style="font-size: 20px">[<b><a class="project_links"
+                            :href="link.link" style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+                    </p>
+                    <div v-if="project.video" class="figure_div">
+                      <video width="640" :src="'videos/'+project.video" controls></video>
+                    </div>
+                    <div v-for="img in project.imgs" class="figure_div">
+                      <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                      <div v-if="img.label">
+                        <div class="figure_label">{{img.label}}</div>
+                        <br>
+                      </div>
+                    </div>
+                    <div v-if="project.io">
+                      <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+                    </div>
+                    <div v-if="project.abstract">
+                      <p style="text-align: justify;font-size: 18px;">
+                        <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                      </p>
+                    </div>
+                    <el-divider content-position="right">{{project.id}}</el-divider>
+                  </div>
+                </el-collapse-item>
+            </el-collapse-item>
+          </el-collapse>
+
+          <el-collapse v-if="direction.domains2" v-model="activeNames2" @change="handleChange">
+            <el-collapse-item v-for="domain in direction.domains2" :index="num_index">
+              <template slot="title">
+                <span style="font-size: 25px;margin-left: 20px;font-weight:bold;">
+                  {{domain.title}}
+                </span>
+              </template>
+              <div v-for="project,index in domain.projects">
+                <p class="project_p" style="font-size: 20px">
+                  <span v-html="textBold(project.authors)"></span>
+                  <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                    style="font-size: 20px">{{project.title}}</b>
+                  <span v-for="tag in project.tags" :style="styles[tag[1]]" style="font-size: 20px">{{tag[0]}}</span>
+                  <span v-for="link in project.links" style="font-size: 20px">[<b><a class="project_links"
+                        :href="link.link" style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+                </p>
+                <div v-if="project.video" class="figure_div">
+                  <video width="640" :src="'videos/'+project.video" controls></video>
+                </div>
+                <div v-for="img in project.imgs" class="figure_div">
+                  <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                  <div v-if="img.label">
+                    <div class="figure_label">{{img.label}}</div>
+                    <br>
+                  </div>
+                </div>
+                <div v-if="project.io">
+                  <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+                </div>
+                <div v-if="project.abstract">
+                  <p style="text-align: justify;font-size: 18px;">
+                    <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                  </p>
+                </div>
+                <el-divider content-position="right">{{project.id}}</el-divider>
+              </div>
+            </el-collapse-item>
+          </el-collapse>
+
+          <div v-if="direction.projects">
+            <div v-for="project,index in direction.projects">
+              <p class="project_p" style="font-size: 20px">
+                <span v-html="textBold(project.authors)"></span>
+                <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                  style="font-size: 20px">{{project.title}}</b>
+                <span v-for="tag in project.tags" :style="styles[tag[1]]" style="font-size: 20px">{{tag[0]}}</span>
+                <span v-for="link in project.links" style="font-size: 20px">[<b><a class="project_links"
+                      :href="link.link" style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+              </p>
+              <div v-if="project.video" class="figure_div">
+                <video width="640" :src="'videos/'+project.video" controls></video>
+              </div>
+              <div v-for="img in project.imgs" class="figure_div">
+                <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                <div v-if="img.label">
+                  <div class="figure_label">{{img.label}}</div>
+                  <br>
+                </div>
+              </div>
+              <div v-if="project.io" style="font-size: 18px;">
+                <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+              </div>
+              <div v-if="project.abstract">
+                <p style="text-align: justify;font-size: 18px;">
+                  <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                </p>
+              </div>
+              <el-divider content-position="right">{{project.id}}</el-divider>
+            </div>
+
+          </div>
+        </el-collapse-item>
+
+      </el-collapse>
+
+
+
+
+    </div>
+  </div>
+  </div>
+</body>
+<script src="../js/index.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        num_index: 1,
+        styles,
+        activeNames1: ['1'],
+        activeNames2: ['2'],
+        activeNames3: ['2'],
+        directions1: [
+          {
+            title: "a.  Real-Time Emotion Recognition in Complex Scenes",
+            projects: [
+              {
+                id: 1,
+                authors: 'Yang Wang, Haiyang Mei, Qirui Bao, Ziqi Wei, Mike Zheng Shou, Haizhou Li, Bo Dong, Xin Yang*.',
+                title: 'Apprenticeship-Inspired Elegance: Synergistic Knowledge Distillation Empowers Spiking Neural Networks for Efficient Single-Eye Emotion Recognition.',
+                tags: [
+                  [' IJCAI 2024', 1],
+                  ['. ', 0],
+                  ['(CCF A)', 2]
+                ],
+                abstract: 'We introduce a novel multimodality synergistic knowledge distillation scheme tailored for efficient single-eye motion recognition tasks. This method allows a lightweight, unimodal student spiking neural network (SNN) to extract rich knowledge from an event-frame multimodal teacher network. The core strength of this approach is its ability to utilize the ample, coarser temporal cues found in conventional frames for effective emotion recognition. Consequently, our method adeptly interprets both temporal and spatial information from the conventional frame domain, eliminating the need for specialized sensing devices, e.g., event-based camera. The effectiveness of our approach is thoroughly demonstrated using both existing and newly compiled single-eye emotion recognition datasets, achieving unparalleled performance in terms of accuracy and efficiency compared to all other existing state-of-the-art methods.',
+                io: ' Given a single-eye-based emotion sequence, which includes intensity and corresponding events during the training phase but only requires intensity during the inference phase, our framework produces emotion recognition classification results.',
+                imgs: [
+                  { src: 'ijcai1.png' },
+                  { src: 'ijcai2.png' },
+
+                ],
+                links: [
+                  { name: 'paper', link: 'http://arxiv.org/abs/2407.09521' },
+                  { name: 'more details', link: 'http://dsee.dluticcd.com/' },
+
+                ]
+              },
+              {
+                id: 2,
+                authors: 'Haiwei Zhang, Jiqing Zhang, Bo Dong, Pieter Peers, Wenwei Wu, Xiaopeng Wei, Felix Heide, Xin Yang*. ',
+                title: 'In the Blink of an Eye: Event-based Emotion Recognition.',
+                io: ' Give an single-eye-based emotion squence, including intensity and corresponding events, our framework produces the emotion recognition classification results.',
+                tags: [
+                  ['SIGGRAPH 2023', 1],
+                  ['. ', 0],
+                  ['(CCF A)', 2]
+
+                ],
+                video: 'Event-based Emotion Recognition.mp4',
+                abstract: 'In this paper, we introduce a wearable single-eye emotion recognition setup and a real-time approach for recognizing emotions from partial observations of the emotion event that is robust to changes in lighting conditions. Key to our method is a bio-inspired event-based camera setup and a newly designed lightweight Spiking Eye Emotion Network (SEEN). Compared to conventional cameras, event-based cameras offer a higher dynamic range (up to 140 dB vs. 80 dB) and a higher temporal resolution (in the order of ms vs. 10s of ms). Thus, the captured events can encode rich temporal cues under challenging lighting conditions. However, these events lack texture information, posing problems in effectively decoding the temporal information. SEEN effectively tackles the issue from two different perspectives. First, we adopt convolutional spiking layers to take advantage of the ability of the spiking neuron networks ability to decode pertinent temporal information. Second, SEEN learns to extract essential spatial cues from corresponding intensity frames and leverages a novel-designed weight-copy scheme to effectively convey spatial attention to the convolutional spiking layers during training and inference. We extensively validate and demonstrate the effectiveness of our approach on a specially collected Single-eye Event-based Emotion (SEE) dataset.To the best of our knowledge,our method is the first eye-based emotion recognition method that leverages event-based cameras and spiking neural networks.',
+                links: [
+                  { name: 'paper', link: 'https://arxiv.org/abs/2310.04043' },
+                  { name: 'more details', link: 'http://www.dluticcd.com' }
+
+                ],
+                imgs: [
+                  { src: 'In the blink of an eye-1.png' },
+                  { src: 'In the blink of an eye-2.png' },
+
+                ],
+              },
+            ]
+          },
+          {
+            title: "b.  Visual Localization System ",
+            projects: [
+              {
+                id: 3,
+                authors: 'Hu Lin, Meng Li, Qianchen Xia, Yifeng Fei, Baocai Yin, Xin Yang.',
+                title: '6-DoF Pose Relocalization for Event Cameras With Entropy Frame and Attention Networks.',
+                io: ' Given the event stream, our network produces the 6DoF camera pose estimation.',
+                tags: [
+                  ['ACM SIGGRAPH VRCAI 2022', 1],
+                  ['. ', 0]
+                ],
+                video: 'vrcai.mp4',
+                abstract: 'Camera relocalization is an important task in computer vision, mainly used in applications such as VR, AR, and robotics. Camera relocalization solves the problem of estimating the 6-DoF camera pose of an input image in a known scene. There are large numbers of research on standard cameras. However, standard cameras have problems such as large power consumption, low frame rate, and poor robustness. Event cameras can make up for the disadvantages of standard cameras. Event data is different from RGB data, it is asynchronous streaming data, most of the processing methods for events convert event data into event images, but these methods can not efficiently generate event images with clear edges at any time, we propose a Reversed Window Entropy Image (RWEI) generation framework for events, which can generate event images with clear edges at any time. We also propose an Attention-guided Event Camera Relocalization Network (AECRN) for utilizing event image characteristics to estimate the pose of the event camera more accurately. We demonstrate our proposed framework and network on public dataset sequences, and experiments show that our proposed method surpasses the previous method.',
+                imgs: [
+                  { src: 'vrcai-1.png' },
+                  { src: 'vrcai-2.png' },
+                ],
+                links: [
+                  { name: 'paper', link: 'https://doi.org/10.1145/3574131.3574457' },
+                  { name: 'code', link: 'https://github.com/linharrrrrt/RWEI_AECRN' }
+                ]
+              },
+              {
+                id: 4,
+                authors: 'Hu Lin, Chengjiang Long*, Yifeng Fei, Qianchen Xia*, Erwei Yin, Baocai Yin, Xin Yang*',
+                title: 'Exploring Matching Rates: From Keypoint Selection to Camera Relocalization.',
+                tags: [
+                  ['ACM MM 2024', 1],
+                  ['. Oral ', 0],
+                  ['(CCF A)', 2]
+                ],
+                io: "Input an RGB image and the camera's intrinsic parameters to output the 6DoF pose of the capturing camera.',//Input-Output",
+                abstract: "amera relocalization is a challenging task to estimate camera pose within a known scene, with wide applications in the fields of Virtual Reality (VR), Augmented Reality (AR), robotics, and etc. Most existing learning-based methods invariably utilize all the information within an image for pose estimation. Although these methods have demonstrated leading pose accuracy in some cases, they are still far from being sufficient to handle the robustness under challenging viewpoints with less impacts on the localization accuracy for viewpoints that are easier to localize. In this paper, we propose a novel two-branch camera pose estimation framework: one branch utilizes keypoint-guided partial scene coordinate regression, while the other employs full scene coordinate regression to assess the credibility of image poses, thereby enabling more accurate camera localization. In particular, we devise a keypoint selection method predicated on matching rates which is designed to measure the matching quality between a 3D keypoint and 2D keypoints across views. With these selected 3D keypoints, we can generate 2D supervision mask with the ground-truth camera pose to supervise the keypoint prediction from the keypoint selection network. Meanwhile, we further refine the 2D supervision mask through the optimization with reprojection errors on the scene coordinate network, which estimates the scene coordinates for points within the scene that truly warrant attention, also enhances the localization performance. We also introduce a gated camera pose estimation strategy on the two-branch pose estimation framework, employing an updated keypoint selection network for images with higher credibility and a more robust network for difficult viewpoints. By adopting an effective curriculum learning scheme, we achieve higher accuracy within a training span of just 20 minutes. Our method's superior performance is validated through rigorous experimentation.The code is released at https://github.com/DUT-ICCD/KP-Guided-Reloc.",//文章摘要。建议200个英文单词左右。
+                imgs: [
+                  { src: 'overview.png' },
+                  { src: 'pipeline.png' },
+                ],
+                links: [
+                  { name: 'paper', link: 'https://doi.org/10.1145/3664647.3681628' },
+                  { name: 'code', link: 'https://github.com/DUT-ICCD/KP-Guided-Reloc' },
+                ],
+                video: '',
+              },
+            ]
+          },
+          {
+            title: "c.  Interactive content generation ",
+            projects: [
+              {
+                authors:
+                  'Xin Yang, Zongliang Ma, Letian Yu, Ying Cao, Baocai Yin, Xiaopeng Wei, Qiang Zhang and Rynson Lau.',
+                title: 'Automatic Comic Generation with Stylistic Multi-page Layouts and Emotion-driven Text Balloon Generation.',
+                tags: [
+                  ['ACM Transactions on Multimedia Computing, Communications, and Applications (TOMM) 2020', 1],
+                  ['. ', 0],
+                  ['(CCF B)', 2]
+                ],
+                imgs: [
+                  { src: 'Automatic Comic1.jpg' },
+                  { src: 'Automatic Comic2.gif' }
+                ],
+                links: [
+                  {
+                    name: 'paper',
+                    link: 'https://arxiv.org/abs/2101.11111',
+                  },
+                  {
+                    name: 'video',
+                    link:
+                      'figures/9327261e3f0ae6209d1302a5a1afa96a.mp4',
+                  },
+                  {
+                    name: 'media',
+                    link:
+                      'https://mp.weixin.qq.com/s/z_QorcyPDOfw0PDYX-UgTg',
+                  },
+                ],
+                abstract: "In this paper, we propose a fully automatic system for generating comic books from videos without any human intervention. Given an input video along with its subtitles, our approach first extracts informative keyframes by analyzing the subtitles, and stylizes keyframes into comic-style images. Then, we propose a novel automatic multi-page layout framework, which can allocate the images across multiple pages and synthesize visually interesting layouts based on the rich semantics of the images (e.g., importance and inter-image relation). Finally, as opposed to using the same type of balloon as in previous works, we propose an emotion-aware balloon generation method to create different types of word balloons by analyzing the emotion of subtitles and audios. Our method is able to vary balloon shapes and word sizes in balloons in response to different emotions, leading to more enriched reading experience. Once the balloons are generated, they are placed adjacent to their corresponding speakers via speaker detection. Our results show that our method, without requiring any user inputs, can generate high-quality comic pages with visually rich layouts and balloons. Our user studies also demonstrate that users prefer our generated results over those by state-of-the-art comic generation systems."
+              },
+              {
+                authors: 'Wanchao Su, Dong Du, Xin Yang, Shizhe Zhou, Hongbo Fu.',
+                title:
+                  'Interactive Sketch-Based Normal Map Generation with Deep Neural Networks.',
+                tags: [
+                  ['ACM SIGGRAPH Symposium on Interactive 3D Graphics and Games (I3D)', 1],
+                  [', 2018. ', 0],
+                  ['(CCF B)', 2]
+                ],
+                links: [
+                  {
+                    name: 'paper',
+                    link:
+                      'http://sweb.cityu.edu.hk/hongbofu/doc/sketch2normal_i3D2018.pdf',
+                  },
+                  {
+                    name: 'video',
+                    link: 'https://youtu.be/-Fl3Yav5FFI',
+                  },
+                  {
+                    name: 'code',
+                    link: 'https://github.com/Ansire/sketch2normal',
+                  },
+                  {
+                    name: 'data',
+                    link:
+                      'http://sweb.cityu.edu.hk/hongbofu/data/datasets.tar.gz',
+                  },
+                  {
+                    name: 'media: Seamless',
+                    link: 'https://shiropen.com/seamless-3dcg-interactive-sketch',
+                  },
+                ],
+                imgs: [
+                  { src: 'Interactive Sketch-Based Normal Map Generation with Deep Neural Networks.jpg' }
+                ],
+                abstract: 'High-quality normal maps are important intermediates for representing complex shapes. In this paper, we propose an interactive system for generating normal maps with the help of deep learning techniques. Utilizing the Generative Adversarial Network (GAN) framework, our method produces high quality normal maps with sketch inputs. In addition, we further enhance the interactivity of our system by incorporating user-specified normals at selected points. Our method generates high quality normal maps in real time. Through comprehensive experiments, we show the effectiveness and robustness of our method. A thorough user study indicates the normal maps generated by our method achieve a lower perceptual difference from the ground truth compared to the alternative methods.'
+              },
+            ]
+          },
+          {
+
+          }
+        ]
+      }
+    },
+
+    methods: {
+      textBold(s) {
+        return textBold(s)
+      },
+      goBack() {
+        goBack()
+      },
+      handleChange(val) {
+        console.log(val)
+      },
+      replaceSpacesWithUnderscore(title) {
+        return title.replace(/\s+/g, '_');
+      }
+
+    },
+    created() {
+      var id = 1;
+      for (var i = 0; i < 1000; i++) {
+        this.activeNames1.push(i);
+        this.activeNames2.push(i);
+        this.activeNames3.push(i);
+      }
+      let idCounter = 1;
+
+      this.directions1.forEach(direction => {
+        direction.domains.forEach(domain => {
+          domain.projects.forEach(project => {
+            project.id = idCounter++;
+          });
+        });
+      });
+      this.directions1[1].domains1.forEach(domain11 => {
+        domain11.domains.forEach(domain => {
+          domain.projects.forEach(project => {
+            project.id = idCounter++;
+          });
+        });
+      });
+      this.directions1[1].domains2.forEach(domain => {
+        domain.projects.forEach(project => {
+          project.id = idCounter++;
+        });
+      });
+
+
+
+    }
+
+  })
+</script>
+
+</html>

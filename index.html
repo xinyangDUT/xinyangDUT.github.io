@@ -27,6 +27,9 @@
         <p>
           School of Computer Science and Technology
         </p>
+        <P>
+          Deputy Director, Office of Disciplines Planning and Construction of DUT
+        </P>
         <p>
           Professor, Ph.D. Supervisor
         </p>
@@ -60,21 +63,23 @@
           <!-- <p>
             The following are the work published by the laboratory team in various directions in recent years. The publications are arranged in chronological order.
           </p> -->
-        <ul v-for="publication in publications">
-          <li>
-            <p>
-              <span v-html="textBold(publication.authors)"></span>
-              <b style="font-size: 28px;">{{publication.title}}</b1>
-              <span v-for="tag in publication.tags" :style="style1[tag[1]]" style="font-size: 24px;">{{tag[0]}}</span>
-              <a :href="publication.href" style="font-size: 24px;">[details]</a>
-            </p>
-          </li>
-        </ul>
+          <ul v-for="publication in publications">
+            <li>
+              <p>
+                <span v-html="textBold(publication.authors)"></span>
+                <b style="font-size: 28px;">{{publication.title}}</b1>
+                  <span v-for="tag in publication.tags" :style="style1[tag[1]]"
+                    style="font-size: 24px;">{{tag[0]}}</span>
+                  <a :href="replaceSpacesWithUnderscore(publication.class)+'/index.html#'+replaceSpacesWithUnderscore(publication.title)" style="font-size: 24px;">[details]</a>
+                  <!-- <a href="./" style="font-size: 24px;">[details]</a> -->
+              </p>
+            </li>
+          </ul>
           <el-divider></el-divider>
-       </div>
+        </div>
       </div>
     </div>
-     </div>
+  </div>
 </body>
 <script src="./js/index.js"></script>
 <script src="./data/data.js"></script>
@@ -96,13 +101,26 @@
       goBack() {
         goBack()
       },
+      replaceSpacesWithUnderscore(title) {
+        console.log(title);
+        return title.replace(/\s+/g, '_');
+      }
     },
   })
 </script>
 <style>
-  a:link {color: #092ed6} 
-  a:visited {color: #092ed6}
-  a.click {color: rgb(118, 7, 39);}
+  a:link {
+    color: #092ed6
+  }
+
+  a:visited {
+    color: #092ed6
+  }
+
+  a.click {
+    color: rgb(118, 7, 39);
+  }
+
   body {
     margin: 0;
     padding: 0;
@@ -151,6 +169,10 @@
     top: 0px;
     bottom: 0;
   }
-  a{text-decoration:none}
+
+  a {
+    text-decoration: none
+  }
 </style>
+
 </html>

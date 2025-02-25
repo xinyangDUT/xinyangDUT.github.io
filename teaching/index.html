@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<title>Rendering And Simulation</title>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../css/element-ui.css" />
+  <link rel="stylesheet" href="../css/index.css" />
+  <script src="../js/vue.min.js"></script>
+  <script src="../js/element-ui.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <el-button style="position:fixed;" @click="goBack" round><i class="el-icon-back"></i>Back</el-button>
+    <!-- Rendering And Simulation -->
+    <div class="content">
+      <h1 style="font-size: 50px;">
+        Teaching
+        
+      </h1>
+      <el-divider></el-divider>
+      <el-collapse v-model="activeNames1" @change="handleChange" style="margin-top: 0px;">
+        <el-collapse-item v-for="direction in directions1">
+          
+
+          <el-collapse v-if="direction.domains" v-model="activeNames2" @change="handleChange">
+            <el-collapse-item v-for="domain in direction.domains" :index="num_index">
+              <template slot="title">
+                <span style="font-size: 25px;margin-left: 20px;font-weight:bold;">
+                  {{domain.title}}
+                </span>
+              </template>
+              <div v-for="project,index in domain.projects">
+                <p class="project_p" style="font-size: 20px">
+                  <span v-html="textBold(project.authors)"></span>
+                  <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                    style="font-size: 20px">{{project.title}}</b>
+                  <span v-for="tag in project.tags" :style="styles[tag[1]]" style="font-size: 20px">{{tag[0]}}</span>
+                  <span v-for="link in project.links" style="font-size: 20px">[<b><a class="project_links"
+                        :href="link.link" style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+                </p>
+                <div v-if="project.video" class="figure_div">
+                  <video width="640" :src="'videos/'+project.video" controls></video>
+                </div>
+                <div v-for="img in project.imgs" class="figure_div">
+                  <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                  <div v-if="img.label">
+                    <div class="figure_label">{{img.label}}</div>
+                    <br>
+                  </div>
+                </div>
+                <div v-if="project.io">
+                  <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+                </div>
+                <div v-if="project.abstract">
+                  <p style="text-align: justify;font-size: 18px;">
+                    <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                  </p>
+                </div>
+                <el-divider content-position="right">{{project.id}}</el-divider>
+              </div>
+            </el-collapse-item>
+          </el-collapse>
+
+          <el-collapse v-if="direction.domains1" v-model="activeNames2" @change="handleChange">
+            <el-collapse-item v-for="domain_1 in direction.domains1" :index="num_index">
+              <template slot="title">
+                <span style="font-size: 25px;margin-left: 20px;font-weight:bold;">
+                  {{domain_1.title}}
+                </span>
+              </template>
+              <el-collapse v-model="activeNames3" @change="handleChange">
+                <el-collapse-item v-for="domain_2 in domain_1.domains" :index="num_index">
+                  <template slot="title">
+                    <span style="font-size: 23px;margin-left: 40px;">
+                      {{domain_2.title}}
+                    </span>
+                  </template>
+                  <div v-for="project,index in domain_2.projects">
+                    <p class="project_p" style="font-size: 20px">
+                      <span v-html="textBold(project.authors)"></span>
+                      <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                        style="font-size: 20px">{{project.title}}</b>
+                      <span v-for="tag in project.tags" :style="styles[tag[1]]"
+                        style="font-size: 20px">{{tag[0]}}</span>
+                      <span v-for="link in project.links" style="font-size: 20px">[<b><a class="project_links"
+                            :href="link.link" style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+                    </p>
+                    <div v-if="project.video" class="figure_div">
+                      <video width="640" :src="'videos/'+project.video" controls></video>
+                    </div>
+                    <div v-for="img in project.imgs" class="figure_div">
+                      <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                      <div v-if="img.label">
+                        <div class="figure_label">{{img.label}}</div>
+                        <br>
+                      </div>
+                    </div>
+                    <div v-if="project.io">
+                      <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+                    </div>
+                    <div v-if="project.abstract">
+                      <p style="text-align: justify;font-size: 18px;">
+                        <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                      </p>
+                    </div>
+                    <el-divider content-position="right">{{project.id}}</el-divider>
+                  </div>
+                </el-collapse-item>
+            </el-collapse-item>
+          </el-collapse>
+
+          <el-collapse v-if="direction.domains2" v-model="activeNames2" @change="handleChange">
+            <el-collapse-item v-for="domain in direction.domains2" :index="num_index">
+              <template slot="title">
+                <span style="font-size: 25px;margin-left: 20px;font-weight:bold;">
+                  {{domain.title}}
+                </span>
+              </template>
+              <div v-for="project,index in domain.projects">
+                <p class="project_p" style="font-size: 20px">
+                  <span v-html="textBold(project.authors)"></span>
+                  <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                    style="font-size: 20px">{{project.title}}</b>
+                  <span v-for="tag in project.tags" :style="styles[tag[1]]" style="font-size: 20px">{{tag[0]}}</span>
+                  <span v-for="link in project.links" style="font-size: 20px">[<b><a class="project_links"
+                        :href="link.link" style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+                </p>
+                <div v-if="project.video" class="figure_div">
+                  <video width="640" :src="'videos/'+project.video" controls></video>
+                </div>
+                <div v-for="img in project.imgs" class="figure_div">
+                  <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                  <div v-if="img.label">
+                    <div class="figure_label">{{img.label}}</div>
+                    <br>
+                  </div>
+                </div>
+                <div v-if="project.io">
+                  <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+                </div>
+                <div v-if="project.abstract">
+                  <p style="text-align: justify;font-size: 18px;">
+                    <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                  </p>
+                </div>
+                <el-divider content-position="right">{{project.id}}</el-divider>
+              </div>
+            </el-collapse-item>
+          </el-collapse>
+
+          <div v-if="direction.projects">
+            <div v-for="project,index in direction.projects">
+              <p class="project_p" style="font-size: 20px">
+                <span v-html="textBold(project.authors)"></span>
+                <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                  style="font-size: 20px">{{project.title}}</b>
+                <span v-for="tag in project.tags" :style="styles[tag[1]]" style="font-size: 20px">{{tag[0]}}</span>
+                <span v-for="link in project.links" style="font-size: 20px">[<b><a class="project_links"
+                      :href="link.link" style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+              </p>
+              <div v-if="project.video" class="figure_div">
+                <video width="640" :src="'videos/'+project.video" controls></video>
+              </div>
+              <div v-for="img in project.imgs" class="figure_div">
+                <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                <div v-if="img.label">
+                  <div class="figure_label">{{img.label}}</div>
+                  <br>
+                </div>
+              </div>
+              <div v-if="project.io" style="font-size: 18px;">
+                <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+              </div>
+              <div v-if="project.abstract">
+                <p style="text-align: justify;font-size: 18px;">
+                  <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                </p>
+              </div>
+              <el-divider content-position="right">{{project.id}}</el-divider>
+            </div>
+
+          </div>
+        </el-collapse-item>
+
+      </el-collapse>
+
+
+    </div>
+  </div>
+</body>
+<script src="../js/index.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        num_index: 1,
+        styles,
+        activeNames1: ['1'],
+        activeNames2: ['2'],
+        activeNames3: ['2'],
+        styles,
+        projects: [
+            {
+            authors: '杨鑫, 王大维, 王宇新, 白鑫, 葛宏伟, 夏浩.',
+            title: '互补MOOC的主动式课堂建设方法探究.',
+            tags: [
+              ['现代教育技术', 1],
+              ['. 2017, 27(1)：31-37. ', 0],
+              ['(CSSCI收录)', 2]
+            ],
+            imgs: [
+              { src: '互补MOOC的主动式课堂建设方法探究.png' }
+            ],
+            abstract: '教育模式改革是教育改革的关键,而传统教育模式已经难以适应当前信息时代的教育理念.文章通过梳理传统教育和在线教育各自的优势和劣势,提出了互补MOOC的主动式课堂建设方法,具体包括基于情感特征原则的课堂交互方法和基于反馈教学原则的弹幕交互方法,并分别设计了以公平鼓励为核心的抢答系统实施策略和以教学效率为核心的弹幕系统实施策略.最后,文章基于互补MOOC的主动式课堂建设方法,开发了主动式课堂实时互动平台,并展示了该平台在大连理工大学"程序设计语言"课程中的应用效果.'
+          },
+            ],
+        directions1: [
+          {
+            title: "a. Real-Virtual Consistent Traffic Flow Interaction",
+            projects: [
+            {
+            authors: '杨鑫, 王大维, 王宇新, 白鑫, 葛宏伟, 夏浩.',
+            title: '互补MOOC的主动式课堂建设方法探究.',
+            tags: [
+              ['现代教育技术', 1],
+              ['. 2017, 27(1)：31-37. ', 0],
+              ['(CSSCI收录)', 2]
+            ],
+            imgs: [
+              { src: '互补MOOC的主动式课堂建设方法探究.png' }
+            ],
+            abstract: '教育模式改革是教育改革的关键,而传统教育模式已经难以适应当前信息时代的教育理念.文章通过梳理传统教育和在线教育各自的优势和劣势,提出了互补MOOC的主动式课堂建设方法,具体包括基于情感特征原则的课堂交互方法和基于反馈教学原则的弹幕交互方法,并分别设计了以公平鼓励为核心的抢答系统实施策略和以教学效率为核心的弹幕系统实施策略.最后,文章基于互补MOOC的主动式课堂建设方法,开发了主动式课堂实时互动平台,并展示了该平台在大连理工大学"程序设计语言"课程中的应用效果.'
+          },
+            ]
+          },
+          ],
+        projects: [
+          {
+            authors:
+              'Haiyin Piao, Pengyuan Du, Qi Liu, Letian Yu, Yang Sun, Yuxin Wang, Xin Yang*.',
+            title:
+              'MBKD: Acceleration Structure Designed for Moving Primitives.',
+            tags: [
+              ['Computers & Graphics 2021', 1],
+              ['. ', 0],
+            ],
+            imgs: [
+              { src: 'MBKD.png' }
+            ],
+            abstract: 'We present a k-d tree construction algorithm designed to accelerate rendering of scenes with motion blur, in application scenarios where a k-d tree is either required or desired. Our associated data structure focuses on capturing incoherent motion within the nodes of a k-d tree and improves both data structure quality and efficiency over previous methods. At building time, we track primitives with motion that is significantly distinct from other primitives within the node, guarantee valid node references and the correctness of the data structure via primitive duplication heuristic and propagation rules. Then, we incorporate filtering heuristics to limit the propagation of primitives, and eliminate some incorrect duplicated references that may invalidate node references. We also demonstrate a strategy for updating existing MBKD for animated scenes. Our experiments with this hierarchy show artifact-free motion-blur rendering using a k-d tree, and demonstrate improvements against a traditional BVH with interpolation and a MSBVH structure designed to handle moving primitives, particularly in render time.'
+          },
+          {
+            authors:
+              'Xin Yang, Wenbo Hu, Dawei Wang, Lijing Zhao, Baocai Yin, Qiang Zhang, Xiaopeng Wei, Hongbo Fu.',
+            title:
+              'DEMC: A Deep Dual-Encoder Network for Denoising Monte Carlo Rendering.',
+            tags: [
+              ['Journal of Computer Science and Technology 2019. (Special Issue of CVM)', 1],
+              ['. (Special Issue of CVM), 34(5): 1123-1135. ', 0],
+              ['(CCF B)', 2],
+            ],
+            links: [
+              {
+                name: 'paper',
+                link: 'https://arxiv.org/pdf/1905.03908.pdf',
+              },
+              {
+                name: 'suppl',
+                link:
+                  'https://drive.google.com/file/d/1UyJYe1JoopIb-QwDqHgi6wBAmF2NT_Mi/view',
+              },
+              {
+                name: 'code',
+                link: 'https://github.com/wbhu/DEMC',
+              },
+              {
+                name: 'dataset',
+                link: 'https://sites.google.com/view/dutdemc',
+              },
+            ],
+            imgs: [
+              { src: 'A Deep Dual-Encoder Network for Denoising Monte Carlo Rendering.png' },
+              { src: 'A Deep Dual-Encoder Network for Denoising Monte Carlo Rendering.gif' }
+            ],
+            abstract: 'In this paper, we present DEMC, a deep Dual-Encoder network to remove Monte Carlo noise efficiently while preserving details. Denoising Monte Carlo rendering is different from natural image denoising since inexpensive by-products (feature buffers) can be extracted in the rendering stage. Most of them are noise-free and can provide sufficient details for image reconstruction. However, these feature buffers also contain redundant information, which makes Monte Carlo denoising different from natural image denoising. Hence, the main challenge of this topic is how to extract useful information and reconstruct clean images. To address this problem, we propose a novel network structure, Dual-Encoder network with a feature fusion sub-network, to fuse feature buffers firstly, then encode the fused feature buffers and a noisy image simultaneously, and finally reconstruct a clean image by a decoder network. Compared with the state-of-the-art methods, our model is more robust on a wide range of scenes and is able to generate satisfactory results in a significantly faster way.'
+          },
+          {
+            authors: 'Wanchao Su, Dong Du, Xin Yang, Shizhe Zhou, Hongbo Fu.',
+            title:
+              'Interactive Sketch-Based Normal Map Generation with Deep Neural Networks.',
+            tags: [
+              ['ACM SIGGRAPH Symposium on Interactive 3D Graphics and Games (I3D)', 1],
+              [', 2018. ', 0],
+              ['(CCF B)', 2]
+            ],
+            links: [
+              {
+                name: 'paper',
+                link:
+                  'http://sweb.cityu.edu.hk/hongbofu/doc/sketch2normal_i3D2018.pdf',
+              },
+              {
+                name: 'video',
+                link: 'https://youtu.be/-Fl3Yav5FFI',
+              },
+              {
+                name: 'code',
+                link: 'https://github.com/Ansire/sketch2normal',
+              },
+              {
+                name: 'data',
+                link:
+                  'http://sweb.cityu.edu.hk/hongbofu/data/datasets.tar.gz',
+              },
+              {
+                name: 'media: Seamless',
+                link: 'https://shiropen.com/seamless-3dcg-interactive-sketch',
+              },
+            ],
+            imgs: [
+              { src: 'Interactive Sketch-Based Normal Map Generation with Deep Neural Networks.jpg' }
+            ],
+            abstract: 'High-quality normal maps are important intermediates for representing complex shapes. In this paper, we propose an interactive system for generating normal maps with the help of deep learning techniques. Utilizing the Generative Adversarial Network (GAN) framework, our method produces high quality normal maps with sketch inputs. In addition, we further enhance the interactivity of our system by incorporating user-specified normals at selected points. Our method generates high quality normal maps in real time. Through comprehensive experiments, we show the effectiveness and robustness of our method. A thorough user study indicates the normal maps generated by our method achieve a lower perceptual difference from the ground truth compared to the alternative methods.'
+          },
+          {
+            authors:
+              'Yang Xin, Liu Qi, Yin Baocai, Zhang Qiang, Wei Xiaopeng.',
+            title: 'A K-D Tree Construction Designed for Motion Blur.',
+            tags: [
+              ['28th Eurographics Symposium on Rendering (EGSR)', 1],
+              [', Helsinki, Finland, 2017, 113-119. ', 0],
+              ['(CCF B)', 2]
+            ],
+            imgs: [
+              { src: 'A K-D Tree Construction Designed for Motion Blur.gif' }
+            ],
+            abstract: 'We present a k-d tree construction algorithm designed to accelerate rendering of scenes with motion blur, in application scenarios where a k-d tree is either required or desired. Our associated data structure focuses on capturing incoherent motion within the nodes of a k-d tree and improves both data structure quality and efficiency over previous methods. At build-time stage, we tracks primitives with motion that is significantly distinct from other primitives within the node, guarantee valid node references and the correctness of the data structure via primitive duplication heuristic and propagation rules. Our experiments with this hierarchy show artifact-free motion-blur rendering using a k-d tree, and demonstrate improvements against a traditional BVH with interpolation and a MSBVH structure designed to handle moving primitives, particularly in render time.'
+          },
+          {
+            authors:
+              'Yang Xin, Liu Qi, Zhang Pengfei, Xin Lutong, Zhou Dongsheng, Wang Yuxin, Zhang Qiang, Wei Xiaopeng.',
+            title: 'DKD: A Fast KD-Tree Update Design for Dynamic Scenes.',
+            tags: [
+              ["Journal of Computer Animation and Virtual Worlds (Special Issue of CASA 2016, Geneva, Switzerland)", 1],
+              [', 2016, 27(4): 340-350. ', 0],
+              ['(SCI)', 2],
+            ],
+            imgs: [
+              { src: 'DKD A Fast KD-Tree Update Design for Dynamic Scenes.gif' }
+            ],
+            abstract: 'We design dynamic k -d (DKD) tree based on classical k -d tree for animated scene rendering. Our method can inherit the benefit of efficient traversal of k -d tree and minimize time cost to update DKD tree, making it well suited for animated geometry. DKD employs primitive reset, redistribution to reflect the updated positions of geometry, and leaf node incremental growing to avoid the deterioration of hierarchy quality due to refitting. Our experiments show that DKD has a significant rendering performance improvement than selected existing methods. Copyright 2016 John Wiley & Sons, Ltd.'
+          },
+        ],
+      }
+    },
+    methods: {
+      textBold(s) {
+        return textBold(s)
+      },
+      goBack() {
+        goBack()
+      },
+      handleChange(val) {
+        console.log(val)
+      },
+      replaceSpacesWithUnderscore(title) {
+        return title.replace(/\s+/g, '_');
+      }
+
+    },
+    created() {
+      var id = 1;
+      for (var i = 0; i < 1000; i++) {
+        this.activeNames1.push(i);
+        this.activeNames2.push(i);
+        this.activeNames3.push(i);
+      }
+      let idCounter = 1;
+
+      this.directions1.forEach(direction => {
+        direction.domains.forEach(domain => {
+          domain.projects.forEach(project => {
+            project.id = idCounter++;
+          });
+        });
+      });
+      this.directions1[1].domains1.forEach(domain11 => {
+        domain11.domains.forEach(domain => {
+          domain.projects.forEach(project => {
+            project.id = idCounter++;
+          });
+        });
+      });
+      this.directions1[1].domains2.forEach(domain => {
+        domain.projects.forEach(project => {
+          project.id = idCounter++;
+        });
+      });
+    },
+  })
+</script>
+
+</html>

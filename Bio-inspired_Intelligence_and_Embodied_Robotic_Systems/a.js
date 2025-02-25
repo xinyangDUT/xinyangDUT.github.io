@@ -1,0 +1,406 @@
+projects: [
+
+
+
+]
+
+directions: [
+  {
+    title: "a.  无人车导航避障与多模态融合(Robot Navigation Obstacle Avoidance and Multimodal Fusion)",
+    domains: [
+      {
+        title: "i. ",
+        projects: [
+          {
+            id: 0,
+            authors: 'Yang Wang, Bo Dong, Yuji Zhang, Yunduo Zhou, Haiyang Mei, Ziqi Wei, Xin Yang*. ',
+            title: 'Event-Enhanced Multi-Modal Spiking Neural Network for Dynamic Obstacle Avoidance.',
+            io: ' Given the event data, laser data, goal and velocity, our framework produces the action of robot.',
+            tags: [
+              ['ACM International Conference on Multimedia (ACM MM) 2023', 1],
+              ['. ', 0],
+              ['(CCF A)', 2]
+
+            ],
+            video: 'event_enhanced.mp4',
+            abstract: 'Autonomous obstacle avoidance is of vital importance for an intelligent agent such as a mobile robot to navigate in its environment. Existing state-of-the-art methods train a spiking neural network (SNN) with deep reinforcement learning (DRL) to achieve energy-efficient and fast inference speed in complex/unknown scenes. These methods typically assume that the environment is static while the obstacles in real-world scenes are often dynamic. The movement of obstacles increases the complexity of the environment and poses a great challenge to the existing obstacle avoidance methods. In this work, we approach robust dynamic obstacle avoidance twofold. First, we introduce the neuromorphic vision sensor (i.e., event camera) to provide motion cues complementary to the traditional Laser depth data for handling dynamic obstacles. Second, we develop an DRL-based event-enhanced multimodal spiking actor network (EEM-SAN) that extracts information from motion events data via unsupervised representation learning and fuses Laser and event camera data with learnable thresholding. Experimental results demonstrate that our EEM-SAN outperforms state-of-the-art obstacle avoidance methods by a significant margin, especially for dynamic obstacle avoidance.',
+
+            imgs: [
+              'Event-Enhanced Multi-Modal Spiking Neural Network for Dynamic Obstacle Avoidance.png',
+            ],
+            links: [
+              { name: 'paper', link: 'https://arxiv.org/abs/2310.02361' },
+
+            ]
+          },
+        ]
+      },
+      {
+        title: "ii. ",
+        projects: [
+          {
+            id: 1,
+            authors: 'Jianchuan Ding, Lingping Gao, Wenxi Liu, Haiyin Piao, Jia Pan, Zhenjun Du, Xin Yang*, Baocai Yin.',
+            title: 'Monocular Camera-based Complex Obstacle Avoidance via Efficient Deep Reinforcement Learning.',
+            io: 'Given the monocular RGB image, goal and velocity, our framework produces the robot\'s action.',
+            tags: [
+              ['IEEE Transactions on Circuits and Systems for Video Technology 2022', 1],
+              ['. ', 0],
+              ['(CCF B)', 2]
+            ],
+            abstract: 'Deep reinforcement learning has achieved great success in laser-based collision avoidance works because the laser can sense accurate depth information without too much redundant data, which can maintain the robustness of the algorithm when it is migrated from the simulation environment to the real world. However, high-cost laser devices are not only difficult to deploy for a large scale of robots but also demonstrate unsatisfactory robustness towards the complex obstacles, including irregular obstacles, e.g., tables, chairs, and shelves, as well as complex ground and special materials. In this paper, we propose a novel monocular camera-based complex obstacle avoidance framework. Particularly, we innovatively transform the captured RGB images to pseudo-laser measurements for efficient deep reinforcement learning. Compared to the traditional laser measurement captured at a certain height that only contains one-dimensional distance information away from the neighboring obstacles, our proposed pseudo-laser measurement fuses the depth and semantic information of the captured RGB image, which makes our method effective for complex obstacles. We also design a feature extraction guidance module to weight the input pseudo-laser measurement, and the agent has more reasonable attention for the current state, which is conducive to improving the accuracy and efficiency of the obstacle avoidance policy.',
+            video: 'Monocular.mp4',
+            imgs: [
+              'Monocular-Camera-based-2.png'
+            ],
+            links: [
+              { name: 'paper', link: 'https://arxiv.org/pdf/2209.00296.pdf' }
+            ]
+          },
+        ]
+      },
+      {
+        title: "iii. ",
+        projects: [
+          {
+            id: 2,
+            authors: 'Lingping Gao, Jianchuan Ding, Wenxi Liu, Haiyin Piao, Yuxin Wang, Xin Yang†, Baocai Yin.',
+            title: 'A Vision-based Irregular Obstacle Avoidance Framework via Deep Reinforcement Learning.',
+            io: 'Given the monocular RGB image, goal and velocity, our framework produces the robot\'s action.',
+            tags: [
+              ['IROS 2021', 1],
+              ['. ', 0]
+            ],
+            abstract: 'Deep reinforcement learning has achieved great success in laser-based collision avoidance work because the laser can sense accurate depth information without too much redundant data, which can maintain the robustness of the algorithm when it is migrated from the simulation environment to the real world. However, high-cost laser devices are not only difficult to apply on a large scale but also have poor robustness to irregular objects, e.g., tables, chairs, shelves, etc. In this paper, we propose a vision-based collision avoidance framework to solve the challenging problem. Our method attempts to estimate the depth and incorporate the semantic information from RGB data to obtain a new form of data, pseudo-laser data, which combines the advantages of visual information and laser information. Compared to traditional laser data that only contains the one-dimensional distance information captured at a certain height, our proposed pseudo-laser data encodes the depth information and semantic information within the image, which makes our method more effective for irregular obstacles. Besides, we adaptively add noise to the laser data during the training stage to increase the robustness of our model in the real world, due to the estimated depth information is not accurate. Experimental results show that our framework achieves state-of-the-art performance in several unseen virtual and real-world scenarios.',
+            imgs: [
+              'Obstacle-Avoidance-demo.gif',
+              'Obstacle-Avoidance-1.png'
+            ],
+            links: [
+              { name: 'paper', link: 'https://arxiv.org/pdf/2108.06887.pdf' }
+            ]
+          },
+        ]
+      },
+      {
+        title: "iv. ",
+        projects: [
+          {
+            id: 3,
+            authors: 'Yuanbo Wang, Shanglai Qu, Tianyu Meng, Yan Cui, Haiyin Piao, Xiaopeng Wei*, Xin Yang*.',
+            title: 'Event-intensity Stereo with cross-modal Fusion and Contrast.',
+            tags: [
+              [' International Conference on Intelligent Robots and Systems 2024.', 1],
+              ['. ', 0],
+              ['(CCF B)', 2]
+            ],
+
+          },
+        ]
+      }
+    ]
+
+
+  },
+  {
+    title: "b.  无人机与目标跟踪(Drones and Target Tracking)",
+    domains: [
+      {
+        title: "i. ",
+        projects: [
+          {
+            id: 4,
+            authors: 'Jiqing Zhang, Bo Dong, Yingkai Fu, Yuanchen Wang, Xiaopeng Wei, BaocaiYin, Xin Yang*.',
+            title: 'A Universal Event-based Plug-in Module for Visual Object Tracking in Degraded Conditions.',
+            tags: [
+              ['International Journal of Computer Vision (IJCV)', 1],
+              ['. ', 0],
+              ['(CCF A)', 2]
+            ],
+            abstract: 'Most existing trackers based on RGB/grayscale frames may collapse due to the unreliability of conventional sensors in some challenging scenarios (e.g., motion blur and high dynamic range). Event-based cameras as bioinspired sensors encode brightness changes with high temporal resolution and high dynamic range, thereby providing considerable potential for tracking under degraded conditions. Nevertheless, events lack the fine-grained texture cues provided by RGB/grayscale frames. This complementarity encourages us to fuse visual cues from the frame and event domains for robust object tracking under various challenging conditions. In this paper, we propose a novel event feature extractor to capture spatiotemporal features with motion cues from event-based data by boosting interactions and distinguishing alterations between states at different moments.',
+            io: ' Given the first frame image, and it is corresponding events and bounding box, our network produces the following bounding boxes.',
+            imgs: [
+              'qing1.png',
+              'qing2.png',
+            ],
+            video: 'qing_1.mp4',
+            links: [
+              { name: 'paper', link: 'https://link.springer.com/article/10.1007/s11263-023-01959-8' },
+
+            ]
+          },
+        ]
+      },
+      {
+        title: "ii. ",
+        projects: [
+          {
+            id: 5,
+            authors: 'Yingkai Fu, Meng Li, Wenxi Liu, Yuanchen Wang, Jiqing Zhang, Baocai Yin, Xiaopeng Wei, Xin Yang†.',
+            title: 'Distractor-aware Event-based Tracking.',
+            tags: [
+              ['IEEE Transactions on Image Processing', 1],
+              ['. ', 0],
+              ['(CCF A)', 2]
+            ],
+            io: 'With the event camera, given the video and the starting target position of the first frame, our network produces the subsequent position of target in the video.',
+            abstract: 'Event cameras, or dynamic vision sensors, have recently achieved success from fundamental vision tasks to high-level vision researches. Due to its ability to asynchronously capture light intensity changes, event camera has an inherent advantage to capture moving objects in challenging scenarios including objects under low light, high dynamic range, or fast moving objects. Thus event camera are natural for visual object tracking. However, the current event-based trackers derived from RGB trackers simply treat events as another form of visual cues, which may not be robust dealing with moving cameras or cluttered foreground. In this paper, we propose a distractor-aware event-based tracker that introduces transformer modules into Siamese network architecture. Specifically, our model is composed of a motion-aware network and a target-aware network, which simultaneously exploits both motion cues and object contours from event data, so as to discover motion objects and identify the target object by removing dynamic distractors. Our proposed tracker can be trained in an end-to-end manner without any post-processing and can run at over 80 FPS on a single V100. We conduct comprehensive experiments on two large event tracking datasets to validate the proposed model. We demonstrate that the proposed method has superior performance against the state-of-the-art trackers in terms of both accuracy and efficiency.',
+            imgs: [
+              '1-pipelines_base.png',
+              '2-framework.png',
+              '3-effect.png'
+            ],
+            video: 'demo-fyk.mp4',
+            links: [
+              { name: 'paper', link: 'https://arxiv.org/pdf/2310.14194.pdf' }
+            ]
+          },
+        ]
+
+      },
+
+
+      {
+        title: "iii. ",
+        projects: [
+          {
+            id: 6,
+            authors: 'Jiqing Zhang, Yuanchen Wang , Wenxi Liu, Meng Li, Jinpeng Bai, Baocai Yin, Xin Yang*. ',
+            title: 'Frame-Event Alignment and Fusion Network for High Frame Rate Tracking.',
+            io: ' Given the first event frame image and corresponding bounding box, our network produces the following bounding boxes.',
+            tags: [
+              ['CVPR 2023', 1],
+              ['. ', 0],
+              ['(CCF A)', 2]
+
+            ],
+            video: '11152-video.mp4',
+            abstract: 'Most existing RGB-based trackers target low frame rate benchmarks of around 30 frames per second. This setting restricts the tracker’s functionality in the real world, especially for fast motion. Event-based cameras as bioinspired sensors provide considerable potential for high frame rate tracking due to their high temporal resolution. However, event-based cameras cannot offer fine-grained texture information like conventional cameras. This unique complementarity motivates us to combine conventional frames and events for high frame rate object tracking under various challenging conditions. In this paper, we propose an end-toend network consisting of multi-modality alignment and fusion modules to effectively combine meaningful information from both modalities at different measurement rates. The alignment module is responsible for cross-style and crossframe-rate alignment between frame and event modalities under the guidance of the moving cues furnished by events. While the fusion module is accountable for emphasizing valuable features and suppressing noise information by the mutual complement between the two modalities. Extensive experiments show that the proposed approach outperforms state-of-the-art trackers by a significant margin in high frame rate tracking. With the FE240hz dataset, our approach achieves high frame rate tracking up to 240Hz. ',
+            links: [
+              { name: 'paper', link: 'https://arxiv.org/pdf/2305.15688.pdf' }
+            ]
+          },
+        ]
+
+      },
+
+      {
+        title: "iv. ",
+        projects: [
+          {
+            id: 7,
+            authors: 'Jiqing Zhang, Bo Dong, Haiwei Zhang, Jianchuan Ding, Felix Heide, Baocai Yin, Xin Yang*.',
+            title: 'Spiking Transformers for Event-based Single Object Tracking.',
+            io: 'Given the first event frame image and corresponding bounding box, our network produces the following bounding boxes.',
+            tags: [
+              ['CVPR 2022', 1],
+              ['. ', 0],
+              ['(CCF A)', 2]
+            ],
+            abstract: 'Event-based cameras bring a unique capability to tracking, being able to function in challenging real-world conditions as a direct result of their high temporal resolution and high dynamic range. These imagers capture events asynchronously that encode rich temporal and spatial information. However, effectively extracting this information from events remains an open challenge. In this work, we propose a spiking transformer network, STNet, for single object tracking. STNet dynamically extracts and fuses information from both temporal and spatial domains. In particular, the proposed architecture features a transformer module to provide global spatial information and a spiking neural network (SNN) module for extracting temporal cues. The spiking threshold of the SNN module is dynamically adjusted based on the statistical cues of the spatial information, which we find essential in providing robust SNN features. We fuse both feature branches dynamically with a novel cross-domain attention fusion algorithm. Extensive experiments on three event-based datasets, FE240hz, EED and VisEvent validate that the proposed STNet outperforms existing state-of-the-art methods in both tracking accuracy and speed with a significant margin. The code and pretrained models are at https://github.com/Jee-King/CVPR2022_STNet.',
+            imgs: [
+              'SpikingTransformer-video_v2.gif',
+              'Spiking Transformers.png'
+            ],
+            links: [
+              { name: 'code', link: 'https://github.com/Jee-King/CVPR2022_STNet' },
+              { name: 'demo', link: 'https://youtu.be/iRkgBy0V1Dk' }
+            ],
+
+          },
+        ]
+
+      },
+      {
+        title: "v. ",
+        projects: [
+          {
+            id: 8,
+            authors: '朱强, 王超毅, 张吉庆, 尹宝才, 魏小鹏, 杨鑫*.',
+            title: '基于事件相机的无人机目标跟踪.',
+            io: '给定成对的灰度图像和事件图像以及第一帧目标的位置，预测后续帧目标的位置.',
+            tags: [
+              ['浙江大学学报（理学版)', 1],
+              ['. 2022, 49(01).', 0]
+            ],
+            abstract: '无人机的目标跟踪现如今已成为计算机视觉领域中一个热门的研究课题. 无人机目标跟踪可以应用于消防、军事等重要领域.现阶段无人机目标跟踪算法大多基于传统的 RGB 相机结合深度学习算法, 但这类方法一方面无法避免因无人机自身机体抖动引发的运动模糊问题, 另一方面传统 RGB 相机在低光照或过曝光场景下成像较差, 从而难以追踪目标. 为了解决上述无人机视角下的目标跟踪出现的问题，本文采用无人机搭载 DAVIS 事件相机进行目标跟踪, 并设计了基于事件与灰度图的双模态融合跟踪网络，为了更好地训练该网络，本文采用运动捕捉系统Vicon自行制作无人机视角下的目标跟踪数据集：Event-APS28，保证了复杂光照场景下可以根据图像信息有效的跟踪目标.',
+            imgs: [
+              '基于事件相机的无人机目标跟踪.png'
+            ],
+            links: [
+              { name: 'paper', link: 'http://lib.cqvip.com/Qikan/Article/ReadIndex?id=7106434043&info=t9MpCA804vI8meoo9gR%2bDWBpx8%2bqvV61AbZyGS%2fLBsRlD2a9CzlyAg%3d%3d' },
+            ],
+          }
+        ]
+
+      },
+
+      {
+        title: "vi. ",
+        projects: [
+          {
+            id: 9,
+            authors: 'Jiqing Zhang, Xin Yang, Yingkai Fu, Xiaopeng Wei, Baocai Yin, Bo Dong.',
+            title: 'Object Tracking by Jointly Exploiting Frame and Event Domain.',
+            io: 'Given the first frame image, and it\'s corresponding events and bounding box, our network produces the following bounding boxes.',
+            tags: [
+              ['ICCV 2021', 1],
+              ['. ', 0],
+              ['(CCF A)', 2]
+            ],
+            abstract: 'Inspired by the complementarity between conventional frame-based and bio-inspired event-based cameras, we propose a multi-modal based approach to fuse visual cues from the frame- and event-domain to enhance the single object tracking performance, especially in degraded conditions (e.g., scenes with high dynamic range, low light, and fast motion objects). The proposed approach can effectively and adaptively combine meaningful information from both domains. Our approach’s effectiveness is enforced by a novel designed cross-domain attention schemes, which can effectively enhance features based on self- and cross-domain attention schemes; The adaptiveness is guarded by a specially designed weighting scheme, which can adaptively balance the contribution of the two domains. To exploit event-based visual cues in single-object tracking, we construct a largescale frame-event-based dataset, which we subsequently employ to train a novel frame-event fusion based model. Extensive experiments show that the proposed approach outperforms state-of-the-art frame-based tracking methods by at least 10.4% and 11.9% in terms of representative success rate and precision rate, respectively. Besides, the effectiveness of each key component of our approach is evidenced by our thorough ablation study.',
+            imgs: [
+              'Object-Tracking-demo.gif',
+              'Object-Tracking-1.png'
+            ],
+            links: [
+              { name: 'media', link: 'https://youtu.be/EeMRO8XVv04' },
+              { name: 'code', link: 'https://github.com/Jee-King/ICCV2021_Event_Frame_Tracking' },
+              { name: 'dataset', link: 'https://zhangjiqing.com/dataset/' }
+            ],
+
+          },
+        ]
+
+      },
+      {
+        title: "vii. ",
+        projects: [
+          {
+            id: 10,
+            authors: 'Jiqing Zhang, Kai Zhao, Bo Dong, Yingkai Fu, Xinglin Piao, Xin Yang, Baocai Yin.',
+            title: 'Multi-domain Collaborative Feature Representation for Robust Visual Object Tracking.',
+            io: 'Given the first frame image, and it\'s corresponding events and bounding box, our network produces the following bounding boxes.',
+            tags: [
+              ['The Visual Computer (Proc. CGI 2021)', 1],
+              ['. ', 0]
+            ],
+            abstract: 'Jointly exploiting multiple different yet complementary domain information has been proven to be an effective way to perform robust object tracking. This paper focuses on effectively representing and utilizing complementary features from the frame domain and event domain for boosting object tracking performance in challenge scenarios. Specifically, we propose Common Features Extractor (CFE) to learn potential common representations from the RGB domain and event domain. For learning the unique features of the two domains, we utilize a Unique Extractor for Event (UEE) based on Spiking Neural Networks to extract edge cues in the event domain which may be missed in RGB in some challenging conditions, and a Unique Extractor for RGB (UER) based on Deep Convolutional Neural Networks to extract texture and semantic information in RGB domain. Extensive experiments on standard RGB benchmark and real event tracking dataset demonstrate the effectiveness of the proposed approach. We show our approach outperforms all compared state-of-the-art tracking algorithms and verify event-based data is a powerful cue for tracking in challenging scenes.',
+            imgs: [
+              'Multi-domain-1.png',
+              'Multi-domain-2.png'
+            ],
+            links: [
+              { name: 'paper', link: 'https://arxiv.org/pdf/2108.04521.pdf' },
+              { name: 'media', link: 'https://www.youtube.com/watch?v=NrsXMJYSDDQ&t=4s' }
+            ]
+
+          }
+        ]
+      }
+    ]
+  },
+
+
+  {
+    title: "c.  机械臂抓取(Robotic Arm Gripping)",
+    domains: [
+      {
+        title: "i. ",
+        projects: [
+          {
+            id: 11,
+            authors: 'Boyan Wei, Xianfeng Ye, Chengjiang Long, Zhenjun Du, Bangyu Li, Baocai Yin, Xin Yang*.',
+            title: 'Discriminative Active Learning for Robotic Grasping in Cluttered Scene.',
+            io: 'RGB-D images, our framework produces object 4D grasp pose.',
+            tags: [
+              ['IEEE Robotics and Automation Letters (RA-L) 2023', 1],
+              ['. ', 0]
+            ],
+            video: 'RAL.mp4',
+            abstract: 'Robotic grasping is a challenging task due to the diversity of object shapes. A sufficiently labeled dataset is essential for the grasp pose detection methods based on deep learning. However, data annotation is a costly procedure. Active learning aims to mitigate the greedy need for massive labeled data. In this work, we propose a Discriminative Active Learning (DAL) framework for robotic grasping algorithms. DAL is an effective strategy that utilizes a shared encoder to derive latent features from both labeled data and unlabeled data. A discriminator is established to estimate the informativeness of each unlabeled data sample and decide whether they should be annotated for the next epoch. Moreover, an annotation interface is also developed to annotate the chosen data. We evaluate DAL with real-world grasp datasets and show superior performance, especially when the amount of labeled data is little. Considering annotation noise, we perform an experiment on a noisy dataset and demonstrate that our proposed framework is stable to noisy annotation. Besides, we train a model with about 60\% data selected by DAL of the whole dataset and it can still handle a real-world grasp detection task in cluttered scene on a real robot.',
+            imgs: [
+              'RAL-1.png'
+            ],
+            links: [
+              { name: 'paper', link: './DAL-final.pdf' }
+            ]
+          },
+
+        ]
+      }
+    ]
+  },
+  {
+    title: "d.  类脑模型与算法优化(Brain-inspired Computing and Algorithm Optimisation)",
+    domains: [
+
+      {
+        title: "i. ",
+        projects: [
+          {
+            id: 12,
+            authors: 'Jingcheng Jiang, Haiyin Piao, Yu Fu, Yihang Hao, Chuanlu Jiang, Ziqi Wei, Xin Yang∗.',
+            title: 'Phasic Diversity Optimization for Population-Based Reinforcement Learning.',
+            tags: [
+              ['IEEE International Conference on Robotics and Automation (ICRA)', 1],
+              ['. ', 0],
+              ['(CCF B)', 2]
+            ],
+            abstract: 'Reviewing the previous work of diversity Rein-forcement Learning, diversity is often obtained via an augmented loss function, which requires a balance between reward and diversity. Generally, diversity optimization algorithms use Multi-armed Bandits algorithms to select the coefficient in the pre-defined space. However, the dynamic distribution of reward signals for MABs or the conflict between quality and diversity limits the performance of these methods. We introduce the Phasic Diversity Optimization (PDO) algorithm, a Population-Based Training framework that separates reward and diversity training into distinct phases instead of optimizing a multi-objective function. In the auxiliary phase, agents with poor performance diversified via determinants will not replace the better agents in the archive. The decoupling of reward and diversity allows us to use an aggressive diversity optimization in the auxiliary phase without performance degradation. Furthermore, we construct a dogfight scenario for aerial agents to demonstrate the practicality of the PDO algorithm. We introduce two implementations of PDO archive and conduct tests in the newly proposed adversarial dogfight and MuJoCo simulations. The results show that our proposed algorithm achieves better performance than baselines.',
+            io: ' Given a specific scenario, obtain the maximum fitness, coverage, and quality diversity scores obtained using the PDO algorithm, and verify the advantages of the PDO algorithm.',
+            imgs: [
+              'jiang1.png',
+              'jiang2.png',
+            ],
+            links: [
+              { name: 'paper', link: 'https://arxiv.org/pdf/2403.11114.pdf' },
+
+            ]
+          },
+        ]
+      },
+      {
+        title: "ii. ",
+        projects: [
+          {
+            id: 13,
+            authors: 'Yang Wang, Bo Dong, Ke Xu, Haiyin Piao, Yufei Ding, Baocai Yin, Xin Yang†. ',
+            title: 'A Geometrical Approach to Evaluate the Adversarial Robustness of Deep Neural Networks.',
+            io: ' Give an input image and a adversarial attack method, our network outputs a score that indicates how image robustness is.',
+            tags: [
+              ['ACM Transactions on Multimedia Computing, Communications, and Applications (TOMM) 2023', 1],
+              ['. ', 0]
+            ],
+            abstract: 'Deep Neural Networks (DNNs) are widely used for computer vision tasks. However, it has been shown that deep models are vulnerable to adversarial attacks, i.e., their performances drop when imperceptible perturbations are made to the original inputs, which may further degrade the following visual tasks or introduce new problems such as data and privacy security. Hence, metrics for evaluating the robustness of deep models against adversarial attacks are desired. However, previous metrics are mainly proposed for evaluating the adversarial robustness of shallow networks on the small-scale datasets. Although the Cross Lipschitz Extreme Value for nEtwork Robustness (CLEVER) metric has been proposed for large-scale datasets (e.g., the ImageNet dataset), it is computationally expensive and its performance relies on a tractable number of samples. In this paper, we propose the Adversarial Converging Time Score (ACTS), an attack-dependent metric that quantifies the adversarial robustness of a DNN on a specific input. Our key observation is that local neighborhoods on a DNN’s output surface would have different shapes given different inputs. Hence, given different inputs, it requires different time for converging to an adversarial sample. Based on this geometry meaning, ACTS measures the converging time as an adversarial robustness metric. We validate the effectiveness and generalization of the proposed ACTS metric against different adversarial attacks on the large-scale ImageNet dataset using state-of-the-art deep networks. Extensive experiments show that our ACTS metric is an efficient and effective adversarial metric over the previous CLEVER metric.',
+            links: [
+              { name: 'paper', link: 'https://arxiv.org/pdf/2310.06468.pdf' },
+
+            ],
+            imgs: [
+              'Deep Neural Networks-1.png',
+              'Deep Neural Networks-2.png',
+              'Deep Neural Networks-3.png'
+            ],
+          },
+        ]
+      },
+      {
+        title: "iii. ",
+        projects: [
+          {
+            id: 14,
+            authors: 'Jianchuan Ding, Bo Dong, Felix Heide, Yufei Ding, Yunduo Zhou, Baocai Yin, Xin Yang*.',
+            title: 'Biologically Inspired Dynamic Thresholds for Spiking Neural Networks.',
+            io: 'Given inputs with noise in different tasks, our neuronal model produces outputs with homeostasis.',
+            tags: [
+              ['NeurIPS 2022', 1],
+              ['. ', 0],
+              ['(CCF A)', 2]
+            ],
+            video: 'Biologically-Inspired.mp4',
+            abstract: 'The dynamic membrane potential threshold, as one of the essential properties of a biological neuron, is a spontaneous regulation mechanism that maintains neuronal homeostasis, i.e., the constant overall spiking firing rate of a neuron. As such, the neuron firing rate is regulated by a dynamic spiking threshold, which has been extensively studied in biology. Existing work in the machine learning community does not employ bioinspired spiking threshold schemes. This work aims at bridging this gap by introducing a novel bioinspired dynamic energy-temporal threshold (BDETT) scheme for spiking neural networks (SNNs). The proposed BDETT scheme mirrors two bioplausible observations: a dynamic threshold has 1) a positive correlation with the average membrane potential and 2) a negative correlation with the preceding rate of depolarization. We validate the effectiveness of the proposed BDETT on robot obstacle avoidance and continuous control tasks under both normal conditions and various degraded conditions, including noisy observations, weights, and dynamic environments. We find that the BDETT outperforms existing static and heuristic threshold approaches by significant margins in all tested conditions, and we confirm that the proposed bioinspired dynamic threshold scheme offers homeostasis to SNNs in complex real-world tasks.',
+            imgs: [
+              'Biologically-Inspired-2.png'
+            ],
+            links: [
+              { name: 'paper', link: 'https://arxiv.org/pdf/2206.04426.pdf' },
+              { name: 'code', link: 'https://github.com/ding15963/dynamic-threshold' }
+            ]
+          },
+        ]
+      },
+
+    ]
+  }
+]

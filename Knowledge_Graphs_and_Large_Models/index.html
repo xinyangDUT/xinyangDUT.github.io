@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<title>Knowledge Graphs and Large Models</title>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="../css/element-ui.css" />
+  <link rel="stylesheet" href="../css/index.css" />
+  <script src="../js/vue.min.js"></script>
+  <script src="../js/element-ui.min.js"></script>
+</head>
+
+<style>
+  .el-collapse-item__header {
+
+    line-height: 30px;
+    height: auto;
+    padding: 10px 20px;
+  }
+</style>
+
+<body>
+  <div id="app">
+    <el-button style="position:fixed;" @click="goBack" round><i class="el-icon-back"></i>Back</el-button>
+    <!-- Photorealistic Rendering -->
+    <div class="content">
+      <h1 style="font-size: 50px;">
+        Knowledge Graphs and Large Models
+      </h1>
+      <el-divider></el-divider>
+      <p style="text-align: justify;font-size: 18px;">
+
+        The integration of knowledge graphs and large models aims to address safety, intelligent control, and process
+        optimization in chemical production processes. Based on multi-source heterogeneous data such as chemical
+        production images, audio, odors, and instrument data, an intelligent monitoring and management decision-making
+        deployment system is constructed for the production of chemicals like ethylene oxide and its derivatives,
+        leveraging knowledge graphs. By deeply studying chemical production processes and mechanistic knowledge, and
+        combining graph neural networks and delay embedding techniques, temporal and spatial information from time
+        series data is extracted to solve the problem of anomaly detection in complex chemical processes that
+        traditional algorithms struggle with. Embedding chemical mechanistic knowledge into causal inference algorithms
+        allows for risk tracing analysis, reducing the gap between data-driven algorithms and real-world business
+        applications. Furthermore, the development of relationship-guided entity extraction techniques provides
+        theoretical support for the precise construction of knowledge graphs tailored to the chemical industry. By
+        integrating the internal geometric structure and molecular property data of chemicals, intelligent molecular
+        property prediction models are developed to optimize ingredient ratios in production processes. The constructed
+        knowledge graph is used to optimize large models for generative question answering in the chemical industry,
+        advancing the application of large models in vertical domains. These technologies are applied in intelligent
+        risk perception, intelligent inspection, intelligent risk reasoning, intelligent risk handling, and intelligent
+        risk warning, bringing direct performance optimization and key metric improvements, playing a crucial role in
+        improving quality and efficiency for chemical enterprises.
+      </p>
+      <el-divider></el-divider>
+
+      <el-collapse v-model="activeNames1" @change="handleChange" style="margin-top: 0px;">
+        <el-collapse-item v-for="direction in directions1">
+          <template slot="title">
+            <span style="font-size: 28px;font-weight: bolder;color: dodgerblue;">
+              {{direction.title}}
+            </span>
+          </template>
+
+          <el-collapse v-if="direction.domains" v-model="activeNames2" @change="handleChange">
+            <el-collapse-item v-for="domain in direction.domains" :index="num_index">
+              <template slot="title">
+                <span style="font-size: 25px;margin-left: 20px;font-weight:bold;">
+                  {{domain.title}}
+                </span>
+              </template>
+              <div v-for="project,index in domain.projects">
+                <p class="project_p" style="font-size: 20px">
+                  <span v-html="textBold(project.authors)"></span>
+                  <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                    style="font-size: 20px">{{project.title}}</b>
+                  <span v-for="tag in project.tags" :style="styles[tag[1]]" style="font-size: 20px">{{tag[0]}}</span>
+                  <span v-for="link in project.links" style="font-size: 20px">[<b><a class="project_links"
+                        :href="link.link" style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+                </p>
+                <div v-if="project.video" class="figure_div">
+                  <video width="640" :src="'videos/'+project.video" controls></video>
+                </div>
+                <div v-for="img in project.imgs" class="figure_div">
+                  <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                  <div v-if="img.label">
+                    <div class="figure_label">{{img.label}}</div>
+                    <br>
+                  </div>
+                </div>
+                <div v-if="project.io" style="font-size: 18px;">
+                  <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+                </div>
+                <div v-if="project.abstract">
+                  <p style="text-align: justify;font-size: 18px;">
+                    <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                  </p>
+                </div>
+                <el-divider content-position="right">{{project.id}}</el-divider>
+              </div>
+            </el-collapse-item>
+          </el-collapse>
+
+          <el-collapse v-if="direction.domains1" v-model="activeNames2" @change="handleChange">
+            <el-collapse-item v-for="domain_1 in direction.domains1" :index="num_index">
+              <template slot="title">
+                <span style="font-size: 25px;margin-left: 20px;font-weight:bold;">
+                  {{domain_1.title}}
+                </span>
+              </template>
+              <el-collapse v-model="activeNames3" @change="handleChange">
+                <el-collapse-item v-for="domain_2 in domain_1.domains" :index="num_index">
+                  <template slot="title">
+                    <span style="font-size: 23px;margin-left: 40px;">
+                      {{domain_2.title}}
+                    </span>
+                  </template>
+                  <div v-for="project,index in domain_2.projects">
+                    <p class="project_p" style="font-size: 20px">
+                      <span v-html="textBold(project.authors)"></span>
+                      <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                        style="font-size: 20px">{{project.title}}</b>
+                      <span v-for="tag in project.tags" :style="styles[tag[1]]"
+                        style="font-size: 20px">{{tag[0]}}</span>
+                      <span v-for="link in project.links" style="font-size: 20px">[<b><a class="project_links"
+                            :href="link.link" style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+                    </p>
+                    <div v-if="project.video" class="figure_div">
+                      <video width="640" :src="'videos/'+project.video" controls></video>
+                    </div>
+                    <div v-for="img in project.imgs" class="figure_div">
+                      <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                      <div v-if="img.label">
+                        <div class="figure_label">{{img.label}}</div>
+                        <br>
+                      </div>
+                    </div>
+                    <div v-if="project.io" style="font-size: 18px;">
+                      <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+                    </div>
+                    <div v-if="project.abstract">
+                      <p style="text-align: justify;font-size: 18px;">
+                        <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                      </p>
+                    </div>
+                    <el-divider content-position="right">{{project.id}}</el-divider>
+                  </div>
+                </el-collapse-item>
+            </el-collapse-item>
+          </el-collapse>
+
+          <el-collapse v-if="direction.domains2" v-model="activeNames2" @change="handleChange">
+            <el-collapse-item v-for="domain in direction.domains2" :index="num_index">
+              <template slot="title">
+                <span style="font-size: 25px;margin-left: 20px;font-weight:bold;">
+                  {{domain.title}}
+                </span>
+              </template>
+              <div v-for="project,index in domain.projects">
+                <p class="project_p" style="font-size: 20px">
+                  <span v-html="textBold(project.authors)"></span>
+                  <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                    style="font-size: 20px">{{project.title}}</b>
+                  <span v-for="tag in project.tags" :style="styles[tag[1]]" style="font-size: 20px">{{tag[0]}}</span>
+                  <span v-for="link in project.links" style="font-size: 20px">[<b><a class="project_links"
+                        :href="link.link" style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+                </p>
+                <div v-if="project.video" class="figure_div">
+                  <video width="640" :src="'videos/'+project.video" controls></video>
+                </div>
+                <div v-for="img in project.imgs" class="figure_div">
+                  <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                  <div v-if="img.label">
+                    <div class="figure_label">{{img.label}}</div>
+                    <br>
+                  </div>
+                </div>
+                <div v-if="project.io" style="font-size: 18px;">
+                  <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+                </div>
+                <div v-if="project.abstract">
+                  <p style="text-align: justify;font-size: 18px;">
+                    <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                  </p>
+                </div>
+                <el-divider content-position="right">{{project.id}}</el-divider>
+              </div>
+            </el-collapse-item>
+          </el-collapse>
+
+          <div v-if="direction.projects">
+            <div v-for="project,index in direction.projects">
+              <p class="project_p" style="font-size: 20px">
+                <span v-html="textBold(project.authors)"></span>
+                <b class="project_title" :id="replaceSpacesWithUnderscore(project.title)"
+                  style="font-size: 20px">{{project.title}}</b>
+                <span v-if="project.tags" v-for="tag in project.tags" :style="styles[tag[1]]"
+                  style="font-size: 20px">{{tag[0]}}</span>
+                <span v-if="project.links" v-for="link in project.links" style="font-size: 20px">[<b><a
+                      class="project_links" :href="link.link"
+                      style="font-size: 20px">{{link.name}}</a></b><span>]&nbsp;</span></span>
+              </p>
+              <div v-if="project.video" class="figure_div">
+                <video width="640" :src="'videos/'+project.video" controls></video>
+              </div>
+              <div v-if="project.imgs" v-for="img in project.imgs" class="figure_div">
+                <img :src="'figures/'+img.src" :alt="img" class="figure_img" />
+                <div v-if="img.label">
+                  <div class="figure_label">{{img.label}}</div>
+                  <br>
+                </div>
+              </div>
+              <div v-if="project.io" style="font-size: 18px;">
+                <p><b>Input-Output:&nbsp;</b>{{project.io}}<span></span></p>
+              </div>
+              <div v-if="project.abstract">
+                <p style="text-align: justify;font-size: 18px;">
+                  <b>Abstract:&nbsp;</b>{{project.abstract}}<span></span>
+                </p>
+              </div>
+              <el-divider content-position="right">{{project.id}}</el-divider>
+            </div>
+
+          </div>
+        </el-collapse-item>
+
+      </el-collapse>
+
+
+
+
+    </div>
+  </div>
+  </div>
+</body>
+<script src="../js/index.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        num_index: 1,
+        styles,
+        activeNames1: ['1'],
+        activeNames2: ['2'],
+        activeNames3: ['2'],
+        directions1: [
+          {
+            title: "a.  Intelligent monitoring of production process parameters",
+            projects: [
+              {
+                authors: 'Chenming Duan、Zhichao Wu、Li Zhu、Xirong Xu、Jianmin Zhu、Ziqi Wei、Xin Yang*',
+                title: 'DSTN: Dynamic Spatio-Temporal Network for Early Fault Warning in Chemical Processes - ScienceDirect.',
+                tags: [
+                  ['Knowledge-Based Systems 2024', 1],
+                  ['.  ', 0],
+                  ['(SCI一区)', 2]
+                ],
+                io: "Given the temperature, pressure and pressure of the chemical production process, our DSTN generates predictions for each sensor for future time periods.",
+                abstract: "Multivariate time series prediction, especially in early fault warning for chemical processes, poses significant challenges. The advent of graph neural network (GNN) method has made breakthroughs in this domain by enabling the processing of topological data. However, the traditional methods suffer from the issue of over-smoothing and inability to capture intricate multi-scale spatio-temporal dependencies. Additionally, the existing graph structures fall short in describing the complex spatial relationships among multi-stage sensors, impeding their adaptability to dynamically evolving chain reaction scenarios. To alleviate these limitations, a novel Dynamic spatio-Temporal Network for early fault warning in chemical processes, named DSTN for short, is proposed in this paper. We extract the spatial and temporal features of the time series by the designed dynamic GNN and the improved Transformer network. Then, we integrate the spatio-temporal features through the residual network. DSTN has the following advantages: (1) A one-dimensional convolutional neural network is seamlessly incorporated into the Transformer architecture for bolstering its capacity to discern both global and local features within time series. (2) The continuous sliding window and mutual information methods are employed to construct a dynamic topology graph, and a K-order adjacency matrix is designed to rectify the inefficiencies in learning weights associated with convolution kernel parameters. (3) Multiple spatio-temporal modules interconnected via residual connection to adaptively fuse multi-scale features. Experimental results demonstrate that our proposed DSTN method outperforms existing methods in terms of both performance and interpretability in early fault warning of chemical processes.",//文章摘要。建议200个英文单词左右。
+                imgs: [
+                  { src: 'DSTN_1.png',label:"Fig. 1. The framework of the proposed DSTN algorithm"},
+                  { src: 'DSTN_2.png',label:"Fig. 2. Flowchart of Dimethyl carbonate (DMC) production" },
+                  { src: 'DSTN_3.png' ,label:"Fig. 3. The prediction results of DSTN for DMC dataset"},
+                ],
+                links: [
+                  { name: 'paper', link: 'https://doi.org/10.1145/3664647.3681628' },
+                  { name: 'code', link: 'https://github.com/DUT-ICCD/KP-Guided-Reloc' },
+                ],
+                video: '',
+              }
+            ]
+          },
+          {
+            title: "b.  Risk traceability and intelligent decision making",
+
+          },
+          {
+            title: "c.  Large models and human-computer interaction",
+
+          },
+          {
+            title: "d.  Intelligent monitoring of production process parameters",
+
+          }
+
+        ]
+      }
+    },
+
+    methods: {
+      textBold(s) {
+        return textBold(s)
+      },
+      goBack() {
+        goBack()
+      },
+      handleChange(val) {
+        console.log(val)
+      },
+      replaceSpacesWithUnderscore(title) {
+        return title.replace(/\s+/g, '_');
+      }
+
+    },
+    created() {
+      var id = 1;
+      for (var i = 0; i < 1000; i++) {
+        this.activeNames1.push(i);
+        this.activeNames2.push(i);
+        this.activeNames3.push(i);
+      }
+      let idCounter = 1;
+
+      this.directions1.forEach(direction => {
+        direction.domains.forEach(domain => {
+          domain.projects.forEach(project => {
+            project.id = idCounter++;
+          });
+        });
+      });
+
+
+      this.directions1.forEach(direction => {
+        direction.projects.forEach(project => {
+          project.id = idCounter++;
+        });
+      });
+
+    }
+
+  })
+</script>
+
+</html>

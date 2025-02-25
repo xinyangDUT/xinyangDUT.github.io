@@ -55,6 +55,10 @@
   "C_Cpp_Runner.useLeakSanitizer": false,
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
+<<<<<<< HEAD
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "liveServer.settings.port": 5501
+=======
+  "C_Cpp_Runner.msvcSecureNoWarnings": false
+>>>>>>> 037a07180c14e0c35f291a37e93a37ea13a38ba4
 }

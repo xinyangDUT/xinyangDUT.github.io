@@ -31,6 +31,7 @@ const style1 = [
 function goBack() {
   window.location.href = '../index.html#Research Projects'
 }
+
 function textBold(s) {
   for (var i = 0; i < ks.length; ++i) {
     const k = ks[i]

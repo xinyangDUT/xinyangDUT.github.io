@@ -41,15 +41,9 @@ var publications = [
     authors: 'Zhiling Cui, Haiyang Mei, Wen Dong, Ziqi Wei, Zheng Lv, Dongsheng Zhou, Xin Yang*',
     title: 'Steel Sheet Counting from an Image with a Two-Stream Network',
     tags: [
-<<<<<<< HEAD
       ['IEEE Transactions on Instrumentation and Measurement 2025', 1],
       ['.', 0],
       ['', 2]
-=======
-      ['IEEE TIM 2025', 1],
-      ['.', 0],
-      ['(ELECTRICAL & ELECTRONIC领域Top期刊)', 2]
->>>>>>> 037a07180c14e0c35f291a37e93a37ea13a38ba4
     ],
     href: 'Scene_3D_Reconstruction_and_Generation/index.html#',
     class: "Visual_Perception_and_Understanding_in_Complex_Scenes"
@@ -89,14 +83,9 @@ var publications = [
     authors: 'Hu Lin, Chengjiang Long*, Yifeng Fei, Qianchen Xia*, Erwei Yin, Baocai Yin, Xin Yang*.',
     title: 'Exploring Matching Rates: From Keypoint Selection to Camera Relocalization.',
     tags: [
-<<<<<<< HEAD
       ['ACM International Conference on Multimedia 2024. ', 1],
       ['. ', 0],
       ['(CCF A, Oral)',2]
-=======
-      ['The Visual Computer 2024', 1],
-      ['. ', 0],
->>>>>>> 037a07180c14e0c35f291a37e93a37ea13a38ba4
     ],
     href: 'Scene_3D_Reconstruction_and_Generation/index.html#',
     class: "Intelligent_Human-Computer_Interaction_Systems"

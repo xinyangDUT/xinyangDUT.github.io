@@ -67,7 +67,7 @@
             <li>
               <p>
                 <span v-html="textBold(publication.authors)"></span>
-                <b style="font-size: 28px;">{{publication.title}}</b1>
+                <b style="font-size: 28px;">{{publication.title}}</b>
                   <span v-for="tag in publication.tags" :style="style1[tag[1]]"
                     style="font-size: 24px;">{{tag[0]}}</span>
                   <a :href="replaceSpacesWithUnderscore(publication.class)+'/index.html#'+replaceSpacesWithUnderscore(publication.title)" style="font-size: 24px;">[details]</a>

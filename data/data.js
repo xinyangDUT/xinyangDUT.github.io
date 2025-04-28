@@ -367,7 +367,7 @@ var publications = [
       ['. ', 0]
     ],
     href: 'intelligent_bionic_system/index.html#10',
-    class: "Bio-inspired_Intelligence_and_Embodied_Robotic_Systems"
+    class: "Intelligent_Human-Computer_Interaction_Systems"
   },
   {
     authors: 'Jianchuan Ding, Lingping Gao, Wenxi Liu, Haiyin Piao, Jia Pan, Zhenjun Du, Xin Yang*, Baocai Yin.',
@@ -413,10 +413,12 @@ var publications = [
   },
   {
     authors: 'Xin Tian, Ke Xu, Xin Yang†, Baocai Yin, Rynson Lau.',
-    title: 'Learning to Detect Instance-level Salient Objects using Complementary Image Labels. International Journal of Computer Vision 2021.',
+    title: 'Learning to Detect Instance-level Salient Objects using Complementary Image Labels.',
     tags: [
-      ['(CCF A)', 2],
-      ['. ', 0]
+      ['International Journal of Computer Vision 2021.', 1],
+
+      ['. ', 0],
+      ['(CCF A)', 2]
     ],
     href: 'detection_segmentation/index.html#9',
     class: "Visual_Perception_and_Understanding_in_Complex_Scenes"

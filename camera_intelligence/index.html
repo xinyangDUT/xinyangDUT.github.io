@@ -262,19 +262,23 @@
                   { src: 'image.png' },
                 ],
                 links: [
-                  {name:"data",link:"http://spds.dluticcd.com/"}
+                  {name:"data",link:"http://spds.dluticcd.com/"},
+                  {name:"paper",link: "https://doi.org/10.1609/aaai.v39i9.33043"}
                 ],
                 video: '',
               },
               {
                 authors:
-                  '杨佳熙，于乐天，葛慧林，包骐瑞，毕胜，麻晓斗，魏小鹏，杨鑫.',
+                  '杨佳熙，于乐天，包骐瑞，毕胜，麻晓斗，杨晟琦，姜雨彤，方建儒，魏小鹏，杨鑫.',
                 title: '面向高光子通量环境的目标深度估计方法.',
                 tags: [
-                  ['CAD/CG 2024', 1],
+                  ['图学学报 2025,', 1],
                 ],
                 imgs: [
                   { src: 'GGZ.png' }
+                ],
+                links: [
+                  {name:"paper",link: "https://kns.cnki.net/kcms2/article/abstract?v=LzEBRIJt2Q29fr3lOJ-2QdvnF5TSmkvypW6Rbeba85B5ZveSl7rqroVDBCt2bU-NyV0XvPLLTBiwt_h3QLrysSV-hvZphUMvMcMifCxF2ZPbEn6JwOEbsX5Sdx7HLJiVd5XTl-_KzeXe01q9IXj_J4xwR0efKt7RdHhTo--6siU=&uniplatform=NZKPT"}
                 ],
                 abstract: "单光子雪崩二极管(Single-Photon Avalanche Diode, SPAD)的高时间分辨率特性、高精度特性为其开辟了广泛的应用空间，尤其是在对算法性能要求日益增长的计算机视觉、计算成像等领域。基于SPAD 能对各种常见目标进行精确度较高的深度估计，但是，SPAD每次探测到光子后会进入一段无法探测的猝灭期。这导致环境中光子数量较多时，同个脉冲周期内更早到达SPAD的光子有更大概率被采集，使得最终形成的光子数量统计曲线明显向时间轴短的方向偏移，且偏移程度随着光子通量(即单位时间内探测光子数量)的增加而扩大。该现象被称为堆积效应(Pileup Effect)，其降低了深度估计算法的准确性。对于这一问题，首先搭建了用于采集SPAD光子数据的单光子探测系统，并在几种不同光子通量下采集了一个针对SPAD深度估计任务中堆积效应进行研究的目标深度数据集。在此基础上, 设计了一个将光子通量作为全局特征进行学习的深度估计网络，该网络融合了SPAD探测结果中的局部空间特征和全局光子通量特征，在几种存在堆积效应的光子通量下均取得了较高的深度估计性能。"
               },

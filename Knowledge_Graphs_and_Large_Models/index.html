@@ -247,6 +247,74 @@
             title: "a.  Intelligent monitoring of production process parameters",
             projects: [
               {
+                authors: 'Zhichao Wu, Li Zhu, Zitao Yin, Xirong Xu, Jianmin Zhu, Xiaopeng Wei, Xin Yang*',
+                title: 'MAFCD: Multi-level and Adaptive Conditional Diffusion Model for Anomaly Detection',
+                tags: [
+                  ['Information Fusion 2025', 1],
+                  ['.  ', 0],
+                  ['', 2]
+                ],
+                links: [
+                  {name: 'paper',link: 'https://www.sciencedirect.com/science/article/pii/S1566253525000387'}
+                ],
+                imgs: [
+                  { src: 'MAFCD.png',label: ' (2) and sampling ensemble function in block (3), respectively. Firstly, 𝑋 is fed to the Intrinsic feature, External Feature and Auxiliary Feature block in parallel, followed  by concatenating the results to obtain the multichannel features. Subsequently, multi-channel features are adaptively fused by self-attention mechanisms, serving as inputs to the DDPM training module as conditions. Finally, the error between the predicted values of multistep sampling and the true values is cal' },
+
+                ],
+                abstract: " In the real-world Internet of Things (IoT) systems, a variety of Internet-connected sensory devices, spanning\n" +
+                        " from chemical processing equipment to material handling machinery and server machines are typically\n" +
+                        " monitored with multivariate time series. Anomaly detection in these systems is pivotal for identifying\n" +
+                        " potentially dangerous or unsafe conditions and implementing timely preventive measures. However, the\n" +
+                        " complex contextual dependencies and diversified patterns inherent multivariate time series, such as seasonal\n" +
+                        " fluctuations and trends in industrial processes, present significant challenges for existing anomaly detection\n" +
+                        " methods, which strike a balance between fidelity and diversity in multivariate time series analysis. To address\n" +
+                        " these issues, a novel Multi-level and Adaptive Conditional Diffusion model, called MAFCD, is proposed for\n" +
+                        " anomaly detection across various industrial devices. The architecture of MAFCD is built upon a conditional\n" +
+                        " diffusion model framework, guaranteeing both high-fidelity and diversity in generated multiple time series\n" +
+                        " samples through adaptive fusion strategy and multi-level feature information. In particular, the model offers\n" +
+                        " real-time anomaly occurrences by dynamically adjusting fusion weights across multiple features. Moreover,\n" +
+                        " to enhance model stability, anomaly recognition results undergo weighted aggregation using exponential and\n" +
+                        " symbolic ensemble function through multi-step sampling. Empirical evaluation across four public datasets and\n" +
+                        " its application in an ethylene oxide production process demonstrates the superior performance and practical\n" +
+                        " utility of the proposed MAFCD, underscoring its robust generalization ability."
+              },
+              {
+                authors: "Zhichao Wu, Xin Yang, Xiaopeng Wei, Peijun Yuan, Yuanping Zhang, Jianming Bai",
+                title: 'A Self-supervised Anomaly Detection Algorithm with Interpretability',
+                tags: [['Expert Systems with Applications (2024)', 1],
+                  ['.', 0],
+                  ['', 2]
+                ],
+                abstract: 'Identifying the abnormal samples from a data set and determining their type are two key tasks of anomaly \n' +
+                        'detection. However, the existing anomaly detection algorithms are generally faced with the defects of weak \n' +
+                        'generalization ability and insufficient interpretation, the core reason of which is that they cannot mine specific \n' +
+                        'features for different abnormal types. In this paper, a new anomaly detection algorithm aiming at feature se\n' +
+                        'lection for different abnormal types is developed. Inspired by self-supervised learning, we take the stationarity of \n' +
+                        'variance changes of abnormal score similarity as a pretext task and combine it with wrapped search method. \n' +
+                        'Then, the features and the corresponding parameters for different abnormal types can be screened to apply to the \n' +
+                        'downstream task of anomaly integration detection. To verify the efficiency of the new algorithm, we conduct two \n' +
+                        'sets of experiments to compare the new algorithm with 11 classical anomaly detection and 3 clustering anomaly \n' +
+                        'detection algorithms on the data sets WDBC, WPBC and Wilt from DAMI database with the evaluation measures \n' +
+                        'P@n, Adj-P@n, AP, Adj-AP and AUC. The experiment results show that, both in the identification and classifi\n' +
+                        'cation on abnormal samples, all performance measures of the new algorithm are explicitly better than that of the \n' +
+                        'contrastive algorithms. Also, we apply the new algorithm to the Chinese auto insurance market, and find that the \n' +
+                        'results can help managers to identify the main patterns of fraudulent claims and to summarize the feature \n' +
+                        'combinations of fraud behaviors. In general, the new algorithm developed in this paper has the following ad\n' +
+                        'vantages compared with traditional algorithms: 1) It can directly capture abnormal features and realize effective \n' +
+                        'recognition of abnormal types, which effectively bridge the gap between abnormal judgement and feature \n' +
+                        'screening. 2) Automatic screening of abnormal features can be completed under the condition of self-updating \n' +
+                        'learning optimal strategy. 3) Only a few features are extracted from all features to reveal the abnormal char\n' +
+                        'acteristics, which significantly improves the interpretability and generalization ability of the algorithm and its \n' +
+                        'results. In a word, through the novel self-supervised design method, feature screening is skillfully integrated into \n' +
+                        'the anomaly detection task, which may provide a new way for anomaly detection research.   ',
+                imgs: [
+                  {src: 'self.png', label: 'The overall logic of new algorithm. '},
+                ],
+                links: [
+                  {name:'paper',link:'https://www.sciencedirect.com/science/article/pii/S0957417423020419'},
+                ]
+              },
+              {
                 authors: 'Chenming Duan、Zhichao Wu、Li Zhu、Xirong Xu、Jianmin Zhu、Ziqi Wei、Xin Yang*',
                 title: 'DSTN: Dynamic Spatio-Temporal Network for Early Fault Warning in Chemical Processes - ScienceDirect.',
                 tags: [

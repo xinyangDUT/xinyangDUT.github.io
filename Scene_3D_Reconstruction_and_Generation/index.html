@@ -243,6 +243,27 @@
                 title: "i.  Object Modeling",
                 projects: [
                   {
+                    authors: 'Yuanbo Wang, Zhaoxuan Zhang, Jiajin Qiu, Dilong Sun, Zhengyu Meng, Xiaopeng Wei*,  Xin Yang*',
+                    title: "Touch2Shape: Touch-Conditioned 3D Diffusion for Shape Exploration and Reconstruction",
+                    tags:[
+                      ['IEEE/CVF Conference on Computer Vision and Pattern Recognition 2025', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2],
+                    ],
+                    abstract: "Diffusion models have made breakthroughs in 3D generation tasks in recent years. However, current 3D diffusion models focus on reconstructing target shape from images or a set of partial observations. While excelling in global context understanding, they struggle to capture the local details of complex shapes and limited to the occlusion and lighting conditions. To overcome these limitations, we utilize tactile images to capture the local 3D shape information and propose a Touch2Shape model, which leverages a touch-conditioned diffusion model to explore and reconstruct the target shape from touch. For shape reconstruction, we have developed a touch embedding module to condition the diffusion model in creating a compact representation and a touch shape fusion module to refine the reconstructed shape. For shape exploration, we combine the diffusion model with reinforcement learning to train a shape exploration policy. This involves using the generated latent vector from the diffusion model to guide the touch exploration policy training through a novel reward design. Experiments validate that our method significantly improve the reconstruction quality thorough both qualitatively and quantitative analysis, and our touch exploration policy further boosts reconstruction performance.",
+                    links: [
+                      {name: 'paper', link: 'https://openaccess.thecvf.com/content/CVPR2025/papers/Wang_Touch2Shape_Touch-Conditioned_3D_Diffusion_for_Shape_Exploration_and_Reconstruction_CVPR_2025_paper.pdf'},
+                      {name: 'home page', link: 'https://dut-iccd.github.io/Touch2Shape.github.io/'}
+                    ],
+                    imgs: [
+                      {src: 'touch.png',label: " (1) Exploring the target object and capturing the tactile image to reconstruct the 3D shape. We trained a diffusion model to\n" +
+                                " obtain a low-dimensional and compact latent vector, which is used for predicting next touch location and reconstructing the target shapes.\n" +
+                                " The numbers 1 → with black arrows and 2 → with greeen arrows in the diagram represent two consecutive time steps. We only\n" +
+                                " generate the full reconstruction at the final step. (2) As the touch exploration progresses, the reconstruction results gradually\n" +
+                                " approach the ground truth. (3) Reconstruction results compared with ActiveVT [34] (under visual-tactile settings)"}
+                    ]
+                  },
+                  {
                     authors: 'Zhaoxuan Zhang, Bo Dong, Tong Li, Felix Heide, Pieter Peers, Baocai Yin, Xin Yang*.',
                     title: 'Single Depth-image 3D Reflection Symmetry and Shape Prediction.',
                     tags: [

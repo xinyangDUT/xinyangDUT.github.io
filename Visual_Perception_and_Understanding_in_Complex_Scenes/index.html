@@ -489,6 +489,53 @@
                 title: "ii. Salient Object Detection",
                 projects: [
                   {
+                    authors: 'Chuanyu Sun, Jiqing Zhang, Yang Wang, Huilin Ge, Qianchen Xia, Baocai Yin, Xin Yang*',
+                    title: 'Exploring Historical Information for RGBE Visual Tracking with Mamba',
+                    tags: [
+                      ['IEEE/CVF Conference on Computer Vision and Pattern Recognition 2025', 1],
+                      ['.', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    abstract: ' Combining the advantages of conventional and event\n' +
+                            ' cameras for robust visual tracing has drawn extensive inter\n' +
+                            'est. However, existing tracking approaches heavily engage\n' +
+                            ' in complex cross-modal fusion modules, leading to higher\n' +
+                            ' computational complexity and training challenges. Besides,\n' +
+                            ' these methods generally ignore the effective integration of\n' +
+                            ' historical information, which is crucial to grasping the\n' +
+                            ' change in the target’s appearance and motion trends. Given\n' +
+                            ' the recent advancements in Mamba’s long-range model\n' +
+                            'ing and linear complexity, we explore its potential in ad\n' +
+                            'dressing the above issues in RGBE tracking tasks. Specif\n' +
+                            'ically, we first propose an efficient fusion module based\n' +
+                            ' on Mamba, which utilizes a simple gate-based interaction\n' +
+                            ' scheme to achieve effective modality-selective fusion. This\n' +
+                            ' modulecanbeseamlesslyintegrated into the encoding layer\n' +
+                            ' of prevalent Transformer-based backbones. Moreover, we\n' +
+                            ' further present a novel historical decoder that leverages\n' +
+                            ' Mamba’s advanced long sequence modeling to effectively\n' +
+                            ' capture the target appearance changes with autoregressive\n' +
+                            ' queries. Extensive experiments show that our proposed ap\n' +
+                            'proach achieves state-of-the-art performance on multiple\n' +
+                            ' challenging short-term and long-term RGBE benchmarks.\n' +
+                            ' Besides, the effectiveness of each key Mamba-based com\n' +
+                            'ponent of our approach is evidenced by our thorough abla\n' +
+                            'tion study.Code will be released at: https://github.\n' +
+                            ' com/scy0712/MamTrack',
+                    imgs: [
+                      {src: 'mamba.png',label: ' (a) Details of our MamTrack, which employs the Multimodal Encoder to extract and fuse the features of RGB and event modals\n' +
+                                ' and introduces the Historical Decoder to capture the temporal cues related to target state changes; and two key components in the Fusiom\n' +
+                                ' Mamba (FM) module: (b) Target-Aware Scan (TAS) and (c) Cross-Modality Scan (CMS) module'}
+                    ],
+                    links: [
+                      {name: 'paper', link: 'https://openaccess.thecvf.com/content/CVPR2025/papers/Sun_Exploring_Historical_Information_for_RGBE_Visual_Tracking_with_Mamba_CVPR_2025_paper.pdf'},
+                      {name: 'code',link: 'https://github. com/scy0712/MamTrack'},
+                      {name: 'home page', link: 'https://scy0712.github.io/MamTrack.github.io/'},
+                    ],
+
+                  },
+
+                  {
                     authors: 'Zhiling Cui, Haiyang Mei, Wen Dong, Ziqi Wei, Zheng Lv, Dongsheng Zhou, Xin Yang*',
                     title: 'Steel Sheet Counting from an Image with a Two-Stream Network',
                     tags: [
@@ -507,6 +554,119 @@
                     {name:"paper",link:"https://ieeexplore.ieee.org/abstract/document/10887007"}
                     ],
                     video: '',
+                  },
+                  {
+                    authors: 'Linwei Chen, Wanshu Fan, Xu Gui, Yaqing Hou, Xin Yang, Qiang Zhang, Xiaopeng Wei, Dongsheng Zhou',
+                    title: 'Multilevel Joint Association Networks for Diverse Human Motion Prediction',
+                    tags: [
+                      ['IEEE Transactions on Emerging Topics in Computational Intelligence 2024 ', 1],
+                      ['. ', 0],
+                      ['',2]
+                    ],
+                    abstract: "Predicting accurate and diverse human motion presents a challenging task due to the complexity and uncertainty of future human motion. Existing works have explored sampling techniques and body modeling approaches to enhance diversity while maintaining the accuracy of human motion prediction. However, most of them often fall short in capturing the hierarchical features of the correlations between joints. To address these limitations, we propose in this paper the Multilevel Joint Association Network, a novel deep generative model designed to achieve both diverse and controllable motion prediction by adjusting the manner in which the human body is modeled. Our model incorporates two Graph Convolution Networks (GCNs) to enhance the extraction of features, resulting in more accurate future motion samples. Furthermore, we employ a multi-level Transformer generator that effectively capture the contact information between human joints and the personality characteristics of human joints, enabling the generated future motion samples with high diversity and low error. Extensive experimental results on two challenging datasets Human3.6 M and HumanEva-I, indicate that the proposed method achieves state-of-the-art performance in terms of both diversity and accuracy.",
+                    imgs: [
+                      {src: 'MJ.png', label: ' Overall architecture of the proposed diverse motion prediction model. Our proposed network consists of three types of generators. G1 and G2 generators\n' +
+                                ' utilize graph convolutional networks, while the multi-layer G3 generator adopts Transformer modules for specific Transformer processing on designated body\n' +
+                                ' parts. The input feature maps contain fundamental features of past time series movements, and additional features of latent variables are concatenated in the network\n' +
+                                ' for computation.'},
+                    ],
+                    links: [
+                      {name:'paper',link: 'https://ieeexplore.ieee.org/document/10505806'}
+                    ]
+                  },
+                  {
+                    authors: 'Xizhong Wang, Rui Liu, Xin Yang, Qiang Zhang, Dongsheng Zhou',
+                    title: 'MCFNet: Multi-Attentional Class Feature Augmentation Network for Real-Time Scene Parsing',
+                    tags: [
+                      ['ACM Transactions on Multimedia Computing Communications and Applications 2024', 1],
+                      ['. ', 0],
+                      ['',2]
+                    ],
+                    abstract: 'For real-time scene parsing tasks, capturing multi-scale semantic features and performing effective feature fusion is crucial. However, many existing solutions ignore stripe-shaped things like poles, traffic lights and are so computationally expensive that cannot meet the high real-time requirements. This article presents a novel model, the Multi-Attention Class Feature Augmentation Network (MCFNet) to address this challenge. MCFNet is designed to capture long-range dependencies across different scales with low computational cost and to perform a weighted fusion of feature maps. It features the BAM (Strip Matrix Based Attention Module) for extracting strip objects in images. The BAM module replaces the conventional self-attention method using square matrices with strip matrices, which allows it to focus more on strip objects while reducing computation. Additionally, MCFNet has a parallel branch that focuses on global information based on self-attention to avoid wasting computation. The two branches are merged to enhance the performance of traditional self-attention modules. Experimental results on two mainstream datasets demonstrate the effectiveness of MCFNet. On the Camvid and Cityscapes test sets, MCFNet achieved 207.5 FPS/73.5% mIoU and 136.1 FPS/71.63% mIoU, respectively. The experiments show that MCFNet outperforms other models on the Camvid dataset and can significantly improve the performance of real-time scene parsing tasks.',
+                    imgs: [
+                      { src: 'MCFNet.png', label: 'The overall structure of MCFNet. The ResNet18 is used as backbone. DFRM indicates the deep feature \n' +
+                                'refinement module. BFAM indicates the BFAM. ' }
+                    ],
+                    links: [
+                      {name: 'paper',link: 'https://dl.acm.org/doi/10.1145/3639053'}
+                    ]
+                  },
+                  {
+                    authors: 'Junhao Lin, Jiaxing Shen, Xin Yang, Huazhu Fu, Qing Zhang, Ping Li, Bin Sheng, Liansheng Wang, Lei Zhu',
+                    title: 'Learning Motion-Guided Multi-Scale Memory Features for Video Shadow Detection',
+                    tags: [
+                      ['IEEE Transactions on Circuits and Systems for Video Technology 2024', 1],
+                      ['. ', 0],
+                      ['',2]
+                    ],
+                    imgs: [
+                      {src: 'LMMM.png',label: 'The schematic illustration of our proposed MMLT-Net. Subfigure (a) illustrates the self-supervised pretraining process of our video shadow detection\n' +
+                                ' network. Specifically, it first passes the current video frame It and its adjacent frame It−1 into an encoder identical to the video shadow detection encoder.\n' +
+                                ' Then, the encoder outputs are then feed into DLT and DST blocks to generate a feature map, which then passed into a RAFT decoder to predict an optical flow\n' +
+                                ' map P(Mt). Subfigure (b) illustrates the training process for our video shadow detection model. We first pass It and Mt into two feature extraction encoders\n' +
+                                ' (denoted as Et) to obtain two feature maps (denoted as Ft c and Ft m ). Then, we pass Ft c and Ft m into a MMLT module to obtain a multi-scale transformer\n' +
+                                ' features map Ft o, which is then fed into a decoder Et for predicting a shadow detection result of the input video frame. Note that the MMLT module denotes\n' +
+                                ' a motion-guided multi-scale long-short transformer module, and it consists of a dense-scale long transformer (DLT), dense-scale short transformer (DST), and\n' +
+                                ' dense-scale motion transformer (DMT); see Figure 3.'},
+                    ],
+                    links: [
+                      {name: 'paper',link: 'https://ieeexplore.ieee.org/document/10609789'}
+                    ],
+                    abstract: 'Natural images often contain multiple shadow regions, and existing video shadow detection methods tend to fail in fully identifying all shadow regions, since they mainly learned temporal features at single-scale and single memory. In this work, we develop a novel convolutional neural network (CNN) to learn motion-guided multi-scale memory features to obtain multi-scale temporal information based on multiple network memories for boosting video shadow detection. To do so, our network first constructs three memories (i.e., a global memory, a local memory, and a motion memory) to combine spatial context and object motion for detecting shadows. Based on these three memories, we then devise a multi-scale motion-guided long-short transformer (MMLT) module to learn multi-scale temporal and motion memory features for predicting a shadow detection map of the input video frame. Our MMLT module includes a dense-scale long transformer (DLT), a dense-scale short transformer (DST), and a dense-scale motion transformer (DMT) to read three memories for learning multi-scale transformer features. Our DLT, DST, and DMT consist of a set of memory-read pooling attention (MPA) blocks and densely connect these output features of multiple MPA blocks to learn multi-scale transformer features since the scales of these output features are varied. By doing so, we can more accurately identify multiple shadow regions with different sizes from the input video. Moreover, we devise a self-supervised pretext task to pre-training the feature encoder for enhancing the downstream video shadow detection. Experimental results on three benchmark datasets show that our video shadow detection network quantitatively and qualitatively outperforms 26 state-of-the-art methods.'
+
+                  },
+                  {
+                    authors: 'Hua Yu, Xuanzhe Fan, Yaqing Hou, Wenbin Pei, Hongwei Ge, Xin Yang, Dongsheng Zhou, Qiang Zhang, Mengjie Zhang',
+                    title: 'Toward Realistic 3D Human Motion Prediction With a Spatio-Temporal Cross-Transformer Approach',
+                    tags: [
+                      ['IEEE Transactions on Circuits and Systems for Video Technology 2023', 1],
+                      ['. ', 0],
+                      ['',2]
+                    ],
+                    abstract: 'Human motion prediction intends to predict how humans move given a historical sequence of 3D human motions. Recent transformer-based methods have attracted increasing attentions and demonstrated their promising performance in 3D human motion prediction. However, existing methods generally decompose the input of human motion information into spatial and temporal branches in a separate way and seldom consider their inherent coherence between the two branches, hence often failing to register the dynamic spatio-temporal information during the training process. Motivated by these issues, we propose a spatio-temporal cross-transformer network (STCT) for 3D human motion predictions. Specifically, we investigate various types of interaction methods (i.e., Concatenation Interaction, Msg token interaction, and Cross-transformer) to capture the coherence of the spatial and temporal branches. According to the obtained results, the proposed cross-transformer interaction method shows its superiority over other methods. Meanwhile, considering that most existing works treat the human body as a set of 3D human joint positions, the predicted human joints are proportionally less appropriate to the realistic human body due to unreasonable bone length and non-plausible poses as time progresses. We further resort to the bone constraints of human mesh to produce more realistic human motions. By fitting a parametric body model (i.e., SMPL-X model) to the predicted human joints, a reconstruction loss function is proposed to remedy the unreasonable bone length and pose errors. Comprehensive experiments on AMASS and Human3.6M datasets have demonstrated that our method achieves superior performance over compared methods.',
+                    imgs:[
+                      {src:'TR3.png',label: 'The illustration of the proposed network. We decompose the input into spatial and temporal branches, both of which include the Msg token and\n' +
+                                ' patch token. N indicates the number of ST-Transformer before the Cross-Transformer, M denotes the number of ST-Transformer after the Cross-Transformer.\n' +
+                                ' L is the number of Cross-Transformer, the number of the whole module is represented by K. To enhance the performance of the proposed method, all these\n' +
+                                ' parameters N, L, M, and K are tuned by grid search. The proposed L cross-transformer modules are injected into the spatial and temporal branches to learn\n' +
+                                ' the coherence of the spatio-temporal features. In addition, the proposed reconstruction loss function is utilized to fix the unreasonable bone length by fitting\n' +
+                                ' human body mesh to the predicted human joints. The spatio-temporal features are concatenated together to predict the final human joints.' }
+                    ],
+                    links: [{name: 'paper',link: 'https://ieeexplore.ieee.org/abstract/document/10064318'}],
+                  },
+                  {
+                    authors: '王超毅, 于男男，乔羽， 任健康，周东生，魏小鹏，张强，杨鑫',
+                    title: '基于事件相机的图像语义分割',
+                    tags: [
+                      ['计算机辅助设计与图形学学报', 1],
+                      ['. ', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    abstract: '语义分割技术对自动驾驶等实际场景的图像处理十分重要. 然而基于传统相机的语义分割仍面临动态光照\n' +
+                            '下信息缺失以及高速运动目标的运动模糊等问题. 为此，本文引入高动态范围和高响应速度的事件相机, 能够在恶\n' +
+                            '劣光照和高速运动条件下有效成像, 并提出了一种基于事件相机的图像语义分割方法(Event-based Image Semantic \n' +
+                            'Segmentation, EVISS). 在数据集部分, 针对基于事件相机的语义分割数据集较少且标注质量不高的问题, 通过仿真\n' +
+                            '环境制作了一个大规模和高精度标注的数据集Carla-Semantic; 在网络设计部分, 针对分布不均的事件数据特征难提\n' +
+                            '取的问题, EVISS方法通过改进的图拉普拉斯公式和注意力机制, 增强图像的全局联系性和上下文依赖, 有效提取高\n' +
+                            '层级事件特征. 在所制作的Carla-Semantic数据集上与现有技术 Ev-SegNet进行实验的结果表明, EVISS方法在MPA\n' +
+                            '和mIoU评价指标上分别达到87.89%和81.93%, 超越了对比方法的表现, 有效地实现基于事件相机的图像语义分割.',
+                    imgs: [
+                      {
+                        src: 'shijian.png',label: 'EVISS的结构',
+                      }
+                    ],
+                    links:[{name: 'paper',link: 'https://www.jcad.cn/cn/article/pdf/preview/10.3724/SP.J.1089.2023-00698.pdf'}],
+                  },
+                  {
+                    authors: 'Pengjie Wang, Yuxuan Liu, Ying Cao, Xin Yang, Yu Luo, Huchuan Lu, Zijian Liang, and Rynson Lau.',
+                    title: 'Salient object detection with image-level binary supervision.',
+                    tags: [
+                      [' IEEE Transactions on Intelligent Transportation Systems. 2022', 1],
+                      ['. ', 0]
+                    ],
+                    abstract: 'Recent deep learning based salient object detection (SOD) methods have achieved impressive performance. However, while fully-supervised methods require a large amount of labeled data, weakly-supervised methods still require a considerable human effort. To address this problem, we propose a novel weakly-supervised method for salient object detection based on only binary image tags, which are much cheaper to collect. Our basic idea is to construct a dataset of images that are labeled as either salient (with salient objects) or non-salient (without salient objects), and leverage such binary labels as supervision to learn a salient object detector based on existing unsupervised methods. In particular, we propose a target saliency map hallucinator, which can synthesize pseudo ground truth saliency maps for the salient images in the training data solely from binary labels. We can then use the pseudo ground truth labels to train a salient object detector. Experimental results show that our method performs comparably to the state-of-the-art weakly-supervised methods, but requires considerably less human supervision.',
+                    imgs: [{src:"STN.png",label:'STN'}],
+                    links: [{name:'paper',link: 'https://www.sciencedirect.com/science/article/pii/S0031320322002631'}]
                   },
                   {
                     authors: 'Xin Tian, Ke Xu, Xin Yang*, Lin Du, Baocai Yin, Rynson W.H. Lau.',

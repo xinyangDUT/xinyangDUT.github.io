@@ -38,6 +38,41 @@ const projects = [
 ]
 var publications = [
   {
+    authors: 'Yuanbo Wang, Zhaoxuan Zhang, Jiajin Qiu, Dilong Sun, Zhengyu Meng, Xiaopeng Wei*, Xin Yang*',
+    title: 'Touch2Shape: Touch-Conditioned 3D Diffusion for Shape Exploration and Reconstruction',
+    tags: [
+      ['IEEE/CVF Conference on Computer Vision and Pattern Recognition 2025', 1],
+      ['.', 0],
+      ['(CCF A)', 2]
+    ],
+    href: 'Scene_3D_Reconstruction_and_Generation/index.html#',
+    class: "Scene_3D_Reconstruction_and_Generation"
+  },
+  {
+    authors:"Chuanyu Sun, Jiqing Zhang, Yang Wang, Huilin Ge, Qianchen Xia, Baocai Yin, Xin Yang*",
+    title: 'Exploring Historical Information for RGBE Visual Tracking with Mamba',
+    tags: [
+      ['IEEE/CVF Conference on Computer Vision and Pattern Recognition 2025', 1],
+      ['.', 0],
+      ['(CCF A)', 2]
+    ],
+    href: 'Scene_3D_Reconstruction_and_Generation/index.html#',
+    class: "Visual_Perception_and_Understanding_in_Complex_Scenes"
+  },
+  {
+    authors:"Zhichao Wu, Li Zhu, Zitao Yin, Xirong Xu, Jianmin Zhu, Xiaopeng Wei, Xin Yang*",
+    title: "MAFCD: Multi-level and Adaptive Conditional Diffusion Model for Anomaly Detection",
+    tags: [
+      ['Information Fusion 2025', 1],
+      ['.', 0],
+      ['', 2]
+    ],
+    href: 'Scene_3D_Reconstruction_and_Generation/index.html#',
+    class: "Knowledge_Graphs_and_Large_Models"
+  },
+  
+
+  {
     authors: 'Zhiling Cui, Haiyang Mei, Wen Dong, Ziqi Wei, Zheng Lv, Dongsheng Zhou, Xin Yang*',
     title: 'Steel Sheet Counting from an Image with a Two-Stream Network',
     tags: [
@@ -69,6 +104,16 @@ var publications = [
     class: "Scene_3D_Reconstruction_and_Generation"
   },
   {
+    authors: "Zhichao Wu, Xin Yang, Xiaopeng Wei, Peijun Yuan, Yuanping Zhang, Jianming Bai",
+    title: 'A Self-supervised Anomaly Detection Algorithm with Interpretability',
+    tags: [['Expert Systems with Applications (2024)', 1],
+      ['.', 0],
+      ['', 2]
+    ],
+    href: 'Scene_3D_Reconstruction_and_Generation/index.html#',
+    class: "Knowledge_Graphs_and_Large_Models"
+  },
+  {
     authors: 'Nannan Yu, Tao Ma, Jiqing Zhang, Yuji Zhang, Qirui Bao, Xiaopeng Wei, Xin Yang*.',
     title: 'Adaptive Vision Transformer for Event-Based Human Pose Estimation.',
     tags: [
@@ -90,6 +135,40 @@ var publications = [
     href: 'Scene_3D_Reconstruction_and_Generation/index.html#',
     class: "Intelligent_Human-Computer_Interaction_Systems"
   },
+  {
+    authors: 'Linwei Chen, Wanshu Fan, Xu Gui, Yaqing Hou, Xin Yang, Qiang Zhang, Xiaopeng Wei, Dongsheng Zhou',
+    title: 'Multilevel Joint Association Networks for Diverse Human Motion Prediction',
+    tags: [
+      ['IEEE Transactions on Emerging Topics in Computational Intelligence 2024 ', 1],
+      ['. ', 0],
+      ['',2]
+    ],
+    href: 'Scene_3D_Reconstruction_and_Generation/index.html#',
+    class: "Visual_Perception_and_Understanding_in_Complex_Scenes"
+  },
+  {
+    authors: 'Xizhong Wang, Rui Liu, Xin Yang, Qiang Zhang, Dongsheng Zhou',
+    title: 'MCFNet: Multi-Attentional Class Feature Augmentation Network for Real-Time Scene Parsing',
+    tags: [
+      ['ACM Transactions on Multimedia Computing Communications and Applications 2024', 1],
+      ['. ', 0],
+      ['',2]
+    ],
+    href: 'Scene_3D_Reconstruction_and_Generation/index.html#',
+    class: "Visual_Perception_and_Understanding_in_Complex_Scenes"
+  },
+  {
+    authors: 'Junhao Lin, Jiaxing Shen, Xin Yang, Huazhu Fu, Qing Zhang, Ping Li, Bin Sheng, Liansheng Wang, Lei Zhu',
+    title: 'Learning Motion-Guided Multi-Scale Memory Features for Video Shadow Detection',
+    tags: [
+      ['IEEE Transactions on Circuits and Systems for Video Technology 2024', 1],
+      ['. ', 0],
+      ['',2]
+    ],
+    href: 'Scene_3D_Reconstruction_and_Generation/index.html#',
+    class: "Visual_Perception_and_Understanding_in_Complex_Scenes"
+  },
+  
   {
     authors: 'Tong Li, Zhaoxuan Zhang, Yuxin Wang, Yan Cui, Yuqi Li, Dongsheng Zhou, Baocai Yin, Xin Yang*.',
     title: 'Self-supervised indoor scene point cloud completion from a single panorama.',
@@ -200,6 +279,17 @@ var publications = [
     class: "Bio-inspired_Intelligence_and_Embodied_Robotic_Systems"
   },
   {
+    authors: 'Hua Yu, Xuanzhe Fan, Yaqing Hou, Wenbin Pei, Hongwei Ge, Xin Yang, Dongsheng Zhou, Qiang Zhang, Mengjie Zhang',
+    title: 'Toward Realistic 3D Human Motion Prediction With a Spatio-Temporal Cross-Transformer Approach',
+    tags: [
+      ['IEEE Transactions on Circuits and Systems for Video Technology 2023', 1],
+      ['. ', 0],
+      ['',2]
+    ],
+    href: 'Scene_3D_Reconstruction_and_Generation/index.html#',
+    class: "Visual_Perception_and_Understanding_in_Complex_Scenes"
+  },
+  {
     authors: 'Haiyang Mei, Ke Xu, Yunduo Zhou, Yang Wang, Haiyin Piao, Xiaopeng Wei, Xin Yang*.',
     title: 'Camouflaged Object Segmentation with Omni Perception.',
     tags: [
@@ -230,6 +320,28 @@ var publications = [
     ],
     href: 'intelligent_bionic_system/index.html#6',
     class: "Intelligent_Human-Computer_Interaction_Systems"
+  },
+  {
+    authors: '王超毅, 于男男，乔羽， 任健康，周东生，魏小鹏，张强，杨鑫',
+    title: '基于事件相机的图像语义分割',
+    tags: [
+      ['计算机辅助设计与图形学学报', 1],
+      ['. ', 0],
+      ['(CCF A)', 2]
+    ],
+    href: 'intelligent_bionic_system/index.html#7',
+    class: "Visual_Perception_and_Understanding_in_Complex_Scenes"
+  },
+  {
+    authors: 'Haiyin Piao, Shengqi Yang, Hechang Chen, Junnan Li, Jin Yu, Xuanqi Peng, Xin Yang*, Zhen Yang, Zhixiao Sun, Yi Chang',
+    title: 'Discovering Expert-Level Air Combat Knowledge via Deep Excitatory-Inhibitory Factorized Reinforcement Learning',
+    tags: [
+      ['IEEE Transactions on Intelligent Transportation Systems 2023', 1],
+      ['. ', 0],
+      ['', 2]
+    ],
+    href: 'intelligent_bionic_system/index.html#7',
+    class: "Bio-inspired_Intelligence_and_Embodied_Robotic_Systems"
   },
   {
     authors: 'Boyan Wei, Xianfeng Ye, Chengjiang Long, Zhenjun Du, Bangyu Li, Baocai Yin, Xin Yang*.',
@@ -402,6 +514,16 @@ var publications = [
     class: "Scene_3D_Reconstruction_and_Generation"
   },
   {
+    authors: '徐凯，胡瑞珍，杨鑫.',
+    title: '几何引导的主动式三维感知与交互',
+    tags: [
+      ['图学学报', 1],
+      ['. ', 0]
+    ],
+    href: 'intelligent_bionic_system/index.html#13',
+    class: "Intelligent Human-Computer Interaction Systems"
+  },
+  {
     authors: '朱强, 王超毅, 张吉庆, 尹宝才, 魏小鹏, 杨鑫*.',
     title: '基于事件相机的无人机目标跟踪.',
     tags: [
@@ -410,6 +532,16 @@ var publications = [
     ],
     href: 'intelligent_bionic_system/index.html#13',
     class: "Bio-inspired_Intelligence_and_Embodied_Robotic_Systems"
+  },
+  {
+    authors: 'Pengjie Wang, Yuxuan Liu, Ying Cao, Xin Yang, Yu Luo, Huchuan Lu, Zijian Liang, and Rynson Lau.',
+    title: 'Salient object detection with image-level binary supervision.',
+    tags: [
+      [' IEEE Transactions on Intelligent Transportation Systems. 2022', 1],
+      ['. ', 0]
+    ],
+    href: 'intelligent_bionic_system/index.html#13',
+    class: "Visual_Perception_and_Understanding_in_Complex_Scenes"
   },
   {
     authors: 'Xin Tian, Ke Xu, Xin Yang†, Baocai Yin, Rynson Lau.',

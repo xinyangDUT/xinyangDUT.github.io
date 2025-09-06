@@ -534,7 +534,25 @@
                     ],
 
                   },
-
+                  {
+                    authors:'Jiqing Zhang, Malu Zhang, Yuanchen Wang, QianhuiLiu, Baocai Yin, Haizhou Li, Xin Yang',
+                    title: 'Spiking Neural Networks With Adaptive Membrane Time Constant for Event-Based Tracking',
+                    tags: [
+                      [' IEEE Transactions on Image Processing 2025', 1],
+                      ['.', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    abstract: 'The brain-inspired Spiking Neural Networks (SNNs) work in an event-driven manner and have an implicit recurrence in neuronal membrane potential to memorize information over time, which are inherently suitable to handle temporal event-based streams. Despite their temporal nature and recent approaches advancements, these methods have predominantly been assessed on event-based classification tasks. In this paper, we explore the utility of SNNs for event-based tracking tasks. Specifically, we propose a brain-inspired adaptive Leaky Integrate-and-Fire neuron (BA-LIF) that can adaptively adjust the membrane time constant according to the inputs, thereby accelerating the leakage of meaningless noise features and reducing the decay of valuable information. SNNs composed of our proposed BA-LIF neurons can achieve high performance without a careful and time-consuming trial-by-error initialization on the membrane time constant. The adaptive capability of our network is further improved by introducing an extra temporal feature aggregator (TFA) that assigns attention weights over the temporal dimension. Extensive experiments on various event-based tracking datasets validate the effectiveness of our proposed method. We further validate the generalization capability of our method by applying it to other event-classification tasks.',
+                    links: [{name: 'paper',link: 'https://ieeexplore.ieee.org/abstract/document/10857949'}],
+                    imgs: [
+                      {src:'SNNTrack.png',label:"(a) Overview of our proposed SNNTrack. It has a template branch and a search branch, and they share the same architecture. Each branch contains\n" +
+                                " an SNN backbone with the novel BA-LIF neuron and a novel temporal feature aggregator (TFA) module. Inspired by SEW-ResNet, we introduce residual\n" +
+                                " learning architecture as the SNN backbone to extract features. The SNN backbone comprises 10 building blocks, with the structure of a building block\n" +
+                                " illustrated in (b). (c) illustrates the specific structure of the brain-inspired adaptive LIF neuron (BA-LIF) proposed in the building block of (b), demonstrating\n" +
+                                " how the BA-LIF neuron dynamically adjusts the membrane time constant in response to input features. Notably, all convolutional layers are stateless, whereas\n" +
+                                " BA-LIF layers feature self-connections in the temporal domain. (d) shows the design of the temporal feature aggregator that determines when to pay attention."}
+                    ]
+                  },
                   {
                     authors: 'Zhiling Cui, Haiyang Mei, Wen Dong, Ziqi Wei, Zheng Lv, Dongsheng Zhou, Xin Yang*',
                     title: 'Steel Sheet Counting from an Image with a Two-Stream Network',
@@ -547,8 +565,6 @@
                     imgs: [
                       { src: '1-Dataset_category.png' },
                       { src: '2-TSNet.png' },
-                      { src: '3-Visual comparison.png' },
-                      { src: '4-Box.png' },
                     ],
                     links: [
                     {name:"paper",link:"https://ieeexplore.ieee.org/abstract/document/10887007"}

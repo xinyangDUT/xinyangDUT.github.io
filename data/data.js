@@ -93,10 +93,21 @@ var publications = [
     class: "camera_intelligence"
   },
   {
+    authors:'Jiqing Zhang, Malu Zhang, Yuanchen Wang, QianhuiLiu, Baocai Yin, Haizhou Li, Xin Yang',
+    title: 'Spiking Neural Networks With Adaptive Membrane Time Constant for Event-Based Tracking',
+    tags: [
+      [' IEEE Transactions on Image Processing 2025', 1],
+      ['.', 0],
+      ['(CCF A)', 2]
+    ],
+    href: 'Scene_3D_Reconstruction_and_Generation/index.html#',
+    class: "Visual_Perception_and_Understanding_in_Complex_Scenes"
+  },
+  {
     authors: 'Yuanbo Wang, Shanglai Qu, Tianyu Meng, Yan Cui, Haiyin Piao, XiaoPeng Wei*, Xin Yang*.',
     title: 'Event-intensity Stereo with Cross-modal Fusion and Contrast.',
     tags: [
-      ['International Conference on Intelligent Robots and Systems (IROS) 2025', 1],
+      ['International Conference on Intelligent Robots and Systems (IROS) 2024', 1],
     ],
     href: 'Scene_3D_Reconstruction_and_Generation/index.html#',
     class: "Scene_3D_Reconstruction_and_Generation"
@@ -121,6 +132,17 @@ var publications = [
     ],
     href: 'Scene_3D_Reconstruction_and_Generation/index.html#',
     class: "camera_intelligence"
+  },
+  {
+    authors: 'Xuefeng Yin, Chenyang Zhu, Shanglai Qu, Yuqi Li, Kai Xu, Baocai Yin, Xin Yang',
+    title: 'CSO: Constraint-guided Space Optimization for Active Scene Mapping',
+    tags: [
+      ['ACM International Conference on Multimedia 2024', 1],
+      ['.', 0],
+      ['(CCF A)', 2]
+    ],
+    href: 'Scene_3D_Reconstruction_and_Generation/index.html#',
+    class: "Scene_3D_Reconstruction_and_Generation"
   },
   {
     authors: 'Hu Lin, Chengjiang Long*, Yifeng Fei, Qianchen Xia*, Erwei Yin, Baocai Yin, Xin Yang*.',

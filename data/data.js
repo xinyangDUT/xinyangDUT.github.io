@@ -41,7 +41,7 @@ var publications = [
     authors: 'Yuanbo Wang, Zhaoxuan Zhang, Jiajin Qiu, Dilong Sun, Zhengyu Meng, Xiaopeng Wei*, Xin Yang*',
     title: 'Touch2Shape: Touch-Conditioned 3D Diffusion for Shape Exploration and Reconstruction',
     tags: [
-      ['IEEE/CVF Conference on Computer Vision and Pattern Recognition 2025', 1],
+      ['CVPR 2025', 1],
       ['.', 0],
       ['(CCF A)', 2]
     ],
@@ -52,7 +52,7 @@ var publications = [
     authors:"Chuanyu Sun, Jiqing Zhang, Yang Wang, Huilin Ge, Qianchen Xia, Baocai Yin, Xin Yang*",
     title: 'Exploring Historical Information for RGBE Visual Tracking with Mamba',
     tags: [
-      ['IEEE/CVF Conference on Computer Vision and Pattern Recognition 2025', 1],
+      ['CVPR 2025', 1],
       ['.', 0],
       ['(CCF A)', 2]
     ],
@@ -70,8 +70,6 @@ var publications = [
     href: 'Scene_3D_Reconstruction_and_Generation/index.html#',
     class: "Knowledge_Graphs_and_Large_Models"
   },
-  
-
   {
     authors: 'Zhiling Cui, Haiyang Mei, Wen Dong, Ziqi Wei, Zheng Lv, Dongsheng Zhou, Xin Yang*',
     title: 'Steel Sheet Counting from an Image with a Two-Stream Network',

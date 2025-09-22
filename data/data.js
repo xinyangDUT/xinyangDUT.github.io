@@ -38,6 +38,17 @@ const projects = [
 ]
 var publications = [
   {
+    authors: 'Xiaochen Shang,Pengwei Luo, Xinning Wang, Jiayue Zhao, Huilin Ge, Bo Dong, Xin Yang*',
+    title: 'Fully Autonomous Neuromorphic Navigation and Dynamic Obstacle Avoidance',
+    tags: [
+      ['NeurIPS 2025', 1],
+      ['.', 0],
+      ['(CCF A, spotlight)', 2]
+    ],
+    href: 'Bio-inspired_Intelligence_and_Embodied_Robotic_Systems/index.html#',
+    class: "Bio-inspired_Intelligence_and_Embodied_Robotic_Systems"
+  },
+  {
     authors: 'Yuanbo Wang, Zhaoxuan Zhang, Jiajin Qiu, Dilong Sun, Zhengyu Meng, Xiaopeng Wei*, Xin Yang*',
     title: 'Touch2Shape: Touch-Conditioned 3D Diffusion for Shape Exploration and Reconstruction',
     tags: [

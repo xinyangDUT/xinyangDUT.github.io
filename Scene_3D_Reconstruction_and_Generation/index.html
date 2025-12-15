@@ -397,6 +397,44 @@
                 title: "i.  Scene Graph ",
                 projects: [
                   {
+                    authors: 'Yuanyuan Liu,Haiyang Mei,Dongyang Zhan,Jiayue Zhao,Dongsheng Zhou,Bo Dong,Xin Yang*',
+                    title: 'View-on-Graph: Zero-Shot 3D Visual Grounding via Vision-Language Reasoning on Scene Graphs',
+                    tags: [
+                      ['AAAI 2026', 1],
+                      ['.', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    abstract: "3D visual grounding (3DVG) identifies objects in 3D scenes\n" +
+                            "from language descriptions. Existing zero-shot approaches\n" +
+                            "leverage 2D vision–language models (VLMs) by converting\n" +
+                            "3D spatial information (SI) into forms amenable to VLM processing, typically as composite inputs such as specified-view\n" +
+                            "renderings or video sequences with overlaid object markers. However, this VLM ⊕ SI paradigm yields entangled visual representations that compel the VLM to process entire\n" +
+                            "cluttered cues, making it hard to exploit spatial–semantic\n" +
+                            "relationships effectively. In this work, we propose a new\n" +
+                            "VLM ⊗ SI paradigm that externalizes the 3D SI into a form\n" +
+                            "enabling the VLM to incrementally retrieve only what it\n" +
+                            "needs during reasoning. We instantiate this paradigm with a\n" +
+                            "novel View-on-Graph (VoG) method, which organizes the\n" +
+                            "scene into a multi-modal, multi-layer scene graph and allows\n" +
+                            "the VLM to operate as an active agent that selectively accesses necessary cues as it traverses the scene. This design\n" +
+                            "offers two intrinsic advantages: (i) by structuring 3D context into a spatially and semantically coherent scene graph\n" +
+                            "rather than confounding the VLM with densely entangled visual inputs, it lowers the VLM’s reasoning difficulty; and (ii)\n" +
+                            "by actively exploring and reasoning over the scene graph,\n" +
+                            "it naturally produces transparent, step-by-step traces for interpretable 3DVG. Extensive experiments show that VoG\n" +
+                            "achieves state-of-the-art zero-shot performance, establishing\n" +
+                            "structured scene exploration as a promising strategy for advancing zero-shot 3DVG.",
+                    imgs: [{src: 'AAAI_26_liu.png',label: 'Workflow of VoG. Given the query, VoG identifies the target category (chair) and anchor (TV) as the search topic, ' +
+                              'then randomly selects an initial view where a chair is visible (View 0). From this view, it traverses neighboring nodes to form ' +
+                              'candidate nodes, which are fed to the VLM to decide whether further exploration is needed. The first exploration area reveals ' +
+                              'the “brighter side of the room” in the query, where multiple chairs are observed and added to the object pool. However, the ' +
+                              'anchor TV is missing, leaving the target unclear. The VLM then explores an area where the TV becomes visible (STEP 2) and ' +
+                              'observes “the first chair counted from the TV,” adding chair-1 to the pool. Ambiguity remains due to another nearby chair, ' +
+                              'prompting a final exploration to capture the full spatial layout. Once all query cues, including “faces the brighter side of the ' +
+                              'room” are confirmed, the VLM identifies chair-1 as the target and terminates the search.'}],
+                    links: [{name: 'paper', link: "https://arxiv.org/abs/2512.09215"}],
+
+                  },
+                  {
                     authors: 'Yuanbo Wang, Shanglai Qu, Tianyu Meng, Yan Cui, Haiyin Piao, XiaoPeng Wei∗, Xin Yang∗',
                     title: 'Event-intensity Stereo with Cross-modal Fusion and Contrast.',
                     tags: [

@@ -240,6 +240,28 @@
             title: "a.  Brain-inspired Model",
             projects: [
               {
+                authors: 'Yunduo Zhou,Bo Dong,Chang Li,Yuanchen Wang,Xuefeng Yin,Yang Wang,Xin Yang*',
+                title: 'Dynamic Weight Adaptation in Spiking Neural Networks Inspired by Biological Homeostasis',
+                tags: [
+                  ['AAAI 2026', 1],
+                  ['.', 0],
+                  ['(CCF A)', 2]
+                ],
+                abstract: ['Homeostatic mechanisms play a crucial role in maintaining optimal functionality within the neural circuits of the brain. By regulating physiological and biochemical processes, these mechanisms ensure the stability of an organism\'s internal environment, enabling it to better adapt to external changes. Among these mechanisms, the Bienenstock, Cooper, and Munro (BCM) theory has been extensively studied as a key principle for maintaining the balance of synaptic strengths in biological systems. Despite the extensive development of spiking neural networks (SNNs) as a model for bionic neural networks, no prior work in the machine learning community has integrated biologically plausible BCM formulations into SNNs to provide homeostasis. In this study, we propose a Dynamic Weight Adaptation Mechanism (DWAM) for SNNs, inspired by the BCM theory. DWAM can be integrated into the host SNN, dynamically adjusting network weights in real time to regulate neuronal activity, providing homeostasis to the host SNN without any fine-tuning. We validated our method through dynamic obstacle avoidance and continuous control tasks under both normal and specifically designed degraded conditions. Experimental results demonstrate that DWAM not only enhances the performance of SNNs without existing homeostatic mechanisms under various degraded conditions but also further improves the performance of SNNs that already incorporate homeostatic mechanisms.'],
+                imgs: [{ src: 'AAAI_26_zhou.png' ,label: 'Comparison between biological BCMtheory andtheproposedDWAMinSNNs.a.Illustration oftheBCMtheory\n' +
+                          'in biological neural systems. The synaptic modification function (ϕ) is governed by the postsynaptic neuron’s activity (x) and\n' +
+                          'a modification threshold (θM). The depression zone (x < θM) leads to synaptic weakening (e.g., x1), while the potentiation\n' +
+                          'zone (x > θM)results in synaptic strengthening (e.g., x2). b. The dynamic adjustment of the modification threshold (θM) based\n' +
+                          'on the historical activity level of the postsynaptic neuron. A higher historical activity level shifts θM to the right, reducing\n' +
+                          'potentiation likelihood, whereas lower historical activity shifts θM to the left, increasing potentiation likelihood.(illustrated as\n' +
+                          'a shift from the solid line to the dashed line in the figure) c. Proposed DWAM for SNNs, inspired by the BCM theory. The\n' +
+                          'synaptic modification function (ϕ) in DWAM operates on a similar principle, where the postsynaptic neuron’s firing rate (c)\n' +
+                          'interacts with a modification threshold (θM) to determine weight weakening (c1) or strengthening (c2). d. As with BCM, a\n' +
+                          'higher historical firing rate shifts θM to the right, whereas a lower firing rate shifts it to the left, enabling balanced and stable\n' +
+                          'weight updates in the SNNs.' }],
+                links: [{ name: 'paper', link: 'https://arxiv.org/abs/2511.17563' },]
+              },
+              {
 
                 authors: 'Jingcheng Jiang, Haiyin Piao, Yu Fu, Yihang Hao, Chuanlu Jiang, Ziqi Wei, Xin Yang∗.',
                 title: 'Phasic Diversity Optimization for Population-Based Reinforcement Learning.',

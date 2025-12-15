@@ -38,6 +38,40 @@ const projects = [
 ]
 var publications = [
   {
+    authors: 'Yuanyuan Liu,Haiyang Mei,Dongyang Zhan,Jiayue Zhao,Dongsheng Zhou,Bo Dong,Xin Yang*',
+    title: 'View-on-Graph: Zero-Shot 3D Visual Grounding via Vision-Language Reasoning on Scene Graphs',
+    tags: [
+      ['AAAI 2026', 1],
+      ['.', 0],
+      ['(CCF A)', 2]
+    ],
+    href: 'Scene_3D_Reconstruction_and_Generation/index.html#',
+    class: "Scene_3D_Reconstruction_and_Generation"
+  },
+  {
+    authors: 'Yunduo Zhou,Bo Dong,Chang Li,Yuanchen Wang,Xuefeng Yin,Yang Wang,Xin Yang*',
+    title: 'Dynamic Weight Adaptation in Spiking Neural Networks Inspired by Biological Homeostasis',
+    tags: [
+      ['AAAI 2026', 1],
+      ['.', 0],
+      ['(CCF A)', 2]
+    ],
+    href: 'Bio-inspired_Intelligence_and_Embodied_Robotic_Systems/index.html#',
+    class: "Bio-inspired_Intelligence_and_Embodied_Robotic_Systems"
+  },
+  {
+    authors: 'Chuanyu Sun,Jiqing Zhang,Yang Wang,Yuanchen Wang,Yutong Jiang,Baocai Yin,Xin Yang*',
+    title: 'AlignTrack: Top-Down Spatiotemporal Resolution Alignment for RGB-Event Visual Tracking',
+    tags: [
+      ['AAAI 2026', 1],
+      ['.', 0],
+      ['(CCF A)', 2]
+    ],
+    href: 'Bio-inspired_Intelligence_and_Embodied_Robotic_Systems/index.html#',
+    class: "Bio-inspired_Intelligence_and_Embodied_Robotic_Systems"
+  },
+    
+  {
     authors: 'Xiaochen Shang,Pengwei Luo, Xinning Wang, Jiayue Zhao, Huilin Ge, Bo Dong, Xin Yang*',
     title: 'Fully Autonomous Neuromorphic Navigation and Dynamic Obstacle Avoidance',
     tags: [

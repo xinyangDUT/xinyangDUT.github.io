@@ -38,6 +38,14 @@ const projects = [
 ]
 var publications = [
   {
+    authors: "Hu Lin, Yuanbo Wang, Baocai Yin, *Xin Yang*",
+    title: "A Review of Learning Based Visual Relocalization Methods",
+    tags: [
+        ['Computational Visual Media',1]
+    ],
+    class: "Intelligent_Human-Computer_Interaction_Systems"
+  },
+  {
     authors: 'Yuanyuan Liu,Haiyang Mei,Dongyang Zhan,Jiayue Zhao,Dongsheng Zhou,Bo Dong,Xin Yang*',
     title: 'View-on-Graph: Zero-Shot 3D Visual Grounding via Vision-Language Reasoning on Scene Graphs',
     tags: [

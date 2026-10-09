@@ -37,6 +37,29 @@ const projects = [
 
 ]
 var publications = [
+  // {
+  //   // Visual_Perception_and_Understanding_in_Complex_Scenes/index.html没添加
+  //   authors: 'Youjiang Fang, Haiyang Mei, Chuanbin Liu, Liang Zhang, Zhichao Wu, Ziqi Wei, Xin Yang*',
+  //   title: 'S2MGraph-VAD: Scene-to-Moment Graph-Guided Training-Free Video Anomaly Detection',
+  //   tags: [
+  //     ['ACM MM2026', 1],
+  //     ['.', 0],
+  //     ['(CCF A)', 2]
+  //   ],
+  //   href: 'Visual_Perception_and_Understanding_in_Complex_Scenes/index.html#',
+  //   class: "Visual_Perception_and_Understanding_in_Complex_Scenes"
+  // },
+  {
+    authors: 'Yuanbo Wang, Xinning Wang, Zhaoxuan Zhang, Changlong Wang, qianchen xia, Xiaopeng Wei, Xin Yang*',
+    title: 'TouchDream: 3D Object Completion through Imagined Touch',
+    tags: [
+      ['IEEE/CVF Conference on Computer Vision and Pattern Recognition 2026', 1],
+      ['.', 0],
+      ['(CCF A)', 2]
+    ],
+    href: 'Scene_3D_Reconstruction_and_Generation/index.html#',
+    class: "Scene_3D_Reconstruction_and_Generation"
+  },
   {
     authors: "Hu Lin, Yuanbo Wang, Baocai Yin, *Xin Yang*",
     title: "A Review of Learning Based Visual Relocalization Methods",

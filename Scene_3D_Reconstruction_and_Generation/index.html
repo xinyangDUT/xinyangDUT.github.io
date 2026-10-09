@@ -243,6 +243,29 @@
                 title: "i.  Object Modeling",
                 projects: [
                   {
+                    authors: 'Yuanbo Wang, Xinning Wang, Zhaoxuan Zhang, Changlong Wang, qianchen Xia, Xiaopeng Wei, Xin Yang*',
+                    title: 'TouchDream: 3D Object Completion through Imagined Touch',
+                    tags: [
+                      ['IEEE/CVF Conference on Computer Vision and Pattern Recognition 2026', 1],
+                      ['.', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    abstract: "Point cloud completion is crucial for robust 3D perception but remains challenging. \n" +
+                            "Coarse-to-fine methods can lead to unconstrained local guesses in the absence of key structures, \n" +
+                            "whereas diffusion-based approaches may introduce geometric inconsistencies. \n" +
+                            "To overcome these limitations, we present TouchDream, a novel framework that leverages a \n" +
+                            "diffusion model to `dream' of tactile sensing on object surfaces, which reformulates the sensing\n" +
+                            " process as a learnable generative modeling task. Unlike visual cues, tactile data provides rich\n" +
+                            " local geometry that can be directly converted into 3D space for point fusion, offering a powerful\n" +
+                            " guide for detail-aware completion. Specifically, our approach generate compact tactile latent\n" +
+                            " representations conditioned on coarse points and sampled touch poses. These generated touches \n" +
+                            "are then used to optimize the coarse geometry. Extensive experiments show that our TouchDream model\n" +
+                            " achieves the state-of-the-art performance.",
+                    imgs: [{src: 'TouchDream.png',label: '(1) TouchDream Workflow: generating imagined touch for coarse points refinement. (2) Completion Results Comparison.'}],
+                    links: [{name: 'paper', link: "https://openaccess.thecvf.com/content/CVPR2026/html/Wang_TouchDream_3D_Object_Completion_through_Imagined_Touch_CVPR_2026_paper.html"}],
+
+                  },
+                  {
                     authors: 'Yuanbo Wang, Zhaoxuan Zhang, Jiajin Qiu, Dilong Sun, Zhengyu Meng, Xiaopeng Wei*,  Xin Yang*',
                     title: "Touch2Shape: Touch-Conditioned 3D Diffusion for Shape Exploration and Reconstruction",
                     tags:[

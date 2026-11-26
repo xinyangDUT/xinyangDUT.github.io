@@ -287,11 +287,50 @@
 
                 ],
               },
+              {
+                authors: 'Qirui Bao, Haiyang Mei, Huilin Wei, Zheng Lü, Yuxin Wang, Xin Yang.',
+                title: 'Generating Adversarial Patterns in Facial Recognition with Visual Camouflage',
+                imgs: [
+                  { src: 'FacialCamouflage.png', label: 'Visual comparison of goggle-frame camouflage. The rows show woodland, wilderness, and city styles. The columns compare the proposed method with PGD, MI-FGSM, NI-FGSM, and VNI-FGSM.' }
+                ],
+                tags: [
+                  ['Journal of Shanghai Jiao Tong University (Science) 2025', 1],
+                  ['. ', 0],
+                  ['', 2]
+                ],
+                links: [
+                  {name: 'paper',link: 'https://link.springer.com/article/10.1007/s12204-023-2692-x'},
+                  {name: 'pdf',link: 'https://link.springer.com/content/pdf/10.1007/s12204-023-2692-x.pdf'},
+                ],
+                abstract: 'Deep neural networks, especially face recognition models, have been shown to be vulnerable to adversarial examples. However, existing attack methods for face recognition systems either cannot attack black-box models, are not universal, have cumbersome deployment processes, or lack camouflage and are easily detected by the human eye. In this paper, we propose an adversarial pattern generation method for face recognition and achieve universal black-box attacks by pasting the pattern on the frame of goggles. To achieve visual camouflage, we use a generative adversarial network (GAN). The scale of the generative network of GAN is increased to balance the performance conflict between concealment and adversarial behavior, the perceptual loss function based on VGG19 is used to constrain the color style and enhance GAN\u2019s learning ability, and the fine-grained meta-learning adversarial attack strategy is used to carry out black-box attacks. Sufficient visualization results demonstrate that compared with existing methods, the proposed method can generate samples with camouflage and adversarial characteristics. Meanwhile, extensive quantitative experiments show that the generated samples have a high attack success rate against black-box models.',
+              },
+              {
+                authors: 'Qianhui Liu, Jiadong Wang, Yang Wang, Xin Yang, Gang Pan, Haizhou Li.',
+                title: 'Human-Inspired Computing for Robust and Efficient Audio-Visual Speech Recognition',
+                imgs: [
+                  { src: 'HI-AVSNN.png', label: 'The architecture of HI-AVSNN for audiovisual speech recognition. The visual branch extracts cues from the event stream of lip movements and uses them to guide attention in the spiking speech-processing branch.' }
+                ],
+                tags: [
+                  ['IEEE Transactions on Computers 2025', 1],
+                  ['. ', 0],
+                  ['(CCF A)', 2]
+                ],
+                links: [
+                  {name: 'paper',link: 'https://arxiv.org/abs/2408.16564'},
+                  {name: 'pdf',link: 'https://arxiv.org/pdf/2408.16564'},
+                ],
+                abstract: 'Audio-Visual Speech Recognition (AVSR) has gained increasing attention as it leverages both visual and audio modalities to improve the robustness of speech recognition, especially in noisy environments. In this paper, we take inspiration from the neural mechanisms of the human brain and introduce a human-inspired spiking neural network (HI-AVSNN) for robust and efficient AVSR. We incorporate a visual-cued auditory attention module (VCA2M) for the dynamic interplay between audio and visual streams, and employ causal processing via temporal masking to process streaming data efficiently. Additionally, we utilize an event camera, which captures lip movement in the form of spikes, to effectively reduce the redundant visual information. We construct both audio and visual event datasets for training and evaluation, including the DVS-Lip dataset. Our experiments demonstrate that HI-AVSNN achieves a +2.27% accuracy improvement over the only existing SNN-based AVSR model, while maintaining competitive performance with non-SNN AVSR models,Skip. This work is accepted by IEEE Transactions on Computers.',
+              },
             ]
           },
           {
             title: "b.  Visual Localization System ",
             projects: [
+              {
+                authors: "Zhiling Cui, Haiyang Mei, Yunhan Liang, Yudong Chen, Liang Zhang, Xiaopeng Wei, Xin Yang*",
+                title: "Guess Where I Am? Advancing Video-based Global Geo-Localization with LVLM",
+                tags: [["International Journal of Computer Vision 2026", 1], [". ", 0], ["(CCF A)", 2]],
+              },
               {
                 authors: "Hu Lin, Yuanbo Wang, Baocai Yin, *Xin Yang*",
                 title: "A Review of Learning Based Visual Relocalization Methods",
@@ -433,6 +472,22 @@
                   { src: 'Interactive Sketch-Based Normal Map Generation with Deep Neural Networks.jpg' }
                 ],
                 abstract: 'High-quality normal maps are important intermediates for representing complex shapes. In this paper, we propose an interactive system for generating normal maps with the help of deep learning techniques. Utilizing the Generative Adversarial Network (GAN) framework, our method produces high quality normal maps with sketch inputs. In addition, we further enhance the interactivity of our system by incorporating user-specified normals at selected points. Our method generates high quality normal maps in real time. Through comprehensive experiments, we show the effectiveness and robustness of our method. A thorough user study indicates the normal maps generated by our method achieve a lower perceptual difference from the ground truth compared to the alternative methods.'
+              },
+              {
+                authors: 'Yanjun Liu, Wanshu Fan, Cong Wang, Shixi Wen, Xin Yang, Qiang Zhang, Xiaopeng Wei, Dongsheng Zhou.',
+                title: 'GTIGNet: Global Topology Interaction Graphormer Network for 3D Hand Pose Estimation',
+                imgs: [
+                  { src: 'GTIGNet.png', label: 'The overall architecture of GTIGNet for 3D hand pose estimation. The 2D pose backbone extracts feature maps and joint heatmaps from an RGB image. The 3D pose lifter uses high-order Graphormers to model joint relationships and estimate 3D joint positions.' }
+                ],
+                tags: [
+                  ['Neural Networks 2025', 1],
+                  ['. ', 0],
+                  ['', 2]
+                ],
+                links: [
+                  {name: 'paper',link: 'https://doi.org/10.1016/j.neunet.2025.107221'},
+                ],
+                abstract: 'Estimating 3D hand poses from monocular RGB images presents a series of challenges, including complex hand structures, self-occlusions, and depth ambiguities. Existing methods often fall short of capturing the long-distance dependencies of skeletal and non-skeletal connections for hand joints. To address these limitations, we introduce the Global Topology Interaction Graphormer Network (GTIGNet), a novel deep learning architecture designed to improve 3D hand pose estimation. Our model incorporates a Context-Aware Attention Block (CAAB) within the 2D pose estimator to enhance the extraction of multi-scale features, yielding more accurate 2D joint heatmaps to support the task that followed. Additionally, we introduce a High-Order Graphormer that explicitly and implicitly models the topological structure of hand joints, thereby enhancing feature interaction. Ablation studies confirm the effectiveness of our approach, and experimental results on four challenging datasets, Rendered Hand Dataset (RHD), Stereo Hand Pose Benchmark (STB), First-Person Hand Action Benchmark (FPHA), and FreiHAND Dataset, indicate that GTIGNet achieves state-of-the-art performance in 3D hand pose estimation. Notably, our model achieves an impressive Mean Per Joint Position Error (MPJPE) of 9.98 mm on RHD, 6.12 mm on STB, 11.15 mm on FPHA and 10.97 mm on FreiHAND.',
               },
             ]
           },

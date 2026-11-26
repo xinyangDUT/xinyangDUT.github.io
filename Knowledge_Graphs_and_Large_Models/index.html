@@ -246,6 +246,39 @@
           {
             title: "a.  Intelligent monitoring of production process parameters",
             projects: [
+              // [4] ICML 2026 (CCF A)2.a.ii(√)
+              {
+                authors: 'Zhichao Wu, Li Zhu, Shunqi Zhang, Xirong Xu, Xiaopeng Wei*, Xin Yang*',
+                title: 'ICAD: Rethinking the Role of Inference and Cues for the Anomaly Detection in IIoT',
+                tags: [
+                  ['IEEE Transactions on Knowledge and Data Engineering 2026', 1],
+                  ['.', 0],
+                  ['(CCF A)', 2]
+                ],
+                links: [
+                  {name: 'paper',link: 'https://ieeexplore.ieee.org/document/11534573'}
+                ],
+                imgs: [
+                  { src: 'ICAD.png',label: 'Trend pattern and uncertainty cue for complex anomaly scenarios. \n' +
+                          '(a) shows the original time series along with their corresponding anomaly indicators. \n' +
+                          '(b) compares the dimensionality-reduced distributions of the time series generated \n' +
+                          'under clue-conditioned and clue-free scenarios.' },
+                ],
+                abstract: " Time series anomaly detection in real-world Industrial Internet of Things (IIoT) systems \n" +
+                        "is pivotal for identifying unsafe conditions and implementing timely preventive measures. While \n" +
+                        "diffusion models are popular for capturing complex patterns, they often struggle to balance \n" +
+                        "diversity and fidelity across scenarios due to limited exploration of context-window logical \n" +
+                        "inference relationships and trend-pattern cues. To address these challenges, we propose ICAD,\n" +
+                        " a novel method that rethinks the role of inference and cues in IIoT time series anomaly detection. \n" +
+                        "ICAD defines trend patterns and uncertainties in textual form and utilizes a fine-tuned large \n" +
+                        "language model to encode these descriptions as conditions for the diffusion model, thereby enhancing \n" +
+                        "its generalization across diverse data distributions. Additionally, a reasoning network for contextual \n" +
+                        "window mechanism is designed to capture temporal dependencies between adjacent windows, complemented by \n" +
+                        "multi-scale and spatial feature adaptive fusion modules to further enhance the predictive performance. \n" +
+                        "Empirical evaluations across four benchmark datasets and a large-scale ethylene oxide production process \n" +
+                        "demonstrate that ICAD consistently outperforms state-of-the-art baselines, confirming its effectiveness \n" +
+                        "and practicality in overcoming current anomaly detection model limitations."
+              },
               {
                 authors: 'Zhichao Wu, Li Zhu, Zitao Yin, Xirong Xu, Jianmin Zhu, Xiaopeng Wei, Xin Yang*',
                 title: 'MAFCD: Multi-level and Adaptive Conditional Diffusion Model for Anomaly Detection',
@@ -334,6 +367,22 @@
                   { name: 'code', link: 'https://github.com/DUT-ICCD/KP-Guided-Reloc' },
                 ],
                 video: '',
+              },
+              {
+                authors: 'Yutianyi Liu, Hanyi Wu, Haotong Wang, Yongxue Shan, Xin Yang, Ziqi Wei.',
+                title: 'Resampling Framework Based on Swarm Intelligence Optimization for Imbalanced Data Classification',
+                imgs: [
+                  { src: 'R-SIOIC.png', label: 'Overview of the resampling framework for imbalanced data classification. The framework initializes candidate subsets by undersampling, evaluates their classifiers, and iteratively updates the candidates with swarm intelligence optimization to select the best subset.' }
+                ],
+                tags: [
+                  ['GECCO 2025 Companion', 1],
+                  ['. ', 0],
+                  ['', 2]
+                ],
+                links: [
+                  {name: 'paper',link: 'https://doi.org/10.1145/3712255.3726544'},
+                ],
+                abstract: 'Imbalanced data classification is a fundamental and pressing challenge in real-world scenarios, where minority classes are often overwhelmed by the majority, resulting in poor model generalization. Data resampling is a simple yet effective strategy to mitigate class imbalance. However, existing resampling methods usually optimize a single resampling metric with fixed heuristic rules)Skip. In this paper, we propose R-SIOIC, a novel unified framework that supports any continuous swarm intelligence optimization (SIO) algorithm for resampling, and simultaneously optimizes multiple resampling quality metrics in each iteration. We evaluate three representative continuous SIO algorithms under our framework on 13 imbalanced datasets. Extensive experiments demonstrate that R-SIOIC outperforms all compared baselines in 11 out of 13 datasets in terms of G-mean and 12 out of 13 datasets in terms of m-AUC.',
               }
             ]
           },
@@ -343,13 +392,94 @@
           },
           {
             title: "c.  Large models and human-computer interaction",
-
+            projects: [
+              {
+                authors: 'Haiyang Mei, Difei Gao, Xiaopeng Wei, Xin Yang, Shou Mike Zheng.',
+                title: 'Can I Trust You? Advancing GUI Task Automation with Action Trust Score',
+                imgs: [
+                  { src: 'TrustScorer.png', label: 'Overview of the Action Trust Scorer. The scorer evaluates a proposed GUI action sequence using the user query, subtask description, and observed state. A score above the threshold allows the AI to proceed, while a lower or equal score triggers human takeover.' }
+                ],
+                tags: [
+                  ['ACM MM 2025', 1],
+                  ['. ', 0],
+                  ['(CCF A)', 2]
+                ],
+                links: [
+      {name: 'code', link: 'https://github.com/showlab/TrustScorer'},
+                  {name: 'paper',link: 'https://doi.org/10.1145/3746027.3755618'},
+                  {name: 'pdf',link: 'https://dl.acm.org/doi/pdf/10.1145/3746027.3755618'},
+                ],
+                abstract: 'The rising prevalence of autonomous agents built on large language models (LLMs) in the field of Graphical User Interface (GUI) automation, albeit promising, has raised significant concerns regarding their trustworthiness and potential unintended negative consequences. In this paper, we address GUI task automation distrust by proposing a novel TrustScorer collaborative framework that evaluates the trustworthiness of AI-generated GUI actions, and a TrustBench benchmark specifically designed for trustworthy GUI task automation, comprising 500 diverse real-world GUI tasks with rich annotations. We conduct extensive experiments to assess the effectiveness of our TrustScorer in improving the decision-making process. Through the integration with LLM-based agents on GUI tasks, our TrustScorer enables a substantial enhancement of up to 38.1% success rate improvement in completing tasks, and a 36.Screen reduction of unsafe actions. The code will be released at https://github.com/showlab/TrustScorer.',
+              },
+              {
+                authors: 'Peixi Peng, Wanshu Fan, Yue Shen, Xin Yang, Dongsheng Zhou.',
+                title: 'A Global Visual Information Intervention Model for Medical Visual Question Answering',
+                imgs: [
+                  { src: 'GVII.png', label: 'The overall architecture of the Global Visual Information Intervention model for medical visual question answering. The encoder processes the image and question, while the global visual information and forward compensation branches contribute to the scores for candidate answers.' }
+                ],
+                tags: [
+                  ['Computers in Biology and Medicine 2025', 1],
+                  ['. ', 0],
+                  ['', 2]
+                ],
+                links: [
+                  {name: 'paper',link: 'https://doi.org/10.1016/j.compbiomed.2025.110195'},
+                ],
+                abstract: 'Medical Visual Question Answering (Med-VQA) aims to furnish precise responses to clinical queries related to medical imagery. While its transformative potential in healthcare is undeniable, current solutions remain nascent and are yet to see widespread clinical adoption. Med-VQA presents heightened complexities compared to standard visual question answering (VQA) tasks due to the myriad of clinical scenarios and the scarcity of labeled medical imagery. This often culminates in language biases and overfitting vulnerabilities. In light of these challenges, this study introduces Global Visual Information Intervention (GVII), an innovative Med-VQA model designed to mitigate language biases and improve model generalizability. GVII is centered on two key branches: the Global Visual Information Branch (GVIB), which extracts and filters holistic visual data to amplify the image\u2019s contribution and reduce question dominance, and the Forward Compensation Branch (FCB), which refines multimodal features to counterbalance disruptions introduced by GVIB. These branches work in tandem to enhance predictive accuracy and robustness. Furthermore, a multi-branch fusion mechanism ensures cohesive integration of features and losses across the model. Experimental results demonstrate that the proposed model outperforms existing state-of-the-art models, achieving a 2.6% improvement in accuracy on the PathVQA dataset. In conclusion, the GVII-based Med-VQA model not only successfully mitigates prevalent language biases and overfitting issues but also significantly improves diagnostic precision, offering a considerable stride toward robust, clinically applicable VQA systems.',
+              },
+              {
+                authors: 'Chen Dong, Gao Fei, Zhang Shuo, Zhuang Yueting, Tang Siliang, Liu Qidong, Wang Hua, Yang Xin, Xu Mingliang.',
+                title: 'Improving large models with small models: Lower costs and better performance',
+                tags: [
+                  ['Neural Networks 2026', 1],
+                  ['. ', 0],
+                  ['', 2]
+                ],
+                abstract: 'Pretrained large models (PLMs), such as ChatGPT, have demonstrated remarkable performance across diverse tasks. However, the significant computational requirements of PLMs have discouraged most product teams from running or fine-tuning them. In such cases, to harness the exceptional performance of PLMs, one must rely on paid Application Programming Interface (API), thereby exacerbating the economic burden. Despite the overall inferior performance of small models, in specific distributions, they can achieve comparable or even superior results. Consequently, some input can be processed exclusively by small models. On the other hand, certain tasks can be broken down into multiple subtasks, some of which can be completed without powerful capabilities. Under these circumstances, small models can handle the simple subtasks, allowing large models to focus on challenging subtasks, thus improving the performance. Specifically, we propose Data Shunt+ (DS+), a general paradigm for collaboration of small and large models. DS+ first trains small models for different tasks and routes user queries based on the confidence levels of small models, allowing both the small and large models to handle the queries they are best suited for. DS+ not only substantially reduces the cost associated with querying large models but also effectively improves large models\u2019 performance. For instance, ChatGPT achieves an accuracy of 94.43% on Amazon Product sentiment analysis, and DS+ achieves an accuracy of 95.64%, while the cost has been reduced to 31.18%. Besides, experiments also prove that the proposed collaborative-based paradigm can better inject specific task knowledge into PLMs compared to fine-tuning.',
+                links: [
+                  {name: 'paper',link: 'https://doi.org/10.1016/j.neunet.2025.108276'}
+                ]
+              },
+              {
+                authors: 'Youjiang Fang, Liang Zhang, Shihao Wang, Wenyuan Zhang, Yuxin Wang, Yuanyuan Liu, Xiaopeng Wei, Xin Yang.',
+                title: 'DCPNet: a comprehensive framework for multimodal sarcasm detection via graph topology extraction and multi-scale feature fusion',
+                tags: [
+                  ['Frontiers of Computer Science 2026', 1],
+                  ['. ', 0],
+                  ['', 2]
+                ],
+                abstract: 'Recent advancements in multimodal sarcasm detection (MSD) have made significant progress in understanding the interplay between textual and visual cues. However, existing methods tend to overemphasize cross-modal semantic alignment, consequently neglecting sarcasm cues that are independently embedded within each modality. In this paper, we present DCPNet, a novel Dual-channel Cross-modal Perception Network, to integrate unimodal and cross-modal features via the incorporation of comprehensive structural semantics. To capture rich topological relationships within each modality, we introduce a Graph Topology Extraction and Enhancement Module (GTEE) that builds graph structures from both text and image features, facilitating deeper semantic representation. Additionally, we propose a Cross-Modal Multi-Scale Feature Fusion (CMFF) module that aligns and integrates features from both text and image at multiple scales, ensuring the capture of comprehensive contextual information. An attention mechanism is incorporated to assign appropriate weights to the textual and visual features, thereby optimizing the fusion process for more accurate sarcasm detection. Extensive experiments conducted on the MMSD and MMSD2.0 benchmark datasets demonstrate that DCPNet outperforms existing state-of-the-art (SOTA) methods in both accuracy and robustness.',
+                links: [
+                  {name: 'paper',link: 'https://doi.org/10.1007/s11704-025-50196-4'}
+                ]
+              }
+            ]
           },
           {
             title: "d.  Intelligent monitoring of production process parameters",
 
+          },
+          {
+            title: "e. Graph Representation Learning",
+            projects: [
+              {
+                authors: 'Youjiang Fang, Liang Zhang, Ziqi Wei, Zhichao Wu, Shihao Wang, Chuanbin Liu, Xin Yang.',
+                title: 'ScaleGraph: A scalable self-supervised framework for cross-domain zero-shot graph learning',
+                imgs: [
+                  { src: 'ScaleGraph.png', label: 'The overall framework of ScaleGraph. A parameter-free graph tokenizer aligns node features from different domains. The unified graph transformer learns structural representations, and an adaptive classifier selects among classification heads.' }
+                ],
+                tags: [
+                  ['Pattern Recognition 2026', 1],
+                  ['. ', 0],
+                  ['', 2]
+                ],
+                links: [
+                  {name: 'paper',link: 'https://doi.org/10.1016/j.patcog.2025.112482'},
+                ],
+                abstract: 'Zero-shot graph learning (ZGL) is essential in many real-world applications, where models are expected to generalize to unseen graph structures and label distributions without task-specific fine-tuning, enabling knowledge transfer across diverse and evolving graph domains. Despite progress in graph representation learning, extracting universal task-agnostic features remains challenging, hindering plug-and-play zero-shot generalization across graph domains. To address this gap, we present ScaleGraph, a scalable self-supervised framework that alleviates feature misalignment, structural heterogeneity, and domain bias through three key innovations: (1) a parameter-free graph tokenizer that aligns heterogeneous feature spaces across domains via nonlinear kernel mapping, (2) a hierarchical transformer with linear attention that captures multi-scale structural dependencies, and (3) a lightweight classifier scheduler that achieves meta-learned domain adaptation through optimal transport. Extensive experiments demonstrate that ScaleGraph achieves state-of-the-art (SOTA) performance on cross-domain node classification and link prediction, highlighting its strong adaptability and effectiveness for zero-shot graph learning.',
+              },
+            ]
           }
-
         ]
       }
     },
@@ -377,21 +507,15 @@
         this.activeNames3.push(i);
       }
       let idCounter = 1;
-
-      this.directions1.forEach(direction => {
-        direction.domains.forEach(domain => {
-          domain.projects.forEach(project => {
-            project.id = idCounter++;
-          });
-        });
-      });
-
-
-      this.directions1.forEach(direction => {
-        direction.projects.forEach(project => {
+      const assignProjectIds = section => {
+        (section.projects || []).forEach(project => {
           project.id = idCounter++;
         });
-      });
+        [section.domains, section.domains1, section.domains2].forEach(domains => {
+          (domains || []).forEach(assignProjectIds);
+        });
+      };
+      this.directions1.forEach(assignProjectIds);
 
     }
 

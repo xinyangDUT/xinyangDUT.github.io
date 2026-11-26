@@ -320,6 +320,18 @@
                 title: "i. Event-based Pose Estimation",
                 projects: [
                   {
+                    authors: 'Wen Dong, Haiyang Mei, Yinglian Ji, Yutong Jiang, Ziqi Wei, Shengfeng He, Xin Yang*',
+                    title: 'You Only Look Intensity Once: Event-Driven Long-Term High-Speed Object Detection',
+                    tags: [
+                      ['International Journal of Computer Vision 2026', 1],
+                      ['.', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    abstract: "Cooperating intensity/RGB frames with event signals offers a practical and effective solution for high-speed object detection, while existing methods rely on frequent RGB frame updates, typically every 0.2 seconds, to preserve scene context. This leads to high computational costs, redundancy across frames, and latency issues, especially on edge devices. In this work, we propose the Delta Perception Network (DPNet), a novel learning-based detector that requires only a single RGB frame at the beginning of a sequence to detect high-speed objects over a 5-second duration, 25 times longer than prior methods. The key insight is that the initial frame can serve as a durable scene prior, while the continuous event stream supplies sufficient motion information to update this prior without needing further intensity frames. This design allows DPNet to track dynamic scene changes efficiently and accurately over extended periods. At the core of DPNet is a Delta Perception module that emphasizes temporal changes, and a Grid Sampling GRU that incrementally maintains and refines the scene representation. Extensive experiments show that DPNet outperforms state-of-the-art frame-based, event-based, and fusion-based detectors. Our results demonstrate that long-duration, high-speed object detection is not only feasible but also efficient using a single intensity/RGB frame and continuous event input, enabling real-time performance with reduced computational demands.",
+                    imgs: [{ src: 'YOLIO.png' ,label: 'Events offer a strong foundation for high-speed object detection, but prior fusion-based methods rely on intermittent frames to maintain context, leading to limited event utilization, cross-modal redundancy, and high computational cost (a). In contrast, our delta perception approach operates exclusively on events after a single-frame initialization (b), enabling accurate and continuous long-term high-speed object detection (c)'}],
+                    links: [{ name: 'paper', link: 'https://link.springer.com/article/10.1007/s11263-026-02749-8'}]
+                  },
+                  {
                     authors: 'Nannan Yu, Tao Ma, Jiqing Zhang, Yuji Zhang, Qirui Bao, Xiaopeng Wei, Xin Yang*',
                     title: 'Adaptive Vision Transformer for Event-Based Human Pose Estimation.',
                     tags: [
@@ -335,7 +347,6 @@
                     links: [
                       { name: 'paper', link: 'https://openreview.net/forum?id=p4MdxsQVXu' },
                     ],
-                    video: '',
                   },
                   {
                     authors: '王超毅, 于男男，乔羽，任健康，周东生，魏小鹏，张强，杨鑫*',
@@ -362,7 +373,7 @@
                 projects: [
                   {
                     authors: 'Haiyang Mei, Zuowen Wang, Xin Yang*, Xiaopeng Wei, Tobi Delbruck:',
-                    title: 'Deep Polarization Reconstruction With PDAVIS Events.',
+                    title: 'Deep Polarization Reconstruction With PDAVIS Events',
                     tags: [
                       ['CVPR 2024', 1],
                       ['.', 0],
@@ -398,6 +409,28 @@
                       { name: 'dataset', link: 'http://rgbp.dluticcd.com/' }
                     ],
                     video: 'dong.mp4',
+                  },
+                ]
+              },
+              {
+                title: "iii. Event-based Object Classification",
+                projects: [
+                  {
+                    authors: 'Nannan Yu, Chaoyi Wang, Yu Qiao, Yuxin Wang, Chenglin Zheng, Qiang Zhang, Xin Yang*.',
+                    title: 'Hypergraph-Based Asynchronous Event Processing for Moving Object Classification',
+                    imgs: [
+                      { src: 'HypergraphEventClassification.png', label: 'Overview of the hypergraph framework for moving-object classification. The method subsamples the asynchronous event stream, constructs a hypergraph from local neighborhoods, and uses hypergraph convolution and residual modules to classify gait patterns.' }
+                    ],
+                    tags: [
+                      ['Journal of Shanghai Jiao Tong University (Science) 2025', 1],
+                      ['. ', 0],
+                      ['', 2]
+                    ],
+                    links: [
+                      {name: 'paper',link: 'https://link.springer.com/article/10.1007/s12204-024-2699-y'},
+                      {name: 'pdf',link: 'https://link.springer.com/content/pdf/10.1007/s12204-024-2699-y.pdf'},
+                    ],
+                    abstract: 'Unlike traditional video cameras, event cameras capture asynchronous event streams in which each event encodes pixel location, triggers\u2019 timestamps, and the polarity of brightness changes. In this paper, we introduce a novel hypergraph-based framework for moving object classification. Specifically, we capture moving objects with an event camera, to perceive and collect asynchronous event streams in a high temporal resolution. Unlike stacked event frames, we encode asynchronous event data into a hypergraph, fully mining the high-order correlation of event data, and designing a mixed convolutional hypergraph neural network for training to achieve a more efficient and accurate motion target recognition. The experimental results show that our method has a good performance in moving object classification (e.g., gait identification).',
                   },
                 ]
               }

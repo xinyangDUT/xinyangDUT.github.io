@@ -268,11 +268,42 @@
                       { src: 'iccv_2019_results.jpg', label: 'Problems with mirrors in existing vision tasks. In depth prediction, NYU-v2 dataset [32] uses a Kinect to capture depth as ground truth. It wrongly predicts the depths of the reflected contents, instead of the mirror depths (b). In instance semantic segmentation, Mask RCNN [12] wrongly detects objects inside the mirrors (c). With MirrorNet, we first detect and mask out the mirrors (d). We then obtain the correct depths (e), by interpolating the depths from surrounding pixels of the mirrors, and segmentation maps (f).' }
                     ],
                   },
+                {
+                  authors: 'Zhaohu Xing, Tian Ye, Xin Yang, Sixiang Chen, Huazhu Fu, Yan Nei Law, Lei Zhu.',
+                  title: 'Temporal Prompt Learning With Depth Memory for Video Mirror Detection',
+                  tags: [
+                    ['IEEE Transactions on Multimedia 2026', 1],
+                    ['. ', 0],
+                    ['(CCF A)', 2]
+                  ],
+                  abstract: 'Mirror detection in dynamic scenes plays a crucial role in ensuring safety for various applications, such as drone tracking and robot navigation. However, current mirror detection models often fail in areas with mirrors that have a similar visual and color appearance to their surrounding objects. They also struggle to generalize well in complex cases, primarily due to limited annotated datasets. In this work, we propose a novel temporal prompt learning network with depth memory (TPD-Net) to address these critical challenges. Our approach includes several key components. First, we introduce a Temporal Prompt Generator (TPG) to learn temporal prompt features. Then, we devise Multi-layer Depth-aware Adaptor (MDA) modules to progressively adapt prompt features from the TPG, thereby learning mirror-related features by embedding temporal depth information as guidance. Moreover, we further refine these mirror-related features by constructing a depth memory and a Depth Memory Read module to read the temporal depths stored in the memory, boosting video mirror detection. Experimental results on a benchmark dataset show that our TPD-Net significantly outperforms 22 state-of-the-art methods in video mirror detection tasks.',
+                  links: [
+                    {name: 'paper',link: 'https://doi.org/10.1109/tmm.2025.3623544'}
+                  ]
+                }
                 ]
               },
               {
                 title: "ii.  Transparent Object Segmentation",
                 projects: [
+                  // [4] ICML 2026 (CCF A)2.a.ii
+                  {
+                    authors: 'Wen Dong, Haiyang Mei, Yinglian Ji, Zijun Zhang, Wenyuan Zhang, Pengwei Luo, Bo Dong, Shengfeng He, Xin Yang*',
+                    title: 'PolarDepth: Monocular Transparent Object Depth from Polar-Physics Priors',
+                    tags: [
+                      ['International Conference on Machine Learning 2026', 1],
+                      ['.', 0],
+                      ['(CCF A)', 2]
+                    ],
+                    abstract:'Depth estimation for transparent objects remains a fundamental challenge, as RGB-based cues often fail in regions affected by refraction and light transmission. Polarization provides physically grounded information related to surface orientation and material properties, offering reliable geometric cues even in the absence of texture. In this work, we introduce PolarDepth, a monocular framework that incorporates both RGB and polarization inputs, including the degree and angle of linear polarization (DoLP and AoLP), to estimate dense depth and localize transparent regions. PolarDepth injects polarization-derived physical priors by estimating the refractive index, zenith angle, and azimuth angle from polarization measurements and embedding them into an implicit geometric representation that constrains depth inference in ambiguous transparent regions. To support model development and evaluation, we introduce PTOD, a dataset with synchronized RGB, polarization, and depth data and manually annotated transparent region masks. Experimental results demonstrate that PolarDepth achieves state-of-the-art performance in transparent object depth estimation. The findings highlight the effectiveness of embedding polarization-derived physical priors into learned representations for robust perception in complex visual environments.',
+                    imgs: [
+                      { src: 'PolarDepth.png' ,label: 'Transparent objects challenge conventional depth estimation, leading to failure in both learning-based methods like Depth Anything V2 (Yang et al., 2024) and active sensors such as Intel RealSense D435i. In contrast, polarization cues provide reliable geometric patterns even in transparent regions. The proposed PolarDepth extracts physically grounded geometric priors from these cues to recover accurate and complete depth, enabling precise robotic grasping and robust transparent object understanding.'}
+                    ],
+                    links: [
+                      { name: 'paper', link: 'https://openreview.net/attachment?id=nIK0JgJc81&name=pdf' },
+                      { name: 'code', link: 'https://github.com/wind1117/PolarDepth' }
+                    ],
+                  },
                   {
                     authors: 'Yu Qiao, Bo Dong, Ao Jin, Yu Fu, Seung-Hwan Baek, Felix Heide, Pieter Peers, Xiaopeng Wei, Xin Yang*.',
                     title: 'Multi-view Spectral Polarization Propagation for Video Glass Segmentation.',
@@ -1039,6 +1070,22 @@
                       { name: 'paper', link: 'https://proceedings.mlr.press/v129/zha20a/zha20a.pdf' }
                     ]
                   },
+                  {
+                    authors: 'Chaoyu Rao, Wanshu Fan, Cong Wang, Xin Yang, Xiaopeng Wei, Dongsheng Zhou.',
+                    title: 'FDC: Feature Dropout Consistency for unsupervised domain adaptation semantic segmentation',
+                    imgs: [
+                      { src: 'FDC.png', label: 'Overview of Feature Dropout Consistency for domain-adaptive semantic segmentation. The teacher generates target-domain pseudo-labels, and the student learns to make consistent predictions when its features are perturbed by dropout.' }
+                    ],
+                    tags: [
+                      ['Neural Networks 2025', 1],
+                      ['. ', 0],
+                      ['', 2]
+                    ],
+                    links: [
+                      {name: 'paper',link: 'https://doi.org/10.1016/j.neunet.2025.107527'},
+                    ],
+                    abstract: 'Unsupervised domain adaptation semantic segmentation (UDASS) aims to transfer the knowledge from labeled source domain to unlabeled target domain for pixel-level dense prediction. Recently, self-training based approaches have achieved significant progress in UDASS skews towards model overfitting due to the unlabeled noisy pseudo-labels. Different from existing methods, we propose a novel FDC (Feature Dropout Consistency) to resist the noise from pseudo-labels in UDASS. Specifically, FDC selects the means of truthfully imposing feature-level perturbation by randomly dropping features between the encoder and decoder of the student network. Then, a feature dropout consistency loss is constructed to align the outputs of the student and teacher networks under feature perturbation. In this way, the consistency regularization through feature dropout can prevent excessive overfitting and make the feature representation more discriminative. Moreover, our FDC can be paired with the input-level perturbation to robustly facilitate the UDASS learning. We conduct extensive experiments on the typical UDASS benchmarks of GTAV to Cityscapes and SYNTHIA to Cityscapes, and the results demonstrate that the proposed method achieves state-of-the-art performance.',
+                  },
 
                 ]
               },
@@ -1110,6 +1157,24 @@
                     ],
                     abstract: 'Removing rain streaks from a single image has been drawing considerable attention as rain streaks can severely degrade the image quality and affect the performance of existing outdoor vision tasks. While recent CNN-based derainers have reported promising performances, deraining remains an open problem for two reasons. First, existing synthesized rain datasets have only limited realism, in terms of modeling real rain characteristics such as rain shape, direction and intensity. Second, there are no public benchmarks for quantitative comparisons on real rain images, which makes the current evaluation less objective. The core challenge is that real world rain/clean image pairs cannot be captured at the same time. In this paper, we address the single image rain removal problem in two ways. First, we propose a semi-automatic method that incorporates temporal priors and human supervision to generate a high-quality clean image from each input sequence of real rain images. Using this method, we construct a large-scale dataset of ∼29.5K rain/rain-free image pairs that covers a wide range of natural rain scenes. Second, to better cover the stochastic distribution of real rain streaks, we propose a novel SPatial Attentive Network (SPANet) to remove rain streaks in a local-to-global manner. Extensive experiments demonstrate that our network performs favorably against the state-of-the-art deraining methods.'
                   },
+                  {
+                    authors: 'Xiangyu Li, Wanshu Fan, Yue Shen, Cong Wang, Wei Wang, Xin Yang, Qiang Zhang, Dongsheng Zhou.',
+                    title: 'Iterative Optimal Attention and Local Model for Single Image Rain Streak Removal',
+                    imgs: [
+                      { src: 'EMResformer.png', label: 'The overall architecture of EMResformer. The network extracts shallow features from the rainy image, refines them through expectation-maximization blocks and a local model residual block, and reconstructs the derained image.' }
+                    ],
+                    tags: [
+                      ['IEEE Transactions on Instrumentation and Measurement 2025', 1],
+                      ['. ', 0],
+                      ['', 2]
+                    ],
+                    links: [
+      {name: 'code', link: 'https://github.com/ghfkahfk/EMResformer'},
+                      {name: 'paper',link: 'https://arxiv.org/abs/2503.16165'},
+                      {name: 'pdf',link: 'https://arxiv.org/pdf/2503.16165'},
+                    ],
+                    abstract: 'Existing single image rain streak removal methods often yield mediocre results on real-world rain images as real rain streaks usually have complicated shapes, directions and intensitiesates. In this paper, we propose an expectation maximization reconstruction transformer (EMResformer) for single image rain streak removal. The proposed method decomposes rain streak removal into three subtasks: rain streak estimation, modeling and removal, where they are addressed by employing the expectation-maximization algorithm in transformer. The expectation step first reconstructs the underlying clean scene from the rain image based on the estimated rain streaks by a reconstruction module, and the maximization step estimates the latent rain streak parameters by an estimation module. Then a local model residual block (LMRB) is built for repeated refinement between rain streaks and clean background, which contains two local model blocks with densely connected dilated conv layers. The final clean image is obtained by subtracting the estimated rain streaks from the rain image. Extensive experiments on both synthetic and real-world datasets demonstrate that our method outperforms the state-of-the-art methods in terms of both quantitative metrics and visual quality. The codes are available at https://github.com/ghfkahfk/EMResformer.',
+                  },
                 ]
               },
               {
@@ -1139,7 +1204,7 @@
                     io: 'Given an input LR image, our network recovers a visually pleasing HR image in a coarse-to-fine fashion.',
                     abstract: 'Most existing single image super-resolution (SISR) methods continually increase the depth or width of networks, without adequately exploring contextual features which are essential for reconstruction. Moreover, such existing methods pay little attention to the final high-resolution(HR) image reconstruction step and therefore hinder the desired SR performance. In this paper, we propose a multi-context and enhanced reconstruction network (MCERN) for SISR. Specifically, a novel model named Multi-Context Block (MCB) which extracts more image contextual features with multibranch dilated convolution. Applying multiple MCBs with residual and dense connections, we can effectively extract contextual and hierarchical features for obtaining the coarse super-resolution result. Then an enhanced reconstruction block (ERB) is followed to extract essential spatial features on the high-resolution image to refine the coarse result to a better result. Extensive benchmark evaluations demonstrate the efficacy of our proposed MCERN in terms of metric accuracy and visual effects.',
                     links: [
-                      { name: 'paper', link: './icme_sisr.pdf' }
+                      { name: 'paper', link: 'https://doi.org/10.1109/ICME46284.2020.9102868' }, { name: 'pdf', link: 'https://mhaiyang.github.io/ICME2020_MCERN/ICME_2020_MCERN.pdf' }, { name: 'project', link: 'https://mhaiyang.github.io/ICME2020_MCERN/index.html' }
                     ],
                     imgs: [
                       { src: 'mcern_pipeline.png', label: 'Overview of proposed framework.' },
@@ -1263,9 +1328,22 @@
               }
 
             ]
+          },
+          {
+            title: "d. Video Understanding",
+            domains2: [
+              {
+                title: "i. Video Anomaly Detection",
+                projects: [
+                  {
+                    authors: "Youjiang Fang, Haiyang Mei, Chuanbin Liu, Liang Zhang, Zhichao Wu, Ziqi Wei, Xin Yang*",
+                    title: "S2MGraph-VAD: Scene-to-Moment Graph-Guided Training-Free Video Anomaly Detection",
+                    tags: [["ACM Multimedia 2026", 1], [". ", 0], ["(CCF A)", 2]],
+                  },
+                ]
+              }
+            ]
           }
-
-
         ],
 
 
@@ -1294,29 +1372,15 @@
         this.activeNames3.push(i);
       }
       let idCounter = 1;
-
-      this.directions1.forEach(direction => {
-        direction.domains.forEach(domain => {
-          domain.projects.forEach(project => {
-            project.id = idCounter++;
-          });
-        });
-      });
-      this.directions1[1].domains1.forEach(domain11 => {
-        domain11.domains.forEach(domain => {
-
-          domain.projects.forEach(project => {
-            project.id = idCounter++;
-          });
-        });
-      });
-      this.directions1[1].domains2.forEach(domain => {
-        domain.projects.forEach(project => {
+      const assignProjectIds = section => {
+        (section.projects || []).forEach(project => {
           project.id = idCounter++;
         });
-      });
-
-
+        [section.domains, section.domains1, section.domains2].forEach(domains => {
+          (domains || []).forEach(assignProjectIds);
+        });
+      };
+      this.directions1.forEach(assignProjectIds);
 
     }
 

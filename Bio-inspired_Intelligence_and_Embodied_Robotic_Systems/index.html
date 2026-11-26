@@ -239,6 +239,29 @@
         {
             title: "a.  Brain-inspired Model",
             projects: [
+              // [2] CASAXR 2026 7a
+              {
+                authors: 'Jianyang Wu, Yv Fu, Xinning Wang, Xin Yang*',
+                title: 'MADECM: A Curiosity-Augmented Evolutionary Algorithm for Multi-Agent Policy Diversity Optimization',
+                tags: [
+                  ['CASAXR 2026', 1]
+                ],
+                abstract: 'Multi-agent reinforcement learning (MARL) often suffers from low sample efficiency and limited behavioral diversity, \n' +
+                          'leading to policy homogenization, insufficient exploration, and reduced robustness. To address these challenges, we propose \n' +
+                          'MADECM, a curiosity-augmented evolutionary framework built upon MADDPG that integrates curiosity-driven updates with \n' +
+                          'evolutionary quality-diversity optimization. MADECM employs random network distillation (RND) to estimate the novelty \n' +
+                          "of each agent's local observations and uses the resulting novelty signal to dynamically allocate additional update \n" +
+                          'frequencies, thereby emphasizing exploration-relevant experience during training. In addition, MADECM combines \n' +
+                          'population-based diversification with a quality-diversity (QD) archive through a staged optimization procedure, \n' +
+                          'enabling the joint improvement of task return and policy diversity. We evaluate MADECM on the multi-agent particle \n' +
+                          'environment (MPE), including Spread and Reference, which capture cooperative and partially observable dynamics, and \n' +
+                          'on google research football (GRF), which emphasizes long-horizon sequential decision-making. Results show that MADECM \n' +
+                          'onsistently outperforms strong MADDPG-based baselines. The modular design of MADECM, consisting of RND-based novelty \n' +
+                          'estimation and staged QD optimization, further supports consistent generalization across these structurally distinct \n' +
+                          'environments without task-specific hyperparameter tuning.',
+                imgs: [{ src: 'MADECM.png' ,label: 'Overall algorithm of the proposed MADECM.'}],
+                links: [{ name: 'paper', link: 'https://onlinelibrary.wiley.com/doi/abs/10.1002/cav.70121' }]
+              },
               {
                 authors: 'Yunduo Zhou,Bo Dong,Chang Li,Yuanchen Wang,Xuefeng Yin,Yang Wang,Xin Yang*',
                 title: 'Dynamic Weight Adaptation in Spiking Neural Networks Inspired by Biological Homeostasis',
@@ -247,8 +270,20 @@
                   ['.', 0],
                   ['(CCF A)', 2]
                 ],
-                abstract: ['Homeostatic mechanisms play a crucial role in maintaining optimal functionality within the neural circuits of the brain. By regulating physiological and biochemical processes, these mechanisms ensure the stability of an organism\'s internal environment, enabling it to better adapt to external changes. Among these mechanisms, the Bienenstock, Cooper, and Munro (BCM) theory has been extensively studied as a key principle for maintaining the balance of synaptic strengths in biological systems. Despite the extensive development of spiking neural networks (SNNs) as a model for bionic neural networks, no prior work in the machine learning community has integrated biologically plausible BCM formulations into SNNs to provide homeostasis. In this study, we propose a Dynamic Weight Adaptation Mechanism (DWAM) for SNNs, inspired by the BCM theory. DWAM can be integrated into the host SNN, dynamically adjusting network weights in real time to regulate neuronal activity, providing homeostasis to the host SNN without any fine-tuning. We validated our method through dynamic obstacle avoidance and continuous control tasks under both normal and specifically designed degraded conditions. Experimental results demonstrate that DWAM not only enhances the performance of SNNs without existing homeostatic mechanisms under various degraded conditions but also further improves the performance of SNNs that already incorporate homeostatic mechanisms.'],
-                imgs: [{ src: 'AAAI_26_zhou.png' ,label: 'Comparison between biological BCMtheory andtheproposedDWAMinSNNs.a.Illustration oftheBCMtheory\n' +
+                abstract: ['Homeostatic mechanisms play a crucial role in maintaining optimal functionality within the neural circuits of the brain. \n' +
+                          'By regulating physiological and biochemical processes, these mechanisms ensure the stability of an organism\'s internal \n' +
+                          'environment, enabling it to better adapt to external changes. Among these mechanisms, the Bienenstock, Cooper, and \n' +
+                          'Munro (BCM) theory has been extensively studied as a key principle for maintaining the balance of synaptic strengths \n' +
+                          'in biological systems. Despite the extensive development of spiking neural networks (SNNs) as a model for bionic neural \n' +
+                          'networks, no prior work in the machine learning community has integrated biologically plausible BCM formulations into SNNs \n' +
+                          'to provide homeostasis. In this study, we propose a Dynamic Weight Adaptation Mechanism (DWAM) for SNNs, inspired by the \n' +
+                          'BCM theory. DWAM can be integrated into the host SNN, dynamically adjusting network weights in real time to regulate \n' +
+                          'neuronal activity, providing homeostasis to the host SNN without any fine-tuning. We validated our method through dynamic\n' +
+                          ' obstacle avoidance and continuous control tasks under both normal and specifically designed degraded conditions. \n' +
+                          'Experimental results demonstrate that DWAM not only enhances the performance of SNNs without existing homeostatic \n' +
+                          'mechanisms under various degraded conditions but also further improves the performance of SNNs that already incorporate \n' +
+                          'homeostatic mechanisms.'],
+                imgs: [{ src: 'Dynamic.png' ,label: 'Comparison between biological BCMtheory andtheproposedDWAMinSNNs.a.Illustration oftheBCMtheory\n' +
                           'in biological neural systems. The synaptic modification function (ϕ) is governed by the postsynaptic neuron’s activity (x) and\n' +
                           'a modification threshold (θM). The depression zone (x < θM) leads to synaptic weakening (e.g., x1), while the potentiation\n' +
                           'zone (x > θM)results in synaptic strengthening (e.g., x2). b. The dynamic adjustment of the modification threshold (θM) based\n' +
@@ -442,13 +477,64 @@
                   ['. ', 0],
                   ['(CCF B)', 2]
                 ],
-
+                abstract:"For binocular stereo, traditional cameras excel in capturing fine details and texture information but are limited in terms of dynamic range and their ability to handle rapid motion. On the contrary, event cameras provide pixel-level intensity changes with low latency and a wide dynamic range, albeit at the cost of less detail in their output. It is natural to leverage the strengths of both modalities. We solve this problem by introducing a cross-modal fusion module that learns a visual representation from both sensor inputs. Additionally, we extract and compare dense event-intensity stereo pair features by contrasting “pairs of event-intensity pairs from different views and different modalities and different timestamps”. This provides the flexibility in masking hard negatives and enables networks to effectively combine event-intensity signals within a contrastive learning framework, leading to an improved matching accuracy and facilitating more accurate estimation of disparity. Experimental results validate the effectiveness of our model and the improvement of disparity estimation accuracy.",
+                imgs: [{ src: '1.png' ,label: 'From left to right: the architecture overview of our proposed models, event-intensity voxel fusion (EIVF) module, and event-intensity spatial pyramid fusion (EI-SPF) module.'}],
+                links: [{ name: 'paper', link: 'https://ieeexplore.ieee.org/document/10802786' }]
+              },
+              {
+                authors: 'Jiankang Ren, Simeng Li, Yong Li, Xin Yang, Lin Liu, Shengyu Li.',
+                title: 'Efficient spatio-temporal out-of-distribution detection for learning-enabled autonomous systems',
+                imgs: [
+                  { src: 'ST-OOD.png', label: 'Overview of the spatiotemporal out-of-distribution detection pipeline. The method extracts horizontal and vertical optical-flow features, models their spatiotemporal structure, and applies a martingale-based conformal detector to flag out-of-distribution inputs.' }
+                ],
+                tags: [
+                  ['Journal of Systems Architecture 2025', 1],
+                  ['. ', 0],
+                  ['', 2]
+                ],
+                links: [
+      {name: 'code', link: 'https://github.com/yyf1050886654/ST-OOD'},
+                  {name: 'paper',link: 'https://doi.org/10.1016/j.sysarc.2025.103525'},
+                  {name: 'preprint',link: 'https://doi.org/10.2139/ssrn.5226151'},
+                ],
+                abstract: 'Learning-enabled components (LECs) are increasingly deployed in autonomous systems to provide adaptive and intelligent decision making in a complex dynamic environment. However, most LECs are typically data-driven, and they may exhibit erroneous predictions that impact system safety when there are some distribution shifts between real-world data and training data. In this paper, we propose an efficient and robust spatio-temporal out-of-distribution (OOD) detection scheme for time-series data, called ST-OOD, designed to enhance detection performance and robustness over existing state-of-the-art methods. Specifically, we employ the optical flow method to extract spatio-temporal features from high-dimensional time-series data, and encode these features using a variational autoencoder to construct the input manifold for OOD detection. Furthermore, we design a martingale-based inductive conformal anomaly detection method, which leverages the statistical properties of martingale theory to achieve a provably bounded false detection rate. Experimental evaluations demonstrate that ST-OOD not only significantly outperforms existing methods in terms of detection capability and robustness, but also maintains low computational cost to meet the demands of learning-enabled autonomous systems. The ST-OOD detection scheme is made available as an open-source package on GitHub.',
+              },
+              {
+                authors: 'Qingchao Xu, Yandong Liu, Shixi Wen, Xin Yang, Dongsheng Zhou.',
+                title: 'FutuTP: Future-based trajectory prediction for autonomous driving',
+                imgs: [
+                  { src: 'FutuTP.png', label: 'The architecture of FutuTP. The encoder extracts features from vectorized lanes and vehicle histories and models future vehicle interactions. The decoder predicts future lane areas and generates candidate trajectories for the target vehicle.' }
+                ],
+                tags: [
+                  ['Applied Intelligence 2025', 1],
+                  ['. ', 0],
+                  ['', 2]
+                ],
+                links: [
+      {name: 'code', link: 'https://github.com/Qingchao-Xu/FutuTP'},
+                  {name: 'paper',link: 'https://doi.org/10.1007/s10489-025-06510-5'},
+                  {name: 'pdf',link: 'https://link.springer.com/content/pdf/10.1007/s10489-025-06510-5.pdf'},
+                ],
+                abstract: 'Trajectory prediction is an essential aspect of autonomous driving technology. Based on the historical trajectories and environmental information, trajectory prediction methods predict the future trajectory of a vehicle. Goal-based methods have been successful because of their excellent interpretability. However, these methods ignore future lane information and interactions in future trajectories, which leads to prediction failures in some scenes. In this paper, we propose an encoder-decoder model called future-based trajectory prediction (FutuTP). The encoder fuses the interactions of future trajectories through a transformer module. The decoder predicts the future lane area and applies the results to generate a trajectory. The experimental results show that FutuTP achieves more accurate predictions than does the SOTA method on Argoverse 1. Especially in terms of the miss rate metric, FutuTP outperforms the SOTA method by approximately 6%. The code can be accessed via the following link: https://github.com/Qingchao-Xu/FutuTP.',
               },
             ]
           },
           {
             title: "c.  Drones and Target Tracking",
             projects: [
+                // [7] CVPR 2026 (CCF A) 6.a
+              {
+                authors: 'Yang Wang, Jiqing Zhang, Chuanyu Sun, Qianhui Liu, Huilin Ge, Ziqi Wei, Xin Yang*',
+                title: 'SpikeTrack: High-performance and Energy-efficient Event-Based Object Tracking with Spiking Neural Network',
+                tags: [
+                  ['IEEE/CVF Conference on Computer Vision and Pattern Recognition 2026', 1],
+                  ['.', 0],
+                  ['(CCF A)', 2]
+                ],
+                abstract: "Event cameras have attracted considerable attention for object tracking due to their microsecond-level temporal resolution and wide dynamic range, yet effectively harnessing spiking neural networks (SNNs) in this domain remains challenging. In this paper, we introduce SpikeTrack, a purely spike-driven framework for single-object tracking that addresses the shortcomings of RGB-based approaches in fast-motion or target appearance change. Central to SpikeTrack is the Multi-Search-sequence-and-Single-Template (MSST) training paradigm, which captures rich temporal dependencies, alongside a Dynamic Integer Leaky Integrate-and-Fire (DI-LIF) neuron that adaptively predicts integer-valued activations based on the input features during training and converts them into spikes during inference. Our design preserves the intrinsic sparsity and fine-grained spatiotemporal acuity of event data, resulting in efficient energy consumption without sacrificing performance. Extensive evaluations on FE108, FELT, and VisEvent demonstrate that SpikeTrack exceeds the performance of state-of-the-art trackers in both accuracy and efficiency. Furthermore, ablation studies validate each module's contribution, highlighting the practical potential of spike-driven architectures for future vision applications.",
+                imgs: [{ src: 'SpikeTrack.png' ,label: "(a) Details of our SpikeTrack, which employs the Multi-Search-sequence and Single-Template (MSST) training paradigm to capture the temporal cues related to target state changes; and three components of our SpikeTrack: (b) I-LIF Based SNN Conv Block, (c) DI-LIF Based SNN Transformer Block and (d) I-LIF Based SNN Tracking Head."}],
+                links: [{ name: 'paper', link: 'https://openaccess.thecvf.com/content/CVPR2026/papers/Wang_SpikeTrack_High-performance_and_Energy-efficient_Event-Based_Object_Tracking_with_Spiking_Neural_CVPR_2026_paper.pdf' }]
+              },
               {
                 
                 authors: 'Jiqing Zhang, Bo Dong, Yingkai Fu, Yuanchen Wang, Xiaopeng Wei, BaocaiYin, Xin Yang*.',
@@ -588,7 +674,33 @@
                   { name: 'paper', link: 'https://arxiv.org/pdf/2108.04521.pdf' },
                   { name: 'media', link: 'https://www.youtube.com/watch?v=NrsXMJYSDDQ&t=4s' }
                 ]
-              }
+              },
+                {
+                  authors: 'Jiqing Zhang, Xin Yang, Haoming Tang, Yuanchen Wang, Baocai Yin, Huibing Wang, Xianping Fu.',
+                  title: 'Efficient Vision Transformer with Token Sparsification for Event-Based Object Tracking',
+                  tags: [
+                    ['International Journal of Computer Vision 2026', 1],
+                    ['. ', 0],
+                    ['(CCF A)', 2]
+                  ],
+                  abstract: 'The Vision Transformer has gained popularity as a neural network architecture for event-based vision tasks. However, its use on resource-constrained devices is limited due to high computational and memory costs. This paper presents an Efficient Vision Transformer, a novel backbone for object tracking with event cameras. Specifically, we propose two adaptive token sparsification strategies based on the inherent characteristics of event data and tracking tasks, thereby reducing the computation while maintaining comparable performance. Firstly, since events are spatially sparse at pixel locations, we adaptively predict the sparsification ratio based on statistical entropy analysis and subsequently remove search tokens exhibiting dissimilarity to template tokens. Besides, we further eliminate redundant tokens by estimating the importance score of each token given the tracking targets. By hierarchically pruning more than 60% of the input tokens of vanilla Vision Transformer (ViT), our method significantly reduces MAC operations by approximately 25%, while the tracking accuracy drops by no more than 0.5%. Extensive experiments on various event-based tracking datasets demonstrate that our proposed approach outperforms existing state-of-the-art methods in both tracking accuracy and speed.',
+                  links: [
+                    {name: 'paper',link: 'https://doi.org/10.1007/s11263-025-02666-2'}
+                  ]
+                },
+                {
+                  authors: 'Chuanyu Sun, Jiqing Zhang, Yang Wang, Yuanchen Wang, Yutong Jiang, Baocai Yin, Xin Yang.',
+                  title: 'AlignTrack: Top-Down Spatiotemporal Resolution Alignment for RGB-Event Visual Tracking',
+                  tags: [
+                    ['AAAI 2026', 1],
+                    ['. ', 0],
+                    ['(CCF A)', 2]
+                  ],
+                  abstract: 'Most existing RGB-Event trackers rely on strictly aligned datasets, overlooking the asynchronous spatio-temporal resolutions common in real-world scenarios. This methodological limitation impedes effective RGB-Event feature alignment and ultimately degrades tracking performance. To overcome this limitation, we propose AlignTrack, a novel tracking framework built upon a Top-Down Alignment (TDA) strategy inspired by the human visual system. Our TDA framework follows an encode-decode-align paradigm: it first encodes multimodal features to generate target-related priors, which are then progressively decoded to guide a subsequent feature alignment pass. Within this framework, we introduce two key innovations: (1) a Cross-Prior Attention (CPA) module that effectively generates and integrates cross-modal priors, and (2) a Cross-Modal Semantic Alignment (CSA) loss that maximizes mutual information to enforce semantic consistency between modalities. Extensive experiments show that AlignTrack achieves state-of-the-art performance on four challenging RGB-Event tracking benchmarks, demonstrating its robustness in both aligned and unaligned scenarios. Ablation studies further validate the significant contribution of each proposed component.',
+                  links: [
+                    {name: 'paper',link: 'https://doi.org/10.1609/aaai.v40i11.37874'}
+                  ]
+                }
             ]
           },
           {
